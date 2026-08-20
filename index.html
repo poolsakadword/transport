@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ระบบจัดการสายส่งสินค้า | Delivery Route Manager</title>
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+  
+  <!-- SheetJS for Excel Import/Export -->
+  <script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
+
+  <!-- Custom Styles -->
+  <link rel="stylesheet" href="styles.css">
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              50: '#eef2ff',
+              100: '#e0e7ff',
+              200: '#c7d2fe',
+              500: '#6366f1',
+              600: '#4f46e5',
+              700: '#4338ca',
+              800: '#3730a3',
+              900: '#312e81',
+            }
+          }
+        }
+      }
+    }
+  </script>
+</head>
+<body class="bg-slate-50 text-slate-800 min-h-screen flex flex-col antialiased">
+
+  <!-- ==================== TOP NAVIGATION BAR ==================== -->
+  <header id="header-nav" class="bg-indigo-900 text-white shadow-md sticky top-0 z-40">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-16">
+        
+        <!-- Logo & Title -->
+        <div class="flex items-center space-x-3">
+          <div class="w-10 h-10 rounded-xl bg-indigo-600 flex items-center justify-center shadow-inner">
+            <i data-lucide="truck" class="w-6 h-6 text-white"></i>
+          </div>
+          <div>
+            <h1 class="text-lg sm:text-xl font-bold tracking-tight text-white flex items-center gap-2">
+              ระบบจัดการสายส่งสินค้า
+              <span id="data-source-badge" class="text-xs font-medium px-2.5 py-0.5 rounded-full bg-emerald-500/20 text-emerald-300 border border-emerald-500/30">
+                พร้อมใช้งาน
+              </span>
+            </h1>
+            <p class="text-xs text-indigo-200 hidden sm:block">สายส่งสินค้า 18 สาย (1,148 ร้านค้า/จุดส่ง)</p>
+          </div>
+        </div>
+
+        <!-- Global Quick Actions -->
+        <div class="flex items-center space-x-2">
+          
+          <!-- Add Store Button -->
+          <button id="btn-add-item" class="bg-emerald-500 hover:bg-emerald-600 text-white font-medium px-3.5 py-2 rounded-lg text-sm flex items-center gap-1.5 shadow-sm transition-all active:scale-95">
+            <i data-lucide="plus-circle" class="w-4 h-4"></i>
+            <span class="hidden md:inline">เพิ่มร้านค้า</span>
+          </button>
+
+          <!-- Print Button -->
+          <button id="btn-print-route" class="bg-indigo-700 hover:bg-indigo-600 text-white font-medium px-3.5 py-2 rounded-lg text-sm flex items-center gap-1.5 shadow-sm transition-all active:scale-95">
+            <i data-lucide="printer" class="w-4 h-4"></i>
+            <span class="hidden md:inline">พิมพ์ใบสายส่ง</span>
+          </button>
+
+          <!-- Cloudflare & Tools Dropdown Button -->
+          <button id="btn-open-tools" class="bg-indigo-800 hover:bg-indigo-700 text-indigo-100 p-2 rounded-lg text-sm flex items-center gap-1 transition-all" title="เครื่องมือ / Cloudflare D1 / Export">
+            <i data-lucide="database" class="w-4 h-4 text-emerald-400"></i>
+            <span class="hidden lg:inline text-xs font-normal">Cloudflare DB</span>
+          </button>
+
+          <!-- Export Excel Button -->
+          <button id="btn-export-excel" class="bg-indigo-800 hover:bg-indigo-700 text-indigo-100 p-2 rounded-lg text-sm transition-all" title="ส่งออกเป็นไฟล์ Excel">
+            <i data-lucide="download" class="w-4 h-4"></i>
+          </button>
+
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- ==================== MAIN CONTENT AREA ==================== -->
+  <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-5 flex-1 w-full">
+
+    <!-- Overview Statistics Banner -->
+    <div id="stats-banner" class="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-5">
+      <div class="bg-white p-3.5 rounded-xl border border-slate-200 shadow-sm flex items-center space-x-3">
+        <div class="p-2.5 rounded-lg bg-indigo-50 text-indigo-600">
+          <i data-lucide="store" class="w-5 h-5"></i>
+        </div>
+        <div>
+          <div class="text-xs text-slate-500 font-medium">ร้านค้าในสายนี้</div>
+          <div id="stat-current-count" class="text-xl font-bold text-slate-800">0</div>
+        </div>
+      </div>
+
+      <div class="bg-white p-3.5 rounded-xl border border-slate-200 shadow-sm flex items-center space-x-3">
+        <div class="p-2.5 rounded-lg bg-purple-50 text-purple-600">
+          <i data-lucide="credit-card" class="w-5 h-5"></i>
+        </div>
+        <div>
+          <div class="text-xs text-slate-500 font-medium">ยอดชำระแบบโอน</div>
+          <div id="stat-transfer-count" class="text-xl font-bold text-purple-600">0</div>
+        </div>
+      </div>
+
+      <div class="bg-white p-3.5 rounded-xl border border-slate-200 shadow-sm flex items-center space-x-3">
+        <div class="p-2.5 rounded-lg bg-emerald-50 text-emerald-600">
+          <i data-lucide="banknote" class="w-5 h-5"></i>
+        </div>
+        <div>
+          <div class="text-xs text-slate-500 font-medium">ชำระเงินสด / อื่นๆ</div>
+          <div id="stat-cash-count" class="text-xl font-bold text-emerald-600">0</div>
+        </div>
+      </div>
+
+      <div class="bg-white p-3.5 rounded-xl border border-slate-200 shadow-sm flex items-center space-x-3">
+        <div class="p-2.5 rounded-lg bg-amber-50 text-amber-600">
+          <i data-lucide="layers" class="w-5 h-5"></i>
+        </div>
+        <div>
+          <div class="text-xs text-slate-500 font-medium">รวมทุกสายส่ง (ทั้งหมด)</div>
+          <div id="stat-total-system" class="text-xl font-bold text-slate-800">1,148</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Reorder unsaved changes warning banner -->
+    <div id="reorder-save-banner" class="hidden bg-amber-50 border border-amber-200 text-amber-900 px-4 py-3 rounded-xl mb-4 flex items-center justify-between shadow-sm animate-fade-in">
+      <div class="flex items-center space-x-2">
+        <i data-lucide="alert-circle" class="w-5 h-5 text-amber-600"></i>
+        <span class="text-sm font-medium">คุณได้ปรับเปลี่ยนลำดับสายส่ง อย่าลืมบันทึกการจัดเรียงใหม่</span>
+      </div>
+      <div class="flex items-center space-x-2">
+        <button id="btn-cancel-reorder" class="px-3 py-1.5 text-xs text-slate-600 hover:text-slate-800 bg-white border border-slate-200 rounded-lg">ยกเลิก</button>
+        <button id="btn-save-reorder" class="px-3.5 py-1.5 text-xs font-semibold text-white bg-amber-600 hover:bg-amber-700 rounded-lg shadow-sm">บันทึกลำดับใหม่</button>
+      </div>
+    </div>
+
+    <!-- Filter & Navigation Section -->
+    <div class="bg-white rounded-2xl border border-slate-200 shadow-sm p-4 mb-5">
+      
+      <!-- Day Tabs (วัน) -->
+      <div class="border-b border-slate-200 pb-3 mb-3">
+        <div class="text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2">เลือกวันจัดส่ง</div>
+        <div class="flex items-center gap-1.5 overflow-x-auto pb-1 no-scrollbar" id="day-tabs-container">
+          <!-- Dynamically populated day buttons -->
+        </div>
+      </div>
+
+      <!-- Route Pills (สายส่ง) -->
+      <div class="mb-4">
+        <div class="text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2">เลือกสายส่งสินค้า</div>
+        <div class="flex items-center gap-2 overflow-x-auto pb-1 no-scrollbar" id="route-pills-container">
+          <!-- Dynamically populated route pills -->
+        </div>
+      </div>
+
+      <!-- Search & Sorting Controls Bar -->
+      <div class="flex flex-col md:flex-row md:items-center justify-between gap-3 pt-3 border-t border-slate-100">
+        
+        <!-- Search Input -->
+        <div class="relative flex-1 max-w-md">
+          <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-slate-400">
+            <i data-lucide="search" class="w-4 h-4"></i>
+          </div>
+          <input 
+            type="text" 
+            id="search-input" 
+            placeholder="ค้นหาชื่อร้าน, รหัสลูกค้า (เช่น 590032), หรือคำว่า โอน..." 
+            class="block w-full pl-9 pr-9 py-2 text-sm bg-slate-50 border border-slate-200 rounded-xl focus:bg-white focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-colors"
+          >
+          <button id="btn-clear-search" class="hidden absolute inset-y-0 right-0 pr-3 flex items-center text-slate-400 hover:text-slate-600">
+            <i data-lucide="x" class="w-4 h-4"></i>
+          </button>
+        </div>
+
+        <!-- Filter & Sorting Actions -->
+        <div class="flex flex-wrap items-center gap-2">
+          
+          <!-- Payment Filter -->
+          <select id="payment-filter" class="text-xs bg-slate-50 border border-slate-200 text-slate-700 rounded-lg px-2.5 py-2 font-medium focus:ring-2 focus:ring-indigo-500 focus:outline-none">
+            <option value="all">💳 การชำระทั้งหมด</option>
+            <option value="transfer">เฉพาะร้านโอน</option>
+            <option value="cash">เฉพาะเงินสด/อื่นๆ</option>
+          </select>
+
+          <!-- Sort Select -->
+          <select id="sort-select" class="text-xs bg-slate-50 border border-slate-200 text-slate-700 rounded-lg px-2.5 py-2 font-medium focus:ring-2 focus:ring-indigo-500 focus:outline-none">
+            <option value="sequence-asc">🔢 เรียงตามลำดับสายส่ง (1-99)</option>
+            <option value="customer_code-asc">🏷️ เรียงตามรหัสลูกค้า (น้อยไปมาก)</option>
+            <option value="customer_code-desc">🏷️ เรียงตามรหัสลูกค้า (มากไปน้อย)</option>
+            <option value="customer_name-asc">🔤 เรียงตามชื่อร้าน (ก-ฮ)</option>
+            <option value="remark-desc">💳 เรียงตามสถานะโอนเงิน</option>
+          </select>
+
+          <!-- Reorder Mode Toggle Button -->
+          <button id="btn-toggle-reorder" class="text-xs bg-slate-100 hover:bg-slate-200 text-slate-700 font-medium px-3 py-2 rounded-lg flex items-center gap-1.5 transition-colors" title="เปิดโหมดลากวางจัดลำดับสายส่ง">
+            <i data-lucide="move" class="w-3.5 h-3.5"></i>
+            <span id="reorder-toggle-text">จัดลำดับสายส่ง</span>
+          </button>
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <!-- ==================== STORES TABLE SECTION ==================== -->
+    <div class="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden mb-6">
+      
+      <!-- Table Header Bar -->
+      <div class="px-5 py-3.5 bg-slate-50/70 border-b border-slate-200 flex items-center justify-between">
+        <div class="flex items-center space-x-2">
+          <span class="font-bold text-slate-700 text-sm" id="table-title">รายการสายส่ง</span>
+          <span id="table-count-badge" class="bg-indigo-100 text-indigo-700 text-xs px-2 py-0.5 rounded-full font-semibold">0 รายการ</span>
+        </div>
+        <div class="text-xs text-slate-500" id="table-info-note">
+          กดปุ่มเลื่อนขึ้น-ลง หรือใช้โหมดจัดลำดับเพื่อเปลี่ยนคิวส่ง
+        </div>
+      </div>
+
+      <!-- Main Table -->
+      <div class="overflow-x-auto">
+        <table class="w-full text-left text-sm" id="stores-table">
+          <thead class="bg-slate-100/70 text-slate-600 text-xs font-semibold uppercase tracking-wider border-b border-slate-200">
+            <tr>
+              <th class="py-3 px-4 w-16 text-center">ลำดับ</th>
+              <th class="py-3 px-4 w-32">รหัสลูกค้า</th>
+              <th class="py-3 px-4">ชื่อร้านค้า / ลูกค้า</th>
+              <th class="py-3 px-4 w-28 text-center">การชำระเงิน</th>
+              <th class="py-3 px-4 w-32 hidden sm:table-cell">สายส่ง / วัน</th>
+              <th class="py-3 px-4 w-36 text-center action-buttons-col">จัดการ</th>
+            </tr>
+          </thead>
+          <tbody id="table-body" class="divide-y divide-slate-100">
+            <!-- Table rows will be rendered here by JavaScript -->
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Empty State View -->
+      <div id="empty-state" class="hidden py-14 text-center px-4">
+        <div class="w-14 h-14 bg-slate-100 rounded-full flex items-center justify-center mx-auto mb-3 text-slate-400">
+          <i data-lucide="search-x" class="w-7 h-7"></i>
+        </div>
+        <h3 class="text-base font-semibold text-slate-700 mb-1">ไม่พบรายการที่ค้นหา</h3>
+        <p class="text-xs text-slate-400 max-w-sm mx-auto mb-4">กรุณาลองเปลี่ยนคำค้นหา หรือเลือกวัน/สายส่งอื่น</p>
+        <button id="btn-reset-filters" class="text-xs text-indigo-600 hover:text-indigo-800 font-semibold bg-indigo-50 hover:bg-indigo-100 px-3.5 py-1.5 rounded-lg transition-colors">
+          ล้างตัวกรองทั้งหมด
+        </button>
+      </div>
+
+    </div>
+
+  </main>
+
+  <!-- ==================== PRINT ONLY LAYOUT ==================== -->
+  <div id="print-view" class="print-only print-page-container">
+    <div class="print-header">
+      <div class="flex justify-between items-start">
+        <div>
+          <h1 class="text-xl font-bold text-black" style="font-size: 18pt;">ใบนำส่งสินค้าประจำวัน</h1>
+          <div class="text-sm text-black mt-1" style="font-size: 12pt;">
+            <strong>สายส่ง:</strong> <span id="print-route-title" class="font-bold">-</span> | 
+            <strong>วัน:</strong> <span id="print-day-title" class="font-bold">-</span>
+          </div>
+        </div>
+        <div class="text-right text-xs text-black" style="font-size: 10pt;">
+          <div>วันที่พิมพ์: <span id="print-date-time">-</span></div>
+          <div>จำนวนร้านค้าทั้งหมด: <span id="print-total-count" class="font-bold">0</span> ร้าน</div>
+          <div>ยอดร้านโอน: <span id="print-transfer-count" class="font-bold">0</span> ร้าน | เงินสด: <span id="print-cash-count" class="font-bold">0</span> ร้าน</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Print Table -->
+    <table class="print-table" id="print-table-element">
+      <thead>
+        <tr>
+          <th style="width: 7%; text-align: center;">ลำดับ</th>
+          <th style="width: 14%; text-align: center;">รหัสลูกค้า</th>
+          <th style="width: 40%; text-align: left;">ชื่อร้านค้า / ลูกค้า</th>
+          <th style="width: 12%; text-align: center;">การชำระเงิน</th>
+          <th style="width: 10%; text-align: center;">จำนวนกล่อง</th>
+          <th style="width: 17%; text-align: center;">เซ็นรับของ / ตรวจเช็ค</th>
+        </tr>
+      </thead>
+      <tbody id="print-table-body">
+        <!-- Print rows will be populated here -->
+      </tbody>
+    </table>
+
+    <div class="print-footer" style="margin-top: 30px; font-size: 11pt;">
+      <div style="display: flex; justify-content: space-between; margin-top: 20px;">
+        <div style="text-align: center; width: 45%;">
+          <div style="border-bottom: 1px dotted #000; height: 35px; margin-bottom: 5px;"></div>
+          <div>ลงชื่อ ..................................................... พนักงานส่งของ</div>
+          <div style="font-size: 9pt; margin-top: 3px;">วันที่ ........ / ........ / ................</div>
+        </div>
+        <div style="text-align: center; width: 45%;">
+          <div style="border-bottom: 1px dotted #000; height: 35px; margin-bottom: 5px;"></div>
+          <div>ลงชื่อ ..................................................... ผู้ตรวจเช็ค / ผู้ปล่อยรถ</div>
+          <div style="font-size: 9pt; margin-top: 3px;">วันที่ ........ / ........ / ................</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== MODAL: ADD / EDIT STORE ==================== -->
+  <div id="modal-item" class="modal fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-50 flex items-center justify-center p-4 hidden animate-fade-in">
+    <div class="bg-white rounded-2xl max-w-lg w-full p-6 shadow-2xl border border-slate-100 transform transition-all">
+      
+      <!-- Modal Header -->
+      <div class="flex items-center justify-between pb-4 border-b border-slate-100 mb-5">
+        <h3 id="modal-title" class="text-lg font-bold text-slate-800 flex items-center gap-2">
+          <i data-lucide="plus-circle" class="w-5 h-5 text-indigo-600"></i>
+          <span>เพิ่มร้านค้าใหม่</span>
+        </h3>
+        <button id="btn-close-modal" class="text-slate-400 hover:text-slate-600 p-1 rounded-lg">
+          <i data-lucide="x" class="w-5 h-5"></i>
+        </button>
+      </div>
+
+      <!-- Modal Form -->
+      <form id="item-form" class="space-y-4">
+        <input type="hidden" id="form-item-id">
+
+        <div class="grid grid-cols-2 gap-3">
+          <!-- Day Field -->
+          <div>
+            <label class="block text-xs font-semibold text-slate-600 mb-1">วันจัดส่ง <span class="text-red-500">*</span></label>
+            <select id="form-day" required class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 text-sm focus:ring-2 focus:ring-indigo-500 focus:bg-white">
+              <option value="จันทร์">วันจันทร์</option>
+              <option value="อังคาร">วันอังคาร</option>
+              <option value="พุธ">วันพุธ</option>
+              <option value="พฤหัสบดี">วันพฤหัสบดี</option>
+              <option value="ศุกร์">วันศุกร์</option>
+              <option value="เสาร์">วันเสาร์</option>
+            </select>
+          </div>
+
+          <!-- Route Field -->
+          <div>
+            <label class="block text-xs font-semibold text-slate-600 mb-1">สายส่ง <span class="text-red-500">*</span></label>
+            <select id="form-route" required class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 text-sm focus:ring-2 focus:ring-indigo-500 focus:bg-white">
+              <option value="สาย 1">สาย 1</option>
+              <option value="สาย 2">สาย 2</option>
+              <option value="สาย 3">สาย 3</option>
+              <option value="สาย 3 สำรอง">สาย 3 สำรอง</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-3 gap-3">
+          <!-- Sequence Field -->
+          <div class="col-span-1">
+            <label class="block text-xs font-semibold text-slate-600 mb-1">ลำดับการส่ง</label>
+            <input type="number" id="form-sequence" min="1" placeholder="อัตโนมัติ" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 text-sm focus:ring-2 focus:ring-indigo-500 focus:bg-white">
+          </div>
+
+          <!-- Customer Code Field -->
+          <div class="col-span-2">
+            <label class="block text-xs font-semibold text-slate-600 mb-1">รหัสลูกค้า / รหัสร้าน <span class="text-red-500">*</span></label>
+            <input type="text" id="form-code" required placeholder="เช่น 590032" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 text-sm focus:ring-2 focus:ring-indigo-500 focus:bg-white">
+          </div>
+        </div>
+
+        <!-- Customer Name Field -->
+        <div>
+          <label class="block text-xs font-semibold text-slate-600 mb-1">ชื่อร้านค้า / ลูกค้า <span class="text-red-500">*</span></label>
+          <input type="text" id="form-name" required placeholder="เช่น หนึ่งเภสัช, สดใสการแพทย์" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 text-sm focus:ring-2 focus:ring-indigo-500 focus:bg-white">
+        </div>
+
+        <!-- Remark / Payment Field -->
+        <div>
+          <div class="flex justify-between items-center mb-1">
+            <label class="text-xs font-semibold text-slate-600">หมายเหตุ / รูปแบบการชำระเงิน</label>
+            <div class="flex gap-1.5">
+              <button type="button" class="text-[11px] bg-purple-100 text-purple-700 hover:bg-purple-200 px-2 py-0.5 rounded font-medium" onclick="document.getElementById('form-remark').value='โอน'">+ โอน</button>
+              <button type="button" class="text-[11px] bg-slate-100 text-slate-600 hover:bg-slate-200 px-2 py-0.5 rounded font-medium" onclick="document.getElementById('form-remark').value=''">ล้าง</button>
+            </div>
+          </div>
+          <input type="text" id="form-remark" placeholder="เช่น โอน, ฝากส่ง, ชำระสด" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 text-sm focus:ring-2 focus:ring-indigo-500 focus:bg-white">
+        </div>
+
+        <!-- Submit Buttons -->
+        <div class="pt-4 flex justify-end gap-2 border-t border-slate-100">
+          <button type="button" id="btn-cancel-modal" class="px-4 py-2 text-sm font-medium text-slate-600 hover:bg-slate-100 rounded-xl transition-colors">
+            ยกเลิก
+          </button>
+          <button type="submit" id="btn-submit-modal" class="px-5 py-2 text-sm font-semibold text-white bg-indigo-600 hover:bg-indigo-700 rounded-xl shadow-md transition-all active:scale-95">
+            บันทึกข้อมูล
+          </button>
+        </div>
+      </form>
+
+    </div>
+  </div>
+
+  <!-- ==================== MODAL: CLOUDFLARE D1 & TOOLS ==================== -->
+  <div id="modal-tools" class="modal fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-50 flex items-center justify-center p-4 hidden animate-fade-in">
+    <div class="bg-white rounded-2xl max-w-xl w-full p-6 shadow-2xl border border-slate-100">
+      
+      <div class="flex items-center justify-between pb-4 border-b border-slate-100 mb-5">
+        <h3 class="text-lg font-bold text-slate-800 flex items-center gap-2">
+          <i data-lucide="cloud-cog" class="w-5 h-5 text-indigo-600"></i>
+          <span>เครื่องมือ & การเชื่อมต่อ Cloudflare Database</span>
+        </h3>
+        <button id="btn-close-tools" class="text-slate-400 hover:text-slate-600 p-1 rounded-lg">
+          <i data-lucide="x" class="w-5 h-5"></i>
+        </button>
+      </div>
+
+      <div class="space-y-4">
+        
+        <!-- Status Panel -->
+        <div class="p-4 rounded-xl bg-slate-50 border border-slate-200 flex items-start space-x-3">
+          <div id="cf-status-icon" class="p-2 rounded-lg bg-emerald-100 text-emerald-600 mt-0.5">
+            <i data-lucide="database" class="w-5 h-5"></i>
+          </div>
+          <div class="flex-1">
+            <div class="flex items-center justify-between">
+              <h4 class="text-sm font-bold text-slate-800">สถานะฐานข้อมูลปัจจุบัน</h4>
+              <span id="cf-status-text" class="text-xs font-semibold px-2 py-0.5 rounded-full bg-emerald-100 text-emerald-700">โหมด Local Storage (พร้อมข้อมูล 1,148 รายการ)</span>
+            </div>
+            <p class="text-xs text-slate-500 mt-1" id="cf-status-desc">
+              ระบบทำงานได้ทันทีแบบ Standalone บนเครื่องของคุณ และพร้อมอัปโหลดข้อมูลเข้าสู่ Cloudflare D1 Database เมื่อ Deploy
+            </p>
+          </div>
+        </div>
+
+        <!-- Cloudflare D1 Actions -->
+        <div class="border border-indigo-100 bg-indigo-50/50 p-4 rounded-xl space-y-3">
+          <h4 class="text-xs font-bold text-indigo-900 uppercase tracking-wider">Cloudflare D1 SQL Database</h4>
+          <p class="text-xs text-indigo-700 leading-relaxed">
+            เมื่อคุณ Deploy ขึ้น Cloudflare Pages สามารถกดปุ่มด้านล่างเพื่อ Initialize ตารางและ Seed ข้อมูล 1,148 รายการขึ้นสู่ Cloudflare D1 Database ได้ทันที
+          </p>
+          <div class="flex gap-2">
+            <button id="btn-ping-cf" class="text-xs font-medium bg-white hover:bg-slate-50 text-indigo-700 border border-indigo-200 px-3 py-2 rounded-lg flex items-center gap-1.5 transition-colors">
+              <i data-lucide="refresh-cw" class="w-3.5 h-3.5"></i>
+              <span>ทดสอบเชื่อมต่อ API</span>
+            </button>
+            <button id="btn-seed-cf" class="text-xs font-semibold bg-indigo-600 hover:bg-indigo-700 text-white px-3.5 py-2 rounded-lg flex items-center gap-1.5 shadow-sm transition-all">
+              <i data-lucide="upload-cloud" class="w-3.5 h-3.5"></i>
+              <span>Seed ข้อมูลขึ้น Cloudflare D1</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Import / Export Actions -->
+        <div class="grid grid-cols-2 gap-3 pt-2">
+          <button id="btn-export-excel-modal" class="p-3 bg-slate-50 hover:bg-slate-100 border border-slate-200 rounded-xl text-left transition-colors">
+            <div class="flex items-center gap-2 text-sm font-semibold text-slate-700 mb-1">
+              <i data-lucide="file-spreadsheet" class="w-4 h-4 text-emerald-600"></i>
+              <span>ส่งออก Excel (.xlsx)</span>
+            </div>
+            <div class="text-xs text-slate-400">ดาวน์โหลดสายส่งทั้งหมด 18 สาย</div>
+          </button>
+
+          <button id="btn-reset-default" class="p-3 bg-rose-50 hover:bg-rose-100 border border-rose-200 rounded-xl text-left transition-colors">
+            <div class="flex items-center gap-2 text-sm font-semibold text-rose-700 mb-1">
+              <i data-lucide="rotate-ccw" class="w-4 h-4 text-rose-600"></i>
+              <span>รีเซ็ตข้อมูลเริ่มต้น</span>
+            </div>
+            <div class="text-xs text-rose-500">คืนค่า 1,148 ร้านจาก Excel ต้นฉบับ</div>
+          </button>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Toast Notification Container -->
+  <div id="toast-container" class="fixed bottom-5 right-5 z-50 flex flex-col gap-2 pointer-events-none"></div>
+
+  <!-- Load Initial Data Script -->
+  <script src="initial_data.js"></script>
+  <!-- Main Application Logic -->
+  <script src="app.js"></script>
+</body>
+</html>
