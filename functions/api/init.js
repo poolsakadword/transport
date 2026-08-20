@@ -15,7 +15,7 @@ export async function onRequestPost(context) {
     }
 
     // 1. Create table and indexes if not exists
-    await db.exec(`
+    await db.prepare(`
       CREATE TABLE IF NOT EXISTS routes_data (
         id INTEGER PRIMARY KEY AUTOINCREMENT,
         day TEXT NOT NULL,
@@ -27,11 +27,11 @@ export async function onRequestPost(context) {
         customer_code TEXT NOT NULL,
         created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
         updated_at DATETIME DEFAULT CURRENT_TIMESTAMP
-      );
-      CREATE INDEX IF NOT EXISTS idx_day_route ON routes_data (day, route_name);
-      CREATE INDEX IF NOT EXISTS idx_customer_code ON routes_data (customer_code);
-      CREATE INDEX IF NOT EXISTS idx_customer_name ON routes_data (customer_name);
-    `);
+      )
+    `).run();
+    await db.prepare("CREATE INDEX IF NOT EXISTS idx_day_route ON routes_data (day, route_name)").run();
+    await db.prepare("CREATE INDEX IF NOT EXISTS idx_customer_code ON routes_data (customer_code)").run();
+    await db.prepare("CREATE INDEX IF NOT EXISTS idx_customer_name ON routes_data (customer_name)").run();
 
     // 2. Check if table has data
     const countResult = await db.prepare("SELECT COUNT(*) as count FROM routes_data").first();

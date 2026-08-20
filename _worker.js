@@ -58,7 +58,7 @@ export default {
       if (url.pathname === "/api/init" && request.method === "POST") {
         if (!db) return json({ success: false, error: "D1 database binding 'DB' not found." }, 500);
         try {
-          await db.exec(`
+          await db.prepare(`
             CREATE TABLE IF NOT EXISTS routes_data (
               id INTEGER PRIMARY KEY AUTOINCREMENT,
               day TEXT NOT NULL,
@@ -70,11 +70,11 @@ export default {
               customer_code TEXT NOT NULL,
               created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
               updated_at DATETIME DEFAULT CURRENT_TIMESTAMP
-            );
-            CREATE INDEX IF NOT EXISTS idx_day_route ON routes_data (day, route_name);
-            CREATE INDEX IF NOT EXISTS idx_customer_code ON routes_data (customer_code);
-            CREATE INDEX IF NOT EXISTS idx_customer_name ON routes_data (customer_name);
-          `);
+            )
+          `).run();
+          await db.prepare("CREATE INDEX IF NOT EXISTS idx_day_route ON routes_data (day, route_name)").run();
+          await db.prepare("CREATE INDEX IF NOT EXISTS idx_customer_code ON routes_data (customer_code)").run();
+          await db.prepare("CREATE INDEX IF NOT EXISTS idx_customer_name ON routes_data (customer_name)").run();
 
           const body = await request.json().catch(() => ({}));
           const items = body.items || [];
