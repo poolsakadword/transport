@@ -1348,8 +1348,8 @@
 
     el.printTableBody.innerHTML = printRowsHtml;
 
-    // Trigger Print
-    window.print();
+    // Wait for DOM to update before triggering print dialog
+    setTimeout(() => window.print(), 100);
   }
 
   // ==================== EXPORT & SEED TOOLS ====================

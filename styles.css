@@ -69,19 +69,14 @@ input[type="checkbox"].custom-chk {
 
 /* Print specific stylesheet */
 @media print {
-  /* Hide non-printable elements */
-  .no-print,
-  #header-nav,
-  #action-bar,
-  #filter-controls,
-  #toast-container,
-  .modal,
-  #reorder-save-banner,
-  #selection-action-bar,
-  .action-buttons-col,
-  .chk-col,
-  #pagination-bar {
+  /* Hide ALL page elements — show ONLY #print-view */
+  body > * {
     display: none !important;
+  }
+
+  /* Show the print-view container */
+  #print-view {
+    display: block !important;
   }
 
   body {
