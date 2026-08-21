@@ -1,15 +1,16 @@
 /**
  * Delivery Routes Management WebApp - Application Logic
- * Supports: Full CRUD, Search, Sorting, Drag-and-drop Reordering, Print View, Cloudflare D1 Database & LocalStorage Dual-Mode
+ * Supports: Full CRUD, Dynamic Days & Routes Management, Store Selection & Batch Printing, 
+ * Search, Sorting, Drag-and-drop Reordering, Print View, Cloudflare D1 Database & LocalStorage Dual-Mode
  */
 
 (function () {
   'use strict';
 
-  // --- Constants & Day/Route Definitions ---
-  const DAYS = ['จันทร์', 'อังคาร', 'พุธ', 'พฤหัสบดี', 'ศุกร์', 'เสาร์'];
+  // --- Default Constants ---
+  const DEFAULT_DAYS = ['จันทร์', 'อังคาร', 'พุธ', 'พฤหัสบดี', 'ศุกร์', 'เสาร์'];
   
-  const ROUTES_BY_DAY = {
+  const DEFAULT_ROUTES_BY_DAY = {
     'จันทร์': ['สาย 1', 'สาย 2', 'สาย 3', 'สาย 3 สำรอง'],
     'อังคาร': ['สาย 1', 'สาย 2', 'สาย 3'],
     'พุธ': ['สาย 1', 'สาย 2'],
@@ -19,19 +20,25 @@
   };
 
   const STORAGE_KEY = 'delivery_routes_data_v1';
+  const STORAGE_DAYS_KEY = 'delivery_days_v2';
+  const STORAGE_ROUTES_KEY = 'delivery_routes_v2';
 
   // --- App State ---
   let state = {
     items: [],
+    days: [...DEFAULT_DAYS],
+    routesByDay: JSON.parse(JSON.stringify(DEFAULT_ROUTES_BY_DAY)),
     activeDay: 'จันทร์',
     activeRoute: 'สาย 1',
+    manageSelectedDay: 'จันทร์',
     searchQuery: '',
     paymentFilter: 'all',
     sortBy: 'sequence-asc',
     reorderMode: false,
     hasUnsavedReorder: false,
     apiAvailable: false,
-    draggedItemId: null
+    draggedItemId: null,
+    selectedItemIds: new Set()
   };
 
   // --- DOM Elements Cache ---
@@ -39,9 +46,11 @@
     dayTabsContainer: document.getElementById('day-tabs-container'),
     routePillsContainer: document.getElementById('route-pills-container'),
     tableBody: document.getElementById('table-body'),
+    storesTable: document.getElementById('stores-table'),
     emptyState: document.getElementById('empty-state'),
     tableTitle: document.getElementById('table-title'),
     tableCountBadge: document.getElementById('table-count-badge'),
+    chkSelectAll: document.getElementById('chk-select-all'),
     
     // Stats
     statCurrentCount: document.getElementById('stat-current-count'),
@@ -66,7 +75,17 @@
     btnPrintRoute: document.getElementById('btn-print-route'),
     btnExportExcel: document.getElementById('btn-export-excel'),
     btnOpenTools: document.getElementById('btn-open-tools'),
+    btnManageDaysRoutes: document.getElementById('btn-manage-days-routes'),
+    btnQuickAddRoute: document.getElementById('btn-quick-add-route'),
     dataSourceBadge: document.getElementById('data-source-badge'),
+
+    // Selection Action Bar
+    selectionActionBar: document.getElementById('selection-action-bar'),
+    selectedCount: document.getElementById('selected-count'),
+    printSelectedCount: document.getElementById('print-selected-count'),
+    btnPrintSelected: document.getElementById('btn-print-selected'),
+    btnDeleteSelected: document.getElementById('btn-delete-selected'),
+    btnClearSelection: document.getElementById('btn-clear-selection'),
 
     // Modals
     modalItem: document.getElementById('modal-item'),
@@ -81,6 +100,18 @@
     formRemark: document.getElementById('form-remark'),
     btnCloseModal: document.getElementById('btn-close-modal'),
     btnCancelModal: document.getElementById('btn-cancel-modal'),
+
+    // Manage Days & Routes Modal
+    modalManageRoutes: document.getElementById('modal-manage-routes'),
+    btnCloseManageRoutes: document.getElementById('btn-close-manage-routes'),
+    btnDoneManageRoutes: document.getElementById('btn-done-manage-routes'),
+    inputNewDay: document.getElementById('input-new-day'),
+    btnAddDayAction: document.getElementById('btn-add-day-action'),
+    daysManagerList: document.getElementById('days-manager-list'),
+    selectManageDay: document.getElementById('select-manage-day'),
+    inputNewRoute: document.getElementById('input-new-route'),
+    btnAddRouteAction: document.getElementById('btn-add-route-action'),
+    routesManagerList: document.getElementById('routes-manager-list'),
 
     // Tools Modal
     modalTools: document.getElementById('modal-tools'),
@@ -107,11 +138,14 @@
   // ==================== INITIALIZATION ====================
   async function init() {
     loadLocalData();
+    loadDaysAndRoutes();
     await checkCloudflareApi();
     renderDayTabs();
     renderRoutePills();
     renderTable();
     updateStats();
+    updateSelectionUI();
+    updateFormDayAndRouteOptions();
     bindEvents();
     refreshIcons();
   }
@@ -141,6 +175,64 @@
     }
   }
 
+  function loadDaysAndRoutes() {
+    try {
+      const storedDays = localStorage.getItem(STORAGE_DAYS_KEY);
+      const storedRoutes = localStorage.getItem(STORAGE_ROUTES_KEY);
+
+      if (storedDays) {
+        state.days = JSON.parse(storedDays);
+      } else {
+        // Collect distinct days from items
+        const daysInItems = Array.from(new Set(state.items.map(it => it.day).filter(Boolean)));
+        state.days = daysInItems.length > 0 ? daysInItems : [...DEFAULT_DAYS];
+      }
+
+      if (storedRoutes) {
+        state.routesByDay = JSON.parse(storedRoutes);
+      } else {
+        // Build routes from items & defaults
+        const routesObj = JSON.parse(JSON.stringify(DEFAULT_ROUTES_BY_DAY));
+        state.items.forEach(it => {
+          if (it.day && it.route_name) {
+            if (!routesObj[it.day]) routesObj[it.day] = [];
+            if (!routesObj[it.day].includes(it.route_name)) {
+              routesObj[it.day].push(it.route_name);
+            }
+          }
+        });
+        state.routesByDay = routesObj;
+      }
+
+      // Ensure every day in state.days has an entry in state.routesByDay
+      state.days.forEach(d => {
+        if (!state.routesByDay[d] || !Array.isArray(state.routesByDay[d]) || state.routesByDay[d].length === 0) {
+          state.routesByDay[d] = ['สาย 1'];
+        }
+      });
+
+      // Ensure activeDay is valid
+      if (state.activeDay !== 'all' && !state.days.includes(state.activeDay)) {
+        state.activeDay = state.days[0] || 'all';
+      }
+
+      saveDaysAndRoutes();
+    } catch (e) {
+      console.error('Failed to load days/routes:', e);
+      state.days = [...DEFAULT_DAYS];
+      state.routesByDay = JSON.parse(JSON.stringify(DEFAULT_ROUTES_BY_DAY));
+    }
+  }
+
+  function saveDaysAndRoutes() {
+    try {
+      localStorage.setItem(STORAGE_DAYS_KEY, JSON.stringify(state.days));
+      localStorage.setItem(STORAGE_ROUTES_KEY, JSON.stringify(state.routesByDay));
+    } catch (e) {
+      console.error('Failed to save days/routes:', e);
+    }
+  }
+
   async function checkCloudflareApi() {
     try {
       const res = await fetch('/api/stats', { method: 'GET', headers: { 'Accept': 'application/json' } });
@@ -161,6 +253,7 @@
             if (itemsData.success && itemsData.data.length > 0) {
               state.items = itemsData.data;
               saveLocalData();
+              loadDaysAndRoutes();
             }
           }
           return;
@@ -176,7 +269,7 @@
   // ==================== RENDERING LOGIC ====================
   function renderDayTabs() {
     const countsByDay = {};
-    DAYS.forEach(d => countsByDay[d] = 0);
+    state.days.forEach(d => countsByDay[d] = 0);
     state.items.forEach(it => {
       if (countsByDay[it.day] !== undefined) countsByDay[it.day]++;
     });
@@ -191,7 +284,7 @@
       </button>
     `;
 
-    DAYS.forEach(day => {
+    state.days.forEach(day => {
       const active = state.activeDay === day;
       const count = countsByDay[day] || 0;
       html += `
@@ -211,9 +304,14 @@
   function renderRoutePills() {
     let availableRoutes = [];
     if (state.activeDay === 'all') {
-      availableRoutes = ['สาย 1', 'สาย 2', 'สาย 3', 'สาย 3 สำรอง'];
+      // Union of all routes across all days
+      const allRoutes = new Set();
+      state.days.forEach(d => {
+        (state.routesByDay[d] || []).forEach(r => allRoutes.add(r));
+      });
+      availableRoutes = Array.from(allRoutes);
     } else {
-      availableRoutes = ROUTES_BY_DAY[state.activeDay] || ['สาย 1', 'สาย 2', 'สาย 3'];
+      availableRoutes = state.routesByDay[state.activeDay] || ['สาย 1'];
     }
 
     // Counts for each route in current day
@@ -300,7 +398,6 @@
       } else if (sortField === 'customer_code') {
         valA = String(valA || '');
         valB = String(valB || '');
-        // Natural sort for customer code
         return sortOrder === 'asc' 
           ? valA.localeCompare(valB, undefined, { numeric: true }) 
           : valB.localeCompare(valA, undefined, { numeric: true });
@@ -334,6 +431,7 @@
     if (items.length === 0) {
       el.tableBody.innerHTML = '';
       el.emptyState.classList.remove('hidden');
+      updateSelectionUI();
       return;
     }
 
@@ -343,6 +441,7 @@
 
     let html = '';
     items.forEach((item, index) => {
+      const isSelected = state.selectedItemIds.has(item.id);
       const isTransfer = item.remark && item.remark.includes('โอน');
       const remarkBadge = isTransfer
         ? `<span class="inline-flex items-center px-2 py-0.5 rounded-full text-xs font-semibold bg-purple-100 text-purple-700 border border-purple-200">
@@ -358,11 +457,16 @@
       const highlightedCode = highlightSearch(escapeHtml(item.customer_code), state.searchQuery);
 
       html += `
-        <tr class="hover:bg-indigo-50/40 transition-colors ${isReorderActive ? 'draggable-row' : ''}" 
+        <tr class="hover:bg-indigo-50/40 transition-colors ${isSelected ? 'row-selected' : ''} ${isReorderActive ? 'draggable-row' : ''}" 
             data-id="${item.id}" 
             data-seq="${item.sequence}"
             ${isReorderActive ? 'draggable="true"' : ''}>
           
+          <!-- Selection Checkbox -->
+          <td class="py-3 px-3 text-center chk-col">
+            <input type="checkbox" class="custom-chk row-select-chk" data-id="${item.id}" ${isSelected ? 'checked' : ''}>
+          </td>
+
           <!-- Sequence / Handle -->
           <td class="py-3 px-4 text-center">
             ${isReorderActive 
@@ -432,6 +536,8 @@
 
     el.tableBody.innerHTML = html;
     refreshIcons();
+    updateSelectionUI();
+
     if (isReorderActive) {
       bindDragAndDropEvents();
     }
@@ -449,7 +555,441 @@
     el.statTotalSystem.textContent = state.items.length.toLocaleString();
   }
 
-  // ==================== REORDERING & DRAG-AND-DROP ====================
+  // ==================== SELECTION & BATCH ACTIONS ====================
+  function updateSelectionUI() {
+    const visibleItems = getFilteredAndSortedItems();
+    const count = state.selectedItemIds.size;
+
+    if (el.selectedCount) el.selectedCount.textContent = count.toLocaleString();
+    if (el.printSelectedCount) el.printSelectedCount.textContent = count.toLocaleString();
+
+    // Show/Hide Floating Action Bar
+    if (el.selectionActionBar) {
+      if (count > 0) {
+        el.selectionActionBar.classList.remove('translate-y-24', 'opacity-0', 'pointer-events-none');
+        el.selectionActionBar.classList.add('translate-y-0', 'opacity-100', 'pointer-events-auto');
+      } else {
+        el.selectionActionBar.classList.remove('translate-y-0', 'opacity-100', 'pointer-events-auto');
+        el.selectionActionBar.classList.add('translate-y-24', 'opacity-0', 'pointer-events-none');
+      }
+    }
+
+    // Master Checkbox State
+    if (el.chkSelectAll) {
+      if (visibleItems.length === 0) {
+        el.chkSelectAll.checked = false;
+        el.chkSelectAll.indeterminate = false;
+      } else {
+        const visibleSelectedCount = visibleItems.filter(it => state.selectedItemIds.has(it.id)).length;
+        if (visibleSelectedCount === visibleItems.length) {
+          el.chkSelectAll.checked = true;
+          el.chkSelectAll.indeterminate = false;
+        } else if (visibleSelectedCount > 0) {
+          el.chkSelectAll.checked = false;
+          el.chkSelectAll.indeterminate = true;
+        } else {
+          el.chkSelectAll.checked = false;
+          el.chkSelectAll.indeterminate = false;
+        }
+      }
+    }
+  }
+
+  function toggleSelectAll(checked) {
+    const visibleItems = getFilteredAndSortedItems();
+    visibleItems.forEach(item => {
+      if (checked) {
+        state.selectedItemIds.add(item.id);
+      } else {
+        state.selectedItemIds.delete(item.id);
+      }
+    });
+
+    renderTable();
+  }
+
+  function toggleSelectItem(id, checked) {
+    if (checked) {
+      state.selectedItemIds.add(id);
+    } else {
+      state.selectedItemIds.delete(id);
+    }
+
+    // Update row visual class directly for smooth response
+    const row = el.tableBody.querySelector(`tr[data-id="${id}"]`);
+    if (row) {
+      if (checked) {
+        row.classList.add('row-selected');
+      } else {
+        row.classList.remove('row-selected');
+      }
+    }
+
+    updateSelectionUI();
+  }
+
+  function clearSelection() {
+    state.selectedItemIds.clear();
+    renderTable();
+  }
+
+  async function deleteSelectedItems() {
+    const count = state.selectedItemIds.size;
+    if (count === 0) return;
+
+    if (!confirm(`คุณต้องการลบร้านค้าที่เลือกจำนวน ${count} รายการ ออกจากระบบใช่หรือไม่?`)) {
+      return;
+    }
+
+    const idsToDelete = Array.from(state.selectedItemIds);
+    state.items = state.items.filter(it => !state.selectedItemIds.has(it.id));
+    state.selectedItemIds.clear();
+
+    if (state.apiAvailable) {
+      try {
+        await fetch('/api/items/batch-delete', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ ids: idsToDelete })
+        });
+      } catch (err) {
+        console.error('Batch delete API failed:', err);
+      }
+    }
+
+    saveLocalData();
+    renderDayTabs();
+    renderRoutePills();
+    renderTable();
+    updateStats();
+    showToast(`ลบ ${count} ร้านค้าเรียบร้อยแล้ว`, 'info');
+  }
+
+  // ==================== DAYS & ROUTES MANAGEMENT ====================
+  function openManageDaysRoutesModal() {
+    state.manageSelectedDay = state.activeDay !== 'all' ? state.activeDay : (state.days[0] || 'จันทร์');
+    renderManageDaysList();
+    renderManageRoutesList();
+    el.modalManageRoutes.classList.remove('hidden');
+    refreshIcons();
+  }
+
+  function closeManageDaysRoutesModal() {
+    el.modalManageRoutes.classList.add('hidden');
+    renderDayTabs();
+    renderRoutePills();
+    renderTable();
+    updateStats();
+    updateFormDayAndRouteOptions();
+  }
+
+  function renderManageDaysList() {
+    // Populate select dropdown in modal
+    let selectHtml = '';
+    state.days.forEach(d => {
+      selectHtml += `<option value="${d}" ${state.manageSelectedDay === d ? 'selected' : ''}>วัน${d}</option>`;
+    });
+    el.selectManageDay.innerHTML = selectHtml;
+
+    // Render list of days
+    let listHtml = '';
+    state.days.forEach(day => {
+      const storeCount = state.items.filter(it => it.day === day).length;
+      const routeCount = (state.routesByDay[day] || []).length;
+      listHtml += `
+        <div class="bg-white p-2.5 rounded-xl border border-slate-200 flex items-center justify-between shadow-2xs hover:border-indigo-200 transition-colors">
+          <div class="flex items-center gap-2">
+            <span class="w-2 h-2 rounded-full bg-indigo-500"></span>
+            <div>
+              <span class="font-bold text-xs text-slate-800">วัน${escapeHtml(day)}</span>
+              <span class="text-[10px] text-slate-400 block">${routeCount} สาย (${storeCount} ร้าน)</span>
+            </div>
+          </div>
+          <div class="flex items-center gap-1">
+            <button class="btn-rename-day p-1 text-slate-400 hover:text-amber-600 hover:bg-amber-50 rounded-lg transition-colors" data-day="${escapeHtml(day)}" title="เปลี่ยนชื่อวัน">
+              <i data-lucide="edit-2" class="w-3.5 h-3.5"></i>
+            </button>
+            <button class="btn-delete-day p-1 text-slate-400 hover:text-rose-600 hover:bg-rose-50 rounded-lg transition-colors" data-day="${escapeHtml(day)}" title="ลบวัน">
+              <i data-lucide="trash-2" class="w-3.5 h-3.5"></i>
+            </button>
+          </div>
+        </div>
+      `;
+    });
+    el.daysManagerList.innerHTML = listHtml;
+    refreshIcons();
+  }
+
+  function renderManageRoutesList() {
+    const day = state.manageSelectedDay;
+    const routes = state.routesByDay[day] || [];
+
+    let listHtml = '';
+    if (routes.length === 0) {
+      listHtml = `<div class="text-xs text-slate-400 text-center py-4">ยังไม่มีสายส่งในวันนี้</div>`;
+    } else {
+      routes.forEach(route => {
+        const storeCount = state.items.filter(it => it.day === day && it.route_name === route).length;
+        listHtml += `
+          <div class="bg-white p-2.5 rounded-xl border border-slate-200 flex items-center justify-between shadow-2xs hover:border-slate-300 transition-colors">
+            <div class="flex items-center gap-2">
+              <span class="text-xs font-semibold text-slate-800">📍 ${escapeHtml(route)}</span>
+              <span class="text-[10px] px-1.5 py-0.5 rounded-full bg-slate-100 text-slate-600 font-medium">${storeCount} ร้านค้า</span>
+            </div>
+            <div class="flex items-center gap-1">
+              <button class="btn-rename-route p-1 text-slate-400 hover:text-amber-600 hover:bg-amber-50 rounded-lg transition-colors" data-day="${escapeHtml(day)}" data-route="${escapeHtml(route)}" title="เปลี่ยนชื่อสายส่ง">
+                <i data-lucide="edit-2" class="w-3.5 h-3.5"></i>
+              </button>
+              <button class="btn-delete-route p-1 text-slate-400 hover:text-rose-600 hover:bg-rose-50 rounded-lg transition-colors" data-day="${escapeHtml(day)}" data-route="${escapeHtml(route)}" title="ลบสายส่ง">
+                <i data-lucide="trash-2" class="w-3.5 h-3.5"></i>
+              </button>
+            </div>
+          </div>
+        `;
+      });
+    }
+    el.routesManagerList.innerHTML = listHtml;
+    refreshIcons();
+  }
+
+  function addDay(dayName) {
+    let cleanName = dayName.trim().replace(/^วัน/, '');
+    if (!cleanName) {
+      showToast('กรุณากรอกชื่อวัน', 'error');
+      return;
+    }
+    if (state.days.includes(cleanName)) {
+      showToast(`มีวัน "${cleanName}" อยู่ในระบบแล้ว`, 'error');
+      return;
+    }
+
+    state.days.push(cleanName);
+    if (!state.routesByDay[cleanName]) {
+      state.routesByDay[cleanName] = ['สาย 1'];
+    }
+
+    saveDaysAndRoutes();
+    state.manageSelectedDay = cleanName;
+    renderManageDaysList();
+    renderManageRoutesList();
+    updateFormDayAndRouteOptions();
+    showToast(`เพิ่มวัน "${cleanName}" เรียบร้อยแล้ว`, 'success');
+  }
+
+  async function renameDay(oldName) {
+    const newNameRaw = prompt(`เปลี่ยนชื่อวัน "${oldName}" เป็น:`, oldName);
+    if (newNameRaw === null) return;
+    const newName = newNameRaw.trim().replace(/^วัน/, '');
+    if (!newName || newName === oldName) return;
+
+    if (state.days.includes(newName)) {
+      showToast(`มีวัน "${newName}" อยู่แล้ว`, 'error');
+      return;
+    }
+
+    const idx = state.days.indexOf(oldName);
+    if (idx !== -1) {
+      state.days[idx] = newName;
+    }
+    state.routesByDay[newName] = state.routesByDay[oldName] || ['สาย 1'];
+    delete state.routesByDay[oldName];
+
+    // Update matching items
+    state.items.forEach(it => {
+      if (it.day === oldName) {
+        it.day = newName;
+        it.sheet_name = `${newName}${it.route_name.replace('สาย ', '').replace('สำรอง', 'สำรอง')}`;
+      }
+    });
+
+    if (state.activeDay === oldName) state.activeDay = newName;
+    if (state.manageSelectedDay === oldName) state.manageSelectedDay = newName;
+
+    if (state.apiAvailable) {
+      try {
+        await fetch('/api/days', {
+          method: 'PUT',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ old_day: oldName, new_day: newName })
+        });
+      } catch (err) {
+        console.error('Rename day API error:', err);
+      }
+    }
+
+    saveDaysAndRoutes();
+    saveLocalData();
+    renderManageDaysList();
+    renderManageRoutesList();
+    updateFormDayAndRouteOptions();
+    showToast(`เปลี่ยนชื่อวันเป็น "${newName}" เรียบร้อยแล้ว`, 'success');
+  }
+
+  async function deleteDay(dayName) {
+    const storesInDay = state.items.filter(it => it.day === dayName).length;
+    let msg = `คุณต้องการลบวัน "${dayName}" ออกจากระบบใช่หรือไม่?`;
+    if (storesInDay > 0) {
+      msg = `⚠️ วัน "${dayName}" มีร้านค้าอยู่ทั้งหมด ${storesInDay} ร้านค้า!\nหากลบ ข้อมูลร้านค้าในวันนี้ทั้งหมดจะถูกลบด้วย คุณแน่ใจหรือไม่?`;
+    }
+
+    if (!confirm(msg)) return;
+
+    state.days = state.days.filter(d => d !== dayName);
+    delete state.routesByDay[dayName];
+    state.items = state.items.filter(it => it.day !== dayName);
+
+    if (state.days.length === 0) {
+      state.days = ['จันทร์'];
+      state.routesByDay['จันทร์'] = ['สาย 1'];
+    }
+
+    if (state.activeDay === dayName) state.activeDay = state.days[0] || 'all';
+    state.manageSelectedDay = state.days[0] || 'จันทร์';
+
+    if (state.apiAvailable) {
+      try {
+        await fetch(`/api/days?day=${encodeURIComponent(dayName)}`, { method: 'DELETE' });
+      } catch (err) {
+        console.error('Delete day API error:', err);
+      }
+    }
+
+    saveDaysAndRoutes();
+    saveLocalData();
+    renderManageDaysList();
+    renderManageRoutesList();
+    updateFormDayAndRouteOptions();
+    showToast(`ลบวัน "${dayName}" เรียบร้อยแล้ว`, 'info');
+  }
+
+  function addRoute(dayName, routeName) {
+    let cleanName = routeName.trim();
+    if (!cleanName) {
+      showToast('กรุณากรอกชื่อสายส่ง', 'error');
+      return;
+    }
+
+    if (!state.routesByDay[dayName]) {
+      state.routesByDay[dayName] = [];
+    }
+
+    if (state.routesByDay[dayName].includes(cleanName)) {
+      showToast(`มีสายส่ง "${cleanName}" ในวัน${dayName} อยู่แล้ว`, 'error');
+      return;
+    }
+
+    state.routesByDay[dayName].push(cleanName);
+    saveDaysAndRoutes();
+    renderManageRoutesList();
+    updateFormDayAndRouteOptions();
+    showToast(`เพิ่มสายส่ง "${cleanName}" ในวัน${dayName} แล้ว`, 'success');
+  }
+
+  async function renameRoute(dayName, oldRoute) {
+    const newRouteRaw = prompt(`เปลี่ยนชื่อสายส่ง "${oldRoute}" (วัน${dayName}) เป็น:`, oldRoute);
+    if (newRouteRaw === null) return;
+    const newRoute = newRouteRaw.trim();
+    if (!newRoute || newRoute === oldRoute) return;
+
+    const routes = state.routesByDay[dayName] || [];
+    if (routes.includes(newRoute)) {
+      showToast(`มีสายส่ง "${newRoute}" ในวัน${dayName} อยู่แล้ว`, 'error');
+      return;
+    }
+
+    const idx = routes.indexOf(oldRoute);
+    if (idx !== -1) {
+      routes[idx] = newRoute;
+    }
+
+    // Update matching items
+    state.items.forEach(it => {
+      if (it.day === dayName && it.route_name === oldRoute) {
+        it.route_name = newRoute;
+        it.sheet_name = `${dayName}${newRoute.replace('สาย ', '').replace('สำรอง', 'สำรอง')}`;
+      }
+    });
+
+    if (state.activeRoute === oldRoute) state.activeRoute = newRoute;
+
+    if (state.apiAvailable) {
+      try {
+        await fetch('/api/routes', {
+          method: 'PUT',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ day: dayName, old_route: oldRoute, new_route: newRoute })
+        });
+      } catch (err) {
+        console.error('Rename route API error:', err);
+      }
+    }
+
+    saveDaysAndRoutes();
+    saveLocalData();
+    renderManageRoutesList();
+    updateFormDayAndRouteOptions();
+    showToast(`เปลี่ยนชื่อสายส่งเป็น "${newRoute}" เรียบร้อยแล้ว`, 'success');
+  }
+
+  async function deleteRoute(dayName, routeName) {
+    const storesInRoute = state.items.filter(it => it.day === dayName && it.route_name === routeName).length;
+    let msg = `คุณต้องการลบสายส่ง "${routeName}" (วัน${dayName}) ใช่หรือไม่?`;
+    if (storesInRoute > 0) {
+      msg = `⚠️ สายส่ง "${routeName}" (วัน${dayName}) มีร้านค้าอยู่ทั้งหมด ${storesInRoute} ร้านค้า!\nหากลบ ข้อมูลร้านค้าในสายนี้ทั้งหมดจะถูกลบด้วย คุณแน่ใจหรือไม่?`;
+    }
+
+    if (!confirm(msg)) return;
+
+    state.routesByDay[dayName] = (state.routesByDay[dayName] || []).filter(r => r !== routeName);
+    if (state.routesByDay[dayName].length === 0) {
+      state.routesByDay[dayName] = ['สาย 1'];
+    }
+
+    state.items = state.items.filter(it => !(it.day === dayName && it.route_name === routeName));
+
+    if (state.activeRoute === routeName) {
+      state.activeRoute = state.routesByDay[dayName][0] || 'all';
+    }
+
+    if (state.apiAvailable) {
+      try {
+        await fetch(`/api/routes?day=${encodeURIComponent(dayName)}&route_name=${encodeURIComponent(routeName)}`, { method: 'DELETE' });
+      } catch (err) {
+        console.error('Delete route API error:', err);
+      }
+    }
+
+    saveDaysAndRoutes();
+    saveLocalData();
+    renderManageRoutesList();
+    updateFormDayAndRouteOptions();
+    showToast(`ลบสายส่ง "${routeName}" เรียบร้อยแล้ว`, 'info');
+  }
+
+  function updateFormDayAndRouteOptions() {
+    if (!el.formDay || !el.formRoute) return;
+
+    const currentDay = el.formDay.value || state.activeDay || state.days[0];
+    let daysHtml = '';
+    state.days.forEach(d => {
+      daysHtml += `<option value="${d}" ${d === currentDay ? 'selected' : ''}>วัน${d}</option>`;
+    });
+    el.formDay.innerHTML = daysHtml;
+
+    updateFormRouteOptions();
+  }
+
+  function updateFormRouteOptions() {
+    const selectedDay = el.formDay.value || state.days[0];
+    const routes = state.routesByDay[selectedDay] || ['สาย 1'];
+    let routesHtml = '';
+    routes.forEach(r => {
+      routesHtml += `<option value="${r}">${r}</option>`;
+    });
+    el.formRoute.innerHTML = routesHtml;
+  }
+
+  // ==================== DRAG & DROP AND REORDERING ====================
   function bindDragAndDropEvents() {
     const rows = el.tableBody.querySelectorAll('.draggable-row');
     rows.forEach(row => {
@@ -469,134 +1009,109 @@
   }
 
   function handleDragOver(e) {
-    if (e.preventDefault) e.preventDefault();
+    e.preventDefault();
     e.dataTransfer.dropEffect = 'move';
-    this.classList.add('drag-over');
-    return false;
+    const targetRow = e.target.closest('.draggable-row');
+    if (targetRow && targetRow !== this) {
+      targetRow.classList.add('drag-over');
+    }
   }
 
-  function handleDragLeave() {
+  function handleDragLeave(e) {
     this.classList.remove('drag-over');
   }
 
   function handleDrop(e) {
-    if (e.stopPropagation) e.stopPropagation();
+    e.preventDefault();
     this.classList.remove('drag-over');
-    
     const targetId = Number(this.getAttribute('data-id'));
-    const sourceId = state.draggedItemId;
+    if (!state.draggedItemId || state.draggedItemId === targetId) return;
 
-    if (sourceId && targetId && sourceId !== targetId) {
-      reorderItemsInRoute(sourceId, targetId);
-    }
-    return false;
+    reorderItems(state.draggedItemId, targetId);
   }
 
   function handleDragEnd() {
     this.classList.remove('dragging');
-    const rows = el.tableBody.querySelectorAll('.draggable-row');
-    rows.forEach(r => r.classList.remove('drag-over'));
+    el.tableBody.querySelectorAll('.drag-over').forEach(el => el.classList.remove('drag-over'));
   }
 
-  function reorderItemsInRoute(sourceId, targetId) {
-    // Get all items in current day + route sorted by current sequence
-    const routeItems = state.items
-      .filter(it => it.day === state.activeDay && it.route_name === state.activeRoute)
-      .sort((a, b) => a.sequence - b.sequence);
+  function reorderItems(draggedId, targetId) {
+    const currentItems = getFilteredAndSortedItems();
+    const fromIndex = currentItems.findIndex(it => it.id === draggedId);
+    const toIndex = currentItems.findIndex(it => it.id === targetId);
+    if (fromIndex === -1 || toIndex === -1) return;
 
-    const sourceIndex = routeItems.findIndex(it => it.id === sourceId);
-    const targetIndex = routeItems.findIndex(it => it.id === targetId);
+    const [movedItem] = currentItems.splice(fromIndex, 1);
+    currentItems.splice(toIndex, 0, movedItem);
 
-    if (sourceIndex === -1 || targetIndex === -1) return;
-
-    // Move source to target position
-    const [moved] = routeItems.splice(sourceIndex, 1);
-    routeItems.splice(targetIndex, 0, moved);
-
-    // Re-assign sequence 1, 2, 3...
-    routeItems.forEach((it, idx) => {
+    // Update sequence numbers (1-based)
+    currentItems.forEach((it, idx) => {
       it.sequence = idx + 1;
+      const globalItem = state.items.find(g => g.id === it.id);
+      if (globalItem) {
+        globalItem.sequence = idx + 1;
+      }
     });
 
     state.hasUnsavedReorder = true;
     el.reorderSaveBanner.classList.remove('hidden');
-    saveLocalData();
     renderTable();
-    updateStats();
-    showToast('ปรับลำดับในสายเรียบร้อยแล้ว กดปุ่ม "บันทึกลำดับใหม่" เพื่อยืนยัน', 'info');
+    showToast(`ย้าย "${movedItem.customer_name}" ไปลำดับที่ ${toIndex + 1} แล้ว`, 'info');
   }
 
   function moveItem(id, direction) {
-    const currentItem = state.items.find(it => it.id === id);
-    if (!currentItem) return;
+    const currentItems = getFilteredAndSortedItems();
+    const index = currentItems.findIndex(it => it.id === id);
+    if (index === -1) return;
 
-    // Get items in same route
-    const routeItems = state.items
-      .filter(it => it.day === currentItem.day && it.route_name === currentItem.route_name)
-      .sort((a, b) => a.sequence - b.sequence);
-
-    const idx = routeItems.findIndex(it => it.id === id);
-    if (idx === -1) return;
-
-    const targetIdx = direction === 'up' ? idx - 1 : idx + 1;
-    if (targetIdx < 0 || targetIdx >= routeItems.length) {
-      showToast(direction === 'up' ? 'รายการนี้อยู่บนสุดแล้ว' : 'รายการนี้อยู่ล่างสุดแล้ว', 'info');
-      return;
+    if (direction === 'up' && index > 0) {
+      const targetItem = currentItems[index - 1];
+      reorderItems(id, targetItem.id);
+    } else if (direction === 'down' && index < currentItems.length - 1) {
+      const targetItem = currentItems[index + 1];
+      reorderItems(id, targetItem.id);
     }
-
-    const targetItem = routeItems[targetIdx];
-    // Swap sequences
-    const tempSeq = currentItem.sequence;
-    currentItem.sequence = targetItem.sequence;
-    targetItem.sequence = tempSeq;
-
-    state.hasUnsavedReorder = true;
-    el.reorderSaveBanner.classList.remove('hidden');
-    saveLocalData();
-    renderTable();
-    updateStats();
-    showToast(`เลื่อน ${currentItem.customer_name} ${direction === 'up' ? 'ขึ้น' : 'ลง'} เรียบร้อยแล้ว`, 'success');
   }
 
   async function saveReorderToBackend() {
-    if (!state.hasUnsavedReorder) return;
+    const currentItems = getFilteredAndSortedItems();
+    const payload = currentItems.map(it => ({ id: it.id, sequence: it.sequence }));
 
-    const currentRouteItems = state.items
-      .filter(it => it.day === state.activeDay && it.route_name === state.activeRoute)
-      .map(it => ({ id: it.id, sequence: it.sequence }));
+    saveLocalData();
 
     if (state.apiAvailable) {
       try {
         const res = await fetch('/api/items/reorder', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ items: currentRouteItems })
+          body: JSON.stringify({ items: payload })
         });
         if (res.ok) {
           showToast('บันทึกลำดับสายส่งขึ้น Cloudflare D1 สำเร็จ!', 'success');
         } else {
-          showToast('บันทึกลงเครื่องเรียบร้อยแล้ว (ออฟไลน์)', 'info');
+          showToast('บันทึกลำดับลงในเครื่องแล้ว (D1 ยังไม่ได้บันทึก)', 'info');
         }
-      } catch (e) {
-        showToast('บันทึกลงเครื่องเรียบร้อยแล้ว (ออฟไลน์)', 'info');
+      } catch (err) {
+        showToast('บันทึกลำดับลงในเครื่องแล้ว', 'info');
       }
     } else {
-      showToast('บันทึกลำดับสายส่งเรียบร้อยแล้ว', 'success');
+      showToast('บันทึกลำดับสายส่งลงในเครื่องแล้ว', 'success');
     }
 
     state.hasUnsavedReorder = false;
     el.reorderSaveBanner.classList.add('hidden');
-    saveLocalData();
   }
 
-  // ==================== CRUD OPERATIONS ====================
+  // ==================== STORE CRUD OPERATIONS ====================
   function openAddModal() {
-    el.modalTitle.innerHTML = `<i data-lucide="plus-circle" class="w-5 h-5 text-emerald-600"></i><span>เพิ่มร้านค้าใหม่</span>`;
+    el.modalTitle.innerHTML = `<i data-lucide="plus-circle" class="w-5 h-5 text-indigo-600"></i><span>เพิ่มร้านค้าใหม่</span>`;
     el.formItemId.value = '';
-    el.formDay.value = state.activeDay !== 'all' ? state.activeDay : 'จันทร์';
-    el.formRoute.value = state.activeRoute !== 'all' ? state.activeRoute : 'สาย 1';
     
-    // Calculate next sequence for this day & route
+    updateFormDayAndRouteOptions();
+    if (state.activeDay !== 'all') el.formDay.value = state.activeDay;
+    updateFormRouteOptions();
+    if (state.activeRoute !== 'all') el.formRoute.value = state.activeRoute;
+    
     const countInRoute = state.items.filter(it => it.day === el.formDay.value && it.route_name === el.formRoute.value).length;
     el.formSequence.value = countInRoute + 1;
     
@@ -615,8 +1130,12 @@
 
     el.modalTitle.innerHTML = `<i data-lucide="edit-3" class="w-5 h-5 text-amber-600"></i><span>แก้ไขข้อมูลร้านค้า</span>`;
     el.formItemId.value = item.id;
+
+    updateFormDayAndRouteOptions();
     el.formDay.value = item.day;
+    updateFormRouteOptions();
     el.formRoute.value = item.route_name;
+    
     el.formSequence.value = item.sequence;
     el.formCode.value = item.customer_code;
     el.formName.value = item.customer_name;
@@ -733,6 +1252,7 @@
     }
 
     state.items = state.items.filter(it => it.id !== id);
+    state.selectedItemIds.delete(id);
 
     if (state.apiAvailable) {
       try {
@@ -751,32 +1271,54 @@
   }
 
   // ==================== PRINT ROUTE SHEET ====================
-  function prepareAndPrint() {
-    const currentItems = getFilteredAndSortedItems();
-    if (currentItems.length === 0) {
+  function prepareAndPrint(onlySelected = false) {
+    let itemsToPrint = [];
+
+    if (onlySelected === true) {
+      if (state.selectedItemIds.size === 0) {
+        showToast('กรุณาติ๊กเลือกอย่างน้อย 1 ร้านค้าเพื่อสั่งพิมพ์', 'error');
+        return;
+      }
+      const currentItems = getFilteredAndSortedItems();
+      itemsToPrint = currentItems.filter(it => state.selectedItemIds.has(it.id));
+      if (itemsToPrint.length === 0) {
+        // Fallback to all items across system matching selected IDs
+        itemsToPrint = state.items.filter(it => state.selectedItemIds.has(it.id));
+      }
+    } else {
+      itemsToPrint = getFilteredAndSortedItems();
+    }
+
+    if (itemsToPrint.length === 0) {
       showToast('ไม่มีรายการในสายส่งที่เลือกสำหรับพิมพ์', 'error');
       return;
     }
 
     // Set Header titles
-    el.printDayTitle.textContent = state.activeDay === 'all' ? 'ทุกวัน' : `วัน${state.activeDay}`;
-    el.printRouteTitle.textContent = state.activeRoute === 'all' ? 'ทุกสายส่ง' : state.activeRoute;
+    let dayLabel = state.activeDay === 'all' ? 'ทุกวัน' : `วัน${state.activeDay}`;
+    let routeLabel = state.activeRoute === 'all' ? 'ทุกสายส่ง' : state.activeRoute;
+    if (onlySelected === true) {
+      routeLabel += ` (เฉพาะร้านที่เลือก ${itemsToPrint.length} ร้าน)`;
+    }
+
+    el.printDayTitle.textContent = dayLabel;
+    el.printRouteTitle.textContent = routeLabel;
     
     const now = new Date();
     const dateFormatted = now.toLocaleDateString('th-TH', { year: 'numeric', month: 'short', day: 'numeric' });
     const timeFormatted = now.toLocaleTimeString('th-TH', { hour: '2-digit', minute: '2-digit' });
     el.printDateTime.textContent = `${dateFormatted} ${timeFormatted} น.`;
 
-    const transferCount = currentItems.filter(it => it.remark && it.remark.includes('โอน')).length;
-    const cashCount = currentItems.length - transferCount;
+    const transferCount = itemsToPrint.filter(it => it.remark && it.remark.includes('โอน')).length;
+    const cashCount = itemsToPrint.length - transferCount;
 
-    el.printTotalCount.textContent = currentItems.length;
+    el.printTotalCount.textContent = itemsToPrint.length;
     el.printTransferCount.textContent = transferCount;
     el.printCashCount.textContent = cashCount;
 
     // Populate Print Table Rows
     let printRowsHtml = '';
-    currentItems.forEach((item, idx) => {
+    itemsToPrint.forEach((item, idx) => {
       const isTransfer = item.remark && item.remark.includes('โอน');
       const paymentText = isTransfer ? 'โอน' : (item.remark || '-');
       printRowsHtml += `
@@ -785,7 +1327,7 @@
           <td style="text-align: center; font-family: monospace; font-weight: bold;">${escapeHtml(item.customer_code)}</td>
           <td style="text-align: left; font-weight: 500;">
             ${escapeHtml(item.customer_name)}
-            ${state.activeRoute === 'all' ? `<span style="font-size: 8pt; color: #555;"> (${item.day} ${item.route_name})</span>` : ''}
+            ${(state.activeRoute === 'all' || onlySelected) ? `<span style="font-size: 8pt; color: #555;"> (${item.day} ${item.route_name})</span>` : ''}
           </td>
           <td style="text-align: center; font-weight: ${isTransfer ? 'bold' : 'normal'};">
             ${escapeHtml(paymentText)}
@@ -845,7 +1387,7 @@
   }
 
   async function seedToCloudflare() {
-    if (!confirm(`คุณต้องการอัปโหลดข้อมูลทั้ง 1,148 รายการขึ้นสู่ Cloudflare D1 Database ใช่หรือไม่?`)) {
+    if (!confirm(`คุณต้องการอัปโหลดข้อมูลทั้งหมด ${state.items.length} รายการขึ้นสู่ Cloudflare D1 Database ใช่หรือไม่?`)) {
       return;
     }
 
@@ -877,7 +1419,10 @@
 
     if (window.INITIAL_ROUTES_DATA) {
       state.items = JSON.parse(JSON.stringify(window.INITIAL_ROUTES_DATA));
+      state.days = [...DEFAULT_DAYS];
+      state.routesByDay = JSON.parse(JSON.stringify(DEFAULT_ROUTES_BY_DAY));
       saveLocalData();
+      saveDaysAndRoutes();
       renderDayTabs();
       renderRoutePills();
       renderTable();
@@ -896,7 +1441,7 @@
       state.activeDay = btn.getAttribute('data-day');
       // If switching to a day that doesn't have the current route, reset route to first available
       if (state.activeDay !== 'all') {
-        const available = ROUTES_BY_DAY[state.activeDay] || ['สาย 1'];
+        const available = state.routesByDay[state.activeDay] || ['สาย 1'];
         if (state.activeRoute !== 'all' && !available.includes(state.activeRoute)) {
           state.activeRoute = available[0];
         }
@@ -993,7 +1538,124 @@
       updateStats();
     });
 
-    // Add Modal
+    // Select All Checkbox
+    if (el.chkSelectAll) {
+      el.chkSelectAll.addEventListener('change', e => {
+        toggleSelectAll(e.target.checked);
+      });
+    }
+
+    // Selection Action Bar Events
+    if (el.btnPrintSelected) {
+      el.btnPrintSelected.addEventListener('click', () => prepareAndPrint(true));
+    }
+    if (el.btnDeleteSelected) {
+      el.btnDeleteSelected.addEventListener('click', deleteSelectedItems);
+    }
+    if (el.btnClearSelection) {
+      el.btnClearSelection.addEventListener('click', clearSelection);
+    }
+
+    // Manage Days & Routes Modal
+    if (el.btnManageDaysRoutes) {
+      el.btnManageDaysRoutes.addEventListener('click', openManageDaysRoutesModal);
+    }
+    if (el.btnQuickAddRoute) {
+      el.btnQuickAddRoute.addEventListener('click', () => {
+        openManageDaysRoutesModal();
+        setTimeout(() => el.inputNewRoute.focus(), 100);
+      });
+    }
+    if (el.btnCloseManageRoutes) {
+      el.btnCloseManageRoutes.addEventListener('click', closeManageDaysRoutesModal);
+    }
+    if (el.btnDoneManageRoutes) {
+      el.btnDoneManageRoutes.addEventListener('click', closeManageDaysRoutesModal);
+    }
+
+    // Manage Days Actions
+    if (el.btnAddDayAction) {
+      el.btnAddDayAction.addEventListener('click', () => {
+        addDay(el.inputNewDay.value);
+        el.inputNewDay.value = '';
+      });
+    }
+    if (el.inputNewDay) {
+      el.inputNewDay.addEventListener('keydown', e => {
+        if (e.key === 'Enter') {
+          e.preventDefault();
+          addDay(el.inputNewDay.value);
+          el.inputNewDay.value = '';
+        }
+      });
+    }
+
+    if (el.daysManagerList) {
+      el.daysManagerList.addEventListener('click', e => {
+        const renameBtn = e.target.closest('.btn-rename-day');
+        if (renameBtn) {
+          const day = renameBtn.getAttribute('data-day');
+          renameDay(day);
+          return;
+        }
+        const deleteBtn = e.target.closest('.btn-delete-day');
+        if (deleteBtn) {
+          const day = deleteBtn.getAttribute('data-day');
+          deleteDay(day);
+          return;
+        }
+      });
+    }
+
+    // Manage Routes Actions
+    if (el.selectManageDay) {
+      el.selectManageDay.addEventListener('change', e => {
+        state.manageSelectedDay = e.target.value;
+        renderManageRoutesList();
+      });
+    }
+
+    if (el.btnAddRouteAction) {
+      el.btnAddRouteAction.addEventListener('click', () => {
+        addRoute(state.manageSelectedDay, el.inputNewRoute.value);
+        el.inputNewRoute.value = '';
+      });
+    }
+    if (el.inputNewRoute) {
+      el.inputNewRoute.addEventListener('keydown', e => {
+        if (e.key === 'Enter') {
+          e.preventDefault();
+          addRoute(state.manageSelectedDay, el.inputNewRoute.value);
+          el.inputNewRoute.value = '';
+        }
+      });
+    }
+
+    if (el.routesManagerList) {
+      el.routesManagerList.addEventListener('click', e => {
+        const renameBtn = e.target.closest('.btn-rename-route');
+        if (renameBtn) {
+          const day = renameBtn.getAttribute('data-day');
+          const route = renameBtn.getAttribute('data-route');
+          renameRoute(day, route);
+          return;
+        }
+        const deleteBtn = e.target.closest('.btn-delete-route');
+        if (deleteBtn) {
+          const day = deleteBtn.getAttribute('data-day');
+          const route = deleteBtn.getAttribute('data-route');
+          deleteRoute(day, route);
+          return;
+        }
+      });
+    }
+
+    // Form day select change -> update routes dropdown
+    if (el.formDay) {
+      el.formDay.addEventListener('change', updateFormRouteOptions);
+    }
+
+    // Add Store Modal
     el.btnAddItem.addEventListener('click', openAddModal);
     el.btnCloseModal.addEventListener('click', closeModal);
     el.btnCancelModal.addEventListener('click', closeModal);
@@ -1011,11 +1673,25 @@
     el.btnExportExcelModal.addEventListener('click', exportToExcel);
     el.btnExportExcel.addEventListener('click', exportToExcel);
 
-    // Print Button
-    el.btnPrintRoute.addEventListener('click', prepareAndPrint);
+    // Print Button (Top bar)
+    el.btnPrintRoute.addEventListener('click', () => {
+      if (state.selectedItemIds.size > 0) {
+        prepareAndPrint(true);
+      } else {
+        prepareAndPrint(false);
+      }
+    });
 
     // Table delegated actions
     el.tableBody.addEventListener('click', e => {
+      // Row checkbox
+      const chk = e.target.closest('.row-select-chk');
+      if (chk) {
+        const id = Number(chk.getAttribute('data-id'));
+        toggleSelectItem(id, chk.checked);
+        return;
+      }
+
       // Copy code button
       const copyBtn = e.target.closest('.btn-copy-code');
       if (copyBtn) {
@@ -1064,6 +1740,7 @@
       if (e.key === 'Escape') {
         closeModal();
         el.modalTools.classList.add('hidden');
+        if (el.modalManageRoutes) el.modalManageRoutes.classList.add('hidden');
       }
     });
 
@@ -1074,6 +1751,12 @@
     el.modalTools.addEventListener('click', e => {
       if (e.target === el.modalTools) el.modalTools.classList.add('hidden');
     });
+
+    if (el.modalManageRoutes) {
+      el.modalManageRoutes.addEventListener('click', e => {
+        if (e.target === el.modalManageRoutes) closeManageDaysRoutesModal();
+      });
+    }
   }
 
   // ==================== HELPER FUNCTIONS ====================

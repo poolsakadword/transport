@@ -155,7 +155,13 @@
       
       <!-- Day Tabs (วัน) -->
       <div class="border-b border-slate-200 pb-3 mb-3">
-        <div class="text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2">เลือกวันจัดส่ง</div>
+        <div class="flex items-center justify-between mb-2">
+          <div class="text-xs font-semibold text-slate-400 uppercase tracking-wider">เลือกวันจัดส่ง</div>
+          <button id="btn-manage-days-routes" class="text-xs bg-indigo-50 hover:bg-indigo-100 text-indigo-700 font-semibold px-2.5 py-1 rounded-lg flex items-center gap-1 border border-indigo-200 transition-all" title="เพิ่ม/แก้ไข/ลบ วัน และ สายส่ง">
+            <i data-lucide="settings-2" class="w-3.5 h-3.5"></i>
+            <span>จัดการวัน & สายส่ง</span>
+          </button>
+        </div>
         <div class="flex items-center gap-1.5 overflow-x-auto pb-1 no-scrollbar" id="day-tabs-container">
           <!-- Dynamically populated day buttons -->
         </div>
@@ -163,7 +169,13 @@
 
       <!-- Route Pills (สายส่ง) -->
       <div class="mb-4">
-        <div class="text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2">เลือกสายส่งสินค้า</div>
+        <div class="flex items-center justify-between mb-2">
+          <div class="text-xs font-semibold text-slate-400 uppercase tracking-wider">เลือกสายส่งสินค้า</div>
+          <button id="btn-quick-add-route" class="text-xs text-slate-500 hover:text-indigo-600 font-medium flex items-center gap-1">
+            <i data-lucide="plus" class="w-3.5 h-3.5"></i>
+            <span>เพิ่มสายส่งใหม่</span>
+          </button>
+        </div>
         <div class="flex items-center gap-2 overflow-x-auto pb-1 no-scrollbar" id="route-pills-container">
           <!-- Dynamically populated route pills -->
         </div>
@@ -229,7 +241,7 @@
           <span id="table-count-badge" class="bg-indigo-100 text-indigo-700 text-xs px-2 py-0.5 rounded-full font-semibold">0 รายการ</span>
         </div>
         <div class="text-xs text-slate-500" id="table-info-note">
-          กดปุ่มเลื่อนขึ้น-ลง หรือใช้โหมดจัดลำดับเพื่อเปลี่ยนคิวส่ง
+          ติ๊กเครื่องหมายถูกหน้าร้านค้าเพื่อเลือกพิมพ์เฉพาะร้าน หรือกดปุ่มเลื่อนขึ้น-ลงเพื่อเปลี่ยนคิวส่ง
         </div>
       </div>
 
@@ -238,6 +250,9 @@
         <table class="w-full text-left text-sm" id="stores-table">
           <thead class="bg-slate-100/70 text-slate-600 text-xs font-semibold uppercase tracking-wider border-b border-slate-200">
             <tr>
+              <th class="py-3 px-3 w-10 text-center chk-col">
+                <input type="checkbox" id="chk-select-all" class="custom-chk" title="เลือกทั้งหมด">
+              </th>
               <th class="py-3 px-4 w-16 text-center">ลำดับ</th>
               <th class="py-3 px-4 w-32">รหัสลูกค้า</th>
               <th class="py-3 px-4">ชื่อร้านค้า / ลูกค้า</th>
@@ -482,6 +497,112 @@
 
       </div>
 
+    </div>
+  </div>
+
+  <!-- ==================== MODAL: MANAGE DAYS & ROUTES ==================== -->
+  <div id="modal-manage-routes" class="modal fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-50 flex items-center justify-center p-4 hidden animate-fade-in">
+    <div class="bg-white rounded-2xl max-w-2xl w-full p-6 shadow-2xl border border-slate-100 max-h-[90vh] flex flex-col">
+      
+      <!-- Header -->
+      <div class="flex items-center justify-between pb-4 border-b border-slate-100 mb-4 flex-shrink-0">
+        <h3 class="text-lg font-bold text-slate-800 flex items-center gap-2">
+          <i data-lucide="calendar-cog" class="w-5 h-5 text-indigo-600"></i>
+          <span>จัดการวัน และ สายส่งสินค้า</span>
+        </h3>
+        <button id="btn-close-manage-routes" class="text-slate-400 hover:text-slate-600 p-1 rounded-lg">
+          <i data-lucide="x" class="w-5 h-5"></i>
+        </button>
+      </div>
+
+      <div class="overflow-y-auto flex-1 pr-1 space-y-5">
+        
+        <!-- Section 1: Manage Days (วัน) -->
+        <div class="bg-slate-50/80 border border-slate-200/80 rounded-xl p-4">
+          <div class="flex items-center justify-between mb-3">
+            <h4 class="text-xs font-bold text-slate-700 uppercase tracking-wider flex items-center gap-1.5">
+              <i data-lucide="calendar" class="w-4 h-4 text-indigo-600"></i>
+              <span>รายการวันจัดส่ง</span>
+            </h4>
+            <span class="text-[11px] text-slate-400">เพิ่ม/เปลี่ยนชื่อ/ลบวัน</span>
+          </div>
+
+          <!-- Add Day Form -->
+          <div class="flex gap-2 mb-3">
+            <input type="text" id="input-new-day" placeholder="เช่น อาทิตย์, วันพิเศษ, ส่งด่วน..." class="flex-1 bg-white border border-slate-200 rounded-xl px-3 py-2 text-xs focus:ring-2 focus:ring-indigo-500 focus:outline-none">
+            <button id="btn-add-day-action" class="bg-indigo-600 hover:bg-indigo-700 text-white text-xs font-semibold px-3.5 py-2 rounded-xl shadow-xs flex items-center gap-1 transition-all">
+              <i data-lucide="plus" class="w-3.5 h-3.5"></i>
+              <span>เพิ่มวัน</span>
+            </button>
+          </div>
+
+          <!-- Days List -->
+          <div id="days-manager-list" class="grid grid-cols-1 sm:grid-cols-2 gap-2">
+            <!-- Populated dynamically -->
+          </div>
+        </div>
+
+        <!-- Section 2: Manage Routes (สายส่ง) -->
+        <div class="bg-slate-50/80 border border-slate-200/80 rounded-xl p-4">
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-3">
+            <h4 class="text-xs font-bold text-slate-700 uppercase tracking-wider flex items-center gap-1.5">
+              <i data-lucide="map-pin" class="w-4 h-4 text-indigo-600"></i>
+              <span>รายการสายส่งสินค้า</span>
+            </h4>
+            <div class="flex items-center gap-2">
+              <span class="text-xs text-slate-500">เลือกดูวัน:</span>
+              <select id="select-manage-day" class="text-xs bg-white border border-slate-200 rounded-lg px-2.5 py-1 font-semibold text-indigo-700 focus:ring-2 focus:ring-indigo-500 focus:outline-none">
+                <!-- Populated dynamically -->
+              </select>
+            </div>
+          </div>
+
+          <!-- Add Route Form -->
+          <div class="flex gap-2 mb-3">
+            <input type="text" id="input-new-route" placeholder="เช่น สาย 4, สายตลาด, สาย VIP, สำรอง 2..." class="flex-1 bg-white border border-slate-200 rounded-xl px-3 py-2 text-xs focus:ring-2 focus:ring-indigo-500 focus:outline-none">
+            <button id="btn-add-route-action" class="bg-slate-800 hover:bg-slate-900 text-white text-xs font-semibold px-3.5 py-2 rounded-xl shadow-xs flex items-center gap-1 transition-all">
+              <i data-lucide="plus" class="w-3.5 h-3.5"></i>
+              <span>เพิ่มสายส่ง</span>
+            </button>
+          </div>
+
+          <!-- Routes List -->
+          <div id="routes-manager-list" class="space-y-2">
+            <!-- Populated dynamically -->
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Footer -->
+      <div class="pt-4 border-t border-slate-100 flex justify-end flex-shrink-0">
+        <button id="btn-done-manage-routes" class="px-5 py-2 text-xs font-semibold text-white bg-indigo-600 hover:bg-indigo-700 rounded-xl shadow-md transition-all">
+          เสร็จสิ้น
+        </button>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ==================== FLOATING SELECTION ACTION BAR ==================== -->
+  <div id="selection-action-bar" class="fixed bottom-6 left-1/2 transform -translate-x-1/2 bg-slate-900/95 text-white backdrop-blur-md px-4 sm:px-6 py-3 rounded-2xl shadow-2xl z-40 border border-slate-700 flex items-center gap-3 sm:gap-4 transition-all duration-300 translate-y-24 opacity-0 pointer-events-none">
+    <div class="flex items-center gap-2 whitespace-nowrap">
+      <span class="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-pulse"></span>
+      <span class="text-xs sm:text-sm font-medium">เลือกแล้ว <strong id="selected-count" class="text-emerald-400 font-bold">0</strong> ร้าน</span>
+    </div>
+    <div class="h-4 w-px bg-slate-700"></div>
+    <div class="flex items-center gap-2">
+      <button id="btn-print-selected" class="bg-indigo-600 hover:bg-indigo-500 active:scale-95 text-white text-xs font-semibold px-3.5 py-1.5 rounded-xl flex items-center gap-1.5 shadow-sm transition-all whitespace-nowrap" title="พิมพ์ใบส่งสินค้าเฉพาะร้านที่เลือก">
+        <i data-lucide="printer" class="w-3.5 h-3.5"></i>
+        <span>พิมพ์ใบส่งของ (<span id="print-selected-count">0</span> ร้าน)</span>
+      </button>
+      <button id="btn-delete-selected" class="bg-rose-600/90 hover:bg-rose-600 active:scale-95 text-white text-xs font-semibold px-3 py-1.5 rounded-xl flex items-center gap-1 transition-all whitespace-nowrap" title="ลบร้านที่เลือก">
+        <i data-lucide="trash-2" class="w-3.5 h-3.5"></i>
+        <span class="hidden sm:inline">ลบที่เลือก</span>
+      </button>
+      <button id="btn-clear-selection" class="text-slate-400 hover:text-white p-1 rounded-lg text-xs" title="ยกเลิกการเลือก">
+        <i data-lucide="x" class="w-4 h-4"></i>
+      </button>
     </div>
   </div>
 

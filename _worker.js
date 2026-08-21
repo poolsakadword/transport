@@ -133,6 +133,103 @@ export default {
         }
       }
 
+      // 3.1 POST /api/items/batch-delete
+      if (url.pathname === "/api/items/batch-delete" && request.method === "POST") {
+        if (!db) return json({ success: false, error: "D1 database binding 'DB' not found." }, 500);
+        try {
+          const body = await request.json();
+          const ids = body.ids || [];
+          if (!Array.isArray(ids) || ids.length === 0) {
+            return json({ success: false, error: "No IDs provided" }, 400);
+          }
+          const chunkSize = 50;
+          for (let i = 0; i < ids.length; i += chunkSize) {
+            const chunk = ids.slice(i, i + chunkSize);
+            const stmts = chunk.map(id => 
+              db.prepare("DELETE FROM routes_data WHERE id = ?").bind(id)
+            );
+            await db.batch(stmts);
+          }
+          return json({ success: true, message: `Deleted ${ids.length} items.`, count: ids.length });
+        } catch (err) {
+          return json({ success: false, error: err.message || String(err) }, 500);
+        }
+      }
+
+      // 3.2 /api/days (PUT: Rename day, DELETE: Delete all items in day)
+      if (url.pathname === "/api/days") {
+        if (!db) return json({ success: false, error: "D1 database binding 'DB' not found." }, 500);
+        
+        if (request.method === "PUT") {
+          try {
+            const body = await request.json();
+            const { old_day, new_day } = body;
+            if (!old_day || !new_day) {
+              return json({ success: false, error: "old_day and new_day are required" }, 400);
+            }
+            await db.prepare(`
+              UPDATE routes_data 
+              SET day = ?, 
+                  sheet_name = REPLACE(sheet_name, ?, ?), 
+                  updated_at = CURRENT_TIMESTAMP 
+              WHERE day = ?
+            `).bind(new_day, old_day, new_day, old_day).run();
+            return json({ success: true, message: `Renamed day '${old_day}' to '${new_day}'` });
+          } catch (err) {
+            return json({ success: false, error: err.message || String(err) }, 500);
+          }
+        }
+
+        if (request.method === "DELETE") {
+          try {
+            const day = url.searchParams.get("day");
+            if (!day) return json({ success: false, error: "day parameter required" }, 400);
+            const res = await db.prepare("DELETE FROM routes_data WHERE day = ?").bind(day).run();
+            return json({ success: true, message: `Deleted all items for day '${day}'` });
+          } catch (err) {
+            return json({ success: false, error: err.message || String(err) }, 500);
+          }
+        }
+      }
+
+      // 3.3 /api/routes (PUT: Rename route, DELETE: Delete all items in route)
+      if (url.pathname === "/api/routes") {
+        if (!db) return json({ success: false, error: "D1 database binding 'DB' not found." }, 500);
+
+        if (request.method === "PUT") {
+          try {
+            const body = await request.json();
+            const { day, old_route, new_route } = body;
+            if (!day || !old_route || !new_route) {
+              return json({ success: false, error: "day, old_route, and new_route are required" }, 400);
+            }
+            await db.prepare(`
+              UPDATE routes_data 
+              SET route_name = ?, 
+                  updated_at = CURRENT_TIMESTAMP 
+              WHERE day = ? AND route_name = ?
+            `).bind(new_route, day, old_route).run();
+            return json({ success: true, message: `Renamed route in '${day}' from '${old_route}' to '${new_route}'` });
+          } catch (err) {
+            return json({ success: false, error: err.message || String(err) }, 500);
+          }
+        }
+
+        if (request.method === "DELETE") {
+          try {
+            const day = url.searchParams.get("day");
+            const route_name = url.searchParams.get("route_name");
+            if (!day || !route_name) {
+              return json({ success: false, error: "day and route_name parameters required" }, 400);
+            }
+            await db.prepare("DELETE FROM routes_data WHERE day = ? AND route_name = ?").bind(day, route_name).run();
+            return json({ success: true, message: `Deleted all items for route '${route_name}' in '${day}'` });
+          } catch (err) {
+            return json({ success: false, error: err.message || String(err) }, 500);
+          }
+        }
+      }
+
       // 4. GET /api/items & POST /api/items
       if (url.pathname === "/api/items") {
         if (!db) return json({ success: false, error: "D1 database binding 'DB' not found." }, 500);

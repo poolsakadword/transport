@@ -45,6 +45,28 @@ body {
   border-top: 3px solid #4f46e5 !important;
 }
 
+/* Row selection styling */
+tr.row-selected {
+  background-color: #eef2ff !important;
+}
+tr.row-selected:hover {
+  background-color: #e0e7ff !important;
+}
+
+/* Floating selection action bar */
+#selection-action-bar {
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Custom Checkbox */
+input[type="checkbox"].custom-chk {
+  accent-color: #4f46e5;
+  width: 16px;
+  height: 16px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
 /* Print specific stylesheet */
 @media print {
   /* Hide non-printable elements */
@@ -55,7 +77,9 @@ body {
   #toast-container,
   .modal,
   #reorder-save-banner,
+  #selection-action-bar,
   .action-buttons-col,
+  .chk-col,
   #pagination-bar {
     display: none !important;
   }
