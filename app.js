@@ -593,6 +593,18 @@
         }
       }
     }
+
+    // Update Top Print Button Text & Style
+    const topPrintText = document.getElementById('top-print-btn-text');
+    if (topPrintText && el.btnPrintRoute) {
+      if (count > 0) {
+        topPrintText.textContent = `พิมพ์ใบส่งของ (${count} ร้าน)`;
+        el.btnPrintRoute.className = 'bg-emerald-600 hover:bg-emerald-500 text-white font-medium px-3.5 py-2 rounded-lg text-sm flex items-center gap-1.5 shadow-sm transition-all active:scale-95';
+      } else {
+        topPrintText.textContent = 'พิมพ์ใบส่งของ';
+        el.btnPrintRoute.className = 'bg-indigo-700 hover:bg-indigo-600 text-white font-medium px-3.5 py-2 rounded-lg text-sm flex items-center gap-1.5 shadow-sm transition-all active:scale-95';
+      }
+    }
   }
 
   function toggleSelectAll(checked) {
@@ -1271,35 +1283,29 @@
   }
 
   // ==================== PRINT ROUTE SHEET ====================
-  function prepareAndPrint(onlySelected = false) {
-    let itemsToPrint = [];
+  function prepareAndPrint() {
+    if (state.selectedItemIds.size === 0) {
+      showToast('⚠️ กรุณาติ๊กเลือกเครื่องหมายถูก (☑️) หน้าร้านค้าที่ต้องการพิมพ์ก่อน', 'error');
+      return;
+    }
 
-    if (onlySelected === true) {
-      if (state.selectedItemIds.size === 0) {
-        showToast('กรุณาติ๊กเลือกอย่างน้อย 1 ร้านค้าเพื่อสั่งพิมพ์', 'error');
-        return;
-      }
-      const currentItems = getFilteredAndSortedItems();
-      itemsToPrint = currentItems.filter(it => state.selectedItemIds.has(it.id));
-      if (itemsToPrint.length === 0) {
-        // Fallback to all items across system matching selected IDs
-        itemsToPrint = state.items.filter(it => state.selectedItemIds.has(it.id));
-      }
-    } else {
-      itemsToPrint = getFilteredAndSortedItems();
+    const currentItems = getFilteredAndSortedItems();
+    let itemsToPrint = currentItems.filter(it => state.selectedItemIds.has(it.id));
+    
+    // If not in current filtered list, get from full items list
+    if (itemsToPrint.length === 0) {
+      itemsToPrint = state.items.filter(it => state.selectedItemIds.has(it.id));
     }
 
     if (itemsToPrint.length === 0) {
-      showToast('ไม่มีรายการในสายส่งที่เลือกสำหรับพิมพ์', 'error');
+      showToast('ไม่พบรายการร้านค้าที่เลือกสำหรับพิมพ์', 'error');
       return;
     }
 
     // Set Header titles
     let dayLabel = state.activeDay === 'all' ? 'ทุกวัน' : `วัน${state.activeDay}`;
     let routeLabel = state.activeRoute === 'all' ? 'ทุกสายส่ง' : state.activeRoute;
-    if (onlySelected === true) {
-      routeLabel += ` (เฉพาะร้านที่เลือก ${itemsToPrint.length} ร้าน)`;
-    }
+    routeLabel += ` (เฉพาะร้านที่เลือก ${itemsToPrint.length} ร้าน)`;
 
     el.printDayTitle.textContent = dayLabel;
     el.printRouteTitle.textContent = routeLabel;
@@ -1327,7 +1333,7 @@
           <td style="text-align: center; font-family: monospace; font-weight: bold;">${escapeHtml(item.customer_code)}</td>
           <td style="text-align: left; font-weight: 500;">
             ${escapeHtml(item.customer_name)}
-            ${(state.activeRoute === 'all' || onlySelected) ? `<span style="font-size: 8pt; color: #555;"> (${item.day} ${item.route_name})</span>` : ''}
+            ${(state.activeRoute === 'all' || state.activeDay === 'all') ? `<span style="font-size: 8pt; color: #555;"> (${item.day} ${item.route_name})</span>` : ''}
           </td>
           <td style="text-align: center; font-weight: ${isTransfer ? 'bold' : 'normal'};">
             ${escapeHtml(paymentText)}
@@ -1674,13 +1680,7 @@
     el.btnExportExcel.addEventListener('click', exportToExcel);
 
     // Print Button (Top bar)
-    el.btnPrintRoute.addEventListener('click', () => {
-      if (state.selectedItemIds.size > 0) {
-        prepareAndPrint(true);
-      } else {
-        prepareAndPrint(false);
-      }
-    });
+    el.btnPrintRoute.addEventListener('click', prepareAndPrint);
 
     // Table delegated actions
     el.tableBody.addEventListener('click', e => {
