@@ -14,10 +14,50 @@ export default {
       const json = (data, status = 200) => 
         new Response(JSON.stringify(data), { status, headers: jsonHeader });
 
+      // Helper to ensure database migrations
+      const ensureSchema = async () => {
+        if (!db) return;
+        try {
+          await db.prepare(`
+            CREATE TABLE IF NOT EXISTS routes_data (
+              id INTEGER PRIMARY KEY AUTOINCREMENT,
+              day TEXT NOT NULL,
+              route_name TEXT NOT NULL,
+              sheet_name TEXT NOT NULL,
+              sequence INTEGER NOT NULL,
+              customer_name TEXT NOT NULL,
+              remark TEXT,
+              customer_code TEXT NOT NULL,
+              boxes INTEGER,
+              amount REAL,
+              created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+              updated_at DATETIME DEFAULT CURRENT_TIMESTAMP
+            )
+          `).run();
+          await db.prepare("CREATE INDEX IF NOT EXISTS idx_day_route ON routes_data (day, route_name)").run();
+          await db.prepare("CREATE INDEX IF NOT EXISTS idx_customer_code ON routes_data (customer_code)").run();
+          await db.prepare("CREATE INDEX IF NOT EXISTS idx_customer_name ON routes_data (customer_name)").run();
+
+          // Auto-migration for existing tables
+          try { await db.prepare("ALTER TABLE routes_data ADD COLUMN boxes INTEGER").run(); } catch (_) {}
+          try { await db.prepare("ALTER TABLE routes_data ADD COLUMN amount REAL").run(); } catch (_) {}
+
+          // Config table for storing custom days and routes
+          await db.prepare(`
+            CREATE TABLE IF NOT EXISTS app_config (
+              key TEXT PRIMARY KEY,
+              value TEXT NOT NULL,
+              updated_at DATETIME DEFAULT CURRENT_TIMESTAMP
+            )
+          `).run();
+        } catch (_) {}
+      };
+
       // 1. GET /api/stats
       if (url.pathname === "/api/stats" && request.method === "GET") {
         if (!db) return json({ success: false, error: "D1 database binding 'DB' not found." }, 500);
         try {
+          await ensureSchema();
           const totalCount = await db.prepare("SELECT COUNT(*) as total FROM routes_data").first();
           const transferCount = await db.prepare("SELECT COUNT(*) as transfers FROM routes_data WHERE remark LIKE '%โอน%'").first();
           const total = totalCount ? totalCount.total : 0;
@@ -54,28 +94,44 @@ export default {
         }
       }
 
-      // 2. POST /api/init (Seed database)
+      // 2. GET & POST & PUT /api/config (Store dynamic Days and Routes)
+      if (url.pathname === "/api/config") {
+        if (!db) return json({ success: false, error: "D1 database binding 'DB' not found." }, 500);
+        await ensureSchema();
+
+        if (request.method === "GET") {
+          try {
+            const row = await db.prepare("SELECT value FROM app_config WHERE key = 'days_and_routes'").first();
+            if (row && row.value) {
+              return json({ success: true, data: JSON.parse(row.value) });
+            }
+            return json({ success: true, data: null });
+          } catch (err) {
+            return json({ success: false, error: err.message || String(err) }, 500);
+          }
+        }
+
+        if (request.method === "POST" || request.method === "PUT") {
+          try {
+            const body = await request.json();
+            const valueStr = JSON.stringify(body);
+            await db.prepare(`
+              INSERT INTO app_config (key, value, updated_at) 
+              VALUES ('days_and_routes', ?, CURRENT_TIMESTAMP)
+              ON CONFLICT(key) DO UPDATE SET value = excluded.value, updated_at = CURRENT_TIMESTAMP
+            `).bind(valueStr).run();
+            return json({ success: true, message: "Config saved successfully" });
+          } catch (err) {
+            return json({ success: false, error: err.message || String(err) }, 500);
+          }
+        }
+      }
+
+      // 3. POST /api/init (Seed database)
       if (url.pathname === "/api/init" && request.method === "POST") {
         if (!db) return json({ success: false, error: "D1 database binding 'DB' not found." }, 500);
         try {
-          await db.prepare(`
-            CREATE TABLE IF NOT EXISTS routes_data (
-              id INTEGER PRIMARY KEY AUTOINCREMENT,
-              day TEXT NOT NULL,
-              route_name TEXT NOT NULL,
-              sheet_name TEXT NOT NULL,
-              sequence INTEGER NOT NULL,
-              customer_name TEXT NOT NULL,
-              remark TEXT,
-              customer_code TEXT NOT NULL,
-              created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
-              updated_at DATETIME DEFAULT CURRENT_TIMESTAMP
-            )
-          `).run();
-          await db.prepare("CREATE INDEX IF NOT EXISTS idx_day_route ON routes_data (day, route_name)").run();
-          await db.prepare("CREATE INDEX IF NOT EXISTS idx_customer_code ON routes_data (customer_code)").run();
-          await db.prepare("CREATE INDEX IF NOT EXISTS idx_customer_name ON routes_data (customer_name)").run();
-
+          await ensureSchema();
           const body = await request.json().catch(() => ({}));
           const items = body.items || [];
           const force = body.force === true;
@@ -89,8 +145,8 @@ export default {
               const chunk = items.slice(i, i + chunkSize);
               const stmts = chunk.map(item => 
                 db.prepare(`
-                  INSERT INTO routes_data (id, day, route_name, sheet_name, sequence, customer_name, remark, customer_code)
-                  VALUES (?, ?, ?, ?, ?, ?, ?, ?)
+                  INSERT INTO routes_data (id, day, route_name, sheet_name, sequence, customer_name, remark, customer_code, boxes, amount)
+                  VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
                 `).bind(
                   item.id,
                   item.day,
@@ -99,7 +155,9 @@ export default {
                   item.sequence,
                   item.customer_name,
                   item.remark || "",
-                  item.customer_code
+                  item.customer_code,
+                  item.boxes !== undefined && item.boxes !== null ? Number(item.boxes) : null,
+                  item.amount !== undefined && item.amount !== null ? parseFloat(item.amount) : null
                 )
               );
               await db.batch(stmts);
@@ -112,7 +170,7 @@ export default {
         }
       }
 
-      // 3. POST /api/items/reorder
+      // 4. POST /api/items/reorder
       if (url.pathname === "/api/items/reorder" && request.method === "POST") {
         if (!db) return json({ success: false, error: "D1 database binding 'DB' not found." }, 500);
         try {
@@ -133,7 +191,7 @@ export default {
         }
       }
 
-      // 3.1 POST /api/items/batch-delete
+      // 5. POST /api/items/batch-delete
       if (url.pathname === "/api/items/batch-delete" && request.method === "POST") {
         if (!db) return json({ success: false, error: "D1 database binding 'DB' not found." }, 500);
         try {
@@ -156,7 +214,7 @@ export default {
         }
       }
 
-      // 3.2 /api/days (PUT: Rename day, DELETE: Delete all items in day)
+      // 6. /api/days (PUT: Rename day, DELETE: Delete all items in day)
       if (url.pathname === "/api/days") {
         if (!db) return json({ success: false, error: "D1 database binding 'DB' not found." }, 500);
         
@@ -184,7 +242,7 @@ export default {
           try {
             const day = url.searchParams.get("day");
             if (!day) return json({ success: false, error: "day parameter required" }, 400);
-            const res = await db.prepare("DELETE FROM routes_data WHERE day = ?").bind(day).run();
+            await db.prepare("DELETE FROM routes_data WHERE day = ?").bind(day).run();
             return json({ success: true, message: `Deleted all items for day '${day}'` });
           } catch (err) {
             return json({ success: false, error: err.message || String(err) }, 500);
@@ -192,7 +250,7 @@ export default {
         }
       }
 
-      // 3.3 /api/routes (PUT: Rename route, DELETE: Delete all items in route)
+      // 7. /api/routes (PUT: Rename route, DELETE: Delete all items in route)
       if (url.pathname === "/api/routes") {
         if (!db) return json({ success: false, error: "D1 database binding 'DB' not found." }, 500);
 
@@ -230,12 +288,13 @@ export default {
         }
       }
 
-      // 4. GET /api/items & POST /api/items
+      // 8. GET /api/items & POST /api/items
       if (url.pathname === "/api/items") {
         if (!db) return json({ success: false, error: "D1 database binding 'DB' not found." }, 500);
 
         if (request.method === "GET") {
           try {
+            await ensureSchema();
             const day = url.searchParams.get("day");
             const route_name = url.searchParams.get("route_name");
             const search = url.searchParams.get("search");
@@ -259,7 +318,7 @@ export default {
               params.push(s, s, s);
             }
 
-            const validSortCols = ["sequence", "customer_name", "customer_code", "remark", "id"];
+            const validSortCols = ["sequence", "customer_name", "customer_code", "remark", "boxes", "amount", "id"];
             const sortCol = validSortCols.includes(sort_by) ? sort_by : "sequence";
             const sortDirection = sort_dir.toUpperCase() === "DESC" ? "DESC" : "ASC";
             q += ` ORDER BY day ASC, route_name ASC, ${sortCol} ${sortDirection}`;
@@ -273,8 +332,9 @@ export default {
 
         if (request.method === "POST") {
           try {
+            await ensureSchema();
             const body = await request.json();
-            const { day, route_name, customer_name, customer_code, remark, sequence } = body;
+            const { day, route_name, customer_name, customer_code, remark, sequence, boxes, amount } = body;
             if (!day || !route_name || !customer_name || !customer_code) {
               return json({ success: false, error: "Missing required fields" }, 400);
             }
@@ -288,10 +348,12 @@ export default {
             }
 
             const sheet_name = body.sheet_name || `${day}${route_name.replace("สาย ", "").replace("สำรอง", "สำรอง")}`;
+            const boxCount = boxes !== undefined && boxes !== null && boxes !== "" ? Number(boxes) : null;
+            const amountVal = amount !== undefined && amount !== null && amount !== "" ? parseFloat(amount) : null;
 
             const insertResult = await db.prepare(`
-              INSERT INTO routes_data (day, route_name, sheet_name, sequence, customer_name, remark, customer_code, updated_at)
-              VALUES (?, ?, ?, ?, ?, ?, ?, CURRENT_TIMESTAMP)
+              INSERT INTO routes_data (day, route_name, sheet_name, sequence, customer_name, remark, customer_code, boxes, amount, updated_at)
+              VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, CURRENT_TIMESTAMP)
             `).bind(
               day,
               route_name,
@@ -299,7 +361,9 @@ export default {
               finalSeq,
               customer_name.trim(),
               remark ? remark.trim() : "",
-              String(customer_code).trim()
+              String(customer_code).trim(),
+              boxCount,
+              amountVal
             ).run();
 
             return json({
@@ -312,7 +376,9 @@ export default {
                 sequence: finalSeq,
                 customer_name,
                 remark: remark || "",
-                customer_code
+                customer_code,
+                boxes: boxCount,
+                amount: amountVal
               }
             }, 201);
           } catch (err) {
@@ -321,11 +387,12 @@ export default {
         }
       }
 
-      // 5. /api/items/:id (GET, PUT, DELETE)
+      // 9. /api/items/:id (GET, PUT, DELETE)
       const itemMatch = url.pathname.match(/^\/api\/items\/(\d+)$/);
       if (itemMatch) {
         if (!db) return json({ success: false, error: "D1 database binding 'DB' not found." }, 500);
         const id = itemMatch[1];
+        await ensureSchema();
 
         if (request.method === "GET") {
           const item = await db.prepare("SELECT * FROM routes_data WHERE id = ?").bind(id).first();
@@ -335,7 +402,7 @@ export default {
 
         if (request.method === "PUT") {
           const body = await request.json();
-          const { day, route_name, customer_name, customer_code, remark, sequence } = body;
+          const { day, route_name, customer_name, customer_code, remark, sequence, boxes, amount } = body;
           const existing = await db.prepare("SELECT * FROM routes_data WHERE id = ?").bind(id).first();
           if (!existing) return json({ success: false, error: "Item not found" }, 404);
 
@@ -346,12 +413,14 @@ export default {
           const updatedRemark = remark !== undefined ? remark.trim() : existing.remark;
           const updatedSeq = sequence !== undefined ? Number(sequence) : existing.sequence;
           const updatedSheet = body.sheet_name || existing.sheet_name;
+          const updatedBoxes = boxes !== undefined ? (boxes !== null && boxes !== "" ? Number(boxes) : null) : existing.boxes;
+          const updatedAmount = amount !== undefined ? (amount !== null && amount !== "" ? parseFloat(amount) : null) : existing.amount;
 
           await db.prepare(`
             UPDATE routes_data 
-            SET day = ?, route_name = ?, sheet_name = ?, sequence = ?, customer_name = ?, remark = ?, customer_code = ?, updated_at = CURRENT_TIMESTAMP
+            SET day = ?, route_name = ?, sheet_name = ?, sequence = ?, customer_name = ?, remark = ?, customer_code = ?, boxes = ?, amount = ?, updated_at = CURRENT_TIMESTAMP
             WHERE id = ?
-          `).bind(updatedDay, updatedRoute, updatedSheet, updatedSeq, updatedName, updatedRemark, updatedCode, id).run();
+          `).bind(updatedDay, updatedRoute, updatedSheet, updatedSeq, updatedName, updatedRemark, updatedCode, updatedBoxes, updatedAmount, id).run();
 
           return json({
             success: true,
@@ -363,7 +432,9 @@ export default {
               sequence: updatedSeq,
               customer_name: updatedName,
               remark: updatedRemark,
-              customer_code: updatedCode
+              customer_code: updatedCode,
+              boxes: updatedBoxes,
+              amount: updatedAmount
             }
           });
         }

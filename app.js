@@ -1,7 +1,8 @@
 /**
  * Delivery Routes Management WebApp - Application Logic
  * Supports: Full CRUD, Dynamic Days & Routes Management, Store Selection & Batch Printing, 
- * Search, Sorting, Drag-and-drop Reordering, Print View, Cloudflare D1 Database & LocalStorage Dual-Mode
+ * Boxes & Amount tracking, Print Preview, Search, Sorting, Drag-and-drop Reordering, 
+ * Cloudflare D1 Database & LocalStorage Dual-Mode
  */
 
 (function () {
@@ -98,6 +99,8 @@
     formCode: document.getElementById('form-code'),
     formName: document.getElementById('form-name'),
     formRemark: document.getElementById('form-remark'),
+    formBoxes: document.getElementById('form-boxes'),
+    formAmount: document.getElementById('form-amount'),
     btnCloseModal: document.getElementById('btn-close-modal'),
     btnCancelModal: document.getElementById('btn-cancel-modal'),
 
@@ -123,6 +126,19 @@
     cfStatusText: document.getElementById('cf-status-text'),
     cfStatusDesc: document.getElementById('cf-status-desc'),
 
+    // Print Preview Modal
+    modalPrintPreview: document.getElementById('modal-print-preview'),
+    btnClosePreview: document.getElementById('btn-close-preview'),
+    btnClosePreviewCancel: document.getElementById('btn-close-preview-cancel'),
+    btnConfirmPrint: document.getElementById('btn-confirm-print'),
+    previewCountBadge: document.getElementById('preview-count-badge'),
+    previewStatStores: document.getElementById('preview-stat-stores'),
+    previewStatBoxes: document.getElementById('preview-stat-boxes'),
+    previewStatAmount: document.getElementById('preview-stat-amount'),
+    previewStatTransfer: document.getElementById('preview-stat-transfer'),
+    previewStatCash: document.getElementById('preview-stat-cash'),
+    previewTableBody: document.getElementById('preview-table-body'),
+
     // Print elements
     printRouteTitle: document.getElementById('print-route-title'),
     printDayTitle: document.getElementById('print-day-title'),
@@ -130,6 +146,8 @@
     printTotalCount: document.getElementById('print-total-count'),
     printTransferCount: document.getElementById('print-transfer-count'),
     printCashCount: document.getElementById('print-cash-count'),
+    printTotalBoxes: document.getElementById('print-total-boxes'),
+    printTotalAmount: document.getElementById('print-total-amount'),
     printTableBody: document.getElementById('print-table-body'),
 
     toastContainer: document.getElementById('toast-container')
@@ -183,7 +201,6 @@
       if (storedDays) {
         state.days = JSON.parse(storedDays);
       } else {
-        // Collect distinct days from items
         const daysInItems = Array.from(new Set(state.items.map(it => it.day).filter(Boolean)));
         state.days = daysInItems.length > 0 ? daysInItems : [...DEFAULT_DAYS];
       }
@@ -191,7 +208,6 @@
       if (storedRoutes) {
         state.routesByDay = JSON.parse(storedRoutes);
       } else {
-        // Build routes from items & defaults
         const routesObj = JSON.parse(JSON.stringify(DEFAULT_ROUTES_BY_DAY));
         state.items.forEach(it => {
           if (it.day && it.route_name) {
@@ -204,7 +220,7 @@
         state.routesByDay = routesObj;
       }
 
-      // Ensure every day in state.days has an entry in state.routesByDay
+      // Ensure every day has an array of routes
       state.days.forEach(d => {
         if (!state.routesByDay[d] || !Array.isArray(state.routesByDay[d]) || state.routesByDay[d].length === 0) {
           state.routesByDay[d] = ['สาย 1'];
@@ -216,7 +232,7 @@
         state.activeDay = state.days[0] || 'all';
       }
 
-      saveDaysAndRoutes();
+      saveDaysAndRoutes(false);
     } catch (e) {
       console.error('Failed to load days/routes:', e);
       state.days = [...DEFAULT_DAYS];
@@ -224,10 +240,18 @@
     }
   }
 
-  function saveDaysAndRoutes() {
+  function saveDaysAndRoutes(syncToCloud = true) {
     try {
       localStorage.setItem(STORAGE_DAYS_KEY, JSON.stringify(state.days));
       localStorage.setItem(STORAGE_ROUTES_KEY, JSON.stringify(state.routesByDay));
+
+      if (syncToCloud && state.apiAvailable) {
+        fetch('/api/config', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ days: state.days, routesByDay: state.routesByDay })
+        }).catch(err => console.warn('Cloud config sync error:', err));
+      }
     } catch (e) {
       console.error('Failed to save days/routes:', e);
     }
@@ -240,17 +264,36 @@
         const json = await res.json();
         if (json.success) {
           state.apiAvailable = true;
-          el.dataSourceBadge.textContent = 'Cloudflare D1 เชื่อมต่อแล้ว';
-          el.dataSourceBadge.className = 'text-xs font-medium px-2.5 py-0.5 rounded-full bg-emerald-500 text-white shadow-sm';
-          el.cfStatusText.textContent = 'เชื่อมต่อ Cloudflare D1 สำเร็จ';
-          el.cfStatusText.className = 'text-xs font-semibold px-2 py-0.5 rounded-full bg-emerald-500 text-white';
-          el.cfStatusDesc.textContent = `ระบบกำลังทำงานผ่าน Cloudflare D1 SQL Database (${json.data.total} รายการบน Cloud)`;
+          if (el.dataSourceBadge) {
+            el.dataSourceBadge.textContent = 'Cloudflare D1 เชื่อมต่อแล้ว';
+            el.dataSourceBadge.className = 'text-xs font-medium px-2.5 py-0.5 rounded-full bg-emerald-500 text-white shadow-sm';
+          }
+          if (el.cfStatusText) {
+            el.cfStatusText.textContent = 'เชื่อมต่อ Cloudflare D1 สำเร็จ';
+            el.cfStatusText.className = 'text-xs font-semibold px-2 py-0.5 rounded-full bg-emerald-500 text-white';
+          }
+          if (el.cfStatusDesc) {
+            el.cfStatusDesc.textContent = `ระบบกำลังทำงานผ่าน Cloudflare D1 SQL Database (${json.data.total} รายการบน Cloud)`;
+          }
+
+          // Fetch saved days and routes config from Cloudflare D1
+          try {
+            const cfgRes = await fetch('/api/config');
+            if (cfgRes.ok) {
+              const cfgData = await cfgRes.json();
+              if (cfgData.success && cfgData.data && Array.isArray(cfgData.data.days)) {
+                state.days = cfgData.data.days;
+                state.routesByDay = cfgData.data.routesByDay || state.routesByDay;
+                saveDaysAndRoutes(false);
+              }
+            }
+          } catch (_) {}
           
           // Fetch latest items from Cloudflare D1
           const itemsRes = await fetch('/api/items');
           if (itemsRes.ok) {
             const itemsData = await itemsRes.json();
-            if (itemsData.success && itemsData.data.length > 0) {
+            if (itemsData.success && Array.isArray(itemsData.data) && itemsData.data.length > 0) {
               state.items = itemsData.data;
               saveLocalData();
               loadDaysAndRoutes();
@@ -263,7 +306,7 @@
       // Local mode fallback
     }
     state.apiAvailable = false;
-    el.dataSourceBadge.textContent = 'Local Mode (พร้อมใช้งาน)';
+    if (el.dataSourceBadge) el.dataSourceBadge.textContent = 'Local Mode (พร้อมใช้งาน)';
   }
 
   // ==================== RENDERING LOGIC ====================
@@ -304,7 +347,6 @@
   function renderRoutePills() {
     let availableRoutes = [];
     if (state.activeDay === 'all') {
-      // Union of all routes across all days
       const allRoutes = new Set();
       state.days.forEach(d => {
         (state.routesByDay[d] || []).forEach(r => allRoutes.add(r));
@@ -314,7 +356,6 @@
       availableRoutes = state.routesByDay[state.activeDay] || ['สาย 1'];
     }
 
-    // Counts for each route in current day
     const routeCounts = {};
     availableRoutes.forEach(r => routeCounts[r] = 0);
     let totalInDay = 0;
@@ -357,21 +398,17 @@
 
   function getFilteredAndSortedItems() {
     let filtered = state.items.filter(item => {
-      // Day filter
       if (state.activeDay !== 'all' && item.day !== state.activeDay) {
         return false;
       }
-      // Route filter
       if (state.activeRoute !== 'all' && item.route_name !== state.activeRoute) {
         return false;
       }
-      // Payment filter
       if (state.paymentFilter === 'transfer') {
         if (!item.remark || !item.remark.includes('โอน')) return false;
       } else if (state.paymentFilter === 'cash') {
         if (item.remark && item.remark.includes('โอน')) return false;
       }
-      // Search query
       if (state.searchQuery) {
         const q = state.searchQuery.toLowerCase().trim();
         const matchName = item.customer_name && item.customer_name.toLowerCase().includes(q);
@@ -386,13 +423,12 @@
       return true;
     });
 
-    // Sorting
     const [sortField, sortOrder] = state.sortBy.split('-');
     filtered.sort((a, b) => {
       let valA = a[sortField];
       let valB = b[sortField];
 
-      if (sortField === 'sequence') {
+      if (sortField === 'sequence' || sortField === 'boxes' || sortField === 'amount') {
         valA = Number(valA) || 0;
         valB = Number(valB) || 0;
       } else if (sortField === 'customer_code') {
@@ -418,7 +454,6 @@
   function renderTable() {
     const items = getFilteredAndSortedItems();
 
-    // Update table header details
     let title = state.activeDay === 'all' ? 'ทุกวัน' : `วัน${state.activeDay}`;
     if (state.activeRoute !== 'all') {
       title += ` - ${state.activeRoute}`;
@@ -440,7 +475,7 @@
     const isReorderActive = state.reorderMode && state.activeDay !== 'all' && state.activeRoute !== 'all';
 
     let html = '';
-    items.forEach((item, index) => {
+    items.forEach((item) => {
       const isSelected = state.selectedItemIds.has(item.id);
       const isTransfer = item.remark && item.remark.includes('โอน');
       const remarkBadge = isTransfer
@@ -455,6 +490,14 @@
 
       const highlightedName = highlightSearch(escapeHtml(item.customer_name), state.searchQuery);
       const highlightedCode = highlightSearch(escapeHtml(item.customer_code), state.searchQuery);
+
+      const boxesDisplay = item.boxes != null && item.boxes !== ''
+        ? `<span class="inline-flex items-center px-2 py-0.5 rounded-md text-xs font-bold bg-emerald-50 text-emerald-700 border border-emerald-200">📦 ${item.boxes}</span>`
+        : `<span class="text-xs text-slate-300">-</span>`;
+
+      const amountDisplay = item.amount != null && item.amount !== ''
+        ? `<span class="font-semibold text-xs text-amber-700">฿${Number(item.amount).toLocaleString('th-TH', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</span>`
+        : `<span class="text-xs text-slate-300">-</span>`;
 
       html += `
         <tr class="hover:bg-indigo-50/40 transition-colors ${isSelected ? 'row-selected' : ''} ${isReorderActive ? 'draggable-row' : ''}" 
@@ -498,6 +541,16 @@
             ${remarkBadge}
           </td>
 
+          <!-- Boxes -->
+          <td class="py-3 px-4 text-center whitespace-nowrap hidden md:table-cell">
+            ${boxesDisplay}
+          </td>
+
+          <!-- Amount -->
+          <td class="py-3 px-4 text-center whitespace-nowrap hidden md:table-cell">
+            ${amountDisplay}
+          </td>
+
           <!-- Route / Day info -->
           <td class="py-3 px-4 text-xs text-slate-500 hidden sm:table-cell whitespace-nowrap">
             <span class="font-medium text-slate-700">${item.day}</span> • <span>${item.route_name}</span>
@@ -506,27 +559,18 @@
           <!-- Actions -->
           <td class="py-3 px-4 text-center action-buttons-col whitespace-nowrap">
             <div class="flex items-center justify-center gap-1">
-              
-              <!-- Move Up Button -->
               <button class="btn-move-up p-1.5 rounded-lg text-slate-400 hover:text-indigo-600 hover:bg-indigo-50 transition-colors" data-id="${item.id}" title="เลื่อนขึ้น">
                 <i data-lucide="chevron-up" class="w-4 h-4"></i>
               </button>
-
-              <!-- Move Down Button -->
               <button class="btn-move-down p-1.5 rounded-lg text-slate-400 hover:text-indigo-600 hover:bg-indigo-50 transition-colors" data-id="${item.id}" title="เลื่อนลง">
                 <i data-lucide="chevron-down" class="w-4 h-4"></i>
               </button>
-
-              <!-- Edit Button -->
               <button class="btn-edit-item p-1.5 rounded-lg text-slate-400 hover:text-amber-600 hover:bg-amber-50 transition-colors" data-id="${item.id}" title="แก้ไขข้อมูล">
                 <i data-lucide="edit-3" class="w-4 h-4"></i>
               </button>
-
-              <!-- Delete Button -->
               <button class="btn-delete-item p-1.5 rounded-lg text-slate-400 hover:text-rose-600 hover:bg-rose-50 transition-colors" data-id="${item.id}" title="ลบร้านค้านี้">
                 <i data-lucide="trash-2" class="w-4 h-4"></i>
               </button>
-
             </div>
           </td>
 
@@ -549,10 +593,10 @@
     const transferCount = currentItems.filter(it => it.remark && it.remark.includes('โอน')).length;
     const cashCount = currentCount - transferCount;
 
-    el.statCurrentCount.textContent = currentCount.toLocaleString();
-    el.statTransferCount.textContent = transferCount.toLocaleString();
-    el.statCashCount.textContent = cashCount.toLocaleString();
-    el.statTotalSystem.textContent = state.items.length.toLocaleString();
+    if (el.statCurrentCount) el.statCurrentCount.textContent = currentCount.toLocaleString();
+    if (el.statTransferCount) el.statTransferCount.textContent = transferCount.toLocaleString();
+    if (el.statCashCount) el.statCashCount.textContent = cashCount.toLocaleString();
+    if (el.statTotalSystem) el.statTotalSystem.textContent = state.items.length.toLocaleString();
   }
 
   // ==================== SELECTION & BATCH ACTIONS ====================
@@ -616,7 +660,6 @@
         state.selectedItemIds.delete(item.id);
       }
     });
-
     renderTable();
   }
 
@@ -626,30 +669,20 @@
     } else {
       state.selectedItemIds.delete(id);
     }
-
-    // Update row visual class directly for smooth response
-    const row = el.tableBody.querySelector(`tr[data-id="${id}"]`);
-    if (row) {
-      if (checked) {
-        row.classList.add('row-selected');
-      } else {
-        row.classList.remove('row-selected');
-      }
-    }
-
-    updateSelectionUI();
+    renderTable();
   }
 
   function clearSelection() {
     state.selectedItemIds.clear();
     renderTable();
+    showToast('ล้างการเลือกทั้งหมดแล้ว', 'info');
   }
 
   async function deleteSelectedItems() {
     const count = state.selectedItemIds.size;
     if (count === 0) return;
 
-    if (!confirm(`คุณต้องการลบร้านค้าที่เลือกจำนวน ${count} รายการ ออกจากระบบใช่หรือไม่?`)) {
+    if (!confirm(`คุณต้องการลบร้านค้าที่เลือกไว้ทั้งหมด ${count} ร้านใช่หรือไม่?`)) {
       return;
     }
 
@@ -665,16 +698,14 @@
           body: JSON.stringify({ ids: idsToDelete })
         });
       } catch (err) {
-        console.error('Batch delete API failed:', err);
+        console.error('Batch delete error:', err);
       }
     }
 
     saveLocalData();
-    renderDayTabs();
-    renderRoutePills();
     renderTable();
     updateStats();
-    showToast(`ลบ ${count} ร้านค้าเรียบร้อยแล้ว`, 'info');
+    showToast(`ลบ ${count} ร้านค้าเรียบร้อยแล้ว`, 'success');
   }
 
   // ==================== DAYS & ROUTES MANAGEMENT ====================
@@ -696,14 +727,12 @@
   }
 
   function renderManageDaysList() {
-    // Populate select dropdown in modal
     let selectHtml = '';
     state.days.forEach(d => {
       selectHtml += `<option value="${d}" ${state.manageSelectedDay === d ? 'selected' : ''}>วัน${d}</option>`;
     });
-    el.selectManageDay.innerHTML = selectHtml;
+    if (el.selectManageDay) el.selectManageDay.innerHTML = selectHtml;
 
-    // Render list of days
     let listHtml = '';
     state.days.forEach(day => {
       const storeCount = state.items.filter(it => it.day === day).length;
@@ -728,7 +757,7 @@
         </div>
       `;
     });
-    el.daysManagerList.innerHTML = listHtml;
+    if (el.daysManagerList) el.daysManagerList.innerHTML = listHtml;
     refreshIcons();
   }
 
@@ -760,7 +789,7 @@
         `;
       });
     }
-    el.routesManagerList.innerHTML = listHtml;
+    if (el.routesManagerList) el.routesManagerList.innerHTML = listHtml;
     refreshIcons();
   }
 
@@ -780,8 +809,12 @@
       state.routesByDay[cleanName] = ['สาย 1'];
     }
 
-    saveDaysAndRoutes();
     state.manageSelectedDay = cleanName;
+    saveDaysAndRoutes(true);
+    renderDayTabs();
+    renderRoutePills();
+    renderTable();
+    updateStats();
     renderManageDaysList();
     renderManageRoutesList();
     updateFormDayAndRouteOptions();
@@ -829,8 +862,12 @@
       }
     }
 
-    saveDaysAndRoutes();
+    saveDaysAndRoutes(true);
     saveLocalData();
+    renderDayTabs();
+    renderRoutePills();
+    renderTable();
+    updateStats();
     renderManageDaysList();
     renderManageRoutesList();
     updateFormDayAndRouteOptions();
@@ -866,8 +903,12 @@
       }
     }
 
-    saveDaysAndRoutes();
+    saveDaysAndRoutes(true);
     saveLocalData();
+    renderDayTabs();
+    renderRoutePills();
+    renderTable();
+    updateStats();
     renderManageDaysList();
     renderManageRoutesList();
     updateFormDayAndRouteOptions();
@@ -891,7 +932,10 @@
     }
 
     state.routesByDay[dayName].push(cleanName);
-    saveDaysAndRoutes();
+    saveDaysAndRoutes(true);
+    renderRoutePills();
+    renderTable();
+    updateStats();
     renderManageRoutesList();
     updateFormDayAndRouteOptions();
     showToast(`เพิ่มสายส่ง "${cleanName}" ในวัน${dayName} แล้ว`, 'success');
@@ -936,8 +980,11 @@
       }
     }
 
-    saveDaysAndRoutes();
+    saveDaysAndRoutes(true);
     saveLocalData();
+    renderRoutePills();
+    renderTable();
+    updateStats();
     renderManageRoutesList();
     updateFormDayAndRouteOptions();
     showToast(`เปลี่ยนชื่อสายส่งเป็น "${newRoute}" เรียบร้อยแล้ว`, 'success');
@@ -971,8 +1018,11 @@
       }
     }
 
-    saveDaysAndRoutes();
+    saveDaysAndRoutes(true);
     saveLocalData();
+    renderRoutePills();
+    renderTable();
+    updateStats();
     renderManageRoutesList();
     updateFormDayAndRouteOptions();
     showToast(`ลบสายส่ง "${routeName}" เรียบร้อยแล้ว`, 'info');
@@ -992,16 +1042,19 @@
   }
 
   function updateFormRouteOptions() {
-    const selectedDay = el.formDay.value || state.days[0];
-    const routes = state.routesByDay[selectedDay] || ['สาย 1'];
+    if (!el.formDay || !el.formRoute) return;
+    const selDay = el.formDay.value;
+    const routes = state.routesByDay[selDay] || ['สาย 1'];
+    const currentRoute = el.formRoute.value;
+
     let routesHtml = '';
     routes.forEach(r => {
-      routesHtml += `<option value="${r}">${r}</option>`;
+      routesHtml += `<option value="${r}" ${r === currentRoute ? 'selected' : ''}>${r}</option>`;
     });
     el.formRoute.innerHTML = routesHtml;
   }
 
-  // ==================== DRAG & DROP AND REORDERING ====================
+  // ==================== DRAG & DROP REORDERING ====================
   function bindDragAndDropEvents() {
     const rows = el.tableBody.querySelectorAll('.draggable-row');
     rows.forEach(row => {
@@ -1015,106 +1068,104 @@
 
   function handleDragStart(e) {
     state.draggedItemId = Number(this.getAttribute('data-id'));
-    this.classList.add('dragging');
+    this.classList.add('opacity-50', 'bg-indigo-100');
     e.dataTransfer.effectAllowed = 'move';
-    e.dataTransfer.setData('text/plain', state.draggedItemId);
   }
 
   function handleDragOver(e) {
     e.preventDefault();
     e.dataTransfer.dropEffect = 'move';
-    const targetRow = e.target.closest('.draggable-row');
-    if (targetRow && targetRow !== this) {
-      targetRow.classList.add('drag-over');
-    }
+    this.classList.add('border-t-2', 'border-indigo-600');
   }
 
-  function handleDragLeave(e) {
-    this.classList.remove('drag-over');
+  function handleDragLeave() {
+    this.classList.remove('border-t-2', 'border-indigo-600');
   }
 
   function handleDrop(e) {
     e.preventDefault();
-    this.classList.remove('drag-over');
+    this.classList.remove('border-t-2', 'border-indigo-600');
     const targetId = Number(this.getAttribute('data-id'));
-    if (!state.draggedItemId || state.draggedItemId === targetId) return;
+    if (state.draggedItemId === targetId) return;
 
-    reorderItems(state.draggedItemId, targetId);
+    reorderItem(state.draggedItemId, targetId);
   }
 
   function handleDragEnd() {
-    this.classList.remove('dragging');
-    el.tableBody.querySelectorAll('.drag-over').forEach(el => el.classList.remove('drag-over'));
+    this.classList.remove('opacity-50', 'bg-indigo-100');
+    const rows = el.tableBody.querySelectorAll('.draggable-row');
+    rows.forEach(row => row.classList.remove('border-t-2', 'border-indigo-600'));
   }
 
-  function reorderItems(draggedId, targetId) {
+  function reorderItem(sourceId, targetId) {
     const currentItems = getFilteredAndSortedItems();
-    const fromIndex = currentItems.findIndex(it => it.id === draggedId);
-    const toIndex = currentItems.findIndex(it => it.id === targetId);
-    if (fromIndex === -1 || toIndex === -1) return;
+    const srcIndex = currentItems.findIndex(it => it.id === sourceId);
+    const tgtIndex = currentItems.findIndex(it => it.id === targetId);
+    if (srcIndex === -1 || tgtIndex === -1) return;
 
-    const [movedItem] = currentItems.splice(fromIndex, 1);
-    currentItems.splice(toIndex, 0, movedItem);
+    const [movedItem] = currentItems.splice(srcIndex, 1);
+    currentItems.splice(tgtIndex, 0, movedItem);
 
-    // Update sequence numbers (1-based)
-    currentItems.forEach((it, idx) => {
-      it.sequence = idx + 1;
-      const globalItem = state.items.find(g => g.id === it.id);
+    currentItems.forEach((item, index) => {
+      item.sequence = index + 1;
+      const globalItem = state.items.find(it => it.id === item.id);
       if (globalItem) {
-        globalItem.sequence = idx + 1;
+        globalItem.sequence = index + 1;
       }
     });
 
     state.hasUnsavedReorder = true;
     el.reorderSaveBanner.classList.remove('hidden');
+
+    saveLocalData();
     renderTable();
-    showToast(`ย้าย "${movedItem.customer_name}" ไปลำดับที่ ${toIndex + 1} แล้ว`, 'info');
+    updateStats();
   }
 
-  function moveItem(id, direction) {
+  function moveItemStep(id, direction) {
     const currentItems = getFilteredAndSortedItems();
-    const index = currentItems.findIndex(it => it.id === id);
-    if (index === -1) return;
+    const idx = currentItems.findIndex(it => it.id === id);
+    if (idx === -1) return;
 
-    if (direction === 'up' && index > 0) {
-      const targetItem = currentItems[index - 1];
-      reorderItems(id, targetItem.id);
-    } else if (direction === 'down' && index < currentItems.length - 1) {
-      const targetItem = currentItems[index + 1];
-      reorderItems(id, targetItem.id);
-    }
+    const targetIdx = idx + direction;
+    if (targetIdx < 0 || targetIdx >= currentItems.length) return;
+
+    const targetItem = currentItems[targetIdx];
+    reorderItem(id, targetItem.id);
   }
 
   async function saveReorderToBackend() {
-    const currentItems = getFilteredAndSortedItems();
-    const payload = currentItems.map(it => ({ id: it.id, sequence: it.sequence }));
+    if (!state.hasUnsavedReorder) return;
 
     saveLocalData();
 
     if (state.apiAvailable) {
       try {
+        const reorderPayload = state.items.map(it => ({ id: it.id, sequence: it.sequence }));
         const res = await fetch('/api/items/reorder', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ items: payload })
+          body: JSON.stringify({ items: reorderPayload })
         });
         if (res.ok) {
-          showToast('บันทึกลำดับสายส่งขึ้น Cloudflare D1 สำเร็จ!', 'success');
+          showToast('บันทึกการจัดลำดับลงระบบเรียบร้อยแล้ว', 'success');
         } else {
-          showToast('บันทึกลำดับลงในเครื่องแล้ว (D1 ยังไม่ได้บันทึก)', 'info');
+          showToast('บันทึกในเครื่องแล้ว (คลาวด์ตอบสนองผิดพลาด)', 'info');
         }
-      } catch (err) {
-        showToast('บันทึกลำดับลงในเครื่องแล้ว', 'info');
+      } catch (e) {
+        showToast('บันทึกในเครื่องแล้ว (ออฟไลน์)', 'info');
       }
     } else {
-      showToast('บันทึกลำดับสายส่งลงในเครื่องแล้ว', 'success');
+      showToast('บันทึกลำดับในเบราว์เซอร์เรียบร้อยแล้ว', 'success');
     }
 
     state.hasUnsavedReorder = false;
     el.reorderSaveBanner.classList.add('hidden');
+    renderTable();
+    updateStats();
   }
 
-  // ==================== STORE CRUD OPERATIONS ====================
+  // ==================== MODAL FORM (ADD/EDIT) ====================
   function openAddModal() {
     el.modalTitle.innerHTML = `<i data-lucide="plus-circle" class="w-5 h-5 text-indigo-600"></i><span>เพิ่มร้านค้าใหม่</span>`;
     el.formItemId.value = '';
@@ -1130,6 +1181,8 @@
     el.formCode.value = '';
     el.formName.value = '';
     el.formRemark.value = '';
+    el.formBoxes.value = '';
+    el.formAmount.value = '';
     
     el.modalItem.classList.remove('hidden');
     refreshIcons();
@@ -1152,6 +1205,8 @@
     el.formCode.value = item.customer_code;
     el.formName.value = item.customer_name;
     el.formRemark.value = item.remark || '';
+    el.formBoxes.value = item.boxes != null ? item.boxes : '';
+    el.formAmount.value = item.amount != null ? item.amount : '';
 
     el.modalItem.classList.remove('hidden');
     refreshIcons();
@@ -1173,6 +1228,8 @@
     const customer_code = el.formCode.value.trim();
     const customer_name = el.formName.value.trim();
     const remark = el.formRemark.value.trim();
+    const boxes = el.formBoxes.value !== '' ? Number(el.formBoxes.value) : null;
+    const amount = el.formAmount.value !== '' ? parseFloat(el.formAmount.value) : null;
     const sheet_name = `${day}${route_name.replace('สาย ', '').replace('สำรอง', 'สำรอง')}`;
 
     if (!customer_name || !customer_code) {
@@ -1192,7 +1249,9 @@
           sequence,
           customer_code,
           customer_name,
-          remark
+          remark,
+          boxes,
+          amount
         };
 
         if (state.apiAvailable) {
@@ -1221,7 +1280,9 @@
         sequence,
         customer_code,
         customer_name,
-        remark
+        remark,
+        boxes,
+        amount
       };
 
       state.items.push(newItem);
@@ -1235,7 +1296,7 @@
           });
           if (res.ok) {
             const resData = await res.json();
-            if (resData.success && resData.data.id) {
+            if (resData.success && resData.data && resData.data.id) {
               newItem.id = resData.data.id;
             }
           }
@@ -1275,15 +1336,13 @@
     }
 
     saveLocalData();
-    renderDayTabs();
-    renderRoutePills();
     renderTable();
     updateStats();
     showToast(`ลบ "${item.customer_name}" เรียบร้อยแล้ว`, 'info');
   }
 
-  // ==================== PRINT ROUTE SHEET ====================
-  function prepareAndPrint() {
+  // ==================== PRINT ROUTE SHEET & PREVIEW ====================
+  function prepareAndPreview() {
     if (state.selectedItemIds.size === 0) {
       showToast('⚠️ กรุณาติ๊กเลือกเครื่องหมายถูก (☑️) หน้าร้านค้าที่ต้องการพิมพ์ก่อน', 'error');
       return;
@@ -1292,7 +1351,6 @@
     const currentItems = getFilteredAndSortedItems();
     let itemsToPrint = currentItems.filter(it => state.selectedItemIds.has(it.id));
     
-    // If not in current filtered list, get from full items list
     if (itemsToPrint.length === 0) {
       itemsToPrint = state.items.filter(it => state.selectedItemIds.has(it.id));
     }
@@ -1302,30 +1360,98 @@
       return;
     }
 
-    // Set Header titles
+    // Calculate preview summary
+    let totalBoxes = 0;
+    let totalAmount = 0;
+    let transferCount = 0;
+    let cashCount = 0;
+
+    let previewRowsHtml = '';
+    itemsToPrint.forEach((item, idx) => {
+      const isTransfer = item.remark && item.remark.includes('โอน');
+      if (isTransfer) transferCount++; else cashCount++;
+
+      const b = item.boxes != null && item.boxes !== '' ? Number(item.boxes) : 0;
+      const a = item.amount != null && item.amount !== '' ? parseFloat(item.amount) : 0;
+      totalBoxes += b;
+      totalAmount += a;
+
+      const paymentText = isTransfer ? 'โอน' : (item.remark || '-');
+
+      previewRowsHtml += `
+        <tr class="hover:bg-slate-50 transition-colors">
+          <td class="py-2.5 px-3 text-center font-bold text-slate-600">${idx + 1}</td>
+          <td class="py-2.5 px-3 font-mono font-bold text-slate-700 text-xs">${escapeHtml(item.customer_code)}</td>
+          <td class="py-2.5 px-3 font-medium text-slate-900">
+            ${escapeHtml(item.customer_name)}
+            ${(state.activeRoute === 'all' || state.activeDay === 'all') ? `<span class="text-xs text-slate-400"> (${item.day} ${item.route_name})</span>` : ''}
+          </td>
+          <td class="py-2.5 px-3 text-center">
+            <span class="inline-block px-2 py-0.5 rounded text-xs ${isTransfer ? 'bg-purple-100 text-purple-700 font-semibold' : 'bg-slate-100 text-slate-600'}">
+              ${escapeHtml(paymentText)}
+            </span>
+          </td>
+          <td class="py-2.5 px-3 text-center font-bold text-emerald-700">
+            ${b > 0 ? b : '-'}
+          </td>
+          <td class="py-2.5 px-3 text-right font-semibold text-amber-700">
+            ${a > 0 ? '฿' + a.toLocaleString('th-TH', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) : '-'}
+          </td>
+        </tr>
+      `;
+    });
+
+    if (el.previewCountBadge) el.previewCountBadge.textContent = `${itemsToPrint.length} ร้านค้า`;
+    if (el.previewStatStores) el.previewStatStores.textContent = `${itemsToPrint.length} ร้าน`;
+    if (el.previewStatBoxes) el.previewStatBoxes.textContent = `${totalBoxes} ลัง`;
+    if (el.previewStatAmount) el.previewStatAmount.textContent = `฿${totalAmount.toLocaleString('th-TH', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
+    if (el.previewStatTransfer) el.previewStatTransfer.textContent = transferCount;
+    if (el.previewStatCash) el.previewStatCash.textContent = cashCount;
+    if (el.previewTableBody) el.previewTableBody.innerHTML = previewRowsHtml;
+
+    if (el.modalPrintPreview) {
+      el.modalPrintPreview.classList.remove('hidden');
+      refreshIcons();
+    }
+  }
+
+  function executeActualPrint() {
+    if (el.modalPrintPreview) el.modalPrintPreview.classList.add('hidden');
+
+    const currentItems = getFilteredAndSortedItems();
+    let itemsToPrint = currentItems.filter(it => state.selectedItemIds.has(it.id));
+    if (itemsToPrint.length === 0) {
+      itemsToPrint = state.items.filter(it => state.selectedItemIds.has(it.id));
+    }
+    if (itemsToPrint.length === 0) return;
+
     let dayLabel = state.activeDay === 'all' ? 'ทุกวัน' : `วัน${state.activeDay}`;
     let routeLabel = state.activeRoute === 'all' ? 'ทุกสายส่ง' : state.activeRoute;
     routeLabel += ` (เฉพาะร้านที่เลือก ${itemsToPrint.length} ร้าน)`;
 
-    el.printDayTitle.textContent = dayLabel;
-    el.printRouteTitle.textContent = routeLabel;
+    if (el.printDayTitle) el.printDayTitle.textContent = dayLabel;
+    if (el.printRouteTitle) el.printRouteTitle.textContent = routeLabel;
     
     const now = new Date();
     const dateFormatted = now.toLocaleDateString('th-TH', { year: 'numeric', month: 'short', day: 'numeric' });
     const timeFormatted = now.toLocaleTimeString('th-TH', { hour: '2-digit', minute: '2-digit' });
-    el.printDateTime.textContent = `${dateFormatted} ${timeFormatted} น.`;
+    if (el.printDateTime) el.printDateTime.textContent = `${dateFormatted} ${timeFormatted} น.`;
 
-    const transferCount = itemsToPrint.filter(it => it.remark && it.remark.includes('โอน')).length;
-    const cashCount = itemsToPrint.length - transferCount;
+    let totalBoxes = 0;
+    let totalAmount = 0;
+    let transferCount = 0;
+    let cashCount = 0;
 
-    el.printTotalCount.textContent = itemsToPrint.length;
-    el.printTransferCount.textContent = transferCount;
-    el.printCashCount.textContent = cashCount;
-
-    // Populate Print Table Rows
     let printRowsHtml = '';
     itemsToPrint.forEach((item, idx) => {
       const isTransfer = item.remark && item.remark.includes('โอน');
+      if (isTransfer) transferCount++; else cashCount++;
+
+      const b = item.boxes != null && item.boxes !== '' ? Number(item.boxes) : 0;
+      const a = item.amount != null && item.amount !== '' ? parseFloat(item.amount) : 0;
+      totalBoxes += b;
+      totalAmount += a;
+
       const paymentText = isTransfer ? 'โอน' : (item.remark || '-');
       printRowsHtml += `
         <tr>
@@ -1338,7 +1464,12 @@
           <td style="text-align: center; font-weight: ${isTransfer ? 'bold' : 'normal'};">
             ${escapeHtml(paymentText)}
           </td>
-          <td style="text-align: center;"></td>
+          <td style="text-align: center; font-weight: bold;">
+            ${b > 0 ? b : ''}
+          </td>
+          <td style="text-align: right; font-weight: 500;">
+            ${a > 0 ? '฿' + a.toLocaleString('th-TH', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) : ''}
+          </td>
           <td style="text-align: center;">
             <div style="border: 1px solid #aaa; width: 14px; height: 14px; display: inline-block; vertical-align: middle; margin-right: 4px;"></div>
           </td>
@@ -1346,9 +1477,14 @@
       `;
     });
 
-    el.printTableBody.innerHTML = printRowsHtml;
+    if (el.printTotalCount) el.printTotalCount.textContent = itemsToPrint.length;
+    if (el.printTransferCount) el.printTransferCount.textContent = transferCount;
+    if (el.printCashCount) el.printCashCount.textContent = cashCount;
+    if (el.printTotalBoxes) el.printTotalBoxes.textContent = totalBoxes;
+    if (el.printTotalAmount) el.printTotalAmount.textContent = `฿${totalAmount.toLocaleString('th-TH', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
 
-    // Wait for DOM to update before triggering print dialog
+    if (el.printTableBody) el.printTableBody.innerHTML = printRowsHtml;
+
     setTimeout(() => window.print(), 100);
   }
 
@@ -1360,66 +1496,80 @@
     }
 
     try {
-      const wb = XLSX.utils.book_new();
+      const itemsToExport = state.selectedItemIds.size > 0 
+        ? state.items.filter(it => state.selectedItemIds.has(it.id))
+        : getFilteredAndSortedItems();
 
-      // Group items by sheet_name
-      const sheets = {};
-      state.items.forEach(item => {
-        const sName = item.sheet_name || `${item.day}${item.route_name.replace('สาย ', '').replace('สำรอง', 'สำรอง')}`;
-        if (!sheets[sName]) sheets[sName] = [];
-        sheets[sName].push({
-          'ลำดับ': item.sequence,
-          'รหัสลูกค้า': item.customer_code,
-          'ชื่อร้านค้า': item.customer_name,
-          'หมายเหตุ/ชำระ': item.remark || '',
-          'วัน': item.day,
-          'สายส่ง': item.route_name
-        });
-      });
+      if (itemsToExport.length === 0) {
+        showToast('ไม่มีข้อมูลสำหรับส่งออก', 'error');
+        return;
+      }
 
-      // Add each sheet
-      Object.keys(sheets).forEach(sheetName => {
-        const ws = XLSX.utils.json_to_sheet(sheets[sheetName]);
-        XLSX.utils.book_append_sheet(wb, ws, sheetName.substring(0, 31));
-      });
+      const rows = itemsToExport.map((it, idx) => ({
+        'ลำดับ': idx + 1,
+        'วันจัดส่ง': it.day,
+        'สายส่ง': it.route_name,
+        'รหัสลูกค้า': it.customer_code,
+        'ชื่อร้านค้า / ลูกค้า': it.customer_name,
+        'การชำระเงิน': it.remark || '-',
+        'จำนวนลัง': it.boxes != null ? it.boxes : '',
+        'ยอดเงิน (บาท)': it.amount != null ? it.amount : ''
+      }));
 
-      const fileName = `สายส่งสินค้า_${new Date().toISOString().slice(0, 10)}.xlsx`;
-      XLSX.writeFile(wb, fileName);
-      showToast(`ส่งออกไฟล์ ${fileName} เรียบร้อยแล้ว`, 'success');
-    } catch (err) {
-      console.error('Export error:', err);
+      const worksheet = XLSX.utils.json_to_sheet(rows);
+      const workbook = XLSX.utils.book_new();
+      XLSX.utils.book_append_sheet(workbook, worksheet, 'สายส่งสินค้า');
+
+      const now = new Date();
+      const dateStr = now.toISOString().slice(0, 10);
+      const filename = `รายการสายส่ง_${state.activeDay}_${state.activeRoute}_${dateStr}.xlsx`;
+
+      XLSX.writeFile(workbook, filename);
+      showToast(`ส่งออกไฟล์ "${filename}" สำเร็จ`, 'success');
+    } catch (e) {
+      console.error('Export Excel failed:', e);
       showToast('เกิดข้อผิดพลาดในการส่งออก Excel', 'error');
     }
   }
 
   async function seedToCloudflare() {
-    if (!confirm(`คุณต้องการอัปโหลดข้อมูลทั้งหมด ${state.items.length} รายการขึ้นสู่ Cloudflare D1 Database ใช่หรือไม่?`)) {
+    if (!state.apiAvailable) {
+      showToast('ไม่สามารถเชื่อมต่อ Cloudflare D1 ได้ในขณะนี้', 'error');
       return;
     }
 
-    showToast('กำลังส่งข้อมูลขึ้น Cloudflare D1...', 'info');
+    if (!confirm(`คุณต้องการอัปโหลดข้อมูลทั้งหมด (${state.items.length} ร้านค้า) ขึ้น Cloudflare D1 SQL หรือไม่?`)) {
+      return;
+    }
 
     try {
+      el.btnSeedCf.disabled = true;
+      el.btnSeedCf.textContent = 'กำลังอัปโหลด...';
+
       const res = await fetch('/api/init', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ force: true, items: state.items })
+        body: JSON.stringify({ items: state.items, force: true })
       });
 
-      const data = await res.json();
-      if (res.ok && data.success) {
-        showToast(`Seed ข้อมูลขึ้น Cloudflare D1 สำเร็จ (${data.count || state.items.length} รายการ)`, 'success');
+      if (res.ok) {
+        const json = await res.json();
+        showToast(`อัปโหลดขึ้น Cloudflare D1 สำเร็จ (${json.count} รายการ)`, 'success');
         await checkCloudflareApi();
+        saveDaysAndRoutes(true);
       } else {
-        showToast(`ไม่สามารถเชื่อมต่อ D1: ${data.error || 'Binding DB ไม่ถูกต้อง'}`, 'error');
+        showToast('อัปโหลดล้มเหลว กรุณาตรวจสอบการตั้งค่า D1', 'error');
       }
-    } catch (err) {
-      showToast('ไม่สามารถเชื่อมต่อ API (ยังไม่ได้ deploy บน Cloudflare Pages)', 'error');
+    } catch (e) {
+      showToast('เกิดข้อผิดพลาดในการเชื่อมต่อ', 'error');
+    } finally {
+      el.btnSeedCf.disabled = false;
+      el.btnSeedCf.textContent = 'อัปโหลดข้อมูลปัจจุบันขึ้น D1 (Seed)';
     }
   }
 
   function resetToDefault() {
-    if (!confirm('คุณต้องการคืนค่าข้อมูลเริ่มต้น 1,148 รายการจากไฟล์ Excel ต้นฉบับใช่หรือไม่? การแก้ไขที่ยังไม่ได้สำรองจะถูกรีเซ็ต')) {
+    if (!confirm('คุณต้องการรีเซ็ตข้อมูลทั้งหมดกลับเป็นค่าเริ่มต้นหรือไม่?\n(ข้อมูลที่แก้ไขเองจะถูกแทนที่ด้วยข้อมูลตั้งต้น)')) {
       return;
     }
 
@@ -1427,25 +1577,29 @@
       state.items = JSON.parse(JSON.stringify(window.INITIAL_ROUTES_DATA));
       state.days = [...DEFAULT_DAYS];
       state.routesByDay = JSON.parse(JSON.stringify(DEFAULT_ROUTES_BY_DAY));
+      state.activeDay = 'จันทร์';
+      state.activeRoute = 'สาย 1';
+      state.selectedItemIds.clear();
+
       saveLocalData();
-      saveDaysAndRoutes();
+      saveDaysAndRoutes(true);
       renderDayTabs();
       renderRoutePills();
       renderTable();
       updateStats();
-      showToast('รีเซ็ตข้อมูลเริ่มต้น 1,148 ร้านค้าเรียบร้อยแล้ว', 'success');
-      el.modalTools.classList.add('hidden');
+      updateSelectionUI();
+      updateFormDayAndRouteOptions();
+      showToast('รีเซ็ตข้อมูลเป็นค่าเริ่มต้นเรียบร้อยแล้ว', 'success');
     }
   }
 
-  // ==================== EVENT LISTENERS ====================
+  // ==================== EVENT BINDINGS ====================
   function bindEvents() {
     // Day tab click
     el.dayTabsContainer.addEventListener('click', e => {
       const btn = e.target.closest('.day-tab');
       if (!btn) return;
       state.activeDay = btn.getAttribute('data-day');
-      // If switching to a day that doesn't have the current route, reset route to first available
       if (state.activeDay !== 'all') {
         const available = state.routesByDay[state.activeDay] || ['สาย 1'];
         if (state.activeRoute !== 'all' && !available.includes(state.activeRoute)) {
@@ -1553,7 +1707,7 @@
 
     // Selection Action Bar Events
     if (el.btnPrintSelected) {
-      el.btnPrintSelected.addEventListener('click', () => prepareAndPrint(true));
+      el.btnPrintSelected.addEventListener('click', prepareAndPreview);
     }
     if (el.btnDeleteSelected) {
       el.btnDeleteSelected.addEventListener('click', deleteSelectedItems);
@@ -1656,12 +1810,12 @@
       });
     }
 
-    // Form day select change -> update routes dropdown
+    // Form Dropdowns
     if (el.formDay) {
       el.formDay.addEventListener('change', updateFormRouteOptions);
     }
 
-    // Add Store Modal
+    // Add / Edit Modal Events
     el.btnAddItem.addEventListener('click', openAddModal);
     el.btnCloseModal.addEventListener('click', closeModal);
     el.btnCancelModal.addEventListener('click', closeModal);
@@ -1680,11 +1834,21 @@
     el.btnExportExcel.addEventListener('click', exportToExcel);
 
     // Print Button (Top bar)
-    el.btnPrintRoute.addEventListener('click', prepareAndPrint);
+    el.btnPrintRoute.addEventListener('click', prepareAndPreview);
+
+    // Print Preview Modal Events
+    if (el.btnClosePreview) {
+      el.btnClosePreview.addEventListener('click', () => el.modalPrintPreview.classList.add('hidden'));
+    }
+    if (el.btnClosePreviewCancel) {
+      el.btnClosePreviewCancel.addEventListener('click', () => el.modalPrintPreview.classList.add('hidden'));
+    }
+    if (el.btnConfirmPrint) {
+      el.btnConfirmPrint.addEventListener('click', executeActualPrint);
+    }
 
     // Table delegated actions
     el.tableBody.addEventListener('click', e => {
-      // Row checkbox
       const chk = e.target.closest('.row-select-chk');
       if (chk) {
         const id = Number(chk.getAttribute('data-id'));
@@ -1692,7 +1856,6 @@
         return;
       }
 
-      // Copy code button
       const copyBtn = e.target.closest('.btn-copy-code');
       if (copyBtn) {
         const code = copyBtn.getAttribute('data-code');
@@ -1702,23 +1865,20 @@
         return;
       }
 
-      // Move Up
-      const upBtn = e.target.closest('.btn-move-up');
-      if (upBtn) {
-        const id = Number(upBtn.getAttribute('data-id'));
-        moveItem(id, 'up');
+      const moveUpBtn = e.target.closest('.btn-move-up');
+      if (moveUpBtn) {
+        const id = Number(moveUpBtn.getAttribute('data-id'));
+        moveItemStep(id, -1);
         return;
       }
 
-      // Move Down
-      const downBtn = e.target.closest('.btn-move-down');
-      if (downBtn) {
-        const id = Number(downBtn.getAttribute('data-id'));
-        moveItem(id, 'down');
+      const moveDownBtn = e.target.closest('.btn-move-down');
+      if (moveDownBtn) {
+        const id = Number(moveDownBtn.getAttribute('data-id'));
+        moveItemStep(id, 1);
         return;
       }
 
-      // Edit Item
       const editBtn = e.target.closest('.btn-edit-item');
       if (editBtn) {
         const id = Number(editBtn.getAttribute('data-id'));
@@ -1726,7 +1886,6 @@
         return;
       }
 
-      // Delete Item
       const deleteBtn = e.target.closest('.btn-delete-item');
       if (deleteBtn) {
         const id = Number(deleteBtn.getAttribute('data-id'));
@@ -1735,63 +1894,53 @@
       }
     });
 
-    // Close modals on Escape key or backdrop click
+    // Close modals on outside click
+    window.addEventListener('click', e => {
+      if (e.target === el.modalItem) closeModal();
+      if (e.target === el.modalTools) el.modalTools.classList.add('hidden');
+      if (e.target === el.modalManageRoutes) closeManageDaysRoutesModal();
+      if (e.target === el.modalPrintPreview) el.modalPrintPreview.classList.add('hidden');
+    });
+
+    // Keyboard shortcuts
     window.addEventListener('keydown', e => {
       if (e.key === 'Escape') {
         closeModal();
         el.modalTools.classList.add('hidden');
-        if (el.modalManageRoutes) el.modalManageRoutes.classList.add('hidden');
+        closeManageDaysRoutesModal();
+        if (el.modalPrintPreview) el.modalPrintPreview.classList.add('hidden');
       }
     });
-
-    el.modalItem.addEventListener('click', e => {
-      if (e.target === el.modalItem) closeModal();
-    });
-
-    el.modalTools.addEventListener('click', e => {
-      if (e.target === el.modalTools) el.modalTools.classList.add('hidden');
-    });
-
-    if (el.modalManageRoutes) {
-      el.modalManageRoutes.addEventListener('click', e => {
-        if (e.target === el.modalManageRoutes) closeManageDaysRoutesModal();
-      });
-    }
   }
 
-  // ==================== HELPER FUNCTIONS ====================
+  // ==================== UTILITY HELPERS ====================
   function showToast(message, type = 'info') {
     const toast = document.createElement('div');
     const colors = {
-      success: 'bg-emerald-600 text-white',
-      error: 'bg-rose-600 text-white',
-      info: 'bg-slate-900 text-white'
-    };
-    const icons = {
-      success: 'check-circle-2',
-      error: 'alert-triangle',
-      info: 'info'
+      success: 'bg-emerald-600 text-white shadow-emerald-200',
+      error: 'bg-rose-600 text-white shadow-rose-200',
+      info: 'bg-slate-800 text-white shadow-slate-200'
     };
 
-    toast.className = `${colors[type] || colors.info} px-4 py-3 rounded-xl shadow-lg text-xs font-medium flex items-center space-x-2 animate-fade-in pointer-events-auto`;
-    toast.innerHTML = `
-      <i data-lucide="${icons[type] || icons.info}" class="w-4 h-4"></i>
-      <span>${escapeHtml(message)}</span>
-    `;
+    toast.className = `flex items-center gap-2 px-4 py-2.5 rounded-xl shadow-lg text-sm font-medium transition-all duration-300 transform translate-y-2 opacity-0 ${colors[type] || colors.info}`;
+    toast.textContent = message;
 
     el.toastContainer.appendChild(toast);
-    refreshIcons();
+
+    requestAnimationFrame(() => {
+      toast.classList.remove('translate-y-2', 'opacity-0');
+      toast.classList.add('translate-y-0', 'opacity-100');
+    });
 
     setTimeout(() => {
-      toast.style.opacity = '0';
-      toast.style.transform = 'translateY(10px)';
-      toast.style.transition = 'all 0.3s ease';
+      toast.classList.remove('translate-y-0', 'opacity-100');
+      toast.classList.add('translate-y-2', 'opacity-0');
       setTimeout(() => toast.remove(), 300);
-    }, 3200);
+    }, 2800);
   }
 
   function escapeHtml(str) {
-    if (!str) return '';
+    if (str == null) return '';
     return String(str)
       .replace(/&/g, '&amp;')
       .replace(/</g, '&lt;')
@@ -1801,18 +1950,22 @@
   }
 
   function highlightSearch(text, query) {
-    if (!query || !text) return text;
-    const regex = new RegExp(`(${query.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')})`, 'gi');
-    return text.replace(regex, '<mark class="bg-amber-200 text-slate-900 px-0.5 rounded">$1</mark>');
+    if (!query) return text;
+    const regex = new RegExp(`(${escapeRegex(query)})`, 'gi');
+    return text.replace(regex, '<mark class="bg-amber-200 text-amber-900 rounded-xs px-0.5">$1</mark>');
+  }
+
+  function escapeRegex(string) {
+    return string.replace(/[/\-\\^$*+?.()|[\]{}]/g, '\\$&');
   }
 
   function refreshIcons() {
-    if (window.lucide) {
-      window.lucide.createIcons();
+    if (typeof lucide !== 'undefined' && lucide.createIcons) {
+      lucide.createIcons();
     }
   }
 
-  // Launch on DOM ready
+  // --- Bootstrap ---
   document.addEventListener('DOMContentLoaded', init);
 
 })();
