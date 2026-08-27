@@ -21,6 +21,7 @@
   };
 
   const STORAGE_KEY = 'delivery_routes_data_v1';
+  const SELECTED_STORAGE_KEY = 'delivery_selected_items_v1';
   const STORAGE_DAYS_KEY = 'delivery_days_v2';
   const STORAGE_ROUTES_KEY = 'delivery_routes_v2';
 
@@ -156,6 +157,7 @@
   // ==================== INITIALIZATION ====================
   async function init() {
     loadLocalData();
+    loadSelectedState();
     loadDaysAndRoutes();
     await checkCloudflareApi();
     renderDayTabs();
@@ -166,6 +168,27 @@
     updateFormDayAndRouteOptions();
     bindEvents();
     refreshIcons();
+  }
+
+  
+  function loadSelectedState() {
+    try {
+      const stored = localStorage.getItem(SELECTED_STORAGE_KEY);
+      if (stored) {
+        state.selectedItemIds = new Set(JSON.parse(stored));
+      }
+    } catch (e) {
+      console.error('Failed to load selected items:', e);
+      state.selectedItemIds = new Set();
+    }
+  }
+
+  function saveSelectedState() {
+    try {
+      localStorage.setItem(SELECTED_STORAGE_KEY, JSON.stringify(Array.from(state.selectedItemIds)));
+    } catch (e) {
+      console.error('Failed to save selected items:', e);
+    }
   }
 
   function loadLocalData() {
@@ -660,22 +683,45 @@
         state.selectedItemIds.delete(item.id);
       }
     });
+    saveSelectedState();
     renderTable();
+    updateSelectionUI();
+    showToast(checked ? `เลือกทั้งหมด ${visibleItems.length} ร้านแล้ว` : 'ยกเลิกการเลือกทั้งหมดแล้ว', 'info');
   }
 
-  function toggleSelectItem(id, checked) {
+  function toggleSelectItem(id, checked, chkEl) {
+    id = Number(id);
     if (checked) {
       state.selectedItemIds.add(id);
     } else {
       state.selectedItemIds.delete(id);
     }
-    renderTable();
+    saveSelectedState();
+
+    // In-place row style update without re-rendering table (คงหน้าจอนั้นไว้ ไม่กระตุก)
+    const row = chkEl ? chkEl.closest('tr') : el.tableBody.querySelector(`tr[data-id="${id}"]`);
+    if (row) {
+      if (checked) {
+        row.classList.add('row-selected');
+      } else {
+        row.classList.remove('row-selected');
+      }
+    }
+
+    updateSelectionUI();
   }
 
   function clearSelection() {
+    const count = state.selectedItemIds.size;
+    if (count === 0) {
+      showToast('ไม่มีรายการที่เลือกไว้', 'info');
+      return;
+    }
     state.selectedItemIds.clear();
+    saveSelectedState();
     renderTable();
-    showToast('ล้างการเลือกทั้งหมดแล้ว', 'info');
+    updateSelectionUI();
+    showToast(`ล้างการเลือกทั้งหมด ${count} รายการเรียบร้อยแล้ว`, 'success');
   }
 
   async function deleteSelectedItems() {
@@ -1677,6 +1723,7 @@
     el.btnSaveReorder.addEventListener('click', saveReorderToBackend);
     el.btnCancelReorder.addEventListener('click', () => {
       loadLocalData();
+    loadSelectedState();
       state.hasUnsavedReorder = false;
       el.reorderSaveBanner.classList.add('hidden');
       renderTable();
@@ -1852,7 +1899,7 @@
       const chk = e.target.closest('.row-select-chk');
       if (chk) {
         const id = Number(chk.getAttribute('data-id'));
-        toggleSelectItem(id, chk.checked);
+        toggleSelectItem(id, chk.checked, chk);
         return;
       }
 
