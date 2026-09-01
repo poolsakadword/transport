@@ -76,6 +76,10 @@
     btnAddItem: document.getElementById('btn-add-item'),
     btnPrintRoute: document.getElementById('btn-print-route'),
     btnExportExcel: document.getElementById('btn-export-excel'),
+    btnExportDropdown: document.getElementById('btn-export-dropdown'),
+    exportDropdownMenu: document.getElementById('export-dropdown-menu'),
+    btnExportJson: document.getElementById('btn-export-json'),
+    btnExportJsonModal: document.getElementById('btn-export-json-modal'),
     btnOpenTools: document.getElementById('btn-open-tools'),
     btnManageDaysRoutes: document.getElementById('btn-manage-days-routes'),
     btnQuickAddRoute: document.getElementById('btn-quick-add-route'),
@@ -1535,6 +1539,73 @@
   }
 
   // ==================== EXPORT & SEED TOOLS ====================
+    function exportToJson(exportAll = true) {
+    try {
+      const itemsToExport = exportAll ? state.items : (
+        state.selectedItemIds.size > 0 
+          ? state.items.filter(it => state.selectedItemIds.has(it.id))
+          : state.items
+      );
+
+      if (!itemsToExport || itemsToExport.length === 0) {
+        showToast('ไม่มีข้อมูลสำหรับส่งออก', 'error');
+        return;
+      }
+
+      const now = new Date();
+      const dateStr = now.toISOString().slice(0, 10);
+      const thaiDate = now.toLocaleDateString('th-TH', { 
+        year: 'numeric', 
+        month: 'long', 
+        day: 'numeric',
+        hour: '2-digit',
+        minute: '2-digit'
+      });
+
+      const exportObject = {
+        metadata: {
+          system: "ระบบจัดการสายส่งสินค้า (Delivery Route Manager)",
+          version: "1.0.0",
+          exportedAt: now.toISOString(),
+          exportedDateThai: thaiDate,
+          totalStores: itemsToExport.length,
+          totalSystemStores: state.items.length,
+          days: state.days || ['จันทร์', 'อังคาร', 'พุธ', 'พฤหัสบดี', 'ศุกร์', 'เสาร์'],
+          routesByDay: state.routesByDay || {}
+        },
+        items: itemsToExport.map(it => ({
+          id: it.id,
+          sequence: it.sequence,
+          customer_code: it.customer_code,
+          customer_name: it.customer_name,
+          day: it.day,
+          route_name: it.route_name,
+          remark: it.remark || "",
+          boxes: it.boxes != null ? it.boxes : null,
+          amount: it.amount != null ? it.amount : null,
+          sheet_name: it.sheet_name || `${it.day}${it.route_name.replace('สาย ', '')}`
+        }))
+      };
+
+      const jsonStr = JSON.stringify(exportObject, null, 2);
+      const blob = new Blob([jsonStr], { type: 'application/json;charset=utf-8;' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      const filename = `สายส่งสินค้า_backup_${dateStr}.json`;
+      a.download = filename;
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
+
+      showToast(`ส่งออกไฟล์ JSON สำเร็จ (${itemsToExport.length.toLocaleString()} รายการ)`, 'success');
+    } catch (err) {
+      console.error('Export JSON failed:', err);
+      showToast('เกิดข้อผิดพลาดในการส่งออก JSON', 'error');
+    }
+  }
+
   function exportToExcel() {
     if (typeof XLSX === 'undefined') {
       showToast('กำลังโหลดโมดูล Excel กรุณาลองใหม่อีกครั้ง', 'error');
@@ -1878,7 +1949,41 @@
     el.btnSeedCf.addEventListener('click', seedToCloudflare);
     el.btnResetDefault.addEventListener('click', resetToDefault);
     el.btnExportExcelModal.addEventListener('click', exportToExcel);
-    el.btnExportExcel.addEventListener('click', exportToExcel);
+    if (el.btnExportExcel) {
+      el.btnExportExcel.addEventListener('click', () => {
+        exportToExcel();
+        if (el.exportDropdownMenu) el.exportDropdownMenu.classList.add('hidden');
+      });
+    }
+
+    // Export Dropdown Menu Toggle
+    if (el.btnExportDropdown && el.exportDropdownMenu) {
+      el.btnExportDropdown.addEventListener('click', (e) => {
+        e.stopPropagation();
+        el.exportDropdownMenu.classList.toggle('hidden');
+      });
+
+      // Close dropdown on outside click
+      document.addEventListener('click', (e) => {
+        if (!e.target.closest('#export-dropdown-container')) {
+          el.exportDropdownMenu.classList.add('hidden');
+        }
+      });
+    }
+
+    // Export JSON Buttons
+    if (el.btnExportJson) {
+      el.btnExportJson.addEventListener('click', () => {
+        exportToJson(true);
+        if (el.exportDropdownMenu) el.exportDropdownMenu.classList.add('hidden');
+      });
+    }
+
+    if (el.btnExportJsonModal) {
+      el.btnExportJsonModal.addEventListener('click', () => {
+        exportToJson(true);
+      });
+    }
 
     // Print Button (Top bar)
     el.btnPrintRoute.addEventListener('click', prepareAndPreview);
