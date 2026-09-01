@@ -751,8 +751,22 @@
     }
 
     const idsToDelete = Array.from(state.selectedItemIds);
+    const affectedRoutes = new Set();
+    state.items.forEach(it => {
+      if (state.selectedItemIds.has(it.id)) {
+        affectedRoutes.add(`${it.day}:::${it.route_name}`);
+      }
+    });
+
     state.items = state.items.filter(it => !state.selectedItemIds.has(it.id));
     state.selectedItemIds.clear();
+
+    // Auto-renumber each affected route
+    affectedRoutes.forEach(key => {
+      const [d, r] = key.split(':::');
+      renumberRoute(d, r);
+      syncRouteReorder(d, r);
+    });
 
     if (state.apiAvailable) {
       try {
@@ -1118,6 +1132,53 @@
     el.formRoute.innerHTML = routesHtml;
   }
 
+    // ==================== AUTO-RENUMBERING HELPERS ====================
+  function renumberRoute(day, route_name, targetItem = null, newSequence = null) {
+    if (!day || !route_name) return [];
+
+    let routeItems = state.items.filter(it => it.day === day && it.route_name === route_name);
+
+    if (targetItem && newSequence != null) {
+      routeItems = routeItems.filter(it => it.id !== targetItem.id);
+      routeItems.sort((a, b) => (Number(a.sequence) || 0) - (Number(b.sequence) || 0));
+      const insertIdx = maxClamp(Number(newSequence) - 1, 0, routeItems.length);
+      routeItems.splice(insertIdx, 0, targetItem);
+    } else {
+      routeItems.sort((a, b) => (Number(a.sequence) || 0) - (Number(b.sequence) || 0));
+    }
+
+    routeItems.forEach((it, idx) => {
+      it.sequence = idx + 1;
+      const globalIt = state.items.find(x => x.id === it.id);
+      if (globalIt) globalIt.sequence = idx + 1;
+    });
+
+    return routeItems;
+  }
+
+  function maxClamp(val, min, max) {
+    return Math.max(min, Math.min(max, val));
+  }
+
+  async function syncRouteReorder(day, route_name) {
+    saveLocalData();
+    if (state.apiAvailable) {
+      try {
+        const routeItems = state.items
+          .filter(it => it.day === day && it.route_name === route_name)
+          .map(it => ({ id: it.id, sequence: it.sequence }));
+
+        await fetch('/api/items/reorder', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ items: routeItems })
+        });
+      } catch (err) {
+        console.error('Failed to sync reorder to backend:', err);
+      }
+    }
+  }
+
   // ==================== DRAG & DROP REORDERING ====================
   function bindDragAndDropEvents() {
     const rows = el.tableBody.querySelectorAll('.draggable-row');
@@ -1308,8 +1369,12 @@
       // UPDATE
       const itemIndex = state.items.findIndex(it => it.id === id);
       if (itemIndex !== -1) {
-        state.items[itemIndex] = {
-          ...state.items[itemIndex],
+        const oldItem = state.items[itemIndex];
+        const oldDay = oldItem.day;
+        const oldRoute = oldItem.route_name;
+
+        const updatedItem = {
+          ...oldItem,
           day,
           route_name,
           sheet_name,
@@ -1321,12 +1386,25 @@
           amount
         };
 
+        state.items[itemIndex] = updatedItem;
+
+        // Auto-renumber route and shift other stores
+        if (oldDay !== day || oldRoute !== route_name) {
+          renumberRoute(oldDay, oldRoute);
+          renumberRoute(day, route_name, updatedItem, sequence);
+          syncRouteReorder(oldDay, oldRoute);
+          syncRouteReorder(day, route_name);
+        } else {
+          renumberRoute(day, route_name, updatedItem, sequence);
+          syncRouteReorder(day, route_name);
+        }
+
         if (state.apiAvailable) {
           try {
             await fetch(`/api/items/${id}`, {
               method: 'PUT',
               headers: { 'Content-Type': 'application/json' },
-              body: JSON.stringify(state.items[itemIndex])
+              body: JSON.stringify(updatedItem)
             });
           } catch (err) {
             console.error('API update failed:', err);
@@ -1334,7 +1412,7 @@
         }
 
         saveLocalData();
-        showToast(`แก้ไขข้อมูล "${customer_name}" เรียบร้อยแล้ว`, 'success');
+        showToast(`แก้ไขข้อมูลและจัดเรียงลำดับใหม่เรียบร้อยแล้ว`, 'success');
       }
     } else {
       // CREATE
@@ -1354,6 +1432,9 @@
 
       state.items.push(newItem);
 
+      // Auto-renumber route with new item inserted
+      renumberRoute(day, route_name, newItem, sequence);
+
       if (state.apiAvailable) {
         try {
           const res = await fetch('/api/items', {
@@ -1367,13 +1448,14 @@
               newItem.id = resData.data.id;
             }
           }
+          syncRouteReorder(day, route_name);
         } catch (err) {
           console.error('API create failed:', err);
         }
       }
 
       saveLocalData();
-      showToast(`เพิ่มร้านค้า "${customer_name}" เรียบร้อยแล้ว`, 'success');
+      showToast(`เพิ่มร้านค้าและจัดเรียงลำดับใหม่เรียบร้อยแล้ว`, 'success');
     }
 
     closeModal();
@@ -1391,12 +1473,19 @@
       return;
     }
 
+    const day = item.day;
+    const route_name = item.route_name;
+
     state.items = state.items.filter(it => it.id !== id);
     state.selectedItemIds.delete(id);
+
+    // Auto-renumber remaining items in this route
+    renumberRoute(day, route_name);
 
     if (state.apiAvailable) {
       try {
         await fetch(`/api/items/${id}`, { method: 'DELETE' });
+        syncRouteReorder(day, route_name);
       } catch (err) {
         console.error('API delete failed:', err);
       }
@@ -1405,7 +1494,7 @@
     saveLocalData();
     renderTable();
     updateStats();
-    showToast(`ลบ "${item.customer_name}" เรียบร้อยแล้ว`, 'info');
+    showToast(`ลบ "${item.customer_name}" และจัดเรียงลำดับใหม่อัตโนมัติเรียบร้อย`, 'info');
   }
 
   // ==================== PRINT ROUTE SHEET & PREVIEW ====================
