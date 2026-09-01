@@ -205,6 +205,15 @@
       const stored = localStorage.getItem(STORAGE_KEY);
       if (stored) {
         state.items = JSON.parse(stored);
+        // Ensure all loaded items have PC prefix
+        let hadChanges = false;
+        state.items.forEach(it => {
+          if (it.customer_code && !String(it.customer_code).trim().toUpperCase().startsWith('PC')) {
+            it.customer_code = 'PC' + String(it.customer_code).trim();
+            hadChanges = true;
+          }
+        });
+        if (hadChanges) saveLocalData();
       } else if (window.INITIAL_ROUTES_DATA && Array.isArray(window.INITIAL_ROUTES_DATA)) {
         state.items = JSON.parse(JSON.stringify(window.INITIAL_ROUTES_DATA));
         saveLocalData();
@@ -1280,7 +1289,10 @@
     const day = el.formDay.value;
     const route_name = el.formRoute.value;
     const sequence = Number(el.formSequence.value) || 1;
-    const customer_code = el.formCode.value.trim();
+    let customer_code = el.formCode.value.trim();
+    if (customer_code && !customer_code.toUpperCase().startsWith('PC')) {
+      customer_code = 'PC' + customer_code;
+    }
     const customer_name = el.formName.value.trim();
     const remark = el.formRemark.value.trim();
     const boxes = el.formBoxes.value !== '' ? Number(el.formBoxes.value) : null;

@@ -1,4 +1,5 @@
-// Initial Route Data extracted from สายส่งสินค้า21.xlsx (1148 items)
+// Initial dataset of 18 delivery routes with 1,148 stores
+// Generated from Excel file: สายส่งสินค้า21.xlsx
 window.INITIAL_ROUTES_DATA = [
   {
     "id": 1,
@@ -8,7 +9,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 1,
     "customer_name": "หนึ่งเภสัช",
     "remark": "",
-    "customer_code": "590032"
+    "customer_code": "PC590032"
   },
   {
     "id": 2,
@@ -18,7 +19,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 2,
     "customer_name": "ณัฐนิชา",
     "remark": "",
-    "customer_code": "620102"
+    "customer_code": "PC620102"
   },
   {
     "id": 3,
@@ -28,7 +29,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 3,
     "customer_name": "ธนาเภสัช",
     "remark": "",
-    "customer_code": "680050"
+    "customer_code": "PC680050"
   },
   {
     "id": 4,
@@ -38,7 +39,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 4,
     "customer_name": "บ้านยาเภสัชท่าเรือ",
     "remark": "",
-    "customer_code": "610139"
+    "customer_code": "PC610139"
   },
   {
     "id": 5,
@@ -48,7 +49,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 5,
     "customer_name": "บลูติโน่..รับพระพุทธบาท",
     "remark": "",
-    "customer_code": "580115"
+    "customer_code": "PC580115"
   },
   {
     "id": 6,
@@ -58,7 +59,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 6,
     "customer_name": "หนองแซงเภสัช",
     "remark": "",
-    "customer_code": "550004"
+    "customer_code": "PC550004"
   },
   {
     "id": 7,
@@ -68,7 +69,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 7,
     "customer_name": "แทนคุณ",
     "remark": "",
-    "customer_code": "610143"
+    "customer_code": "PC610143"
   },
   {
     "id": 8,
@@ -78,7 +79,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 8,
     "customer_name": "อารีย์",
     "remark": "",
-    "customer_code": "540013"
+    "customer_code": "PC540013"
   },
   {
     "id": 9,
@@ -88,7 +89,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 9,
     "customer_name": "ศาลายา",
     "remark": "",
-    "customer_code": "670082"
+    "customer_code": "PC670082"
   },
   {
     "id": 10,
@@ -98,7 +99,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 10,
     "customer_name": "นานายา 2",
     "remark": "",
-    "customer_code": "540017"
+    "customer_code": "PC540017"
   },
   {
     "id": 11,
@@ -108,7 +109,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 11,
     "customer_name": "เมฆสวัส2",
     "remark": "",
-    "customer_code": "660078"
+    "customer_code": "PC660078"
   },
   {
     "id": 12,
@@ -118,7 +119,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 12,
     "customer_name": "เกียรตินิยม",
     "remark": "โอน",
-    "customer_code": "580028"
+    "customer_code": "PC580028"
   },
   {
     "id": 13,
@@ -128,7 +129,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 13,
     "customer_name": "บ้านยาสุขใจ",
     "remark": "",
-    "customer_code": "690047"
+    "customer_code": "PC690047"
   },
   {
     "id": 14,
@@ -138,7 +139,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 14,
     "customer_name": "สวรรยา",
     "remark": "",
-    "customer_code": "610148"
+    "customer_code": "PC610148"
   },
   {
     "id": 15,
@@ -148,7 +149,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 15,
     "customer_name": "เพื่อนยาเภสัช",
     "remark": "",
-    "customer_code": "560073"
+    "customer_code": "PC560073"
   },
   {
     "id": 16,
@@ -158,7 +159,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 16,
     "customer_name": "จินต์จุฑา",
     "remark": "",
-    "customer_code": "640056"
+    "customer_code": "PC640056"
   },
   {
     "id": 17,
@@ -168,7 +169,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 17,
     "customer_name": "แพทย์พชรภัทร",
     "remark": "",
-    "customer_code": "590127"
+    "customer_code": "PC590127"
   },
   {
     "id": 18,
@@ -178,7 +179,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 18,
     "customer_name": "ยากัลยา",
     "remark": "",
-    "customer_code": "540021"
+    "customer_code": "PC540021"
   },
   {
     "id": 19,
@@ -188,7 +189,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 19,
     "customer_name": "ชณัฐกานต์เภสัช",
     "remark": "โอน",
-    "customer_code": "540097"
+    "customer_code": "PC540097"
   },
   {
     "id": 20,
@@ -198,7 +199,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 20,
     "customer_name": "ปุ๊กเภสัช",
     "remark": "",
-    "customer_code": "670043"
+    "customer_code": "PC670043"
   },
   {
     "id": 21,
@@ -208,7 +209,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 21,
     "customer_name": "มลธิชาปิดร้านแล้ว",
     "remark": "",
-    "customer_code": "560075"
+    "customer_code": "PC560075"
   },
   {
     "id": 22,
@@ -218,7 +219,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 22,
     "customer_name": "เภสัชบ้านอ้อย",
     "remark": "โอน",
-    "customer_code": "570015"
+    "customer_code": "PC570015"
   },
   {
     "id": 23,
@@ -228,7 +229,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 23,
     "customer_name": "ซี.เค",
     "remark": "",
-    "customer_code": "650012"
+    "customer_code": "PC650012"
   },
   {
     "id": 24,
@@ -238,7 +239,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 24,
     "customer_name": "บ้านยาริมชล",
     "remark": "",
-    "customer_code": "520042"
+    "customer_code": "PC520042"
   },
   {
     "id": 25,
@@ -248,7 +249,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 25,
     "customer_name": "ยา นภัคมณ",
     "remark": "",
-    "customer_code": "600028"
+    "customer_code": "PC600028"
   },
   {
     "id": 26,
@@ -258,7 +259,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 26,
     "customer_name": "กล่องยา",
     "remark": "โอน",
-    "customer_code": "580005"
+    "customer_code": "PC580005"
   },
   {
     "id": 27,
@@ -268,7 +269,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 27,
     "customer_name": "สรรพคุณ",
     "remark": "",
-    "customer_code": "610066"
+    "customer_code": "PC610066"
   },
   {
     "id": 28,
@@ -278,7 +279,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 28,
     "customer_name": "เกรียงไกร",
     "remark": "",
-    "customer_code": "580022"
+    "customer_code": "PC580022"
   },
   {
     "id": 29,
@@ -288,7 +289,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 29,
     "customer_name": "สมาพร",
     "remark": "",
-    "customer_code": "610116"
+    "customer_code": "PC610116"
   },
   {
     "id": 30,
@@ -298,7 +299,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 30,
     "customer_name": "เพื่อนยาปากเพรียว",
     "remark": "",
-    "customer_code": "610088"
+    "customer_code": "PC610088"
   },
   {
     "id": 31,
@@ -308,7 +309,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 31,
     "customer_name": "บขส.ฟาร์ม่าแคร์",
     "remark": "",
-    "customer_code": "670060"
+    "customer_code": "PC670060"
   },
   {
     "id": 32,
@@ -318,7 +319,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 32,
     "customer_name": "บ้านยาซอย9",
     "remark": "",
-    "customer_code": "680099"
+    "customer_code": "PC680099"
   },
   {
     "id": 33,
@@ -328,7 +329,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 33,
     "customer_name": "GoodLuck Pharmacy",
     "remark": "",
-    "customer_code": "660023"
+    "customer_code": "PC660023"
   },
   {
     "id": 34,
@@ -338,7 +339,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 34,
     "customer_name": "ลีลาวดีเภสัช",
     "remark": "",
-    "customer_code": "570154"
+    "customer_code": "PC570154"
   },
   {
     "id": 35,
@@ -348,7 +349,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 35,
     "customer_name": "กิ่งเภสัข",
     "remark": "",
-    "customer_code": "690088"
+    "customer_code": "PC690088"
   },
   {
     "id": 36,
@@ -358,7 +359,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 36,
     "customer_name": "บ้านยาและสุขภาพ",
     "remark": "",
-    "customer_code": "520021"
+    "customer_code": "PC520021"
   },
   {
     "id": 37,
@@ -368,7 +369,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 37,
     "customer_name": "มียา",
     "remark": "",
-    "customer_code": "670025"
+    "customer_code": "PC670025"
   },
   {
     "id": 38,
@@ -378,7 +379,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 38,
     "customer_name": "ย.ยาเภสัช",
     "remark": "",
-    "customer_code": "580161"
+    "customer_code": "PC580161"
   },
   {
     "id": 39,
@@ -388,7 +389,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 39,
     "customer_name": "คลินิก หู คอ จมูก หมอณัฐชาพร",
     "remark": "",
-    "customer_code": "690028"
+    "customer_code": "PC690028"
   },
   {
     "id": 40,
@@ -398,7 +399,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 40,
     "customer_name": "พรชัย",
     "remark": "",
-    "customer_code": "620001"
+    "customer_code": "PC620001"
   },
   {
     "id": 41,
@@ -408,7 +409,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 41,
     "customer_name": "ติ๋วห้องยา",
     "remark": "",
-    "customer_code": "560037"
+    "customer_code": "PC560037"
   },
   {
     "id": 42,
@@ -418,7 +419,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 42,
     "customer_name": "จุฬาเภสัช",
     "remark": "",
-    "customer_code": "520036"
+    "customer_code": "PC520036"
   },
   {
     "id": 43,
@@ -428,7 +429,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 43,
     "customer_name": "หมอยาสระบุรี",
     "remark": "",
-    "customer_code": "540023"
+    "customer_code": "PC540023"
   },
   {
     "id": 44,
@@ -438,7 +439,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 44,
     "customer_name": "ศรีทอง",
     "remark": "",
-    "customer_code": "600050"
+    "customer_code": "PC600050"
   },
   {
     "id": 45,
@@ -448,7 +449,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 45,
     "customer_name": "สายสี่เภสัช",
     "remark": "",
-    "customer_code": "600008"
+    "customer_code": "PC600008"
   },
   {
     "id": 46,
@@ -458,7 +459,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 46,
     "customer_name": "เบเวอร์ลี่",
     "remark": "",
-    "customer_code": "660120"
+    "customer_code": "PC660120"
   },
   {
     "id": 47,
@@ -468,7 +469,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 47,
     "customer_name": "คุณพัฒ",
     "remark": "",
-    "customer_code": "570129"
+    "customer_code": "PC570129"
   },
   {
     "id": 48,
@@ -478,7 +479,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 48,
     "customer_name": "บ้านยาเภสัช สระบุรี",
     "remark": "",
-    "customer_code": "480008"
+    "customer_code": "PC480008"
   },
   {
     "id": 49,
@@ -488,7 +489,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 49,
     "customer_name": "ลักษณ์เภสัช",
     "remark": "",
-    "customer_code": "560100"
+    "customer_code": "PC560100"
   },
   {
     "id": 50,
@@ -498,7 +499,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 50,
     "customer_name": "จริงใจเภสัช",
     "remark": "",
-    "customer_code": "640035"
+    "customer_code": "PC640035"
   },
   {
     "id": 51,
@@ -508,7 +509,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 51,
     "customer_name": "ห้องยาราชพฤกษ์",
     "remark": "",
-    "customer_code": "660106"
+    "customer_code": "PC660106"
   },
   {
     "id": 52,
@@ -518,7 +519,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 52,
     "customer_name": "นานายา พระพุทธบาท",
     "remark": "โอน",
-    "customer_code": "550103"
+    "customer_code": "PC550103"
   },
   {
     "id": 53,
@@ -528,7 +529,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 53,
     "customer_name": "สุกิจเภสัช",
     "remark": "",
-    "customer_code": "690058"
+    "customer_code": "PC690058"
   },
   {
     "id": 54,
@@ -538,7 +539,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 54,
     "customer_name": "แสนเจริญ",
     "remark": "",
-    "customer_code": "610128"
+    "customer_code": "PC610128"
   },
   {
     "id": 55,
@@ -548,7 +549,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 55,
     "customer_name": "กิมเภสัช",
     "remark": "",
-    "customer_code": "670006"
+    "customer_code": "PC670006"
   },
   {
     "id": 56,
@@ -558,7 +559,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 56,
     "customer_name": "สหยาดีเภสัช",
     "remark": "",
-    "customer_code": "610062"
+    "customer_code": "PC610062"
   },
   {
     "id": 57,
@@ -568,7 +569,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 1,
     "customer_name": "ยาบ้านเรา",
     "remark": "",
-    "customer_code": "620126"
+    "customer_code": "PC620126"
   },
   {
     "id": 58,
@@ -578,7 +579,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 2,
     "customer_name": "บ้านเภสัช กงไกรลาศ",
     "remark": "",
-    "customer_code": "590107"
+    "customer_code": "PC590107"
   },
   {
     "id": 59,
@@ -588,7 +589,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 3,
     "customer_name": "คลินิกธีรวิทย์การแพทย์",
     "remark": "",
-    "customer_code": "610133"
+    "customer_code": "PC610133"
   },
   {
     "id": 60,
@@ -598,7 +599,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 4,
     "customer_name": "เฮียไถ่",
     "remark": "",
-    "customer_code": "610112"
+    "customer_code": "PC610112"
   },
   {
     "id": 61,
@@ -608,7 +609,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 5,
     "customer_name": "มนูเภสัช",
     "remark": "",
-    "customer_code": "600027"
+    "customer_code": "PC600027"
   },
   {
     "id": 62,
@@ -618,7 +619,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 6,
     "customer_name": "ท็อปเภสัช",
     "remark": "",
-    "customer_code": "650059"
+    "customer_code": "PC650059"
   },
   {
     "id": 63,
@@ -628,7 +629,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 7,
     "customer_name": "จิรายา",
     "remark": "",
-    "customer_code": "670030"
+    "customer_code": "PC670030"
   },
   {
     "id": 64,
@@ -638,7 +639,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 8,
     "customer_name": "ธนัชชา",
     "remark": "",
-    "customer_code": "660125"
+    "customer_code": "PC660125"
   },
   {
     "id": 65,
@@ -648,7 +649,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 9,
     "customer_name": "แพทย์วิษณุ",
     "remark": "",
-    "customer_code": "670132"
+    "customer_code": "PC670132"
   },
   {
     "id": 66,
@@ -658,7 +659,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 10,
     "customer_name": "แพทย์จารุวรรณ",
     "remark": "",
-    "customer_code": "600032"
+    "customer_code": "PC600032"
   },
   {
     "id": 67,
@@ -668,7 +669,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 11,
     "customer_name": "พิมใจ",
     "remark": "",
-    "customer_code": "600114"
+    "customer_code": "PC600114"
   },
   {
     "id": 68,
@@ -678,7 +679,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 12,
     "customer_name": "วิศิษฐ์",
     "remark": "",
-    "customer_code": "600130"
+    "customer_code": "PC600130"
   },
   {
     "id": 69,
@@ -688,7 +689,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 13,
     "customer_name": "คลังยา",
     "remark": "",
-    "customer_code": "620015"
+    "customer_code": "PC620015"
   },
   {
     "id": 70,
@@ -698,7 +699,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 14,
     "customer_name": "แสงสวรรค์ฟาร์มาซี",
     "remark": "",
-    "customer_code": "510006"
+    "customer_code": "PC510006"
   },
   {
     "id": 71,
@@ -708,7 +709,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 15,
     "customer_name": "เรืองเวทย์",
     "remark": "",
-    "customer_code": "60052"
+    "customer_code": "PC60052"
   },
   {
     "id": 72,
@@ -718,7 +719,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 16,
     "customer_name": "แพทย์จีรัญดา",
     "remark": "",
-    "customer_code": "670109"
+    "customer_code": "PC670109"
   },
   {
     "id": 73,
@@ -728,7 +729,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 17,
     "customer_name": "คุณเภสัช",
     "remark": "",
-    "customer_code": "590021"
+    "customer_code": "PC590021"
   },
   {
     "id": 74,
@@ -738,7 +739,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 18,
     "customer_name": "ครอบครัวยา",
     "remark": "",
-    "customer_code": "610151"
+    "customer_code": "PC610151"
   },
   {
     "id": 75,
@@ -748,7 +749,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 19,
     "customer_name": "จุมภฎ",
     "remark": "",
-    "customer_code": "590071"
+    "customer_code": "PC590071"
   },
   {
     "id": 76,
@@ -758,7 +759,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 20,
     "customer_name": "ร้านคลินิกยาศรีสำโรง",
     "remark": "",
-    "customer_code": "620084"
+    "customer_code": "PC620084"
   },
   {
     "id": 77,
@@ -768,7 +769,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 21,
     "customer_name": "นายแพทย์เสถียรพงษ์",
     "remark": "",
-    "customer_code": "610039"
+    "customer_code": "PC610039"
   },
   {
     "id": 78,
@@ -778,7 +779,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 22,
     "customer_name": "ณ ยา 2",
     "remark": "",
-    "customer_code": "620117"
+    "customer_code": "PC620117"
   },
   {
     "id": 79,
@@ -788,7 +789,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 23,
     "customer_name": "ณ ยา",
     "remark": "",
-    "customer_code": "600085"
+    "customer_code": "PC600085"
   },
   {
     "id": 80,
@@ -798,7 +799,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 24,
     "customer_name": "คลีนิกยา",
     "remark": "",
-    "customer_code": "630096"
+    "customer_code": "PC630096"
   },
   {
     "id": 81,
@@ -808,7 +809,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 25,
     "customer_name": "เภสัชกาญจณา",
     "remark": "",
-    "customer_code": "580091"
+    "customer_code": "PC580091"
   },
   {
     "id": 82,
@@ -818,7 +819,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 26,
     "customer_name": "พบยา",
     "remark": "",
-    "customer_code": "630080"
+    "customer_code": "PC630080"
   },
   {
     "id": 83,
@@ -828,7 +829,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 27,
     "customer_name": "คลินิกเด็กหมอกบ",
     "remark": "",
-    "customer_code": "590116"
+    "customer_code": "PC590116"
   },
   {
     "id": 84,
@@ -838,7 +839,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 28,
     "customer_name": "เกรทเภสัช",
     "remark": "",
-    "customer_code": "680120"
+    "customer_code": "PC680120"
   },
   {
     "id": 85,
@@ -848,7 +849,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 29,
     "customer_name": "สถานียา",
     "remark": "",
-    "customer_code": "670134"
+    "customer_code": "PC670134"
   },
   {
     "id": 86,
@@ -858,7 +859,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 30,
     "customer_name": "หยูกยา",
     "remark": "",
-    "customer_code": "670075"
+    "customer_code": "PC670075"
   },
   {
     "id": 87,
@@ -868,7 +869,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 31,
     "customer_name": "หมอประชา",
     "remark": "",
-    "customer_code": "610142"
+    "customer_code": "PC610142"
   },
   {
     "id": 88,
@@ -878,7 +879,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 32,
     "customer_name": "ทับผึ้ง",
     "remark": "",
-    "customer_code": "650056"
+    "customer_code": "PC650056"
   },
   {
     "id": 89,
@@ -888,7 +889,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 33,
     "customer_name": "บ้านไร่เภสัช",
     "remark": "",
-    "customer_code": "690065"
+    "customer_code": "PC690065"
   },
   {
     "id": 90,
@@ -898,7 +899,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 34,
     "customer_name": "จริงใจ",
     "remark": "",
-    "customer_code": "670038"
+    "customer_code": "PC670038"
   },
   {
     "id": 91,
@@ -908,7 +909,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 35,
     "customer_name": "รักษ์เภสัช",
     "remark": "",
-    "customer_code": "570048"
+    "customer_code": "PC570048"
   },
   {
     "id": 92,
@@ -918,7 +919,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 36,
     "customer_name": "ด็อกเตอร์",
     "remark": "",
-    "customer_code": "640107"
+    "customer_code": "PC640107"
   },
   {
     "id": 93,
@@ -928,7 +929,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 37,
     "customer_name": "PharmaCare",
     "remark": "",
-    "customer_code": "620109"
+    "customer_code": "PC620109"
   },
   {
     "id": 94,
@@ -938,7 +939,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 38,
     "customer_name": "แพทย์หญิงรังสินี",
     "remark": "",
-    "customer_code": "600089"
+    "customer_code": "PC600089"
   },
   {
     "id": 95,
@@ -948,7 +949,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 39,
     "customer_name": "พิพัฒน์ฟาร์มาซี",
     "remark": "",
-    "customer_code": "680039"
+    "customer_code": "PC680039"
   },
   {
     "id": 96,
@@ -958,7 +959,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 40,
     "customer_name": "เมเภสัช",
     "remark": "",
-    "customer_code": "580065"
+    "customer_code": "PC580065"
   },
   {
     "id": 97,
@@ -968,7 +969,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 41,
     "customer_name": "ธานีเภสัช",
     "remark": "",
-    "customer_code": "650128"
+    "customer_code": "PC650128"
   },
   {
     "id": 98,
@@ -978,7 +979,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 42,
     "customer_name": "บ้านยาเภสัช",
     "remark": "",
-    "customer_code": "570007"
+    "customer_code": "PC570007"
   },
   {
     "id": 99,
@@ -988,7 +989,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 43,
     "customer_name": "มุมยา สุโขทัย",
     "remark": "",
-    "customer_code": "640098"
+    "customer_code": "PC640098"
   },
   {
     "id": 100,
@@ -998,7 +999,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 44,
     "customer_name": "เรือนสรรพยา",
     "remark": "",
-    "customer_code": "590138"
+    "customer_code": "PC590138"
   },
   {
     "id": 101,
@@ -1008,7 +1009,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 45,
     "customer_name": "ปั๊มยา",
     "remark": "",
-    "customer_code": "650094"
+    "customer_code": "PC650094"
   },
   {
     "id": 102,
@@ -1018,7 +1019,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 46,
     "customer_name": "คลังยาคีรีมาศ",
     "remark": "",
-    "customer_code": "620111"
+    "customer_code": "PC620111"
   },
   {
     "id": 103,
@@ -1028,7 +1029,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 47,
     "customer_name": "วังยากำแพงเพชร",
     "remark": "",
-    "customer_code": "590006"
+    "customer_code": "PC590006"
   },
   {
     "id": 104,
@@ -1038,7 +1039,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 48,
     "customer_name": "วังยา2",
     "remark": "",
-    "customer_code": "650120"
+    "customer_code": "PC650120"
   },
   {
     "id": 105,
@@ -1048,7 +1049,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 49,
     "customer_name": "แสนยาเภสัช",
     "remark": "",
-    "customer_code": "600063"
+    "customer_code": "PC600063"
   },
   {
     "id": 106,
@@ -1058,7 +1059,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 50,
     "customer_name": "บ้านยาธานี",
     "remark": "",
-    "customer_code": "660068"
+    "customer_code": "PC660068"
   },
   {
     "id": 107,
@@ -1068,7 +1069,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 51,
     "customer_name": "บ้านยาชากังราว",
     "remark": "",
-    "customer_code": "520045"
+    "customer_code": "PC520045"
   },
   {
     "id": 108,
@@ -1078,7 +1079,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 52,
     "customer_name": "กระปุกยา",
     "remark": "",
-    "customer_code": "640121"
+    "customer_code": "PC640121"
   },
   {
     "id": 109,
@@ -1088,7 +1089,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 53,
     "customer_name": "ภควัตเภสัช",
     "remark": "",
-    "customer_code": "540147"
+    "customer_code": "PC540147"
   },
   {
     "id": 110,
@@ -1098,7 +1099,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 54,
     "customer_name": "ซีเจอาร์(ไชยเจริญ)",
     "remark": "",
-    "customer_code": "580118"
+    "customer_code": "PC580118"
   },
   {
     "id": 111,
@@ -1108,7 +1109,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 55,
     "customer_name": "ชากังราว",
     "remark": "",
-    "customer_code": "550037"
+    "customer_code": "PC550037"
   },
   {
     "id": 112,
@@ -1118,7 +1119,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 56,
     "customer_name": "ชากังราว สวนจิตร",
     "remark": "",
-    "customer_code": "630053"
+    "customer_code": "PC630053"
   },
   {
     "id": 113,
@@ -1128,7 +1129,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 57,
     "customer_name": "ยูนิค",
     "remark": "",
-    "customer_code": "650124"
+    "customer_code": "PC650124"
   },
   {
     "id": 114,
@@ -1138,7 +1139,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 58,
     "customer_name": "พาณิภัคเภสัช",
     "remark": "",
-    "customer_code": "670129"
+    "customer_code": "PC670129"
   },
   {
     "id": 115,
@@ -1148,7 +1149,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 59,
     "customer_name": "สุชาดา",
     "remark": "",
-    "customer_code": "590002"
+    "customer_code": "PC590002"
   },
   {
     "id": 116,
@@ -1158,7 +1159,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 60,
     "customer_name": "บ้านยาสเตชัน",
     "remark": "",
-    "customer_code": "660067"
+    "customer_code": "PC660067"
   },
   {
     "id": 117,
@@ -1168,7 +1169,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 61,
     "customer_name": "หมอ สกล",
     "remark": "",
-    "customer_code": "550052"
+    "customer_code": "PC550052"
   },
   {
     "id": 118,
@@ -1178,7 +1179,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 62,
     "customer_name": "แพทย์หญิงปรารีญา",
     "remark": "",
-    "customer_code": "690022"
+    "customer_code": "PC690022"
   },
   {
     "id": 119,
@@ -1188,7 +1189,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 63,
     "customer_name": "ห้องยาฟาร์มาซี",
     "remark": "",
-    "customer_code": "680041"
+    "customer_code": "PC680041"
   },
   {
     "id": 120,
@@ -1198,7 +1199,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 64,
     "customer_name": "ธีรภัทรเภสัช",
     "remark": "",
-    "customer_code": "670061"
+    "customer_code": "PC670061"
   },
   {
     "id": 121,
@@ -1208,7 +1209,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 65,
     "customer_name": "สองเภสัช",
     "remark": "",
-    "customer_code": "540128"
+    "customer_code": "PC540128"
   },
   {
     "id": 122,
@@ -1218,7 +1219,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 66,
     "customer_name": "บ้านยา3",
     "remark": "",
-    "customer_code": "630023"
+    "customer_code": "PC630023"
   },
   {
     "id": 123,
@@ -1228,7 +1229,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 67,
     "customer_name": "เติมเต็มยา",
     "remark": "",
-    "customer_code": "660042"
+    "customer_code": "PC660042"
   },
   {
     "id": 124,
@@ -1238,7 +1239,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 68,
     "customer_name": "ก้องภพ",
     "remark": "",
-    "customer_code": "610150"
+    "customer_code": "PC610150"
   },
   {
     "id": 125,
@@ -1248,7 +1249,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 69,
     "customer_name": "ปันยา",
     "remark": "",
-    "customer_code": "540089"
+    "customer_code": "PC540089"
   },
   {
     "id": 126,
@@ -1258,7 +1259,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 70,
     "customer_name": "บ้านยาอุ่นใจ",
     "remark": "",
-    "customer_code": "540068"
+    "customer_code": "PC540068"
   },
   {
     "id": 127,
@@ -1268,7 +1269,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 71,
     "customer_name": "บ้านยา อุ่นใจ สาขา2",
     "remark": "",
-    "customer_code": "600002"
+    "customer_code": "PC600002"
   },
   {
     "id": 128,
@@ -1278,7 +1279,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 72,
     "customer_name": "หนองเบนเภสัช",
     "remark": "",
-    "customer_code": "670017"
+    "customer_code": "PC670017"
   },
   {
     "id": 129,
@@ -1288,7 +1289,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 1,
     "customer_name": "ยาคณะสาขา2",
     "remark": "",
-    "customer_code": "610095"
+    "customer_code": "PC610095"
   },
   {
     "id": 130,
@@ -1298,7 +1299,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 2,
     "customer_name": "ฟาร์ม โซล่า",
     "remark": "",
-    "customer_code": "680038"
+    "customer_code": "PC680038"
   },
   {
     "id": 131,
@@ -1308,7 +1309,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 3,
     "customer_name": "บิ๊กเบสเภสัช",
     "remark": "",
-    "customer_code": "670059"
+    "customer_code": "PC670059"
   },
   {
     "id": 132,
@@ -1318,7 +1319,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 4,
     "customer_name": "we love care",
     "remark": "",
-    "customer_code": "530075"
+    "customer_code": "PC530075"
   },
   {
     "id": 133,
@@ -1328,7 +1329,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 5,
     "customer_name": "ยาใกล้มอ",
     "remark": "",
-    "customer_code": "610086"
+    "customer_code": "PC610086"
   },
   {
     "id": 134,
@@ -1338,7 +1339,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 6,
     "customer_name": "ยาฮัก",
     "remark": "",
-    "customer_code": "660054"
+    "customer_code": "PC660054"
   },
   {
     "id": 135,
@@ -1348,7 +1349,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 7,
     "customer_name": "ศาลายา ท่าโพธิ์",
     "remark": "",
-    "customer_code": "570023"
+    "customer_code": "PC570023"
   },
   {
     "id": 136,
@@ -1358,7 +1359,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 8,
     "customer_name": "เหมือนฝัน",
     "remark": "",
-    "customer_code": "560138"
+    "customer_code": "PC560138"
   },
   {
     "id": 137,
@@ -1368,7 +1369,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 9,
     "customer_name": "แคปซูลยา",
     "remark": "",
-    "customer_code": "570005"
+    "customer_code": "PC570005"
   },
   {
     "id": 138,
@@ -1378,7 +1379,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 10,
     "customer_name": "บ้านยาซอย7",
     "remark": "",
-    "customer_code": "660018"
+    "customer_code": "PC660018"
   },
   {
     "id": 139,
@@ -1388,7 +1389,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 11,
     "customer_name": "บ้านยาสามพี่น้อง",
     "remark": "",
-    "customer_code": "650061"
+    "customer_code": "PC650061"
   },
   {
     "id": 140,
@@ -1398,7 +1399,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 12,
     "customer_name": "โอสถเฮาส์",
     "remark": "",
-    "customer_code": "660055"
+    "customer_code": "PC660055"
   },
   {
     "id": 141,
@@ -1408,7 +1409,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 13,
     "customer_name": "รักษ์ยา",
     "remark": "",
-    "customer_code": "590012"
+    "customer_code": "PC590012"
   },
   {
     "id": 142,
@@ -1418,7 +1419,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 14,
     "customer_name": "พีแคร์ฟาร์มา",
     "remark": "",
-    "customer_code": "580130"
+    "customer_code": "PC580130"
   },
   {
     "id": 143,
@@ -1428,7 +1429,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 15,
     "customer_name": "วรมิตร",
     "remark": "",
-    "customer_code": "550075"
+    "customer_code": "PC550075"
   },
   {
     "id": 144,
@@ -1438,7 +1439,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 16,
     "customer_name": "กล่องยา",
     "remark": "",
-    "customer_code": "610040"
+    "customer_code": "PC610040"
   },
   {
     "id": 145,
@@ -1448,7 +1449,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 17,
     "customer_name": "ปราชญ์ยา",
     "remark": "",
-    "customer_code": "600077"
+    "customer_code": "PC600077"
   },
   {
     "id": 146,
@@ -1458,7 +1459,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 18,
     "customer_name": "ช่องฟ้า",
     "remark": "",
-    "customer_code": "580174"
+    "customer_code": "PC580174"
   },
   {
     "id": 147,
@@ -1468,7 +1469,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 19,
     "customer_name": "ฟาร์มสุข",
     "remark": "",
-    "customer_code": "640109"
+    "customer_code": "PC640109"
   },
   {
     "id": 148,
@@ -1478,7 +1479,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 20,
     "customer_name": "ตลาดหัวรอเภสัช",
     "remark": "",
-    "customer_code": "660004"
+    "customer_code": "PC660004"
   },
   {
     "id": 149,
@@ -1488,7 +1489,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 21,
     "customer_name": "บ้านยาเอกา",
     "remark": "",
-    "customer_code": "680056"
+    "customer_code": "PC680056"
   },
   {
     "id": 150,
@@ -1498,7 +1499,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 22,
     "customer_name": "ช.อนัน",
     "remark": "",
-    "customer_code": "660100"
+    "customer_code": "PC660100"
   },
   {
     "id": 151,
@@ -1508,7 +1509,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 23,
     "customer_name": "สหภัณฑ์เภสัช",
     "remark": "",
-    "customer_code": "610141"
+    "customer_code": "PC610141"
   },
   {
     "id": 152,
@@ -1518,7 +1519,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 24,
     "customer_name": "ยาไอแคร์",
     "remark": "",
-    "customer_code": "540087"
+    "customer_code": "PC540087"
   },
   {
     "id": 153,
@@ -1528,7 +1529,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 25,
     "customer_name": "ฟาร์ม่าวิลล์",
     "remark": "",
-    "customer_code": "650001"
+    "customer_code": "PC650001"
   },
   {
     "id": 154,
@@ -1538,7 +1539,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 26,
     "customer_name": "ยาคณะ",
     "remark": "",
-    "customer_code": "530080"
+    "customer_code": "PC530080"
   },
   {
     "id": 155,
@@ -1548,7 +1549,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 27,
     "customer_name": "อุ่นใจ",
     "remark": "",
-    "customer_code": "570148"
+    "customer_code": "PC570148"
   },
   {
     "id": 156,
@@ -1558,7 +1559,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 28,
     "customer_name": "วิน วิน",
     "remark": "",
-    "customer_code": "540155"
+    "customer_code": "PC540155"
   },
   {
     "id": 157,
@@ -1568,7 +1569,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 29,
     "customer_name": "สองแคว",
     "remark": "",
-    "customer_code": "630093"
+    "customer_code": "PC630093"
   },
   {
     "id": 158,
@@ -1578,7 +1579,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 30,
     "customer_name": "ฟาร์มยาเภสัชกร",
     "remark": "",
-    "customer_code": "590016"
+    "customer_code": "PC590016"
   },
   {
     "id": 159,
@@ -1588,7 +1589,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 31,
     "customer_name": "คลินิก นายแพทย์บริบูรณ์",
     "remark": "",
-    "customer_code": "600138"
+    "customer_code": "PC600138"
   },
   {
     "id": 160,
@@ -1598,7 +1599,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 32,
     "customer_name": "บ้านยาสุขสบาย",
     "remark": "",
-    "customer_code": "660030"
+    "customer_code": "PC660030"
   },
   {
     "id": 161,
@@ -1608,7 +1609,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 33,
     "customer_name": "ดี-เทเบิล",
     "remark": "",
-    "customer_code": "670047"
+    "customer_code": "PC670047"
   },
   {
     "id": 162,
@@ -1618,7 +1619,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 34,
     "customer_name": "ยาหน้าร.พ พุทธ",
     "remark": "",
-    "customer_code": "610037"
+    "customer_code": "PC610037"
   },
   {
     "id": 163,
@@ -1628,7 +1629,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 35,
     "customer_name": "ยาประจำบ้าน",
     "remark": "",
-    "customer_code": "650033"
+    "customer_code": "PC650033"
   },
   {
     "id": 164,
@@ -1638,7 +1639,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 36,
     "customer_name": "พิษณุโลกรวมยา",
     "remark": "",
-    "customer_code": "620128"
+    "customer_code": "PC620128"
   },
   {
     "id": 165,
@@ -1648,7 +1649,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 37,
     "customer_name": "เจริญรักษ์คลินิกเวชกรรม",
     "remark": "",
-    "customer_code": "670102"
+    "customer_code": "PC670102"
   },
   {
     "id": 166,
@@ -1658,7 +1659,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 38,
     "customer_name": "สิรเภสัช",
     "remark": "",
-    "customer_code": "680046"
+    "customer_code": "PC680046"
   },
   {
     "id": 167,
@@ -1668,7 +1669,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 39,
     "customer_name": "ไชยานุภาพ",
     "remark": "",
-    "customer_code": "630051"
+    "customer_code": "PC630051"
   },
   {
     "id": 168,
@@ -1678,7 +1679,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 40,
     "customer_name": "มาลาเบี่ยง",
     "remark": "",
-    "customer_code": "600099"
+    "customer_code": "PC600099"
   },
   {
     "id": 169,
@@ -1688,7 +1689,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 41,
     "customer_name": "ศศิฟาร์มาซี",
     "remark": "",
-    "customer_code": "660001"
+    "customer_code": "PC660001"
   },
   {
     "id": 170,
@@ -1698,7 +1699,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 42,
     "customer_name": "ใกล้ยา",
     "remark": "",
-    "customer_code": "550089"
+    "customer_code": "PC550089"
   },
   {
     "id": 171,
@@ -1708,7 +1709,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 43,
     "customer_name": "โบว์ฟาร์มาซี",
     "remark": "",
-    "customer_code": "640044"
+    "customer_code": "PC640044"
   },
   {
     "id": 172,
@@ -1718,7 +1719,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 44,
     "customer_name": "ยาพร้อม",
     "remark": "",
-    "customer_code": "640132"
+    "customer_code": "PC640132"
   },
   {
     "id": 173,
@@ -1728,7 +1729,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 45,
     "customer_name": "ชัยพร",
     "remark": "",
-    "customer_code": "580029"
+    "customer_code": "PC580029"
   },
   {
     "id": 174,
@@ -1738,7 +1739,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 46,
     "customer_name": "ตระกูลยา",
     "remark": "",
-    "customer_code": "580001"
+    "customer_code": "PC580001"
   },
   {
     "id": 175,
@@ -1748,7 +1749,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 47,
     "customer_name": "ยาทูยู",
     "remark": "",
-    "customer_code": "570040"
+    "customer_code": "PC570040"
   },
   {
     "id": 176,
@@ -1758,7 +1759,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 48,
     "customer_name": "ห้องยาบ้านสวน",
     "remark": "",
-    "customer_code": "670054"
+    "customer_code": "PC670054"
   },
   {
     "id": 177,
@@ -1768,7 +1769,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 49,
     "customer_name": "เติมเต็ม",
     "remark": "",
-    "customer_code": "570106"
+    "customer_code": "PC570106"
   },
   {
     "id": 178,
@@ -1778,7 +1779,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 50,
     "customer_name": "เพชรรัตน์เภสัช",
     "remark": "",
-    "customer_code": "680037"
+    "customer_code": "PC680037"
   },
   {
     "id": 179,
@@ -1788,7 +1789,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 51,
     "customer_name": "วิสสุตา",
     "remark": "",
-    "customer_code": "670117"
+    "customer_code": "PC670117"
   },
   {
     "id": 180,
@@ -1798,7 +1799,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 52,
     "customer_name": "พร้อมเภสัช",
     "remark": "",
-    "customer_code": "590044"
+    "customer_code": "PC590044"
   },
   {
     "id": 181,
@@ -1808,7 +1809,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 53,
     "customer_name": "บ้านยาพี่ณัฏฐ์น้องนุช",
     "remark": "",
-    "customer_code": "670076"
+    "customer_code": "PC670076"
   },
   {
     "id": 182,
@@ -1818,7 +1819,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 1,
     "customer_name": "หมอยา",
     "remark": "",
-    "customer_code": "680064"
+    "customer_code": "PC680064"
   },
   {
     "id": 183,
@@ -1828,7 +1829,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 2,
     "customer_name": "บ้านยาบางนาก",
     "remark": "",
-    "customer_code": "630037"
+    "customer_code": "PC630037"
   },
   {
     "id": 184,
@@ -1838,7 +1839,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 3,
     "customer_name": "เม้ง",
     "remark": "",
-    "customer_code": "540056"
+    "customer_code": "PC540056"
   },
   {
     "id": 185,
@@ -1848,7 +1849,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 4,
     "customer_name": "ศักดิ์ประสิทธิ์",
     "remark": "",
-    "customer_code": "670139"
+    "customer_code": "PC670139"
   },
   {
     "id": 186,
@@ -1858,7 +1859,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 5,
     "customer_name": "เมืองไทย",
     "remark": "",
-    "customer_code": "540060"
+    "customer_code": "PC540060"
   },
   {
     "id": 187,
@@ -1868,7 +1869,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 6,
     "customer_name": "บ้านหมอคลินิก",
     "remark": "",
-    "customer_code": "670142"
+    "customer_code": "PC670142"
   },
   {
     "id": 188,
@@ -1878,7 +1879,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 7,
     "customer_name": "เจริญสิน",
     "remark": "",
-    "customer_code": "670098"
+    "customer_code": "PC670098"
   },
   {
     "id": 189,
@@ -1888,7 +1889,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 8,
     "customer_name": "อินทิรา",
     "remark": "",
-    "customer_code": "620133"
+    "customer_code": "PC620133"
   },
   {
     "id": 190,
@@ -1898,7 +1899,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 9,
     "customer_name": "ตะพานหิน",
     "remark": "",
-    "customer_code": "510064"
+    "customer_code": "PC510064"
   },
   {
     "id": 191,
@@ -1908,7 +1909,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 10,
     "customer_name": "สารพัดยา",
     "remark": "",
-    "customer_code": "680059"
+    "customer_code": "PC680059"
   },
   {
     "id": 192,
@@ -1918,7 +1919,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 11,
     "customer_name": "พูลสวัสดิ์",
     "remark": "",
-    "customer_code": "680006"
+    "customer_code": "PC680006"
   },
   {
     "id": 193,
@@ -1928,7 +1929,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 12,
     "customer_name": "ยาเภสัชกร",
     "remark": "",
-    "customer_code": "620030"
+    "customer_code": "PC620030"
   },
   {
     "id": 194,
@@ -1938,7 +1939,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 13,
     "customer_name": "รักษ์ยาพิจิตร",
     "remark": "",
-    "customer_code": "620039"
+    "customer_code": "PC620039"
   },
   {
     "id": 195,
@@ -1948,7 +1949,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 14,
     "customer_name": "เทพโอสถ",
     "remark": "",
-    "customer_code": "670078"
+    "customer_code": "PC670078"
   },
   {
     "id": 196,
@@ -1958,7 +1959,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 15,
     "customer_name": "สุบิน",
     "remark": "",
-    "customer_code": "570137"
+    "customer_code": "PC570137"
   },
   {
     "id": 197,
@@ -1968,7 +1969,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 16,
     "customer_name": "พีวีเอ็น",
     "remark": "",
-    "customer_code": "680095"
+    "customer_code": "PC680095"
   },
   {
     "id": 198,
@@ -1978,7 +1979,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 17,
     "customer_name": "แตงไทยเวชภัณฑ์ 2",
     "remark": "",
-    "customer_code": "680097"
+    "customer_code": "PC680097"
   },
   {
     "id": 199,
@@ -1988,7 +1989,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 18,
     "customer_name": "คลินิกยาพิจิตร",
     "remark": "",
-    "customer_code": "540081"
+    "customer_code": "PC540081"
   },
   {
     "id": 200,
@@ -1998,7 +1999,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 19,
     "customer_name": "พิจิตรรวมยา",
     "remark": "",
-    "customer_code": "620038"
+    "customer_code": "PC620038"
   },
   {
     "id": 201,
@@ -2008,7 +2009,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 20,
     "customer_name": "ณ บ้านยา",
     "remark": "",
-    "customer_code": "660107"
+    "customer_code": "PC660107"
   },
   {
     "id": 202,
@@ -2018,7 +2019,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 21,
     "customer_name": "เจริญเภสัช",
     "remark": "",
-    "customer_code": "510017"
+    "customer_code": "PC510017"
   },
   {
     "id": 203,
@@ -2028,7 +2029,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 22,
     "customer_name": "บ้านยาจอมเจริญ",
     "remark": "",
-    "customer_code": "680025"
+    "customer_code": "PC680025"
   },
   {
     "id": 204,
@@ -2038,7 +2039,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 23,
     "customer_name": "วงศ์โปธา",
     "remark": "",
-    "customer_code": "630064"
+    "customer_code": "PC630064"
   },
   {
     "id": 205,
@@ -2048,7 +2049,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 24,
     "customer_name": "ยาคณะสาขา2",
     "remark": "",
-    "customer_code": "610095"
+    "customer_code": "PC610095"
   },
   {
     "id": 206,
@@ -2058,7 +2059,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 25,
     "customer_name": "ฟาร์ม โซล่า",
     "remark": "",
-    "customer_code": "680038"
+    "customer_code": "PC680038"
   },
   {
     "id": 207,
@@ -2068,7 +2069,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 26,
     "customer_name": "บิ๊กเบสเภสัช",
     "remark": "",
-    "customer_code": "670059"
+    "customer_code": "PC670059"
   },
   {
     "id": 208,
@@ -2078,7 +2079,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 27,
     "customer_name": "we love care",
     "remark": "",
-    "customer_code": "530075"
+    "customer_code": "PC530075"
   },
   {
     "id": 209,
@@ -2088,7 +2089,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 28,
     "customer_name": "ยาใกล้มอ",
     "remark": "",
-    "customer_code": "610086"
+    "customer_code": "PC610086"
   },
   {
     "id": 210,
@@ -2098,7 +2099,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 29,
     "customer_name": "คลินิกเวชกรรมณัฐณรงค์",
     "remark": "",
-    "customer_code": "680118"
+    "customer_code": "PC680118"
   },
   {
     "id": 211,
@@ -2108,7 +2109,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 30,
     "customer_name": "ยาฮัก",
     "remark": "",
-    "customer_code": "660054"
+    "customer_code": "PC660054"
   },
   {
     "id": 212,
@@ -2118,7 +2119,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 31,
     "customer_name": "ศาลายา ท่าโพธิ์",
     "remark": "",
-    "customer_code": "570023"
+    "customer_code": "PC570023"
   },
   {
     "id": 213,
@@ -2128,7 +2129,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 32,
     "customer_name": "เหมือนฝัน",
     "remark": "",
-    "customer_code": "560138"
+    "customer_code": "PC560138"
   },
   {
     "id": 214,
@@ -2138,7 +2139,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 33,
     "customer_name": "แคปซูลยา",
     "remark": "",
-    "customer_code": "570005"
+    "customer_code": "PC570005"
   },
   {
     "id": 215,
@@ -2148,7 +2149,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 34,
     "customer_name": "บ้านยาซอย7",
     "remark": "",
-    "customer_code": "660018"
+    "customer_code": "PC660018"
   },
   {
     "id": 216,
@@ -2158,7 +2159,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 35,
     "customer_name": "บ้านยาสามพี่น้อง",
     "remark": "",
-    "customer_code": "650061"
+    "customer_code": "PC650061"
   },
   {
     "id": 217,
@@ -2168,7 +2169,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 36,
     "customer_name": "โอสถเฮาส์",
     "remark": "",
-    "customer_code": "660055"
+    "customer_code": "PC660055"
   },
   {
     "id": 218,
@@ -2178,7 +2179,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 37,
     "customer_name": "รักษ์ยา",
     "remark": "",
-    "customer_code": "590012"
+    "customer_code": "PC590012"
   },
   {
     "id": 219,
@@ -2188,7 +2189,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 38,
     "customer_name": "พีแคร์ฟาร์มา",
     "remark": "",
-    "customer_code": "580130"
+    "customer_code": "PC580130"
   },
   {
     "id": 220,
@@ -2198,7 +2199,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 39,
     "customer_name": "วรมิตร",
     "remark": "",
-    "customer_code": "550075"
+    "customer_code": "PC550075"
   },
   {
     "id": 221,
@@ -2208,7 +2209,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 40,
     "customer_name": "กล่องยา",
     "remark": "",
-    "customer_code": "610040"
+    "customer_code": "PC610040"
   },
   {
     "id": 222,
@@ -2218,7 +2219,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 41,
     "customer_name": "ณิชากร",
     "remark": "",
-    "customer_code": "680100"
+    "customer_code": "PC680100"
   },
   {
     "id": 223,
@@ -2228,7 +2229,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 42,
     "customer_name": "ปราชญ์ยา",
     "remark": "",
-    "customer_code": "600077"
+    "customer_code": "PC600077"
   },
   {
     "id": 224,
@@ -2238,7 +2239,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 43,
     "customer_name": "ช่องฟ้า",
     "remark": "",
-    "customer_code": "580174"
+    "customer_code": "PC580174"
   },
   {
     "id": 225,
@@ -2248,7 +2249,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 44,
     "customer_name": "ฟาร์มสุข",
     "remark": "",
-    "customer_code": "640109"
+    "customer_code": "PC640109"
   },
   {
     "id": 226,
@@ -2258,7 +2259,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 45,
     "customer_name": "ตลาดหัวรอเภสัช",
     "remark": "",
-    "customer_code": "660004"
+    "customer_code": "PC660004"
   },
   {
     "id": 227,
@@ -2268,7 +2269,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 46,
     "customer_name": "บ้านยาเอกา",
     "remark": "",
-    "customer_code": "680056"
+    "customer_code": "PC680056"
   },
   {
     "id": 228,
@@ -2278,7 +2279,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 47,
     "customer_name": "ช.อนัน",
     "remark": "",
-    "customer_code": "660100"
+    "customer_code": "PC660100"
   },
   {
     "id": 229,
@@ -2288,7 +2289,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 48,
     "customer_name": "สหภัณฑ์เภสัช",
     "remark": "",
-    "customer_code": "610141"
+    "customer_code": "PC610141"
   },
   {
     "id": 230,
@@ -2298,7 +2299,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 49,
     "customer_name": "ยาไอแคร์",
     "remark": "",
-    "customer_code": "540087"
+    "customer_code": "PC540087"
   },
   {
     "id": 231,
@@ -2308,7 +2309,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 50,
     "customer_name": "ฟาร์ม่าวิลล์",
     "remark": "",
-    "customer_code": "650001"
+    "customer_code": "PC650001"
   },
   {
     "id": 232,
@@ -2318,7 +2319,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 51,
     "customer_name": "ยาคณะ",
     "remark": "",
-    "customer_code": "530080"
+    "customer_code": "PC530080"
   },
   {
     "id": 233,
@@ -2328,7 +2329,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 52,
     "customer_name": "อุ่นใจ",
     "remark": "",
-    "customer_code": "570148"
+    "customer_code": "PC570148"
   },
   {
     "id": 234,
@@ -2338,7 +2339,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 53,
     "customer_name": "วิน วิน",
     "remark": "",
-    "customer_code": "540155"
+    "customer_code": "PC540155"
   },
   {
     "id": 235,
@@ -2348,7 +2349,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 54,
     "customer_name": "คลินิกเด็กพี่หมอแนค",
     "remark": "",
-    "customer_code": "680074"
+    "customer_code": "PC680074"
   },
   {
     "id": 236,
@@ -2358,7 +2359,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 55,
     "customer_name": "สองแคว",
     "remark": "",
-    "customer_code": "630093"
+    "customer_code": "PC630093"
   },
   {
     "id": 237,
@@ -2368,7 +2369,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 56,
     "customer_name": "ฟาร์มยาเภสัชกร",
     "remark": "",
-    "customer_code": "590016"
+    "customer_code": "PC590016"
   },
   {
     "id": 238,
@@ -2378,7 +2379,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 57,
     "customer_name": "คลินิก นายแพทย์บริบูรณ์",
     "remark": "",
-    "customer_code": "600138"
+    "customer_code": "PC600138"
   },
   {
     "id": 239,
@@ -2388,7 +2389,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 58,
     "customer_name": "บ้านยาสุขสบาย",
     "remark": "",
-    "customer_code": "660030"
+    "customer_code": "PC660030"
   },
   {
     "id": 240,
@@ -2398,7 +2399,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 59,
     "customer_name": "ดี-เทเบิล",
     "remark": "",
-    "customer_code": "670047"
+    "customer_code": "PC670047"
   },
   {
     "id": 241,
@@ -2408,7 +2409,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 60,
     "customer_name": "สมบูรณ์เภสัช",
     "remark": "",
-    "customer_code": "690060"
+    "customer_code": "PC690060"
   },
   {
     "id": 242,
@@ -2418,7 +2419,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 61,
     "customer_name": "ยาหน้าร.พ พุทธ",
     "remark": "",
-    "customer_code": "610037"
+    "customer_code": "PC610037"
   },
   {
     "id": 243,
@@ -2428,7 +2429,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 62,
     "customer_name": "ยาประจำบ้าน",
     "remark": "",
-    "customer_code": "650033"
+    "customer_code": "PC650033"
   },
   {
     "id": 244,
@@ -2438,7 +2439,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 63,
     "customer_name": "พิษณุโลกรวมยา",
     "remark": "",
-    "customer_code": "620128"
+    "customer_code": "PC620128"
   },
   {
     "id": 245,
@@ -2448,7 +2449,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 64,
     "customer_name": "เจริญรักษ์คลินิกเวชกรรม",
     "remark": "",
-    "customer_code": "670102"
+    "customer_code": "PC670102"
   },
   {
     "id": 246,
@@ -2458,7 +2459,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 65,
     "customer_name": "สิรเภสัช",
     "remark": "",
-    "customer_code": "680046"
+    "customer_code": "PC680046"
   },
   {
     "id": 247,
@@ -2468,7 +2469,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 66,
     "customer_name": "ไชยานุภาพ",
     "remark": "",
-    "customer_code": "630051"
+    "customer_code": "PC630051"
   },
   {
     "id": 248,
@@ -2478,7 +2479,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 67,
     "customer_name": "โรงพยาบาลพิษณุโลก",
     "remark": "",
-    "customer_code": "690046"
+    "customer_code": "PC690046"
   },
   {
     "id": 249,
@@ -2488,7 +2489,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 68,
     "customer_name": "หมอยาใจดี",
     "remark": "",
-    "customer_code": "680111"
+    "customer_code": "PC680111"
   },
   {
     "id": 250,
@@ -2498,7 +2499,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 69,
     "customer_name": "ศศิฟาร์มาซี",
     "remark": "",
-    "customer_code": "660001"
+    "customer_code": "PC660001"
   },
   {
     "id": 251,
@@ -2508,7 +2509,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 70,
     "customer_name": "ใกล้ยา",
     "remark": "",
-    "customer_code": "550089"
+    "customer_code": "PC550089"
   },
   {
     "id": 252,
@@ -2518,7 +2519,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 71,
     "customer_name": "โบว์ฟาร์มาซี",
     "remark": "",
-    "customer_code": "640044"
+    "customer_code": "PC640044"
   },
   {
     "id": 253,
@@ -2528,7 +2529,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 72,
     "customer_name": "ยาพร้อม",
     "remark": "",
-    "customer_code": "640132"
+    "customer_code": "PC640132"
   },
   {
     "id": 254,
@@ -2538,7 +2539,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 73,
     "customer_name": "ชัยพร",
     "remark": "",
-    "customer_code": "580029"
+    "customer_code": "PC580029"
   },
   {
     "id": 255,
@@ -2548,7 +2549,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 74,
     "customer_name": "ตระกูลยา",
     "remark": "",
-    "customer_code": "580001"
+    "customer_code": "PC580001"
   },
   {
     "id": 256,
@@ -2558,7 +2559,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 75,
     "customer_name": "ยาทูยู",
     "remark": "",
-    "customer_code": "570040"
+    "customer_code": "PC570040"
   },
   {
     "id": 257,
@@ -2568,7 +2569,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 76,
     "customer_name": "ห้องยาบ้านสวน",
     "remark": "",
-    "customer_code": "670054"
+    "customer_code": "PC670054"
   },
   {
     "id": 258,
@@ -2578,7 +2579,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 77,
     "customer_name": "เติมเต็ม",
     "remark": "",
-    "customer_code": "570106"
+    "customer_code": "PC570106"
   },
   {
     "id": 259,
@@ -2588,7 +2589,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 78,
     "customer_name": "บ้านยาพี่ณัฏฐ์น้องนุช",
     "remark": "",
-    "customer_code": "670076"
+    "customer_code": "PC670076"
   },
   {
     "id": 260,
@@ -2598,7 +2599,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 79,
     "customer_name": "เพชรรัตน์เภสัช",
     "remark": "",
-    "customer_code": "680037"
+    "customer_code": "PC680037"
   },
   {
     "id": 261,
@@ -2608,7 +2609,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 80,
     "customer_name": "วิสสุตา",
     "remark": "",
-    "customer_code": "670117"
+    "customer_code": "PC670117"
   },
   {
     "id": 262,
@@ -2618,7 +2619,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 81,
     "customer_name": "พร้อมเภสัช",
     "remark": "",
-    "customer_code": "590044"
+    "customer_code": "PC590044"
   },
   {
     "id": 263,
@@ -2628,7 +2629,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 82,
     "customer_name": "สันติ",
     "remark": "",
-    "customer_code": "520064"
+    "customer_code": "PC520064"
   },
   {
     "id": 264,
@@ -2638,7 +2639,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 1,
     "customer_name": "เดลดี่โด",
     "remark": "",
-    "customer_code": "660071"
+    "customer_code": "PC660071"
   },
   {
     "id": 265,
@@ -2648,7 +2649,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 2,
     "customer_name": "เภสัช ดาว",
     "remark": "",
-    "customer_code": "500023"
+    "customer_code": "PC500023"
   },
   {
     "id": 266,
@@ -2658,7 +2659,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 3,
     "customer_name": "หมอฝ้าย",
     "remark": "",
-    "customer_code": "670090"
+    "customer_code": "PC670090"
   },
   {
     "id": 267,
@@ -2668,7 +2669,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 4,
     "customer_name": "สราวุฒิ",
     "remark": "",
-    "customer_code": "660008"
+    "customer_code": "PC660008"
   },
   {
     "id": 268,
@@ -2678,7 +2679,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 5,
     "customer_name": "สุภาพร  ตั้งคติธรรม",
     "remark": "",
-    "customer_code": "580133"
+    "customer_code": "PC580133"
   },
   {
     "id": 269,
@@ -2688,7 +2689,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 6,
     "customer_name": "ยาบ้านเภสัชกร",
     "remark": "",
-    "customer_code": "600076"
+    "customer_code": "PC600076"
   },
   {
     "id": 270,
@@ -2698,7 +2699,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 7,
     "customer_name": "อุดมสุขฟาร์มาซี",
     "remark": "",
-    "customer_code": "560030"
+    "customer_code": "PC560030"
   },
   {
     "id": 271,
@@ -2708,7 +2709,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 8,
     "customer_name": "วสันต์",
     "remark": "",
-    "customer_code": "610153"
+    "customer_code": "PC610153"
   },
   {
     "id": 272,
@@ -2718,7 +2719,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 9,
     "customer_name": "วสันต์ช่องแค",
     "remark": "",
-    "customer_code": "690039"
+    "customer_code": "PC690039"
   },
   {
     "id": 273,
@@ -2728,7 +2729,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 10,
     "customer_name": "มาดี",
     "remark": "",
-    "customer_code": "520084"
+    "customer_code": "PC520084"
   },
   {
     "id": 274,
@@ -2738,7 +2739,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 11,
     "customer_name": "วัฒนา",
     "remark": "",
-    "customer_code": "600054"
+    "customer_code": "PC600054"
   },
   {
     "id": 275,
@@ -2748,7 +2749,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 12,
     "customer_name": "บุศยาเภสัช",
     "remark": "",
-    "customer_code": "630112"
+    "customer_code": "PC630112"
   },
   {
     "id": 276,
@@ -2758,7 +2759,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 13,
     "customer_name": "ศิรินุช",
     "remark": "",
-    "customer_code": "590060"
+    "customer_code": "PC590060"
   },
   {
     "id": 277,
@@ -2768,7 +2769,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 14,
     "customer_name": "อุบลวรรณ",
     "remark": "",
-    "customer_code": "610006"
+    "customer_code": "PC610006"
   },
   {
     "id": 278,
@@ -2778,7 +2779,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 15,
     "customer_name": "สุริยะฟาร์มาซี",
     "remark": "",
-    "customer_code": "580066"
+    "customer_code": "PC580066"
   },
   {
     "id": 279,
@@ -2788,7 +2789,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 16,
     "customer_name": "วศิน",
     "remark": "",
-    "customer_code": "630086"
+    "customer_code": "PC630086"
   },
   {
     "id": 280,
@@ -2798,7 +2799,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 17,
     "customer_name": "ปัณสุข",
     "remark": "",
-    "customer_code": "670015"
+    "customer_code": "PC670015"
   },
   {
     "id": 281,
@@ -2808,7 +2809,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 18,
     "customer_name": "เดชาตากฟ้า",
     "remark": "",
-    "customer_code": "560090"
+    "customer_code": "PC560090"
   },
   {
     "id": 282,
@@ -2818,7 +2819,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 19,
     "customer_name": "รวมยาหนองม่วง",
     "remark": "",
-    "customer_code": "570004"
+    "customer_code": "PC570004"
   },
   {
     "id": 283,
@@ -2828,7 +2829,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 20,
     "customer_name": "หนองม่วง",
     "remark": "",
-    "customer_code": "560136"
+    "customer_code": "PC560136"
   },
   {
     "id": 284,
@@ -2838,7 +2839,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 21,
     "customer_name": "ชลิต",
     "remark": "",
-    "customer_code": "600133"
+    "customer_code": "PC600133"
   },
   {
     "id": 285,
@@ -2848,7 +2849,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 22,
     "customer_name": "สระโบสถ์เภสัช",
     "remark": "",
-    "customer_code": "640076"
+    "customer_code": "PC640076"
   },
   {
     "id": 286,
@@ -2858,7 +2859,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 23,
     "customer_name": "ห้องยา ลำนารายณ์",
     "remark": "",
-    "customer_code": "590125"
+    "customer_code": "PC590125"
   },
   {
     "id": 287,
@@ -2868,7 +2869,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 24,
     "customer_name": "ชนะเภสัช  2",
     "remark": "",
-    "customer_code": "580110"
+    "customer_code": "PC580110"
   },
   {
     "id": 288,
@@ -2878,7 +2879,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 25,
     "customer_name": "เกรียงศักดิ์ฟาร์มาซี",
     "remark": "",
-    "customer_code": "540062"
+    "customer_code": "PC540062"
   },
   {
     "id": 289,
@@ -2888,7 +2889,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 26,
     "customer_name": "ศุภกรณ์",
     "remark": "",
-    "customer_code": "660085"
+    "customer_code": "PC660085"
   },
   {
     "id": 290,
@@ -2898,7 +2899,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 27,
     "customer_name": "ขายยาฟาร์ม่าเฟิร์ส",
     "remark": "",
-    "customer_code": "610094"
+    "customer_code": "PC610094"
   },
   {
     "id": 291,
@@ -2908,7 +2909,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 28,
     "customer_name": "ลำเภา",
     "remark": "",
-    "customer_code": "560129"
+    "customer_code": "PC560129"
   },
   {
     "id": 292,
@@ -2918,7 +2919,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 29,
     "customer_name": "ตั้งบ่วงฮง",
     "remark": "",
-    "customer_code": "630008"
+    "customer_code": "PC630008"
   },
   {
     "id": 293,
@@ -2928,7 +2929,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 30,
     "customer_name": "คลังยาลำนารายณ์",
     "remark": "",
-    "customer_code": "540025"
+    "customer_code": "PC540025"
   },
   {
     "id": 294,
@@ -2938,7 +2939,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 31,
     "customer_name": "คลินิกแพทย์หญิงพนิตนาฎ",
     "remark": "",
-    "customer_code": "580111"
+    "customer_code": "PC580111"
   },
   {
     "id": 295,
@@ -2948,7 +2949,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 32,
     "customer_name": "ศรีเทพเภสัช",
     "remark": "",
-    "customer_code": "670045"
+    "customer_code": "PC670045"
   },
   {
     "id": 296,
@@ -2958,7 +2959,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 33,
     "customer_name": "พิสิษฐโอสถ",
     "remark": "",
-    "customer_code": "540065"
+    "customer_code": "PC540065"
   },
   {
     "id": 297,
@@ -2968,7 +2969,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 34,
     "customer_name": "จามจุรี",
     "remark": "",
-    "customer_code": "570121"
+    "customer_code": "PC570121"
   },
   {
     "id": 298,
@@ -2978,7 +2979,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 35,
     "customer_name": "ศูนย์รวมยา",
     "remark": "",
-    "customer_code": "650077"
+    "customer_code": "PC650077"
   },
   {
     "id": 299,
@@ -2988,7 +2989,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 36,
     "customer_name": "บ้านยาพุเตย",
     "remark": "",
-    "customer_code": "560121"
+    "customer_code": "PC560121"
   },
   {
     "id": 300,
@@ -2998,7 +2999,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 37,
     "customer_name": "แสงเจริญ",
     "remark": "",
-    "customer_code": "540059"
+    "customer_code": "PC540059"
   },
   {
     "id": 301,
@@ -3008,7 +3009,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 38,
     "customer_name": "ปัญญาภัทร",
     "remark": "",
-    "customer_code": "610011"
+    "customer_code": "PC610011"
   },
   {
     "id": 302,
@@ -3018,7 +3019,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 39,
     "customer_name": "แพทย์หญิง นุจรี",
     "remark": "",
-    "customer_code": "590132"
+    "customer_code": "PC590132"
   },
   {
     "id": 303,
@@ -3028,7 +3029,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 40,
     "customer_name": "นิพนธ์เวช",
     "remark": "",
-    "customer_code": "540049"
+    "customer_code": "PC540049"
   },
   {
     "id": 304,
@@ -3038,7 +3039,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 41,
     "customer_name": "เรืองศิริ",
     "remark": "",
-    "customer_code": "650078"
+    "customer_code": "PC650078"
   },
   {
     "id": 305,
@@ -3048,7 +3049,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 42,
     "customer_name": "ลิขิตโอสถ",
     "remark": "",
-    "customer_code": "540061"
+    "customer_code": "PC540061"
   },
   {
     "id": 306,
@@ -3058,7 +3059,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 43,
     "customer_name": "สิงห์เภสัช",
     "remark": "",
-    "customer_code": "540064"
+    "customer_code": "PC540064"
   },
   {
     "id": 307,
@@ -3068,7 +3069,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 44,
     "customer_name": "คลังยาวิเชียร",
     "remark": "",
-    "customer_code": "670032"
+    "customer_code": "PC670032"
   },
   {
     "id": 308,
@@ -3078,7 +3079,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 45,
     "customer_name": "เพชรละครเภสัช",
     "remark": "",
-    "customer_code": "670127"
+    "customer_code": "PC670127"
   },
   {
     "id": 309,
@@ -3088,7 +3089,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 46,
     "customer_name": "ศิริวัฒนา",
     "remark": "",
-    "customer_code": "560107"
+    "customer_code": "PC560107"
   },
   {
     "id": 310,
@@ -3098,7 +3099,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 47,
     "customer_name": "เฟื่อง",
     "remark": "",
-    "customer_code": "520069"
+    "customer_code": "PC520069"
   },
   {
     "id": 311,
@@ -3108,7 +3109,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 48,
     "customer_name": "หมอยาบึงสามพัน",
     "remark": "",
-    "customer_code": "540055"
+    "customer_code": "PC540055"
   },
   {
     "id": 312,
@@ -3118,7 +3119,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 49,
     "customer_name": "เอบีเวชภัณฑ์",
     "remark": "",
-    "customer_code": "560137"
+    "customer_code": "PC560137"
   },
   {
     "id": 313,
@@ -3128,7 +3129,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 50,
     "customer_name": "บึงสามพันเภสัช",
     "remark": "",
-    "customer_code": "650026"
+    "customer_code": "PC650026"
   },
   {
     "id": 314,
@@ -3138,7 +3139,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 51,
     "customer_name": "เภสัชชุมชลบึงสามพัน",
     "remark": "",
-    "customer_code": "520075"
+    "customer_code": "PC520075"
   },
   {
     "id": 315,
@@ -3148,7 +3149,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 52,
     "customer_name": "คลังยาสมอทอด",
     "remark": "",
-    "customer_code": "670103"
+    "customer_code": "PC670103"
   },
   {
     "id": 316,
@@ -3158,7 +3159,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 53,
     "customer_name": "บุญเลิศโอสถ",
     "remark": "",
-    "customer_code": "500024"
+    "customer_code": "PC500024"
   },
   {
     "id": 317,
@@ -3168,7 +3169,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 54,
     "customer_name": "อู่ทอง",
     "remark": "",
-    "customer_code": "630002"
+    "customer_code": "PC630002"
   },
   {
     "id": 318,
@@ -3178,7 +3179,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 55,
     "customer_name": "คลินิกยาไพศาลี",
     "remark": "",
-    "customer_code": "560024"
+    "customer_code": "PC560024"
   },
   {
     "id": 319,
@@ -3188,7 +3189,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 56,
     "customer_name": "สุวิสา  อยู่ใกล้หมอสุรัตน์",
     "remark": "",
-    "customer_code": "570063"
+    "customer_code": "PC570063"
   },
   {
     "id": 320,
@@ -3198,7 +3199,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 57,
     "customer_name": "จารุเนตร",
     "remark": "",
-    "customer_code": "630116"
+    "customer_code": "PC630116"
   },
   {
     "id": 321,
@@ -3208,7 +3209,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 58,
     "customer_name": "เภสัชใกล้บ้าน",
     "remark": "",
-    "customer_code": "690061"
+    "customer_code": "PC690061"
   },
   {
     "id": 322,
@@ -3218,7 +3219,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 59,
     "customer_name": "บ้านยารักษ์คุณ",
     "remark": "",
-    "customer_code": "610132"
+    "customer_code": "PC610132"
   },
   {
     "id": 323,
@@ -3228,7 +3229,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 60,
     "customer_name": "เจริญชัย",
     "remark": "",
-    "customer_code": "540075"
+    "customer_code": "PC540075"
   },
   {
     "id": 324,
@@ -3238,7 +3239,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 61,
     "customer_name": "พร้อมมิตร",
     "remark": "",
-    "customer_code": "620034"
+    "customer_code": "PC620034"
   },
   {
     "id": 325,
@@ -3248,7 +3249,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 62,
     "customer_name": "กนกพรคลินิก",
     "remark": "",
-    "customer_code": "620006"
+    "customer_code": "PC620006"
   },
   {
     "id": 326,
@@ -3258,7 +3259,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 63,
     "customer_name": "รจนา",
     "remark": "",
-    "customer_code": "600016"
+    "customer_code": "PC600016"
   },
   {
     "id": 327,
@@ -3268,7 +3269,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 64,
     "customer_name": "พึ่งพร",
     "remark": "",
-    "customer_code": "560006"
+    "customer_code": "PC560006"
   },
   {
     "id": 328,
@@ -3278,7 +3279,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 65,
     "customer_name": "เภสัชชุมชนท่าตะโก",
     "remark": "",
-    "customer_code": "500010"
+    "customer_code": "PC500010"
   },
   {
     "id": 329,
@@ -3288,7 +3289,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 66,
     "customer_name": "โค้วไทยหลี",
     "remark": "",
-    "customer_code": "580060"
+    "customer_code": "PC580060"
   },
   {
     "id": 330,
@@ -3298,7 +3299,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 67,
     "customer_name": "อัมพร",
     "remark": "",
-    "customer_code": "570006"
+    "customer_code": "PC570006"
   },
   {
     "id": 331,
@@ -3308,7 +3309,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 68,
     "customer_name": "ศิริลักษ์",
     "remark": "",
-    "customer_code": "670007"
+    "customer_code": "PC670007"
   },
   {
     "id": 332,
@@ -3318,7 +3319,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 69,
     "customer_name": "สาวิตรี",
     "remark": "",
-    "customer_code": "600064"
+    "customer_code": "PC600064"
   },
   {
     "id": 333,
@@ -3328,7 +3329,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 70,
     "customer_name": "หนองปลิง",
     "remark": "",
-    "customer_code": "500015"
+    "customer_code": "PC500015"
   },
   {
     "id": 334,
@@ -3338,7 +3339,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 71,
     "customer_name": "หมอยานว.",
     "remark": "",
-    "customer_code": "620061"
+    "customer_code": "PC620061"
   },
   {
     "id": 335,
@@ -3348,7 +3349,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 72,
     "customer_name": "เอ็น.พี",
     "remark": "",
-    "customer_code": "680040"
+    "customer_code": "PC680040"
   },
   {
     "id": 336,
@@ -3358,7 +3359,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 73,
     "customer_name": "บ้านยาธนารักษ์",
     "remark": "",
-    "customer_code": "650100"
+    "customer_code": "PC650100"
   },
   {
     "id": 337,
@@ -3368,7 +3369,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 1,
     "customer_name": "แม่หญิงฟาร์มาซี",
     "remark": "",
-    "customer_code": "640031"
+    "customer_code": "PC640031"
   },
   {
     "id": 338,
@@ -3378,7 +3379,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 2,
     "customer_name": "บางกระเบื้อง",
     "remark": "",
-    "customer_code": "670114"
+    "customer_code": "PC670114"
   },
   {
     "id": 339,
@@ -3388,7 +3389,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 3,
     "customer_name": "บ้านเภสัชสรรพยา",
     "remark": "โอน",
-    "customer_code": "610105"
+    "customer_code": "PC610105"
   },
   {
     "id": 340,
@@ -3398,7 +3399,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 4,
     "customer_name": "รวมยาสรรพยา",
     "remark": "",
-    "customer_code": "680051"
+    "customer_code": "PC680051"
   },
   {
     "id": 341,
@@ -3408,7 +3409,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 5,
     "customer_name": "คลินิกทันตกรรมบ้านรักยิ้ม",
     "remark": "",
-    "customer_code": "580011"
+    "customer_code": "PC580011"
   },
   {
     "id": 342,
@@ -3418,7 +3419,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 6,
     "customer_name": "คลินิกทันตกรรมศิโรรัช",
     "remark": "",
-    "customer_code": "690049"
+    "customer_code": "PC690049"
   },
   {
     "id": 343,
@@ -3428,7 +3429,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 7,
     "customer_name": "กิมหงส์",
     "remark": "",
-    "customer_code": "540016"
+    "customer_code": "PC540016"
   },
   {
     "id": 344,
@@ -3438,7 +3439,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 8,
     "customer_name": "สุมณรัศ",
     "remark": "โอน",
-    "customer_code": "530044"
+    "customer_code": "PC530044"
   },
   {
     "id": 345,
@@ -3448,7 +3449,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 9,
     "customer_name": "สุนันท์",
     "remark": "",
-    "customer_code": "520051"
+    "customer_code": "PC520051"
   },
   {
     "id": 346,
@@ -3458,7 +3459,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 10,
     "customer_name": "จอย",
     "remark": "โอน",
-    "customer_code": "570134"
+    "customer_code": "PC570134"
   },
   {
     "id": 347,
@@ -3468,7 +3469,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 11,
     "customer_name": "วิชุรดา",
     "remark": "",
-    "customer_code": "620052"
+    "customer_code": "PC620052"
   },
   {
     "id": 348,
@@ -3478,7 +3479,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 12,
     "customer_name": "สิงห์บุรีเภสัช",
     "remark": "",
-    "customer_code": "670089"
+    "customer_code": "PC670089"
   },
   {
     "id": 349,
@@ -3488,7 +3489,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 13,
     "customer_name": "เภสัชอ้อม",
     "remark": "โอน",
-    "customer_code": "670066"
+    "customer_code": "PC670066"
   },
   {
     "id": 350,
@@ -3498,7 +3499,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 14,
     "customer_name": "หมอ อาธิภา",
     "remark": "โอน",
-    "customer_code": "620057"
+    "customer_code": "PC620057"
   },
   {
     "id": 351,
@@ -3508,7 +3509,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 15,
     "customer_name": "ธีราภรณ์",
     "remark": "โอน",
-    "customer_code": "570068"
+    "customer_code": "PC570068"
   },
   {
     "id": 352,
@@ -3518,7 +3519,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 16,
     "customer_name": "จิรนันท์",
     "remark": "โอน",
-    "customer_code": "660056"
+    "customer_code": "PC660056"
   },
   {
     "id": 353,
@@ -3528,7 +3529,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 17,
     "customer_name": "หมอพรพรรณ",
     "remark": "",
-    "customer_code": "610118"
+    "customer_code": "PC610118"
   },
   {
     "id": 354,
@@ -3538,7 +3539,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 18,
     "customer_name": "มีสุขฟาร์มาซี",
     "remark": "โอน",
-    "customer_code": "670018"
+    "customer_code": "PC670018"
   },
   {
     "id": 355,
@@ -3548,7 +3549,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 19,
     "customer_name": "ศิริชัย",
     "remark": "",
-    "customer_code": "610050"
+    "customer_code": "PC610050"
   },
   {
     "id": 356,
@@ -3558,7 +3559,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 20,
     "customer_name": "ฮงหยูโอสถ",
     "remark": "โอน",
-    "customer_code": "580144"
+    "customer_code": "PC580144"
   },
   {
     "id": 357,
@@ -3568,7 +3569,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 21,
     "customer_name": "ง่วนเฮง",
     "remark": "โอน",
-    "customer_code": "540108"
+    "customer_code": "PC540108"
   },
   {
     "id": 358,
@@ -3578,7 +3579,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 22,
     "customer_name": "พารา",
     "remark": "โอน",
-    "customer_code": "540008"
+    "customer_code": "PC540008"
   },
   {
     "id": 359,
@@ -3588,7 +3589,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 23,
     "customer_name": "จิตรา",
     "remark": "",
-    "customer_code": "560135"
+    "customer_code": "PC560135"
   },
   {
     "id": 360,
@@ -3598,7 +3599,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 24,
     "customer_name": "คลินิกทันตกรรมบ้านรักยิ้ม/ตลาดสิงห์บุรี",
     "remark": "โอน",
-    "customer_code": "680052"
+    "customer_code": "PC680052"
   },
   {
     "id": 361,
@@ -3608,7 +3609,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 25,
     "customer_name": "หยงยา",
     "remark": "โอน",
-    "customer_code": "650067"
+    "customer_code": "PC650067"
   },
   {
     "id": 362,
@@ -3618,7 +3619,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 26,
     "customer_name": "บ้านยายินดี",
     "remark": "โอน",
-    "customer_code": "650063"
+    "customer_code": "PC650063"
   },
   {
     "id": 363,
@@ -3628,7 +3629,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 27,
     "customer_name": "ล้านยา",
     "remark": "โอน",
-    "customer_code": "600019"
+    "customer_code": "PC600019"
   },
   {
     "id": 364,
@@ -3638,7 +3639,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 28,
     "customer_name": "สมหมาย2",
     "remark": "โอน",
-    "customer_code": "650110"
+    "customer_code": "PC650110"
   },
   {
     "id": 365,
@@ -3648,7 +3649,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 29,
     "customer_name": "บ.ชาลิน เนเจอร์",
     "remark": "",
-    "customer_code": "690030"
+    "customer_code": "PC690030"
   },
   {
     "id": 366,
@@ -3658,7 +3659,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 30,
     "customer_name": "สมหมาย",
     "remark": "",
-    "customer_code": "550015"
+    "customer_code": "PC550015"
   },
   {
     "id": 367,
@@ -3668,7 +3669,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 31,
     "customer_name": "ปัณยาเภสัช",
     "remark": "โอน",
-    "customer_code": "620115"
+    "customer_code": "PC620115"
   },
   {
     "id": 368,
@@ -3678,7 +3679,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 32,
     "customer_name": "แพทย์หญิงราตรี",
     "remark": "",
-    "customer_code": "610060"
+    "customer_code": "PC610060"
   },
   {
     "id": 369,
@@ -3688,7 +3689,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 33,
     "customer_name": "หมอยาเภสัชละโว้ 2",
     "remark": "โอน",
-    "customer_code": "610104"
+    "customer_code": "PC610104"
   },
   {
     "id": 370,
@@ -3698,7 +3699,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 34,
     "customer_name": "หมอยาเภสัชละโว้",
     "remark": "โอน",
-    "customer_code": "580043"
+    "customer_code": "PC580043"
   },
   {
     "id": 371,
@@ -3708,7 +3709,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 35,
     "customer_name": "หมอยาเภสัชละโว้3",
     "remark": "โอน",
-    "customer_code": "640049"
+    "customer_code": "PC640049"
   },
   {
     "id": 372,
@@ -3718,7 +3719,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 36,
     "customer_name": "พอเพียง",
     "remark": "โอน",
-    "customer_code": "540096"
+    "customer_code": "PC540096"
   },
   {
     "id": 373,
@@ -3728,7 +3729,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 37,
     "customer_name": "คลังยา 24",
     "remark": "โอน",
-    "customer_code": "530040"
+    "customer_code": "PC530040"
   },
   {
     "id": 374,
@@ -3738,7 +3739,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 38,
     "customer_name": "มิ้วเภสัช",
     "remark": "โอน",
-    "customer_code": "580034"
+    "customer_code": "PC580034"
   },
   {
     "id": 375,
@@ -3748,7 +3749,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 39,
     "customer_name": "ส.เขาพระงาม",
     "remark": "โอน",
-    "customer_code": "550005"
+    "customer_code": "PC550005"
   },
   {
     "id": 376,
@@ -3758,7 +3759,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 40,
     "customer_name": "อบอุ่นฟารมาซี",
     "remark": "",
-    "customer_code": "690090"
+    "customer_code": "PC690090"
   },
   {
     "id": 377,
@@ -3768,7 +3769,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 41,
     "customer_name": "บ้านยาอบอุ่น",
     "remark": "",
-    "customer_code": "680033"
+    "customer_code": "PC680033"
   },
   {
     "id": 378,
@@ -3778,7 +3779,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 42,
     "customer_name": "ฤชา",
     "remark": "โอน",
-    "customer_code": "640125"
+    "customer_code": "PC640125"
   },
   {
     "id": 379,
@@ -3788,7 +3789,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 43,
     "customer_name": "คณโทเภสัช",
     "remark": "",
-    "customer_code": "560020"
+    "customer_code": "PC560020"
   },
   {
     "id": 380,
@@ -3798,7 +3799,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 44,
     "customer_name": "กกโก",
     "remark": "โอน",
-    "customer_code": "650076"
+    "customer_code": "PC650076"
   },
   {
     "id": 381,
@@ -3808,7 +3809,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 45,
     "customer_name": "คลินิก ปัญญพงค์",
     "remark": "โอน",
-    "customer_code": "550108"
+    "customer_code": "PC550108"
   },
   {
     "id": 382,
@@ -3818,7 +3819,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 46,
     "customer_name": "ศรีทอง",
     "remark": "โอน",
-    "customer_code": "600050"
+    "customer_code": "PC600050"
   },
   {
     "id": 383,
@@ -3828,7 +3829,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 47,
     "customer_name": "แกรนด์",
     "remark": "โอน",
-    "customer_code": "640087"
+    "customer_code": "PC640087"
   },
   {
     "id": 384,
@@ -3838,7 +3839,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 48,
     "customer_name": "แก้วงาม",
     "remark": "โอน",
-    "customer_code": "560133"
+    "customer_code": "PC560133"
   },
   {
     "id": 385,
@@ -3848,7 +3849,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 49,
     "customer_name": "เอ็น.พี",
     "remark": "โอน",
-    "customer_code": "560142"
+    "customer_code": "PC560142"
   },
   {
     "id": 386,
@@ -3858,7 +3859,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 50,
     "customer_name": "ไทเป",
     "remark": "โอน",
-    "customer_code": "590126"
+    "customer_code": "PC590126"
   },
   {
     "id": 387,
@@ -3868,7 +3869,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 51,
     "customer_name": "คลินิกทันตกรรมมายสตาร์",
     "remark": "",
-    "customer_code": "670122"
+    "customer_code": "PC670122"
   },
   {
     "id": 388,
@@ -3878,7 +3879,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 52,
     "customer_name": "ไทยสินฟาร์มา",
     "remark": "โอน",
-    "customer_code": "560062"
+    "customer_code": "PC560062"
   },
   {
     "id": 389,
@@ -3888,7 +3889,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 53,
     "customer_name": "ไพโรจน์",
     "remark": "โอน",
-    "customer_code": "640091"
+    "customer_code": "PC640091"
   },
   {
     "id": 390,
@@ -3898,7 +3899,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 54,
     "customer_name": "อุดมเวช",
     "remark": "โอน",
-    "customer_code": "550011"
+    "customer_code": "PC550011"
   },
   {
     "id": 391,
@@ -3908,7 +3909,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 55,
     "customer_name": "ทองเอนฟาร์มาซี",
     "remark": "โอน",
-    "customer_code": "650118"
+    "customer_code": "PC650118"
   },
   {
     "id": 392,
@@ -3918,7 +3919,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 56,
     "customer_name": "แพทย์วริษฐ์",
     "remark": "โอน",
-    "customer_code": "610015"
+    "customer_code": "PC610015"
   },
   {
     "id": 393,
@@ -3928,7 +3929,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 1,
     "customer_name": "ดลพร",
     "remark": "",
-    "customer_code": "580064"
+    "customer_code": "PC580064"
   },
   {
     "id": 394,
@@ -3938,7 +3939,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 2,
     "customer_name": "พยุหะคลังยา",
     "remark": "",
-    "customer_code": "560110"
+    "customer_code": "PC560110"
   },
   {
     "id": 395,
@@ -3948,7 +3949,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 3,
     "customer_name": "พรศักดิ์",
     "remark": "",
-    "customer_code": "650030"
+    "customer_code": "PC650030"
   },
   {
     "id": 396,
@@ -3958,7 +3959,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 4,
     "customer_name": "สุทธิกานต์",
     "remark": "",
-    "customer_code": "600007"
+    "customer_code": "PC600007"
   },
   {
     "id": 397,
@@ -3968,7 +3969,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 5,
     "customer_name": "ยาดีฟาร์ม่า",
     "remark": "",
-    "customer_code": "680091"
+    "customer_code": "PC680091"
   },
   {
     "id": 398,
@@ -3978,7 +3979,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 6,
     "customer_name": "ปัณยา นว.",
     "remark": "",
-    "customer_code": "620014"
+    "customer_code": "PC620014"
   },
   {
     "id": 399,
@@ -3988,7 +3989,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 7,
     "customer_name": "คลังยาสาคร",
     "remark": "",
-    "customer_code": "650079"
+    "customer_code": "PC650079"
   },
   {
     "id": 400,
@@ -3998,7 +3999,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 8,
     "customer_name": "รวมยา/ชัยนาท",
     "remark": "",
-    "customer_code": "680121"
+    "customer_code": "PC680121"
   },
   {
     "id": 401,
@@ -4008,7 +4009,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 9,
     "customer_name": "คลังยาเภสัชชัยนาท",
     "remark": "",
-    "customer_code": "540028"
+    "customer_code": "PC540028"
   },
   {
     "id": 402,
@@ -4018,7 +4019,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 10,
     "customer_name": "พัลลภาเภสัช",
     "remark": "",
-    "customer_code": "580095"
+    "customer_code": "PC580095"
   },
   {
     "id": 403,
@@ -4028,7 +4029,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 11,
     "customer_name": "สุวรรณโอสถ",
     "remark": "",
-    "customer_code": "640043"
+    "customer_code": "PC640043"
   },
   {
     "id": 404,
@@ -4038,7 +4039,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 12,
     "customer_name": "ห้าตองแปด",
     "remark": "",
-    "customer_code": "600038"
+    "customer_code": "PC600038"
   },
   {
     "id": 405,
@@ -4048,7 +4049,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 13,
     "customer_name": "บรมธาตุ",
     "remark": "",
-    "customer_code": "640006"
+    "customer_code": "PC640006"
   },
   {
     "id": 406,
@@ -4058,7 +4059,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 14,
     "customer_name": "โพพิทักษ์",
     "remark": "",
-    "customer_code": "660070"
+    "customer_code": "PC660070"
   },
   {
     "id": 407,
@@ -4068,7 +4069,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 15,
     "customer_name": "เภสัชกรโชคชัย",
     "remark": "",
-    "customer_code": "520065"
+    "customer_code": "PC520065"
   },
   {
     "id": 408,
@@ -4078,7 +4079,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 16,
     "customer_name": "เภสัชชุมชน",
     "remark": "",
-    "customer_code": "660116"
+    "customer_code": "PC660116"
   },
   {
     "id": 409,
@@ -4088,7 +4089,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 17,
     "customer_name": "บุญยา",
     "remark": "",
-    "customer_code": "660022"
+    "customer_code": "PC660022"
   },
   {
     "id": 410,
@@ -4098,7 +4099,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 18,
     "customer_name": "บ้านกล้วย",
     "remark": "",
-    "customer_code": "620130"
+    "customer_code": "PC620130"
   },
   {
     "id": 411,
@@ -4108,7 +4109,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 19,
     "customer_name": "บ้านยาชัยนาท",
     "remark": "",
-    "customer_code": "660083"
+    "customer_code": "PC660083"
   },
   {
     "id": 412,
@@ -4118,7 +4119,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 20,
     "customer_name": "ครอบครัวฟันยิ้ม",
     "remark": "",
-    "customer_code": "580044"
+    "customer_code": "PC580044"
   },
   {
     "id": 413,
@@ -4128,7 +4129,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 21,
     "customer_name": "ยาโกแบค",
     "remark": "",
-    "customer_code": "550080"
+    "customer_code": "PC550080"
   },
   {
     "id": 414,
@@ -4138,7 +4139,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 22,
     "customer_name": "เภสัชชุมชน",
     "remark": "",
-    "customer_code": "660116"
+    "customer_code": "PC660116"
   },
   {
     "id": 415,
@@ -4148,7 +4149,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 23,
     "customer_name": "สุภชัย",
     "remark": "",
-    "customer_code": "530011"
+    "customer_code": "PC530011"
   },
   {
     "id": 416,
@@ -4158,7 +4159,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 24,
     "customer_name": "กาญจนา",
     "remark": "",
-    "customer_code": "640020"
+    "customer_code": "PC640020"
   },
   {
     "id": 417,
@@ -4168,7 +4169,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 25,
     "customer_name": "อรอุมา",
     "remark": "",
-    "customer_code": "570110"
+    "customer_code": "PC570110"
   },
   {
     "id": 418,
@@ -4178,7 +4179,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 26,
     "customer_name": "พีเจ",
     "remark": "",
-    "customer_code": "640126"
+    "customer_code": "PC640126"
   },
   {
     "id": 419,
@@ -4188,7 +4189,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 27,
     "customer_name": "พิททาคลินิก",
     "remark": "",
-    "customer_code": "610048"
+    "customer_code": "PC610048"
   },
   {
     "id": 420,
@@ -4198,7 +4199,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 28,
     "customer_name": "เภสัชญา",
     "remark": "",
-    "customer_code": "610074"
+    "customer_code": "PC610074"
   },
   {
     "id": 421,
@@ -4208,7 +4209,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 29,
     "customer_name": "ปณิกกา",
     "remark": "",
-    "customer_code": "680143"
+    "customer_code": "PC680143"
   },
   {
     "id": 422,
@@ -4218,7 +4219,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 30,
     "customer_name": "เคพีคลินิกชัยนาท",
     "remark": "",
-    "customer_code": "620114"
+    "customer_code": "PC620114"
   },
   {
     "id": 423,
@@ -4228,7 +4229,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 31,
     "customer_name": "ดวงกมล",
     "remark": "",
-    "customer_code": "640002"
+    "customer_code": "PC640002"
   },
   {
     "id": 424,
@@ -4238,7 +4239,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 32,
     "customer_name": "แพทย์วรเดช",
     "remark": "",
-    "customer_code": "640019"
+    "customer_code": "PC640019"
   },
   {
     "id": 425,
@@ -4248,7 +4249,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 33,
     "customer_name": "แพทย์ยุวดี",
     "remark": "",
-    "customer_code": "650098"
+    "customer_code": "PC650098"
   },
   {
     "id": 426,
@@ -4258,7 +4259,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 34,
     "customer_name": "รวมยาโอสถ",
     "remark": "",
-    "customer_code": "610056"
+    "customer_code": "PC610056"
   },
   {
     "id": 427,
@@ -4268,7 +4269,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 35,
     "customer_name": "ณัฐกิตติ์",
     "remark": "",
-    "customer_code": "660028"
+    "customer_code": "PC660028"
   },
   {
     "id": 428,
@@ -4278,7 +4279,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 36,
     "customer_name": "ขวัญใจ",
     "remark": "",
-    "customer_code": "650081"
+    "customer_code": "PC650081"
   },
   {
     "id": 429,
@@ -4288,7 +4289,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 37,
     "customer_name": "ร้าน ชุตินันท์เภสัช",
     "remark": "",
-    "customer_code": "590136"
+    "customer_code": "PC590136"
   },
   {
     "id": 430,
@@ -4298,7 +4299,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 38,
     "customer_name": "คลินิกอิงสุข หมอปาณิสรา",
     "remark": "",
-    "customer_code": "680071"
+    "customer_code": "PC680071"
   },
   {
     "id": 431,
@@ -4308,7 +4309,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 39,
     "customer_name": "สุธิดา",
     "remark": "",
-    "customer_code": "640115"
+    "customer_code": "PC640115"
   },
   {
     "id": 432,
@@ -4318,7 +4319,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 40,
     "customer_name": "ธนิดา",
     "remark": "",
-    "customer_code": "670020"
+    "customer_code": "PC670020"
   },
   {
     "id": 433,
@@ -4328,7 +4329,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 41,
     "customer_name": "แพทย์กิติยา",
     "remark": "",
-    "customer_code": "680094"
+    "customer_code": "PC680094"
   },
   {
     "id": 434,
@@ -4338,7 +4339,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 42,
     "customer_name": "นงลักษณ์",
     "remark": "",
-    "customer_code": "670085"
+    "customer_code": "PC670085"
   },
   {
     "id": 435,
@@ -4348,7 +4349,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 43,
     "customer_name": "เภสัชวิทยา",
     "remark": "",
-    "customer_code": "690026"
+    "customer_code": "PC690026"
   },
   {
     "id": 436,
@@ -4358,7 +4359,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 44,
     "customer_name": "ปัณยาชัยนาท",
     "remark": "",
-    "customer_code": "600056"
+    "customer_code": "PC600056"
   },
   {
     "id": 437,
@@ -4368,7 +4369,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 45,
     "customer_name": "บ้านยาพอใจ",
     "remark": "",
-    "customer_code": "690034"
+    "customer_code": "PC690034"
   },
   {
     "id": 438,
@@ -4378,7 +4379,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 46,
     "customer_name": "เอี่ยมเจริญเภสัช",
     "remark": "",
-    "customer_code": "570104"
+    "customer_code": "PC570104"
   },
   {
     "id": 439,
@@ -4388,7 +4389,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 47,
     "customer_name": "บ้านยาท่าซุง",
     "remark": "",
-    "customer_code": "640039"
+    "customer_code": "PC640039"
   },
   {
     "id": 440,
@@ -4398,7 +4399,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 48,
     "customer_name": "แพทย์อภิลักษณ",
     "remark": "",
-    "customer_code": "570140"
+    "customer_code": "PC570140"
   },
   {
     "id": 441,
@@ -4408,7 +4409,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 49,
     "customer_name": "ท่าซุงคลินิก",
     "remark": "",
-    "customer_code": "650126"
+    "customer_code": "PC650126"
   },
   {
     "id": 442,
@@ -4418,7 +4419,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 50,
     "customer_name": "อัฉจรีย์",
     "remark": "",
-    "customer_code": "620108"
+    "customer_code": "PC620108"
   },
   {
     "id": 443,
@@ -4428,7 +4429,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 51,
     "customer_name": "รัฐพล",
     "remark": "",
-    "customer_code": "570041"
+    "customer_code": "PC570041"
   },
   {
     "id": 444,
@@ -4438,7 +4439,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 52,
     "customer_name": "ศิริพร",
     "remark": "",
-    "customer_code": "540131"
+    "customer_code": "PC540131"
   },
   {
     "id": 445,
@@ -4448,7 +4449,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 53,
     "customer_name": "แจงสี่ต้น",
     "remark": "",
-    "customer_code": "660128"
+    "customer_code": "PC660128"
   },
   {
     "id": 446,
@@ -4458,7 +4459,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 54,
     "customer_name": "บ้านยาอุ่นใจ",
     "remark": "",
-    "customer_code": "660051"
+    "customer_code": "PC660051"
   },
   {
     "id": 447,
@@ -4468,7 +4469,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 55,
     "customer_name": "แพทย์ ศิริพงศ์",
     "remark": "",
-    "customer_code": "660017"
+    "customer_code": "PC660017"
   },
   {
     "id": 448,
@@ -4478,7 +4479,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 56,
     "customer_name": "เบสท์ฟาร์มาซี",
     "remark": "",
-    "customer_code": "560117"
+    "customer_code": "PC560117"
   },
   {
     "id": 449,
@@ -4488,7 +4489,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 57,
     "customer_name": "เภสัชกรสุพจน์",
     "remark": "",
-    "customer_code": "520004"
+    "customer_code": "PC520004"
   },
   {
     "id": 450,
@@ -4498,7 +4499,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 58,
     "customer_name": "สถานียาอุทัย",
     "remark": "",
-    "customer_code": "670028"
+    "customer_code": "PC670028"
   },
   {
     "id": 451,
@@ -4508,7 +4509,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 59,
     "customer_name": "น้ำทิพย์",
     "remark": "",
-    "customer_code": "530006"
+    "customer_code": "PC530006"
   },
   {
     "id": 452,
@@ -4518,7 +4519,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 60,
     "customer_name": "แพทย์อาลิสา",
     "remark": "",
-    "customer_code": "640110"
+    "customer_code": "PC640110"
   },
   {
     "id": 453,
@@ -4528,7 +4529,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 61,
     "customer_name": "อุทัย(โอนเงิน)",
     "remark": "",
-    "customer_code": "520001"
+    "customer_code": "PC520001"
   },
   {
     "id": 454,
@@ -4538,7 +4539,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 62,
     "customer_name": "บ.อุทัย",
     "remark": "",
-    "customer_code": "660103"
+    "customer_code": "PC660103"
   },
   {
     "id": 455,
@@ -4548,7 +4549,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 63,
     "customer_name": "มนตรีโอสถ",
     "remark": "",
-    "customer_code": "680045"
+    "customer_code": "PC680045"
   },
   {
     "id": 456,
@@ -4558,7 +4559,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 64,
     "customer_name": "บริษัท ลักกี้ฟาร์ม่า",
     "remark": "",
-    "customer_code": "580010"
+    "customer_code": "PC580010"
   },
   {
     "id": 457,
@@ -4568,7 +4569,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 65,
     "customer_name": "กฤตยาเภสัช",
     "remark": "",
-    "customer_code": "580055"
+    "customer_code": "PC580055"
   },
   {
     "id": 458,
@@ -4578,7 +4579,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 66,
     "customer_name": "คลินิกแพทย์อนวัช",
     "remark": "",
-    "customer_code": "580127"
+    "customer_code": "PC580127"
   },
   {
     "id": 459,
@@ -4588,7 +4589,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 67,
     "customer_name": "คลินิกชุมชนอุทัย",
     "remark": "",
-    "customer_code": "520008"
+    "customer_code": "PC520008"
   },
   {
     "id": 460,
@@ -4598,7 +4599,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 68,
     "customer_name": "บ้านยาท่าฉนวน",
     "remark": "",
-    "customer_code": "650084"
+    "customer_code": "PC650084"
   },
   {
     "id": 461,
@@ -4608,7 +4609,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 69,
     "customer_name": "คลินิกยา นว.",
     "remark": "",
-    "customer_code": "530016"
+    "customer_code": "PC530016"
   },
   {
     "id": 462,
@@ -4618,7 +4619,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 1,
     "customer_name": "จิราภรณ์เภสัช",
     "remark": "",
-    "customer_code": "530007"
+    "customer_code": "PC530007"
   },
   {
     "id": 463,
@@ -4628,7 +4629,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 2,
     "customer_name": "มลิวัลย์",
     "remark": "",
-    "customer_code": "530043"
+    "customer_code": "PC530043"
   },
   {
     "id": 464,
@@ -4638,7 +4639,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 3,
     "customer_name": "ชอนไพร",
     "remark": "",
-    "customer_code": "580167"
+    "customer_code": "PC580167"
   },
   {
     "id": 465,
@@ -4648,7 +4649,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 4,
     "customer_name": "ทีทีฟาร์ม่า",
     "remark": "",
-    "customer_code": "670067"
+    "customer_code": "PC670067"
   },
   {
     "id": 466,
@@ -4658,7 +4659,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 5,
     "customer_name": "แพทย์ศิริชัย",
     "remark": "",
-    "customer_code": "610089"
+    "customer_code": "PC610089"
   },
   {
     "id": 467,
@@ -4668,7 +4669,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 6,
     "customer_name": "หมอยาหล่มสัก",
     "remark": "",
-    "customer_code": "620085"
+    "customer_code": "PC620085"
   },
   {
     "id": 468,
@@ -4678,7 +4679,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 7,
     "customer_name": "แพทย์สราวุธ",
     "remark": "",
-    "customer_code": "610122"
+    "customer_code": "PC610122"
   },
   {
     "id": 469,
@@ -4688,7 +4689,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 8,
     "customer_name": "นำเจริญเภสัช",
     "remark": "",
-    "customer_code": "560011"
+    "customer_code": "PC560011"
   },
   {
     "id": 470,
@@ -4698,7 +4699,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 9,
     "customer_name": "หล่มสักเภสัช",
     "remark": "",
-    "customer_code": "670068"
+    "customer_code": "PC670068"
   },
   {
     "id": 471,
@@ -4708,7 +4709,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 10,
     "customer_name": "ยาเภสัชโอ๊ค",
     "remark": "",
-    "customer_code": "600082"
+    "customer_code": "PC600082"
   },
   {
     "id": 472,
@@ -4718,7 +4719,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 11,
     "customer_name": "เล่าเรื่องยา",
     "remark": "",
-    "customer_code": "590024"
+    "customer_code": "PC590024"
   },
   {
     "id": 473,
@@ -4728,7 +4729,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 12,
     "customer_name": "ชินกานต์",
     "remark": "",
-    "customer_code": "620089"
+    "customer_code": "PC620089"
   },
   {
     "id": 474,
@@ -4738,7 +4739,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 13,
     "customer_name": "หมอเตยแทน",
     "remark": "",
-    "customer_code": "660089"
+    "customer_code": "PC660089"
   },
   {
     "id": 475,
@@ -4748,7 +4749,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 14,
     "customer_name": "สถานียาหล่มเก่า",
     "remark": "",
-    "customer_code": "670087"
+    "customer_code": "PC670087"
   },
   {
     "id": 476,
@@ -4758,7 +4759,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 15,
     "customer_name": "ยนต์นิรมิต",
     "remark": "",
-    "customer_code": "670086"
+    "customer_code": "PC670086"
   },
   {
     "id": 477,
@@ -4768,7 +4769,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 16,
     "customer_name": "วิชัยเภสัช",
     "remark": "",
-    "customer_code": "660025"
+    "customer_code": "PC660025"
   },
   {
     "id": 478,
@@ -4778,7 +4779,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 17,
     "customer_name": "ไอแคร์ ดี",
     "remark": "",
-    "customer_code": "670128"
+    "customer_code": "PC670128"
   },
   {
     "id": 479,
@@ -4788,7 +4789,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 18,
     "customer_name": "ชุติกาญจน์",
     "remark": "",
-    "customer_code": "530077"
+    "customer_code": "PC530077"
   },
   {
     "id": 480,
@@ -4798,7 +4799,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 19,
     "customer_name": "ประไพ",
     "remark": "",
-    "customer_code": "520083"
+    "customer_code": "PC520083"
   },
   {
     "id": 481,
@@ -4808,7 +4809,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 20,
     "customer_name": "วิภาวินี",
     "remark": "",
-    "customer_code": "650096"
+    "customer_code": "PC650096"
   },
   {
     "id": 482,
@@ -4818,7 +4819,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 21,
     "customer_name": "ร้านยาบุญ",
     "remark": "",
-    "customer_code": "620069"
+    "customer_code": "PC620069"
   },
   {
     "id": 483,
@@ -4828,7 +4829,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 22,
     "customer_name": "พจีเภสัช",
     "remark": "",
-    "customer_code": "630079"
+    "customer_code": "PC630079"
   },
   {
     "id": 484,
@@ -4838,7 +4839,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 23,
     "customer_name": "คลังยาไทหล่ม",
     "remark": "",
-    "customer_code": "670131"
+    "customer_code": "PC670131"
   },
   {
     "id": 485,
@@ -4848,7 +4849,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 24,
     "customer_name": "วรญา",
     "remark": "",
-    "customer_code": "670016"
+    "customer_code": "PC670016"
   },
   {
     "id": 486,
@@ -4858,7 +4859,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 25,
     "customer_name": "s.r careplus",
     "remark": "",
-    "customer_code": "690017"
+    "customer_code": "PC690017"
   },
   {
     "id": 487,
@@ -4868,7 +4869,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 26,
     "customer_name": "ละไม",
     "remark": "",
-    "customer_code": "660016"
+    "customer_code": "PC660016"
   },
   {
     "id": 488,
@@ -4878,7 +4879,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 27,
     "customer_name": "นางั่ว",
     "remark": "",
-    "customer_code": "590026"
+    "customer_code": "PC590026"
   },
   {
     "id": 489,
@@ -4888,7 +4889,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 28,
     "customer_name": "วังซองเภสัช",
     "remark": "",
-    "customer_code": "600005"
+    "customer_code": "PC600005"
   },
   {
     "id": 490,
@@ -4898,7 +4899,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 29,
     "customer_name": "วังมลเภสัช",
     "remark": "",
-    "customer_code": "630098"
+    "customer_code": "PC630098"
   },
   {
     "id": 491,
@@ -4908,7 +4909,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 30,
     "customer_name": "ใกล้บ้าน",
     "remark": "",
-    "customer_code": "690074"
+    "customer_code": "PC690074"
   },
   {
     "id": 492,
@@ -4918,7 +4919,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 31,
     "customer_name": "พรสุดาคลินิก",
     "remark": "",
-    "customer_code": "610036"
+    "customer_code": "PC610036"
   },
   {
     "id": 493,
@@ -4928,7 +4929,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 32,
     "customer_name": "เจริญสหคลินิค",
     "remark": "",
-    "customer_code": "670083"
+    "customer_code": "PC670083"
   },
   {
     "id": 494,
@@ -4938,7 +4939,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 33,
     "customer_name": "สิริชัย",
     "remark": "",
-    "customer_code": "630013"
+    "customer_code": "PC630013"
   },
   {
     "id": 495,
@@ -4948,7 +4949,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 34,
     "customer_name": "หมอวิสาข์",
     "remark": "",
-    "customer_code": "680109"
+    "customer_code": "PC680109"
   },
   {
     "id": 496,
@@ -4958,7 +4959,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 35,
     "customer_name": "ธรรมเวท",
     "remark": "",
-    "customer_code": "630078"
+    "customer_code": "PC630078"
   },
   {
     "id": 497,
@@ -4968,7 +4969,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 36,
     "customer_name": "แพทย์โกศล",
     "remark": "",
-    "customer_code": "600093"
+    "customer_code": "PC600093"
   },
   {
     "id": 498,
@@ -4978,7 +4979,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 37,
     "customer_name": "แอปเทก้า พลัส",
     "remark": "",
-    "customer_code": "600103"
+    "customer_code": "PC600103"
   },
   {
     "id": 499,
@@ -4988,7 +4989,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 38,
     "customer_name": "แคมป์สน",
     "remark": "",
-    "customer_code": "660112"
+    "customer_code": "PC660112"
   },
   {
     "id": 500,
@@ -4998,7 +4999,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 39,
     "customer_name": "ศศิธรเภสัช",
     "remark": "",
-    "customer_code": "660032"
+    "customer_code": "PC660032"
   },
   {
     "id": 501,
@@ -5008,7 +5009,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 40,
     "customer_name": "ยาหลังรพ.",
     "remark": "",
-    "customer_code": "660058"
+    "customer_code": "PC660058"
   },
   {
     "id": 502,
@@ -5018,7 +5019,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 41,
     "customer_name": "ยาสะเดียง",
     "remark": "",
-    "customer_code": "610131"
+    "customer_code": "PC610131"
   },
   {
     "id": 503,
@@ -5028,7 +5029,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 42,
     "customer_name": "สะเดียงยา",
     "remark": "",
-    "customer_code": "520063"
+    "customer_code": "PC520063"
   },
   {
     "id": 504,
@@ -5038,7 +5039,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 43,
     "customer_name": "ธิภาพร (กุ้ง)",
     "remark": "",
-    "customer_code": "520067"
+    "customer_code": "PC520067"
   },
   {
     "id": 505,
@@ -5048,7 +5049,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 44,
     "customer_name": "เอื้อจิตรา",
     "remark": "",
-    "customer_code": "660024"
+    "customer_code": "PC660024"
   },
   {
     "id": 506,
@@ -5058,7 +5059,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 45,
     "customer_name": "สิทธิเวช3",
     "remark": "",
-    "customer_code": "680028"
+    "customer_code": "PC680028"
   },
   {
     "id": 507,
@@ -5068,7 +5069,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 46,
     "customer_name": "นิศากร",
     "remark": "",
-    "customer_code": "610083"
+    "customer_code": "PC610083"
   },
   {
     "id": 508,
@@ -5078,7 +5079,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 47,
     "customer_name": "กนกพรคลินิก",
     "remark": "",
-    "customer_code": "680131"
+    "customer_code": "PC680131"
   },
   {
     "id": 509,
@@ -5088,7 +5089,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 48,
     "customer_name": "อารีรัตน์เภสัช",
     "remark": "",
-    "customer_code": "580096"
+    "customer_code": "PC580096"
   },
   {
     "id": 510,
@@ -5098,7 +5099,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 49,
     "customer_name": "เรือนโอสถ",
     "remark": "",
-    "customer_code": "580119"
+    "customer_code": "PC580119"
   },
   {
     "id": 511,
@@ -5108,7 +5109,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 50,
     "customer_name": "หมอกอบกาญจน์",
     "remark": "",
-    "customer_code": "590087"
+    "customer_code": "PC590087"
   },
   {
     "id": 512,
@@ -5118,7 +5119,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 51,
     "customer_name": "เภสัชพัฒนา",
     "remark": "",
-    "customer_code": "640068"
+    "customer_code": "PC640068"
   },
   {
     "id": 513,
@@ -5128,7 +5129,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 52,
     "customer_name": "บ้านยากลางเมือง",
     "remark": "",
-    "customer_code": "630056"
+    "customer_code": "PC630056"
   },
   {
     "id": 514,
@@ -5138,7 +5139,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 53,
     "customer_name": "สองเภสัชกร",
     "remark": "",
-    "customer_code": "520076"
+    "customer_code": "PC520076"
   },
   {
     "id": 515,
@@ -5148,7 +5149,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 54,
     "customer_name": "นพดลเภสัช2",
     "remark": "",
-    "customer_code": "590008"
+    "customer_code": "PC590008"
   },
   {
     "id": 516,
@@ -5158,7 +5159,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 55,
     "customer_name": "ศรีลักษณ์เภสัช",
     "remark": "",
-    "customer_code": "570021"
+    "customer_code": "PC570021"
   },
   {
     "id": 517,
@@ -5168,7 +5169,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 56,
     "customer_name": "ศศิร์อร",
     "remark": "",
-    "customer_code": "660124"
+    "customer_code": "PC660124"
   },
   {
     "id": 518,
@@ -5178,7 +5179,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 57,
     "customer_name": "สิทธิเวช2",
     "remark": "",
-    "customer_code": "630109"
+    "customer_code": "PC630109"
   },
   {
     "id": 519,
@@ -5188,7 +5189,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 58,
     "customer_name": "นพดลเภสัช",
     "remark": "",
-    "customer_code": "550072"
+    "customer_code": "PC550072"
   },
   {
     "id": 520,
@@ -5198,7 +5199,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 59,
     "customer_name": "แอปเทก้าtop",
     "remark": "",
-    "customer_code": "550038"
+    "customer_code": "PC550038"
   },
   {
     "id": 521,
@@ -5208,7 +5209,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 60,
     "customer_name": "หมอเกียรติยศ",
     "remark": "",
-    "customer_code": "580087"
+    "customer_code": "PC580087"
   },
   {
     "id": 522,
@@ -5218,7 +5219,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 61,
     "customer_name": "ยาดี",
     "remark": "",
-    "customer_code": "650018"
+    "customer_code": "PC650018"
   },
   {
     "id": 523,
@@ -5228,7 +5229,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 62,
     "customer_name": "ยาใกล้ฉัน",
     "remark": "",
-    "customer_code": "680065"
+    "customer_code": "PC680065"
   },
   {
     "id": 524,
@@ -5238,7 +5239,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 63,
     "customer_name": "เภสัชณัฐ",
     "remark": "",
-    "customer_code": "660045"
+    "customer_code": "PC660045"
   },
   {
     "id": 525,
@@ -5248,7 +5249,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 64,
     "customer_name": "คลินิคหมอปาล์ม",
     "remark": "",
-    "customer_code": "660108"
+    "customer_code": "PC660108"
   },
   {
     "id": 526,
@@ -5258,7 +5259,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 65,
     "customer_name": "สิทธิเวชฟาร์มาซี",
     "remark": "",
-    "customer_code": "540103"
+    "customer_code": "PC540103"
   },
   {
     "id": 527,
@@ -5268,7 +5269,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 66,
     "customer_name": "วิชัยฟาร์มาซี",
     "remark": "",
-    "customer_code": "620054"
+    "customer_code": "PC620054"
   },
   {
     "id": 528,
@@ -5278,7 +5279,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 67,
     "customer_name": "โพธิ์จันทร์",
     "remark": "",
-    "customer_code": "590034"
+    "customer_code": "PC590034"
   },
   {
     "id": 529,
@@ -5288,7 +5289,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 68,
     "customer_name": "ขายยาเภสัชกร",
     "remark": "",
-    "customer_code": "520070"
+    "customer_code": "PC520070"
   },
   {
     "id": 530,
@@ -5298,7 +5299,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 69,
     "customer_name": "ทุ่งสมอยา",
     "remark": "",
-    "customer_code": "600006"
+    "customer_code": "PC600006"
   },
   {
     "id": 531,
@@ -5308,7 +5309,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 70,
     "customer_name": "บ้านยาเพชรชมพู",
     "remark": "",
-    "customer_code": "670036"
+    "customer_code": "PC670036"
   },
   {
     "id": 532,
@@ -5318,7 +5319,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 71,
     "customer_name": "เคพลัส",
     "remark": "",
-    "customer_code": "590079"
+    "customer_code": "PC590079"
   },
   {
     "id": 533,
@@ -5328,7 +5329,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 72,
     "customer_name": "สยามฟาร์มาซี",
     "remark": "",
-    "customer_code": "530005"
+    "customer_code": "PC530005"
   },
   {
     "id": 534,
@@ -5338,7 +5339,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 73,
     "customer_name": "วังชมภู",
     "remark": "",
-    "customer_code": "630034"
+    "customer_code": "PC630034"
   },
   {
     "id": 535,
@@ -5348,7 +5349,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 74,
     "customer_name": "ไทยเสรี",
     "remark": "",
-    "customer_code": "560003"
+    "customer_code": "PC560003"
   },
   {
     "id": 536,
@@ -5358,7 +5359,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 75,
     "customer_name": "ยาเภสัชกร1",
     "remark": "",
-    "customer_code": "650028"
+    "customer_code": "PC650028"
   },
   {
     "id": 537,
@@ -5368,7 +5369,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 76,
     "customer_name": "ธีรยารุ่งเรือง",
     "remark": "",
-    "customer_code": "660021"
+    "customer_code": "PC660021"
   },
   {
     "id": 538,
@@ -5378,7 +5379,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 77,
     "customer_name": "มันตา",
     "remark": "",
-    "customer_code": "660084"
+    "customer_code": "PC660084"
   },
   {
     "id": 539,
@@ -5388,7 +5389,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 78,
     "customer_name": "ท่าแดงเภสัช",
     "remark": "",
-    "customer_code": "680129"
+    "customer_code": "PC680129"
   },
   {
     "id": 540,
@@ -5398,7 +5399,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 79,
     "customer_name": "พัชรินทร์เภสัช",
     "remark": "",
-    "customer_code": "580132"
+    "customer_code": "PC580132"
   },
   {
     "id": 541,
@@ -5408,7 +5409,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 80,
     "customer_name": "กันเอง",
     "remark": "",
-    "customer_code": "570043"
+    "customer_code": "PC570043"
   },
   {
     "id": 542,
@@ -5418,7 +5419,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 81,
     "customer_name": "ยาเภสัชกร3",
     "remark": "",
-    "customer_code": "610085"
+    "customer_code": "PC610085"
   },
   {
     "id": 543,
@@ -5428,7 +5429,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 82,
     "customer_name": "อุดมเภสัช",
     "remark": "",
-    "customer_code": "600067"
+    "customer_code": "PC600067"
   },
   {
     "id": 544,
@@ -5438,7 +5439,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 83,
     "customer_name": "คลังสุขภาพ",
     "remark": "",
-    "customer_code": "620076"
+    "customer_code": "PC620076"
   },
   {
     "id": 545,
@@ -5448,7 +5449,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 84,
     "customer_name": "กมลทิพย์",
     "remark": "",
-    "customer_code": "590054"
+    "customer_code": "PC590054"
   },
   {
     "id": 546,
@@ -5458,7 +5459,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 85,
     "customer_name": "พรพัฒนา",
     "remark": "",
-    "customer_code": "630006"
+    "customer_code": "PC630006"
   },
   {
     "id": 547,
@@ -5468,7 +5469,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 86,
     "customer_name": "สหชัย",
     "remark": "",
-    "customer_code": "610022"
+    "customer_code": "PC610022"
   },
   {
     "id": 548,
@@ -5478,7 +5479,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 87,
     "customer_name": "ทันตกรรมหนองบัว",
     "remark": "",
-    "customer_code": "680022"
+    "customer_code": "PC680022"
   },
   {
     "id": 549,
@@ -5488,7 +5489,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 88,
     "customer_name": "เจพีเอส",
     "remark": "",
-    "customer_code": "680047"
+    "customer_code": "PC680047"
   },
   {
     "id": 550,
@@ -5498,7 +5499,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 89,
     "customer_name": "เวียงกาญจน์",
     "remark": "",
-    "customer_code": "510015"
+    "customer_code": "PC510015"
   },
   {
     "id": 551,
@@ -5508,7 +5509,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 90,
     "customer_name": "วสันต์ชุมแสง",
     "remark": "",
-    "customer_code": "690038"
+    "customer_code": "PC690038"
   },
   {
     "id": 552,
@@ -5518,7 +5519,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 91,
     "customer_name": "พบโชค",
     "remark": "",
-    "customer_code": "680016"
+    "customer_code": "PC680016"
   },
   {
     "id": 553,
@@ -5528,7 +5529,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 92,
     "customer_name": "หยูกยา",
     "remark": "",
-    "customer_code": "520034"
+    "customer_code": "PC520034"
   },
   {
     "id": 554,
@@ -5538,7 +5539,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 93,
     "customer_name": "คลินิกยา นว",
     "remark": "",
-    "customer_code": "530016"
+    "customer_code": "PC530016"
   },
   {
     "id": 555,
@@ -5548,7 +5549,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 1,
     "customer_name": "คลังยาสรรคบุรี",
     "remark": "",
-    "customer_code": "680049"
+    "customer_code": "PC680049"
   },
   {
     "id": 556,
@@ -5558,7 +5559,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 2,
     "customer_name": "บริษัท ฟันคาเฟ่",
     "remark": "",
-    "customer_code": "690053"
+    "customer_code": "PC690053"
   },
   {
     "id": 557,
@@ -5568,7 +5569,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 3,
     "customer_name": "สิราวรรณ",
     "remark": "",
-    "customer_code": "680015"
+    "customer_code": "PC680015"
   },
   {
     "id": 558,
@@ -5578,7 +5579,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 4,
     "customer_name": "ร้านทิพย์คลังยา",
     "remark": "",
-    "customer_code": "610064"
+    "customer_code": "PC610064"
   },
   {
     "id": 559,
@@ -5588,7 +5589,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 5,
     "customer_name": "สองเภสัช",
     "remark": "",
-    "customer_code": "640030"
+    "customer_code": "PC640030"
   },
   {
     "id": 560,
@@ -5598,7 +5599,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 6,
     "customer_name": "ศิริฟาร์ม่า",
     "remark": "",
-    "customer_code": "580063"
+    "customer_code": "PC580063"
   },
   {
     "id": 561,
@@ -5608,7 +5609,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 7,
     "customer_name": "ฟาร์มาช็อป",
     "remark": "",
-    "customer_code": "520060"
+    "customer_code": "PC520060"
   },
   {
     "id": 562,
@@ -5618,7 +5619,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 8,
     "customer_name": "วชิระ",
     "remark": "",
-    "customer_code": "510012"
+    "customer_code": "PC510012"
   },
   {
     "id": 563,
@@ -5628,7 +5629,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 9,
     "customer_name": "นราธิป",
     "remark": "",
-    "customer_code": "560147"
+    "customer_code": "PC560147"
   },
   {
     "id": 564,
@@ -5638,7 +5639,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 10,
     "customer_name": "ธนพล",
     "remark": "",
-    "customer_code": "610030"
+    "customer_code": "PC610030"
   },
   {
     "id": 565,
@@ -5648,7 +5649,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 11,
     "customer_name": "ธนพลเซ็นเตอร์",
     "remark": "",
-    "customer_code": "690079"
+    "customer_code": "PC690079"
   },
   {
     "id": 566,
@@ -5658,7 +5659,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 12,
     "customer_name": "ชัยยศ",
     "remark": "",
-    "customer_code": "570011"
+    "customer_code": "PC570011"
   },
   {
     "id": 567,
@@ -5668,7 +5669,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 13,
     "customer_name": "สวัสดี",
     "remark": "",
-    "customer_code": "530020"
+    "customer_code": "PC530020"
   },
   {
     "id": 568,
@@ -5678,7 +5679,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 14,
     "customer_name": "ณพล",
     "remark": "",
-    "customer_code": "560086"
+    "customer_code": "PC560086"
   },
   {
     "id": 569,
@@ -5688,7 +5689,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 15,
     "customer_name": "ณพล2",
     "remark": "",
-    "customer_code": "640060"
+    "customer_code": "PC640060"
   },
   {
     "id": 570,
@@ -5698,7 +5699,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 16,
     "customer_name": "ปันยา",
     "remark": "",
-    "customer_code": "570111"
+    "customer_code": "PC570111"
   },
   {
     "id": 571,
@@ -5708,7 +5709,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 17,
     "customer_name": "พรพิมล",
     "remark": "",
-    "customer_code": "640005"
+    "customer_code": "PC640005"
   },
   {
     "id": 572,
@@ -5718,7 +5719,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 18,
     "customer_name": "สุวรรณเวช",
     "remark": "",
-    "customer_code": "670051"
+    "customer_code": "PC670051"
   },
   {
     "id": 573,
@@ -5728,7 +5729,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 19,
     "customer_name": "พีเอ็ม",
     "remark": "",
-    "customer_code": "670052"
+    "customer_code": "PC670052"
   },
   {
     "id": 574,
@@ -5738,7 +5739,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 20,
     "customer_name": "กนกอรเภสัช",
     "remark": "",
-    "customer_code": "690012"
+    "customer_code": "PC690012"
   },
   {
     "id": 575,
@@ -5748,7 +5749,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 21,
     "customer_name": "เภสัชกรประวิทย์",
     "remark": "",
-    "customer_code": "640077"
+    "customer_code": "PC640077"
   },
   {
     "id": 576,
@@ -5758,7 +5759,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 22,
     "customer_name": "บ้านยาอารัญ",
     "remark": "",
-    "customer_code": "640025"
+    "customer_code": "PC640025"
   },
   {
     "id": 577,
@@ -5768,7 +5769,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 23,
     "customer_name": "เขาตะพาบ",
     "remark": "",
-    "customer_code": "650055"
+    "customer_code": "PC650055"
   },
   {
     "id": 578,
@@ -5778,7 +5779,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 24,
     "customer_name": "แพทย์หญิงโสภา",
     "remark": "",
-    "customer_code": "680102"
+    "customer_code": "PC680102"
   },
   {
     "id": 579,
@@ -5788,7 +5789,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 25,
     "customer_name": "หมอยาทุ่งนา",
     "remark": "",
-    "customer_code": "610113"
+    "customer_code": "PC610113"
   },
   {
     "id": 580,
@@ -5798,7 +5799,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 26,
     "customer_name": "โรงสีใหม่",
     "remark": "",
-    "customer_code": "600010"
+    "customer_code": "PC600010"
   },
   {
     "id": 581,
@@ -5808,7 +5809,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 27,
     "customer_name": "ภก.รวิ",
     "remark": "",
-    "customer_code": "590097"
+    "customer_code": "PC590097"
   },
   {
     "id": 582,
@@ -5818,7 +5819,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 28,
     "customer_name": "เภสัชกร ขวัญ",
     "remark": "",
-    "customer_code": "500018"
+    "customer_code": "PC500018"
   },
   {
     "id": 583,
@@ -5828,7 +5829,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 29,
     "customer_name": "หนองฉางคลังยา",
     "remark": "",
-    "customer_code": "520025"
+    "customer_code": "PC520025"
   },
   {
     "id": 584,
@@ -5838,7 +5839,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 30,
     "customer_name": "พรชัย",
     "remark": "",
-    "customer_code": "540141"
+    "customer_code": "PC540141"
   },
   {
     "id": 585,
@@ -5848,7 +5849,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 31,
     "customer_name": "คลินิกกนกวรรณ",
     "remark": "",
-    "customer_code": "510058"
+    "customer_code": "PC510058"
   },
   {
     "id": 586,
@@ -5858,7 +5859,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 32,
     "customer_name": "สุชาติ..ทับทัน",
     "remark": "",
-    "customer_code": "570098"
+    "customer_code": "PC570098"
   },
   {
     "id": 587,
@@ -5868,7 +5869,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 33,
     "customer_name": "คลินิกแพทย์ อุทุมพร.รพ ทัพทัน",
     "remark": "",
-    "customer_code": "590082"
+    "customer_code": "PC590082"
   },
   {
     "id": 588,
@@ -5878,7 +5879,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 34,
     "customer_name": "แพทย์วิชา",
     "remark": "",
-    "customer_code": "670116"
+    "customer_code": "PC670116"
   },
   {
     "id": 589,
@@ -5888,7 +5889,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 35,
     "customer_name": "เภสัชกรกมล 1",
     "remark": "",
-    "customer_code": "520081"
+    "customer_code": "PC520081"
   },
   {
     "id": 590,
@@ -5898,7 +5899,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 36,
     "customer_name": "เภสัช ออม",
     "remark": "",
-    "customer_code": "610012"
+    "customer_code": "PC610012"
   },
   {
     "id": 591,
@@ -5908,7 +5909,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 37,
     "customer_name": "วรพงศ์ไชย คลินิก",
     "remark": "",
-    "customer_code": "510055"
+    "customer_code": "PC510055"
   },
   {
     "id": 592,
@@ -5918,7 +5919,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 38,
     "customer_name": "บริษัท คลังยา (รักษ์ยาเภสัช)",
     "remark": "",
-    "customer_code": "580008"
+    "customer_code": "PC580008"
   },
   {
     "id": 593,
@@ -5928,7 +5929,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 39,
     "customer_name": "พฤกษ์",
     "remark": "",
-    "customer_code": "510059"
+    "customer_code": "PC510059"
   },
   {
     "id": 594,
@@ -5938,7 +5939,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 40,
     "customer_name": "ศูนย์บริการ",
     "remark": "",
-    "customer_code": "620112"
+    "customer_code": "PC620112"
   },
   {
     "id": 595,
@@ -5948,7 +5949,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 41,
     "customer_name": "อังวัชระ",
     "remark": "",
-    "customer_code": "540014"
+    "customer_code": "PC540014"
   },
   {
     "id": 596,
@@ -5958,7 +5959,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 42,
     "customer_name": "บ้านยาลาดยาว",
     "remark": "",
-    "customer_code": "530041"
+    "customer_code": "PC530041"
   },
   {
     "id": 597,
@@ -5968,7 +5969,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 43,
     "customer_name": "พิเชษฐ์",
     "remark": "",
-    "customer_code": "520044"
+    "customer_code": "PC520044"
   },
   {
     "id": 598,
@@ -5978,7 +5979,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 44,
     "customer_name": "ดีไว",
     "remark": "",
-    "customer_code": "540122"
+    "customer_code": "PC540122"
   },
   {
     "id": 599,
@@ -5988,7 +5989,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 45,
     "customer_name": "แพทย์วิลาสิณี-ศิรินภา",
     "remark": "",
-    "customer_code": "670093"
+    "customer_code": "PC670093"
   },
   {
     "id": 600,
@@ -5998,7 +5999,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 46,
     "customer_name": "ทวีทรัพย์",
     "remark": "",
-    "customer_code": "650037"
+    "customer_code": "PC650037"
   },
   {
     "id": 601,
@@ -6008,7 +6009,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 47,
     "customer_name": "ขายยาเพียร",
     "remark": "",
-    "customer_code": "640008"
+    "customer_code": "PC640008"
   },
   {
     "id": 602,
@@ -6018,7 +6019,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 1,
     "customer_name": "คลังยาบึงน้ำส",
     "remark": "",
-    "customer_code": "650125"
+    "customer_code": "PC650125"
   },
   {
     "id": 603,
@@ -6028,7 +6029,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 2,
     "customer_name": "พี วี เอ็น เวชภัณฑ์",
     "remark": "",
-    "customer_code": "680095"
+    "customer_code": "PC680095"
   },
   {
     "id": 604,
@@ -6038,7 +6039,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 3,
     "customer_name": "ภ.เจริญเภสัช",
     "remark": "",
-    "customer_code": "660079"
+    "customer_code": "PC660079"
   },
   {
     "id": 605,
@@ -6048,7 +6049,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 4,
     "customer_name": "วงศ์โปธา",
     "remark": "",
-    "customer_code": "630064"
+    "customer_code": "PC630064"
   },
   {
     "id": 606,
@@ -6058,7 +6059,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 5,
     "customer_name": "บ้านยาประเสริฐ",
     "remark": "",
-    "customer_code": "600109"
+    "customer_code": "PC600109"
   },
   {
     "id": 607,
@@ -6068,7 +6069,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 6,
     "customer_name": "ฟาร์ม โซล่า",
     "remark": "",
-    "customer_code": "680038"
+    "customer_code": "PC680038"
   },
   {
     "id": 608,
@@ -6078,7 +6079,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 7,
     "customer_name": "บิ๊กเบสเภสัช",
     "remark": "",
-    "customer_code": "670059"
+    "customer_code": "PC670059"
   },
   {
     "id": 609,
@@ -6088,7 +6089,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 8,
     "customer_name": "ยาใกล้มอ",
     "remark": "",
-    "customer_code": "610086"
+    "customer_code": "PC610086"
   },
   {
     "id": 610,
@@ -6098,7 +6099,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 9,
     "customer_name": "we love care",
     "remark": "",
-    "customer_code": "530075"
+    "customer_code": "PC530075"
   },
   {
     "id": 611,
@@ -6108,7 +6109,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 10,
     "customer_name": "ยาคณะสาขา2",
     "remark": "",
-    "customer_code": "610095"
+    "customer_code": "PC610095"
   },
   {
     "id": 612,
@@ -6118,7 +6119,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 11,
     "customer_name": "ศาลายา ท่าโพธิ์",
     "remark": "",
-    "customer_code": "570023"
+    "customer_code": "PC570023"
   },
   {
     "id": 613,
@@ -6128,7 +6129,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 12,
     "customer_name": "เหมือนฝัน",
     "remark": "",
-    "customer_code": "560138"
+    "customer_code": "PC560138"
   },
   {
     "id": 614,
@@ -6138,7 +6139,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 13,
     "customer_name": "คลินิกเวชกรรมณัฐณรงค์",
     "remark": "",
-    "customer_code": "680118"
+    "customer_code": "PC680118"
   },
   {
     "id": 615,
@@ -6148,7 +6149,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 14,
     "customer_name": "จุฬามณี",
     "remark": "",
-    "customer_code": "670058"
+    "customer_code": "PC670058"
   },
   {
     "id": 616,
@@ -6158,7 +6159,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 15,
     "customer_name": "จุฬายาดี",
     "remark": "",
-    "customer_code": "640096"
+    "customer_code": "PC640096"
   },
   {
     "id": 617,
@@ -6168,7 +6169,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 16,
     "customer_name": "อ.เภสัช สาขาท่าโพธิ์",
     "remark": "",
-    "customer_code": "690036"
+    "customer_code": "PC690036"
   },
   {
     "id": 618,
@@ -6178,7 +6179,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 17,
     "customer_name": "หมอ มัณฑนา",
     "remark": "",
-    "customer_code": "600100"
+    "customer_code": "PC600100"
   },
   {
     "id": 619,
@@ -6188,7 +6189,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 18,
     "customer_name": "เหรียญเงินเภสัช",
     "remark": "",
-    "customer_code": "560127"
+    "customer_code": "PC560127"
   },
   {
     "id": 620,
@@ -6198,7 +6199,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 19,
     "customer_name": "ดี-เทเบิล",
     "remark": "",
-    "customer_code": "670047"
+    "customer_code": "PC670047"
   },
   {
     "id": 621,
@@ -6208,7 +6209,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 20,
     "customer_name": "ฟาร์มยา",
     "remark": "",
-    "customer_code": "580090"
+    "customer_code": "PC580090"
   },
   {
     "id": 622,
@@ -6218,7 +6219,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 21,
     "customer_name": "สัวเภสัช",
     "remark": "",
-    "customer_code": "540125"
+    "customer_code": "PC540125"
   },
   {
     "id": 623,
@@ -6228,7 +6229,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 22,
     "customer_name": "บ้านยาวังทอง",
     "remark": "",
-    "customer_code": "600035"
+    "customer_code": "PC600035"
   },
   {
     "id": 624,
@@ -6238,7 +6239,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 23,
     "customer_name": "รพีเภสัช",
     "remark": "",
-    "customer_code": "670011"
+    "customer_code": "PC670011"
   },
   {
     "id": 625,
@@ -6248,7 +6249,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 24,
     "customer_name": "บ้านยาพอเพียง",
     "remark": "",
-    "customer_code": "570113"
+    "customer_code": "PC570113"
   },
   {
     "id": 626,
@@ -6258,7 +6259,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 25,
     "customer_name": "โกดังยา",
     "remark": "",
-    "customer_code": "670110"
+    "customer_code": "PC670110"
   },
   {
     "id": 627,
@@ -6268,7 +6269,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 26,
     "customer_name": "แพทย์เอกวิชญ์",
     "remark": "",
-    "customer_code": "680103"
+    "customer_code": "PC680103"
   },
   {
     "id": 628,
@@ -6278,7 +6279,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 27,
     "customer_name": "แคปซูลยา",
     "remark": "",
-    "customer_code": "570005"
+    "customer_code": "PC570005"
   },
   {
     "id": 629,
@@ -6288,7 +6289,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 28,
     "customer_name": "บ้านยาซอย7",
     "remark": "",
-    "customer_code": "660018"
+    "customer_code": "PC660018"
   },
   {
     "id": 630,
@@ -6298,7 +6299,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 29,
     "customer_name": "บ้านยาสามพี่น้อง",
     "remark": "",
-    "customer_code": "650061"
+    "customer_code": "PC650061"
   },
   {
     "id": 631,
@@ -6308,7 +6309,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 30,
     "customer_name": "โอสถเฮาส์",
     "remark": "",
-    "customer_code": "660055"
+    "customer_code": "PC660055"
   },
   {
     "id": 632,
@@ -6318,7 +6319,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 31,
     "customer_name": "รักษ์ยา",
     "remark": "",
-    "customer_code": "590012"
+    "customer_code": "PC590012"
   },
   {
     "id": 633,
@@ -6328,7 +6329,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 32,
     "customer_name": "พีแคร์ฟาร์มา",
     "remark": "",
-    "customer_code": "580130"
+    "customer_code": "PC580130"
   },
   {
     "id": 634,
@@ -6338,7 +6339,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 33,
     "customer_name": "วรมิตร",
     "remark": "",
-    "customer_code": "550075"
+    "customer_code": "PC550075"
   },
   {
     "id": 635,
@@ -6348,7 +6349,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 34,
     "customer_name": "กล่องยา",
     "remark": "",
-    "customer_code": "610040"
+    "customer_code": "PC610040"
   },
   {
     "id": 636,
@@ -6358,7 +6359,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 35,
     "customer_name": "ณิชากร",
     "remark": "",
-    "customer_code": "680100"
+    "customer_code": "PC680100"
   },
   {
     "id": 637,
@@ -6368,7 +6369,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 36,
     "customer_name": "พี.เค.ดรักส์",
     "remark": "",
-    "customer_code": "570037"
+    "customer_code": "PC570037"
   },
   {
     "id": 638,
@@ -6378,7 +6379,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 37,
     "customer_name": "บ้านยามะขามสูง",
     "remark": "",
-    "customer_code": "580157"
+    "customer_code": "PC580157"
   },
   {
     "id": 639,
@@ -6388,7 +6389,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 38,
     "customer_name": "ปราชญ์ยา",
     "remark": "",
-    "customer_code": "600077"
+    "customer_code": "PC600077"
   },
   {
     "id": 640,
@@ -6398,7 +6399,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 39,
     "customer_name": "ช่องฟ้า",
     "remark": "",
-    "customer_code": "580174"
+    "customer_code": "PC580174"
   },
   {
     "id": 641,
@@ -6408,7 +6409,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 40,
     "customer_name": "ฟาร์มสุข",
     "remark": "",
-    "customer_code": "640109"
+    "customer_code": "PC640109"
   },
   {
     "id": 642,
@@ -6418,7 +6419,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 41,
     "customer_name": "ตลาดหัวรอเภสัช",
     "remark": "",
-    "customer_code": "660004"
+    "customer_code": "PC660004"
   },
   {
     "id": 643,
@@ -6428,7 +6429,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 42,
     "customer_name": "บ้านยาเอกา",
     "remark": "",
-    "customer_code": "680056"
+    "customer_code": "PC680056"
   },
   {
     "id": 644,
@@ -6438,7 +6439,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 43,
     "customer_name": "ช.อนัน",
     "remark": "",
-    "customer_code": "660100"
+    "customer_code": "PC660100"
   },
   {
     "id": 645,
@@ -6448,7 +6449,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 44,
     "customer_name": "สหภัณฑ์เภสัช",
     "remark": "",
-    "customer_code": "610141"
+    "customer_code": "PC610141"
   },
   {
     "id": 646,
@@ -6458,7 +6459,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 45,
     "customer_name": "โรงพยาบาลกรุงเทพพิษณุโลก",
     "remark": "",
-    "customer_code": "680132"
+    "customer_code": "PC680132"
   },
   {
     "id": 647,
@@ -6468,7 +6469,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 46,
     "customer_name": "ยาไอแคร์",
     "remark": "",
-    "customer_code": "540087"
+    "customer_code": "PC540087"
   },
   {
     "id": 648,
@@ -6478,7 +6479,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 47,
     "customer_name": "อุ่นใจ",
     "remark": "",
-    "customer_code": "570148"
+    "customer_code": "PC570148"
   },
   {
     "id": 649,
@@ -6488,7 +6489,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 48,
     "customer_name": "ยาคณะ",
     "remark": "",
-    "customer_code": "530080"
+    "customer_code": "PC530080"
   },
   {
     "id": 650,
@@ -6498,7 +6499,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 49,
     "customer_name": "วิน วิน",
     "remark": "",
-    "customer_code": "540155"
+    "customer_code": "PC540155"
   },
   {
     "id": 651,
@@ -6508,7 +6509,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 50,
     "customer_name": "บ้านยาสุขสบาย",
     "remark": "",
-    "customer_code": "660030"
+    "customer_code": "PC660030"
   },
   {
     "id": 652,
@@ -6518,7 +6519,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 51,
     "customer_name": "คลินิกเด็กพี่หมอแนค",
     "remark": "",
-    "customer_code": "680074"
+    "customer_code": "PC680074"
   },
   {
     "id": 653,
@@ -6528,7 +6529,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 52,
     "customer_name": "ฟาร์มยาเภสัชกร",
     "remark": "",
-    "customer_code": "590016"
+    "customer_code": "PC590016"
   },
   {
     "id": 654,
@@ -6538,7 +6539,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 53,
     "customer_name": "ยาประจำบ้าน",
     "remark": "",
-    "customer_code": "650033"
+    "customer_code": "PC650033"
   },
   {
     "id": 655,
@@ -6548,7 +6549,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 54,
     "customer_name": "คลินิก นายแพทย์บริบูรณ์",
     "remark": "",
-    "customer_code": "600138"
+    "customer_code": "PC600138"
   },
   {
     "id": 656,
@@ -6558,7 +6559,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 55,
     "customer_name": "สมบูรณ์เภสัช",
     "remark": "",
-    "customer_code": "690060"
+    "customer_code": "PC690060"
   },
   {
     "id": 657,
@@ -6568,7 +6569,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 56,
     "customer_name": "ยาหน้าร.พ พุทธ",
     "remark": "",
-    "customer_code": "610037"
+    "customer_code": "PC610037"
   },
   {
     "id": 658,
@@ -6578,7 +6579,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 57,
     "customer_name": "สิรเภสัช",
     "remark": "",
-    "customer_code": "680046"
+    "customer_code": "PC680046"
   },
   {
     "id": 659,
@@ -6588,7 +6589,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 58,
     "customer_name": "เจริญรักษ์คลินิกเวชกรรม",
     "remark": "",
-    "customer_code": "670102"
+    "customer_code": "PC670102"
   },
   {
     "id": 660,
@@ -6598,7 +6599,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 59,
     "customer_name": "ไชยานุภาพ",
     "remark": "",
-    "customer_code": "630051"
+    "customer_code": "PC630051"
   },
   {
     "id": 661,
@@ -6608,7 +6609,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 60,
     "customer_name": "หมอยาใจดี",
     "remark": "",
-    "customer_code": "680111"
+    "customer_code": "PC680111"
   },
   {
     "id": 662,
@@ -6618,7 +6619,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 61,
     "customer_name": "บ้านเภสัช กงไกรลาส",
     "remark": "",
-    "customer_code": "590107"
+    "customer_code": "PC590107"
   },
   {
     "id": 663,
@@ -6628,7 +6629,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 62,
     "customer_name": "DRUG&HELTH",
     "remark": "",
-    "customer_code": "620024"
+    "customer_code": "PC620024"
   },
   {
     "id": 664,
@@ -6638,7 +6639,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 63,
     "customer_name": "ยาพร้อม",
     "remark": "",
-    "customer_code": "640132"
+    "customer_code": "PC640132"
   },
   {
     "id": 665,
@@ -6648,7 +6649,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 64,
     "customer_name": "ชัยพร",
     "remark": "",
-    "customer_code": "580029"
+    "customer_code": "PC580029"
   },
   {
     "id": 666,
@@ -6658,7 +6659,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 65,
     "customer_name": "ตระกูลยา",
     "remark": "",
-    "customer_code": "580001"
+    "customer_code": "PC580001"
   },
   {
     "id": 667,
@@ -6668,7 +6669,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 66,
     "customer_name": "ยาทูยู",
     "remark": "",
-    "customer_code": "570040"
+    "customer_code": "PC570040"
   },
   {
     "id": 668,
@@ -6678,7 +6679,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 67,
     "customer_name": "ห้องยาบ้านสวน",
     "remark": "",
-    "customer_code": "670054"
+    "customer_code": "PC670054"
   },
   {
     "id": 669,
@@ -6688,7 +6689,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 68,
     "customer_name": "ใกล้ยา",
     "remark": "",
-    "customer_code": "550089"
+    "customer_code": "PC550089"
   },
   {
     "id": 670,
@@ -6698,7 +6699,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 69,
     "customer_name": "จ.ป.",
     "remark": "",
-    "customer_code": "550101"
+    "customer_code": "PC550101"
   },
   {
     "id": 671,
@@ -6708,7 +6709,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 70,
     "customer_name": "จิรภัทร",
     "remark": "",
-    "customer_code": "580153"
+    "customer_code": "PC580153"
   },
   {
     "id": 672,
@@ -6718,7 +6719,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 71,
     "customer_name": "ส.เภสัช",
     "remark": "",
-    "customer_code": "530034"
+    "customer_code": "PC530034"
   },
   {
     "id": 673,
@@ -6728,7 +6729,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 72,
     "customer_name": "จินต์",
     "remark": "",
-    "customer_code": "510002"
+    "customer_code": "PC510002"
   },
   {
     "id": 674,
@@ -6738,7 +6739,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 73,
     "customer_name": "สรายุทธ",
     "remark": "",
-    "customer_code": "640085"
+    "customer_code": "PC640085"
   },
   {
     "id": 675,
@@ -6748,7 +6749,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 74,
     "customer_name": "บ้านยาลานกระบือ",
     "remark": "",
-    "customer_code": "590040"
+    "customer_code": "PC590040"
   },
   {
     "id": 676,
@@ -6758,7 +6759,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 75,
     "customer_name": "คลังยาฟาร์มาซี",
     "remark": "",
-    "customer_code": "670065"
+    "customer_code": "PC670065"
   },
   {
     "id": 677,
@@ -6768,7 +6769,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 76,
     "customer_name": "รุ่งเรือง",
     "remark": "",
-    "customer_code": "580169"
+    "customer_code": "PC580169"
   },
   {
     "id": 678,
@@ -6778,7 +6779,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 77,
     "customer_name": "วิสสุตา",
     "remark": "",
-    "customer_code": "670117"
+    "customer_code": "PC670117"
   },
   {
     "id": 679,
@@ -6788,7 +6789,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 78,
     "customer_name": "เพชรรัตน์เภสัช",
     "remark": "",
-    "customer_code": "680037"
+    "customer_code": "PC680037"
   },
   {
     "id": 680,
@@ -6798,7 +6799,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 79,
     "customer_name": "บ้านยาพี่ณัฏฐ์น้องนุช",
     "remark": "",
-    "customer_code": "670076"
+    "customer_code": "PC670076"
   },
   {
     "id": 681,
@@ -6808,7 +6809,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 80,
     "customer_name": "เติมเต็ม",
     "remark": "",
-    "customer_code": "570106"
+    "customer_code": "PC570106"
   },
   {
     "id": 682,
@@ -6818,7 +6819,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 81,
     "customer_name": "พร้อมเภสัช",
     "remark": "",
-    "customer_code": "590044"
+    "customer_code": "PC590044"
   },
   {
     "id": 683,
@@ -6828,7 +6829,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 82,
     "customer_name": "ณัฐ-ขวัญ",
     "remark": "",
-    "customer_code": "510013"
+    "customer_code": "PC510013"
   },
   {
     "id": 684,
@@ -6838,7 +6839,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 1,
     "customer_name": "พิมพ์เภสัช",
     "remark": "โอน",
-    "customer_code": "580082"
+    "customer_code": "PC580082"
   },
   {
     "id": 685,
@@ -6848,7 +6849,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 2,
     "customer_name": "บ้านยาชนแดน",
     "remark": "โอน",
-    "customer_code": "520073"
+    "customer_code": "PC520073"
   },
   {
     "id": 686,
@@ -6858,7 +6859,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 3,
     "customer_name": "อุ่นใจเภสัช",
     "remark": "โอน",
-    "customer_code": "640059"
+    "customer_code": "PC640059"
   },
   {
     "id": 687,
@@ -6868,7 +6869,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 4,
     "customer_name": "รุ่งโรจน์ฟาร์มาซี",
     "remark": "โอน",
-    "customer_code": "670079"
+    "customer_code": "PC670079"
   },
   {
     "id": 688,
@@ -6878,7 +6879,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 5,
     "customer_name": "ยาดีชนแดน",
     "remark": "",
-    "customer_code": "690077"
+    "customer_code": "PC690077"
   },
   {
     "id": 689,
@@ -6888,7 +6889,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 6,
     "customer_name": "ดี.ดี.pharmacy",
     "remark": "โอน",
-    "customer_code": "680024"
+    "customer_code": "PC680024"
   },
   {
     "id": 690,
@@ -6898,7 +6899,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 7,
     "customer_name": "สุทธิศักดิ์",
     "remark": "โอน",
-    "customer_code": "590031"
+    "customer_code": "PC590031"
   },
   {
     "id": 691,
@@ -6908,7 +6909,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 8,
     "customer_name": "หรรษาโอสถ",
     "remark": "โอน",
-    "customer_code": "520068"
+    "customer_code": "PC520068"
   },
   {
     "id": 692,
@@ -6918,7 +6919,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 9,
     "customer_name": "วิชชุดา",
     "remark": "โอน",
-    "customer_code": "670055"
+    "customer_code": "PC670055"
   },
   {
     "id": 693,
@@ -6928,7 +6929,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 10,
     "customer_name": "ทับคล้อ",
     "remark": "โอน",
-    "customer_code": "530002"
+    "customer_code": "PC530002"
   },
   {
     "id": 694,
@@ -6938,7 +6939,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 11,
     "customer_name": "ย.ยา",
     "remark": "โอน",
-    "customer_code": "580148"
+    "customer_code": "PC580148"
   },
   {
     "id": 695,
@@ -6948,7 +6949,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 12,
     "customer_name": "บริษัท ฟาร์ม่าริช(บ้านยาอนงนาถ)",
     "remark": "โอน",
-    "customer_code": "600069"
+    "customer_code": "PC600069"
   },
   {
     "id": 696,
@@ -6958,7 +6959,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 13,
     "customer_name": "กิตติยา",
     "remark": "โอน",
-    "customer_code": "670091"
+    "customer_code": "PC670091"
   },
   {
     "id": 697,
@@ -6968,7 +6969,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 14,
     "customer_name": "หมอสุภัทรพร",
     "remark": "",
-    "customer_code": "680026"
+    "customer_code": "PC680026"
   },
   {
     "id": 698,
@@ -6978,7 +6979,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 15,
     "customer_name": "พิจิตรพร็อพเพอร์ตี้",
     "remark": "โอน",
-    "customer_code": "680008"
+    "customer_code": "PC680008"
   },
   {
     "id": 699,
@@ -6988,7 +6989,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 16,
     "customer_name": "เจริญเภสัช",
     "remark": "โอน",
-    "customer_code": "510017"
+    "customer_code": "PC510017"
   },
   {
     "id": 700,
@@ -6998,7 +6999,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 17,
     "customer_name": "ยาแอนแคร์",
     "remark": "โอน",
-    "customer_code": "580170"
+    "customer_code": "PC580170"
   },
   {
     "id": 701,
@@ -7008,7 +7009,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 18,
     "customer_name": "แพทย์หญิงวิลาสินี",
     "remark": "โอน",
-    "customer_code": "610134"
+    "customer_code": "PC610134"
   },
   {
     "id": 702,
@@ -7018,7 +7019,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 19,
     "customer_name": "ไชโย ฟาร์มาซี ส่งร้าน",
     "remark": "โอน",
-    "customer_code": "660097"
+    "customer_code": "PC660097"
   },
   {
     "id": 703,
@@ -7028,7 +7029,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 20,
     "customer_name": "คลินิก พยาบาลชุมชน",
     "remark": "โอน",
-    "customer_code": "540031"
+    "customer_code": "PC540031"
   },
   {
     "id": 704,
@@ -7038,7 +7039,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 21,
     "customer_name": "วังกลม",
     "remark": "โอน",
-    "customer_code": "660110"
+    "customer_code": "PC660110"
   },
   {
     "id": 705,
@@ -7048,7 +7049,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 22,
     "customer_name": "พิจิตรรวมยา",
     "remark": "โอน",
-    "customer_code": "620038"
+    "customer_code": "PC620038"
   },
   {
     "id": 706,
@@ -7058,7 +7059,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 23,
     "customer_name": "บ้านยาจอมเจริญ",
     "remark": "",
-    "customer_code": "680025"
+    "customer_code": "PC680025"
   },
   {
     "id": 707,
@@ -7068,7 +7069,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 24,
     "customer_name": "พีวีเอ็น",
     "remark": "",
-    "customer_code": "680095"
+    "customer_code": "PC680095"
   },
   {
     "id": 708,
@@ -7078,7 +7079,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 25,
     "customer_name": "แตงไทยเวชภัณฑ์ 2",
     "remark": "โอน",
-    "customer_code": "680097"
+    "customer_code": "PC680097"
   },
   {
     "id": 709,
@@ -7088,7 +7089,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 26,
     "customer_name": "คลินิกยาพิจิตร",
     "remark": "โอน",
-    "customer_code": "540081"
+    "customer_code": "PC540081"
   },
   {
     "id": 710,
@@ -7098,7 +7099,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 27,
     "customer_name": "แพทย์หญิงอัจฉราจีรี",
     "remark": "",
-    "customer_code": "690029"
+    "customer_code": "PC690029"
   },
   {
     "id": 711,
@@ -7108,7 +7109,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 28,
     "customer_name": "สุบิน",
     "remark": "โอน",
-    "customer_code": "570137"
+    "customer_code": "PC570137"
   },
   {
     "id": 712,
@@ -7118,7 +7119,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 29,
     "customer_name": "เทพโอสถ",
     "remark": "โอน",
-    "customer_code": "670078"
+    "customer_code": "PC670078"
   },
   {
     "id": 713,
@@ -7128,7 +7129,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 30,
     "customer_name": "รักษ์ยาพิจิตร",
     "remark": "โอน",
-    "customer_code": "620039"
+    "customer_code": "PC620039"
   },
   {
     "id": 714,
@@ -7138,7 +7139,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 31,
     "customer_name": "ยาเภสัชกร",
     "remark": "โอน",
-    "customer_code": "620030"
+    "customer_code": "PC620030"
   },
   {
     "id": 715,
@@ -7148,7 +7149,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 32,
     "customer_name": "พูลสวัสดิ์",
     "remark": "",
-    "customer_code": "680006"
+    "customer_code": "PC680006"
   },
   {
     "id": 716,
@@ -7158,7 +7159,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 33,
     "customer_name": "สารพัดยา",
     "remark": "โอน",
-    "customer_code": "680059"
+    "customer_code": "PC680059"
   },
   {
     "id": 717,
@@ -7168,7 +7169,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 34,
     "customer_name": "อินทิรา",
     "remark": "โอน",
-    "customer_code": "620133"
+    "customer_code": "PC620133"
   },
   {
     "id": 718,
@@ -7178,7 +7179,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 35,
     "customer_name": "ชัยพรโอสถ",
     "remark": "โอน",
-    "customer_code": "670062"
+    "customer_code": "PC670062"
   },
   {
     "id": 719,
@@ -7188,7 +7189,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 36,
     "customer_name": "แพทย์นริศราคลินิก",
     "remark": "",
-    "customer_code": "690052"
+    "customer_code": "PC690052"
   },
   {
     "id": 720,
@@ -7198,7 +7199,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 37,
     "customer_name": "ไชโย ฟาร์มาซี ส่งป้อม3",
     "remark": "โอน",
-    "customer_code": "660097"
+    "customer_code": "PC660097"
   },
   {
     "id": 721,
@@ -7208,7 +7209,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 38,
     "customer_name": "หมอณัฐรัฐ พิจิตร",
     "remark": "",
-    "customer_code": "690037"
+    "customer_code": "PC690037"
   },
   {
     "id": 722,
@@ -7218,7 +7219,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 39,
     "customer_name": "คลินิกเด็กหมอจอย",
     "remark": "",
-    "customer_code": "690044"
+    "customer_code": "PC690044"
   },
   {
     "id": 723,
@@ -7228,7 +7229,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 40,
     "customer_name": "อาภาคลินิก",
     "remark": "",
-    "customer_code": "690009"
+    "customer_code": "PC690009"
   },
   {
     "id": 724,
@@ -7238,7 +7239,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 41,
     "customer_name": "หมอ พระทอง",
     "remark": "โอน",
-    "customer_code": "600031"
+    "customer_code": "PC600031"
   },
   {
     "id": 725,
@@ -7248,7 +7249,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 42,
     "customer_name": "ตลาดยา",
     "remark": "โอน",
-    "customer_code": "580035"
+    "customer_code": "PC580035"
   },
   {
     "id": 726,
@@ -7258,7 +7259,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 43,
     "customer_name": "วาสนาการพยาบาล",
     "remark": "โอน",
-    "customer_code": "610017"
+    "customer_code": "PC610017"
   },
   {
     "id": 727,
@@ -7268,7 +7269,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 44,
     "customer_name": "วาสนาสหคลินิก",
     "remark": "",
-    "customer_code": "690078"
+    "customer_code": "PC690078"
   },
   {
     "id": 728,
@@ -7278,7 +7279,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 45,
     "customer_name": "เนินมะปราง",
     "remark": "โอน",
-    "customer_code": "640026"
+    "customer_code": "PC640026"
   },
   {
     "id": 729,
@@ -7288,7 +7289,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 46,
     "customer_name": "ยาทิพย์",
     "remark": "โอน",
-    "customer_code": "650066"
+    "customer_code": "PC650066"
   },
   {
     "id": 730,
@@ -7298,7 +7299,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 47,
     "customer_name": "ยาเพื่อนชุมชน",
     "remark": "โอน",
-    "customer_code": "640124"
+    "customer_code": "PC640124"
   },
   {
     "id": 731,
@@ -7308,7 +7309,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 48,
     "customer_name": "แพทย์ศรัณย์",
     "remark": "",
-    "customer_code": "690055"
+    "customer_code": "PC690055"
   },
   {
     "id": 732,
@@ -7318,7 +7319,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 49,
     "customer_name": "ตะพานหิน",
     "remark": "โอน",
-    "customer_code": "510064"
+    "customer_code": "PC510064"
   },
   {
     "id": 733,
@@ -7328,7 +7329,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 50,
     "customer_name": "บ้านหมอคลินิก",
     "remark": "",
-    "customer_code": "670142"
+    "customer_code": "PC670142"
   },
   {
     "id": 734,
@@ -7338,7 +7339,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 51,
     "customer_name": "ณรงค์",
     "remark": "",
-    "customer_code": "660102"
+    "customer_code": "PC660102"
   },
   {
     "id": 735,
@@ -7348,7 +7349,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 52,
     "customer_name": "ศิริพรคลินิกการพยาบาล",
     "remark": "โอน",
-    "customer_code": "590133"
+    "customer_code": "PC590133"
   },
   {
     "id": 736,
@@ -7358,7 +7359,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 53,
     "customer_name": "พิมพ์วิภา",
     "remark": "",
-    "customer_code": "670057"
+    "customer_code": "PC670057"
   },
   {
     "id": 737,
@@ -7368,7 +7369,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 54,
     "customer_name": "เจริญสิน",
     "remark": "",
-    "customer_code": "670098"
+    "customer_code": "PC670098"
   },
   {
     "id": 738,
@@ -7378,7 +7379,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 55,
     "customer_name": "เมืองไทย",
     "remark": "โอน",
-    "customer_code": "540060"
+    "customer_code": "PC540060"
   },
   {
     "id": 739,
@@ -7388,7 +7389,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 56,
     "customer_name": "ศักดิ์ประสิทธิ์",
     "remark": "",
-    "customer_code": "670139"
+    "customer_code": "PC670139"
   },
   {
     "id": 740,
@@ -7398,7 +7399,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 57,
     "customer_name": "เม้ง",
     "remark": "โอน",
-    "customer_code": "540056"
+    "customer_code": "PC540056"
   },
   {
     "id": 741,
@@ -7408,7 +7409,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 58,
     "customer_name": "บ้านยาบางนาก",
     "remark": "โอน",
-    "customer_code": "630037"
+    "customer_code": "PC630037"
   },
   {
     "id": 742,
@@ -7418,7 +7419,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 59,
     "customer_name": "นารีพร",
     "remark": "โอน",
-    "customer_code": "620050"
+    "customer_code": "PC620050"
   },
   {
     "id": 743,
@@ -7428,7 +7429,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 60,
     "customer_name": "ณัชชา",
     "remark": "",
-    "customer_code": "670031"
+    "customer_code": "PC670031"
   },
   {
     "id": 744,
@@ -7438,7 +7439,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 61,
     "customer_name": "ยาเขียวงามเภสัช",
     "remark": "โอน",
-    "customer_code": "570073"
+    "customer_code": "PC570073"
   },
   {
     "id": 745,
@@ -7448,7 +7449,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 62,
     "customer_name": "ปิยมาศ",
     "remark": "",
-    "customer_code": "660038"
+    "customer_code": "PC660038"
   },
   {
     "id": 746,
@@ -7458,7 +7459,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 63,
     "customer_name": "หมอยา",
     "remark": "",
-    "customer_code": "680064"
+    "customer_code": "PC680064"
   },
   {
     "id": 747,
@@ -7468,7 +7469,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 64,
     "customer_name": "สันติ",
     "remark": "โอน",
-    "customer_code": "520064"
+    "customer_code": "PC520064"
   },
   {
     "id": 748,
@@ -7478,7 +7479,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 1,
     "customer_name": "พญ.วรพรรณ/นพ.ธนกฤต",
     "remark": "",
-    "customer_code": "670095"
+    "customer_code": "PC670095"
   },
   {
     "id": 749,
@@ -7488,7 +7489,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 2,
     "customer_name": "วังยากำแพงเพชร",
     "remark": "",
-    "customer_code": "590006"
+    "customer_code": "PC590006"
   },
   {
     "id": 750,
@@ -7498,7 +7499,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 3,
     "customer_name": "วังยา2",
     "remark": "",
-    "customer_code": "650120"
+    "customer_code": "PC650120"
   },
   {
     "id": 751,
@@ -7508,7 +7509,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 4,
     "customer_name": "กระปุกยา",
     "remark": "",
-    "customer_code": "640121"
+    "customer_code": "PC640121"
   },
   {
     "id": 752,
@@ -7518,7 +7519,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 5,
     "customer_name": "รพีเภสัช",
     "remark": "",
-    "customer_code": "680061"
+    "customer_code": "PC680061"
   },
   {
     "id": 753,
@@ -7528,7 +7529,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 6,
     "customer_name": "ชากังราว",
     "remark": "",
-    "customer_code": "550037"
+    "customer_code": "PC550037"
   },
   {
     "id": 754,
@@ -7538,7 +7539,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 7,
     "customer_name": "ชากังราว สวนจิตร",
     "remark": "",
-    "customer_code": "630053"
+    "customer_code": "PC630053"
   },
   {
     "id": 755,
@@ -7548,7 +7549,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 8,
     "customer_name": "ยูนิค",
     "remark": "",
-    "customer_code": "650124"
+    "customer_code": "PC650124"
   },
   {
     "id": 756,
@@ -7558,7 +7559,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 9,
     "customer_name": "ยั่งยืน",
     "remark": "",
-    "customer_code": "690048"
+    "customer_code": "PC690048"
   },
   {
     "id": 757,
@@ -7568,7 +7569,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 10,
     "customer_name": "พาณิภัคเภสัช",
     "remark": "",
-    "customer_code": "670129"
+    "customer_code": "PC670129"
   },
   {
     "id": 758,
@@ -7578,7 +7579,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 11,
     "customer_name": "บริษัท ภาณุรังษี",
     "remark": "",
-    "customer_code": "690032"
+    "customer_code": "PC690032"
   },
   {
     "id": 759,
@@ -7588,7 +7589,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 12,
     "customer_name": "ซีเจอาร์(ไชยเจริญ)",
     "remark": "",
-    "customer_code": "580118"
+    "customer_code": "PC580118"
   },
   {
     "id": 760,
@@ -7598,7 +7599,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 13,
     "customer_name": "คลังยา ท่ามะเขือ",
     "remark": "",
-    "customer_code": "690054"
+    "customer_code": "PC690054"
   },
   {
     "id": 761,
@@ -7608,7 +7609,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 14,
     "customer_name": "สุชาดา",
     "remark": "",
-    "customer_code": "590002"
+    "customer_code": "PC590002"
   },
   {
     "id": 762,
@@ -7618,7 +7619,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 15,
     "customer_name": "บ้านยาสเตชัน",
     "remark": "",
-    "customer_code": "660067"
+    "customer_code": "PC660067"
   },
   {
     "id": 763,
@@ -7628,7 +7629,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 16,
     "customer_name": "หมอ สกล",
     "remark": "",
-    "customer_code": "550052"
+    "customer_code": "PC550052"
   },
   {
     "id": 764,
@@ -7638,7 +7639,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 17,
     "customer_name": "แพทย์หญิงปรารีญา",
     "remark": "",
-    "customer_code": "690022"
+    "customer_code": "PC690022"
   },
   {
     "id": 765,
@@ -7648,7 +7649,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 18,
     "customer_name": "ห้องยาฟาร์มาซี",
     "remark": "",
-    "customer_code": "680041"
+    "customer_code": "PC680041"
   },
   {
     "id": 766,
@@ -7658,7 +7659,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 19,
     "customer_name": "ธีรภัทรเภสัช",
     "remark": "",
-    "customer_code": "670061"
+    "customer_code": "PC670061"
   },
   {
     "id": 767,
@@ -7668,7 +7669,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 20,
     "customer_name": "สองเภสัช",
     "remark": "",
-    "customer_code": "540128"
+    "customer_code": "PC540128"
   },
   {
     "id": 768,
@@ -7678,7 +7679,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 21,
     "customer_name": "บ้านยา3",
     "remark": "",
-    "customer_code": "630023"
+    "customer_code": "PC630023"
   },
   {
     "id": 769,
@@ -7688,7 +7689,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 22,
     "customer_name": "เติมเต็มยา",
     "remark": "",
-    "customer_code": "660042"
+    "customer_code": "PC660042"
   },
   {
     "id": 770,
@@ -7698,7 +7699,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 23,
     "customer_name": "ก้องภพ",
     "remark": "",
-    "customer_code": "610150"
+    "customer_code": "PC610150"
   },
   {
     "id": 771,
@@ -7708,7 +7709,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 24,
     "customer_name": "ปันยา",
     "remark": "",
-    "customer_code": "540089"
+    "customer_code": "PC540089"
   },
   {
     "id": 772,
@@ -7718,7 +7719,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 25,
     "customer_name": "บ้านยาอุ่นใจ",
     "remark": "",
-    "customer_code": "540068"
+    "customer_code": "PC540068"
   },
   {
     "id": 773,
@@ -7728,7 +7729,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 26,
     "customer_name": "บ้านยา อุ่นใจ สาขา2",
     "remark": "",
-    "customer_code": "600002"
+    "customer_code": "PC600002"
   },
   {
     "id": 774,
@@ -7738,7 +7739,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 27,
     "customer_name": "เลิศ",
     "remark": "",
-    "customer_code": "510022"
+    "customer_code": "PC510022"
   },
   {
     "id": 775,
@@ -7748,7 +7749,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 28,
     "customer_name": "วสันต์ฟาร์ม่า บรรพตพิสัย",
     "remark": "",
-    "customer_code": "690041"
+    "customer_code": "PC690041"
   },
   {
     "id": 776,
@@ -7758,7 +7759,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 29,
     "customer_name": "มหาโพธิ",
     "remark": "",
-    "customer_code": "660036"
+    "customer_code": "PC660036"
   },
   {
     "id": 777,
@@ -7768,7 +7769,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 30,
     "customer_name": "คงไทย",
     "remark": "",
-    "customer_code": "510005"
+    "customer_code": "PC510005"
   },
   {
     "id": 778,
@@ -7778,7 +7779,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 1,
     "customer_name": "มุมยา",
     "remark": "",
-    "customer_code": "680116"
+    "customer_code": "PC680116"
   },
   {
     "id": 779,
@@ -7788,7 +7789,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 2,
     "customer_name": "แพรว",
     "remark": "",
-    "customer_code": "690024"
+    "customer_code": "PC690024"
   },
   {
     "id": 780,
@@ -7798,7 +7799,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 3,
     "customer_name": "บ่อโพง",
     "remark": "",
-    "customer_code": "630043"
+    "customer_code": "PC630043"
   },
   {
     "id": 781,
@@ -7808,7 +7809,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 4,
     "customer_name": "ศิริณยา",
     "remark": "",
-    "customer_code": "680104"
+    "customer_code": "PC680104"
   },
   {
     "id": 782,
@@ -7818,7 +7819,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 5,
     "customer_name": "จตุพร",
     "remark": "",
-    "customer_code": "560091"
+    "customer_code": "PC560091"
   },
   {
     "id": 783,
@@ -7828,7 +7829,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 6,
     "customer_name": "กมลพรรณ",
     "remark": "",
-    "customer_code": "550036"
+    "customer_code": "PC550036"
   },
   {
     "id": 784,
@@ -7838,7 +7839,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 7,
     "customer_name": "อารยา+ยา",
     "remark": "",
-    "customer_code": "540009"
+    "customer_code": "PC540009"
   },
   {
     "id": 785,
@@ -7848,7 +7849,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 8,
     "customer_name": "วลาลี",
     "remark": "",
-    "customer_code": "590013"
+    "customer_code": "PC590013"
   },
   {
     "id": 786,
@@ -7858,7 +7859,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 9,
     "customer_name": "เค.เอส",
     "remark": "",
-    "customer_code": "590047"
+    "customer_code": "PC590047"
   },
   {
     "id": 787,
@@ -7868,7 +7869,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 10,
     "customer_name": "ยาชัญธิกาเภสัช",
     "remark": "",
-    "customer_code": "580138"
+    "customer_code": "PC580138"
   },
   {
     "id": 788,
@@ -7878,7 +7879,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 11,
     "customer_name": "บ้านยามีสุข",
     "remark": "",
-    "customer_code": "570013"
+    "customer_code": "PC570013"
   },
   {
     "id": 789,
@@ -7888,7 +7889,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 12,
     "customer_name": "พบพลอย",
     "remark": "",
-    "customer_code": "630062"
+    "customer_code": "PC630062"
   },
   {
     "id": 790,
@@ -7898,7 +7899,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 13,
     "customer_name": "ยาฟาร์ม่าโฮม",
     "remark": "",
-    "customer_code": "610080"
+    "customer_code": "PC610080"
   },
   {
     "id": 791,
@@ -7908,7 +7909,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 14,
     "customer_name": "อุสุมา",
     "remark": "",
-    "customer_code": "610099"
+    "customer_code": "PC610099"
   },
   {
     "id": 792,
@@ -7918,7 +7919,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 15,
     "customer_name": "สไมล์ดรัก",
     "remark": "",
-    "customer_code": "680048"
+    "customer_code": "PC680048"
   },
   {
     "id": 793,
@@ -7928,7 +7929,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 16,
     "customer_name": "ยาฟาร์มาทีม",
     "remark": "",
-    "customer_code": "580134"
+    "customer_code": "PC580134"
   },
   {
     "id": 794,
@@ -7938,7 +7939,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 17,
     "customer_name": "สินทิวา",
     "remark": "",
-    "customer_code": "540022"
+    "customer_code": "PC540022"
   },
   {
     "id": 795,
@@ -7948,7 +7949,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 18,
     "customer_name": "เพื่อนยา",
     "remark": "",
-    "customer_code": "640011"
+    "customer_code": "PC640011"
   },
   {
     "id": 796,
@@ -7958,7 +7959,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 19,
     "customer_name": "เดือน",
     "remark": "",
-    "customer_code": "620063"
+    "customer_code": "PC620063"
   },
   {
     "id": 797,
@@ -7968,7 +7969,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 20,
     "customer_name": "ยาฟาร์มาซี",
     "remark": "",
-    "customer_code": "600141"
+    "customer_code": "PC600141"
   },
   {
     "id": 798,
@@ -7978,7 +7979,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 21,
     "customer_name": "นครยา",
     "remark": "",
-    "customer_code": "630104"
+    "customer_code": "PC630104"
   },
   {
     "id": 799,
@@ -7988,7 +7989,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 22,
     "customer_name": "คลังยาเจริญกิจ",
     "remark": "",
-    "customer_code": "560079"
+    "customer_code": "PC560079"
   },
   {
     "id": 800,
@@ -7998,7 +7999,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 23,
     "customer_name": "สุขศิริ",
     "remark": "",
-    "customer_code": "630001"
+    "customer_code": "PC630001"
   },
   {
     "id": 801,
@@ -8008,7 +8009,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 24,
     "customer_name": "แคปซูลฟาร์มาซี",
     "remark": "",
-    "customer_code": "610119"
+    "customer_code": "PC610119"
   },
   {
     "id": 802,
@@ -8018,7 +8019,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 25,
     "customer_name": "นานายา 1",
     "remark": "",
-    "customer_code": "540032"
+    "customer_code": "PC540032"
   },
   {
     "id": 803,
@@ -8028,7 +8029,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 26,
     "customer_name": "ณ ยา ฟาร์มา",
     "remark": "",
-    "customer_code": "680031"
+    "customer_code": "PC680031"
   },
   {
     "id": 804,
@@ -8038,7 +8039,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 27,
     "customer_name": "ฉัตรชัย",
     "remark": "",
-    "customer_code": "580136"
+    "customer_code": "PC580136"
   },
   {
     "id": 805,
@@ -8048,7 +8049,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 28,
     "customer_name": "ภาเภสัช",
     "remark": "",
-    "customer_code": "560069"
+    "customer_code": "PC560069"
   },
   {
     "id": 806,
@@ -8058,7 +8059,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 29,
     "customer_name": "พูลทรัพย์การยา",
     "remark": "",
-    "customer_code": "580054"
+    "customer_code": "PC580054"
   },
   {
     "id": 807,
@@ -8068,7 +8069,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 30,
     "customer_name": "หยูกยาเภสัช1",
     "remark": "",
-    "customer_code": "680058"
+    "customer_code": "PC680058"
   },
   {
     "id": 808,
@@ -8078,7 +8079,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 31,
     "customer_name": "ยาเอก",
     "remark": "",
-    "customer_code": "600075"
+    "customer_code": "PC600075"
   },
   {
     "id": 809,
@@ -8088,7 +8089,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 32,
     "customer_name": "นิรมล",
     "remark": "",
-    "customer_code": "600060"
+    "customer_code": "PC600060"
   },
   {
     "id": 810,
@@ -8098,7 +8099,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 33,
     "customer_name": "บริษัท ฮาร์เวสทรี",
     "remark": "",
-    "customer_code": "550035"
+    "customer_code": "PC550035"
   },
   {
     "id": 811,
@@ -8108,7 +8109,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 34,
     "customer_name": "อุ่นใจเภสัช",
     "remark": "",
-    "customer_code": "620064"
+    "customer_code": "PC620064"
   },
   {
     "id": 812,
@@ -8118,7 +8119,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 35,
     "customer_name": "ห้องยาอโยธยา",
     "remark": "",
-    "customer_code": "570010"
+    "customer_code": "PC570010"
   },
   {
     "id": 813,
@@ -8128,7 +8129,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 36,
     "customer_name": "บ้านยาเภสัชกรอยุธยา",
     "remark": "",
-    "customer_code": "550049"
+    "customer_code": "PC550049"
   },
   {
     "id": 814,
@@ -8138,7 +8139,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 37,
     "customer_name": "ฟาร์มาพลัส",
     "remark": "",
-    "customer_code": "580037"
+    "customer_code": "PC580037"
   },
   {
     "id": 815,
@@ -8148,7 +8149,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 38,
     "customer_name": "ใกล้ยา",
     "remark": "",
-    "customer_code": "640047"
+    "customer_code": "PC640047"
   },
   {
     "id": 816,
@@ -8158,7 +8159,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 39,
     "customer_name": "จำรูญฟาร์มาซี",
     "remark": "",
-    "customer_code": "570138"
+    "customer_code": "PC570138"
   },
   {
     "id": 817,
@@ -8168,7 +8169,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 40,
     "customer_name": "บ้านยาเภสัช 1",
     "remark": "",
-    "customer_code": "550043"
+    "customer_code": "PC550043"
   },
   {
     "id": 818,
@@ -8178,7 +8179,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 41,
     "customer_name": "บีแคร์",
     "remark": "",
-    "customer_code": "670046"
+    "customer_code": "PC670046"
   },
   {
     "id": 819,
@@ -8188,7 +8189,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 42,
     "customer_name": "วีฟาร์มาซี",
     "remark": "",
-    "customer_code": "600126"
+    "customer_code": "PC600126"
   },
   {
     "id": 820,
@@ -8198,7 +8199,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 43,
     "customer_name": "แพทย์ศาณิณัณเวชกรรม",
     "remark": "",
-    "customer_code": "600042"
+    "customer_code": "PC600042"
   },
   {
     "id": 821,
@@ -8208,7 +8209,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 44,
     "customer_name": "กรุงศรีโอสถ",
     "remark": "",
-    "customer_code": "680010"
+    "customer_code": "PC680010"
   },
   {
     "id": 822,
@@ -8218,7 +8219,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 45,
     "customer_name": "อู่ทองเภสัช",
     "remark": "",
-    "customer_code": "680093"
+    "customer_code": "PC680093"
   },
   {
     "id": 823,
@@ -8228,7 +8229,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 46,
     "customer_name": "จารุ",
     "remark": "",
-    "customer_code": "550001"
+    "customer_code": "PC550001"
   },
   {
     "id": 824,
@@ -8238,7 +8239,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 47,
     "customer_name": "วางใจ",
     "remark": "",
-    "customer_code": "610117"
+    "customer_code": "PC610117"
   },
   {
     "id": 825,
@@ -8248,7 +8249,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 48,
     "customer_name": "สมายแคร์",
     "remark": "",
-    "customer_code": "610121"
+    "customer_code": "PC610121"
   },
   {
     "id": 826,
@@ -8258,7 +8259,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 49,
     "customer_name": "อยุธยาเภสัช",
     "remark": "",
-    "customer_code": "550092"
+    "customer_code": "PC550092"
   },
   {
     "id": 827,
@@ -8268,7 +8269,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 50,
     "customer_name": "ใจดีเภสัช",
     "remark": "",
-    "customer_code": "580012"
+    "customer_code": "PC580012"
   },
   {
     "id": 828,
@@ -8278,7 +8279,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 51,
     "customer_name": "คลังยาอุ่นใจ",
     "remark": "",
-    "customer_code": "690066"
+    "customer_code": "PC690066"
   },
   {
     "id": 829,
@@ -8288,7 +8289,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 52,
     "customer_name": "รวมยาเวชภัณฑ์",
     "remark": "",
-    "customer_code": "650009"
+    "customer_code": "PC650009"
   },
   {
     "id": 830,
@@ -8298,7 +8299,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 53,
     "customer_name": "บ้านยาเภสัชโบว์",
     "remark": "",
-    "customer_code": "610049"
+    "customer_code": "PC610049"
   },
   {
     "id": 831,
@@ -8308,7 +8309,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 54,
     "customer_name": "เภสัชพจน์",
     "remark": "",
-    "customer_code": "600139"
+    "customer_code": "PC600139"
   },
   {
     "id": 832,
@@ -8318,7 +8319,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 55,
     "customer_name": "ปฏิพัทธ์",
     "remark": "",
-    "customer_code": "670053"
+    "customer_code": "PC670053"
   },
   {
     "id": 833,
@@ -8328,7 +8329,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 56,
     "customer_name": "ธัญญา อ่างทอง",
     "remark": "",
-    "customer_code": "580140"
+    "customer_code": "PC580140"
   },
   {
     "id": 834,
@@ -8338,7 +8339,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 57,
     "customer_name": "ฤทธิชัยโอสถ",
     "remark": "",
-    "customer_code": "610120"
+    "customer_code": "PC610120"
   },
   {
     "id": 835,
@@ -8348,7 +8349,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 58,
     "customer_name": "ธีรพงษ์คลินิก",
     "remark": "",
-    "customer_code": "680079"
+    "customer_code": "PC680079"
   },
   {
     "id": 836,
@@ -8358,7 +8359,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 59,
     "customer_name": "ยาคงสุวรรณ",
     "remark": "",
-    "customer_code": "610054"
+    "customer_code": "PC610054"
   },
   {
     "id": 837,
@@ -8368,7 +8369,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 60,
     "customer_name": "ตู้ยา",
     "remark": "",
-    "customer_code": "620035"
+    "customer_code": "PC620035"
   },
   {
     "id": 838,
@@ -8378,7 +8379,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 61,
     "customer_name": "บุษรัตน์",
     "remark": "",
-    "customer_code": "630032"
+    "customer_code": "PC630032"
   },
   {
     "id": 839,
@@ -8388,7 +8389,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 62,
     "customer_name": "แพทย์สายัณห์",
     "remark": "",
-    "customer_code": "540098"
+    "customer_code": "PC540098"
   },
   {
     "id": 840,
@@ -8398,7 +8399,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 63,
     "customer_name": "คลินิกหมอกัมพล อ่างทอง",
     "remark": "",
-    "customer_code": "570088"
+    "customer_code": "PC570088"
   },
   {
     "id": 841,
@@ -8408,7 +8409,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 64,
     "customer_name": "เพิ่มพูน",
     "remark": "",
-    "customer_code": "640119"
+    "customer_code": "PC640119"
   },
   {
     "id": 842,
@@ -8418,7 +8419,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 65,
     "customer_name": "บ้านยาใบไผ่",
     "remark": "",
-    "customer_code": "640062"
+    "customer_code": "PC640062"
   },
   {
     "id": 843,
@@ -8428,7 +8429,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 66,
     "customer_name": "ศิวพร",
     "remark": "",
-    "customer_code": "550117"
+    "customer_code": "PC550117"
   },
   {
     "id": 844,
@@ -8438,7 +8439,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 67,
     "customer_name": "บ้านยาอ่างทอง",
     "remark": "",
-    "customer_code": "540020"
+    "customer_code": "PC540020"
   },
   {
     "id": 845,
@@ -8448,7 +8449,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 68,
     "customer_name": "ปรวีช์เภสัช",
     "remark": "",
-    "customer_code": "600009"
+    "customer_code": "PC600009"
   },
   {
     "id": 846,
@@ -8458,7 +8459,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 69,
     "customer_name": "ชัยโย",
     "remark": "",
-    "customer_code": "550030"
+    "customer_code": "PC550030"
   },
   {
     "id": 847,
@@ -8468,7 +8469,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 70,
     "customer_name": "นานาฟาร์มาซี",
     "remark": "",
-    "customer_code": "550025"
+    "customer_code": "PC550025"
   },
   {
     "id": 848,
@@ -8478,7 +8479,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 1,
     "customer_name": "สิริลักษณ์",
     "remark": "",
-    "customer_code": "620007"
+    "customer_code": "PC620007"
   },
   {
     "id": 849,
@@ -8488,7 +8489,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 2,
     "customer_name": "ตลาดเหนือ",
     "remark": "",
-    "customer_code": "620094"
+    "customer_code": "PC620094"
   },
   {
     "id": 850,
@@ -8498,7 +8499,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 3,
     "customer_name": "อัครภูมิ",
     "remark": "",
-    "customer_code": "540079"
+    "customer_code": "PC540079"
   },
   {
     "id": 851,
@@ -8508,7 +8509,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 4,
     "customer_name": "สิราวรรณ",
     "remark": "",
-    "customer_code": "680015"
+    "customer_code": "PC680015"
   },
   {
     "id": 852,
@@ -8518,7 +8519,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 5,
     "customer_name": "ปพัฒสรณ์",
     "remark": "",
-    "customer_code": "660080"
+    "customer_code": "PC660080"
   },
   {
     "id": 853,
@@ -8528,7 +8529,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 6,
     "customer_name": "ยาเภสัชชัยนาท",
     "remark": "",
-    "customer_code": "560132"
+    "customer_code": "PC560132"
   },
   {
     "id": 854,
@@ -8538,7 +8539,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 7,
     "customer_name": "รวมยาชัยนาท",
     "remark": "",
-    "customer_code": "570095"
+    "customer_code": "PC570095"
   },
   {
     "id": 855,
@@ -8548,7 +8549,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 8,
     "customer_name": "ร้านทิพย์คลังยา",
     "remark": "",
-    "customer_code": "610064"
+    "customer_code": "PC610064"
   },
   {
     "id": 856,
@@ -8558,7 +8559,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 9,
     "customer_name": "สองเภสัช",
     "remark": "",
-    "customer_code": "640030"
+    "customer_code": "PC640030"
   },
   {
     "id": 857,
@@ -8568,7 +8569,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 10,
     "customer_name": "ศิริฟาร์ม่า",
     "remark": "",
-    "customer_code": "580063"
+    "customer_code": "PC580063"
   },
   {
     "id": 858,
@@ -8578,7 +8579,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 11,
     "customer_name": "บ้านเภสัช",
     "remark": "",
-    "customer_code": "650038"
+    "customer_code": "PC650038"
   },
   {
     "id": 859,
@@ -8588,7 +8589,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 12,
     "customer_name": "คลีนิกยา",
     "remark": "",
-    "customer_code": "610123"
+    "customer_code": "PC610123"
   },
   {
     "id": 860,
@@ -8598,7 +8599,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 13,
     "customer_name": "ซี.เอ็น.วาย",
     "remark": "",
-    "customer_code": "550121"
+    "customer_code": "PC550121"
   },
   {
     "id": 861,
@@ -8608,7 +8609,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 14,
     "customer_name": "ฟาร์มาช็อป",
     "remark": "",
-    "customer_code": "520060"
+    "customer_code": "PC520060"
   },
   {
     "id": 862,
@@ -8618,7 +8619,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 15,
     "customer_name": "วชิระ",
     "remark": "",
-    "customer_code": "510012"
+    "customer_code": "PC510012"
   },
   {
     "id": 863,
@@ -8628,7 +8629,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 16,
     "customer_name": "นราธิป",
     "remark": "",
-    "customer_code": "560147"
+    "customer_code": "PC560147"
   },
   {
     "id": 864,
@@ -8638,7 +8639,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 17,
     "customer_name": "ธนพล",
     "remark": "",
-    "customer_code": "610030"
+    "customer_code": "PC610030"
   },
   {
     "id": 865,
@@ -8648,7 +8649,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 18,
     "customer_name": "ธนพลเซ็นเตอร์",
     "remark": "",
-    "customer_code": "690079"
+    "customer_code": "PC690079"
   },
   {
     "id": 866,
@@ -8658,7 +8659,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 19,
     "customer_name": "ชัยยศ",
     "remark": "",
-    "customer_code": "570011"
+    "customer_code": "PC570011"
   },
   {
     "id": 867,
@@ -8668,7 +8669,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 20,
     "customer_name": "สวัสดี",
     "remark": "",
-    "customer_code": "530020"
+    "customer_code": "PC530020"
   },
   {
     "id": 868,
@@ -8678,7 +8679,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 21,
     "customer_name": "ณพล",
     "remark": "",
-    "customer_code": "560086"
+    "customer_code": "PC560086"
   },
   {
     "id": 869,
@@ -8688,7 +8689,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 22,
     "customer_name": "ณพล2",
     "remark": "",
-    "customer_code": "640060"
+    "customer_code": "PC640060"
   },
   {
     "id": 870,
@@ -8698,7 +8699,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 23,
     "customer_name": "บ้านหมอแชมป์",
     "remark": "",
-    "customer_code": "620016"
+    "customer_code": "PC620016"
   },
   {
     "id": 871,
@@ -8708,7 +8709,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 24,
     "customer_name": "กิตติพงษ์การแพทย์",
     "remark": "",
-    "customer_code": "590104"
+    "customer_code": "PC590104"
   },
   {
     "id": 872,
@@ -8718,7 +8719,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 25,
     "customer_name": "พีเจสุพรรณ",
     "remark": "",
-    "customer_code": "680107"
+    "customer_code": "PC680107"
   },
   {
     "id": 873,
@@ -8728,7 +8729,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 26,
     "customer_name": "นฤมล",
     "remark": "",
-    "customer_code": "560072"
+    "customer_code": "PC560072"
   },
   {
     "id": 874,
@@ -8738,7 +8739,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 27,
     "customer_name": "มัทนา",
     "remark": "",
-    "customer_code": "640048"
+    "customer_code": "PC640048"
   },
   {
     "id": 875,
@@ -8748,7 +8749,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 28,
     "customer_name": "กนกวรรณเภสัช",
     "remark": "",
-    "customer_code": "670136"
+    "customer_code": "PC670136"
   },
   {
     "id": 876,
@@ -8758,7 +8759,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 29,
     "customer_name": "ไพศาลเวชภัณ",
     "remark": "",
-    "customer_code": "590135"
+    "customer_code": "PC590135"
   },
   {
     "id": 877,
@@ -8768,7 +8769,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 30,
     "customer_name": "บ้านยาศรีประจันต์",
     "remark": "",
-    "customer_code": "550051"
+    "customer_code": "PC550051"
   },
   {
     "id": 878,
@@ -8778,7 +8779,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 31,
     "customer_name": "ขวัญมี",
     "remark": "",
-    "customer_code": "550010"
+    "customer_code": "PC550010"
   },
   {
     "id": 879,
@@ -8788,7 +8789,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 32,
     "customer_name": "สมิตา",
     "remark": "",
-    "customer_code": "580058"
+    "customer_code": "PC580058"
   },
   {
     "id": 880,
@@ -8798,7 +8799,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 33,
     "customer_name": "นานาฟาร์มาซี",
     "remark": "",
-    "customer_code": "620120"
+    "customer_code": "PC620120"
   },
   {
     "id": 881,
@@ -8808,7 +8809,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 34,
     "customer_name": "วีระวุฒิ",
     "remark": "",
-    "customer_code": "640032"
+    "customer_code": "PC640032"
   },
   {
     "id": 882,
@@ -8818,7 +8819,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 35,
     "customer_name": "ห้องยาเภสัชสุพรรณ",
     "remark": "",
-    "customer_code": "540157"
+    "customer_code": "PC540157"
   },
   {
     "id": 883,
@@ -8828,7 +8829,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 36,
     "customer_name": "บ้านยารักษ์สุข",
     "remark": "",
-    "customer_code": "670021"
+    "customer_code": "PC670021"
   },
   {
     "id": 884,
@@ -8838,7 +8839,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 37,
     "customer_name": "คลินิกหมอรตวรรษ์",
     "remark": "",
-    "customer_code": "670111"
+    "customer_code": "PC670111"
   },
   {
     "id": 885,
@@ -8848,7 +8849,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 38,
     "customer_name": "วิไลวรรณ",
     "remark": "",
-    "customer_code": "550050"
+    "customer_code": "PC550050"
   },
   {
     "id": 886,
@@ -8858,7 +8859,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 39,
     "customer_name": "คลังยาสุพรรณ",
     "remark": "",
-    "customer_code": "640028"
+    "customer_code": "PC640028"
   },
   {
     "id": 887,
@@ -8868,7 +8869,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 40,
     "customer_name": "กมลชนกฟาร์มาซี",
     "remark": "",
-    "customer_code": "640099"
+    "customer_code": "PC640099"
   },
   {
     "id": 888,
@@ -8878,7 +8879,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 41,
     "customer_name": "เก้าห้อง",
     "remark": "",
-    "customer_code": "610057"
+    "customer_code": "PC610057"
   },
   {
     "id": 889,
@@ -8888,7 +8889,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 42,
     "customer_name": "ทางยา",
     "remark": "",
-    "customer_code": "600115"
+    "customer_code": "PC600115"
   },
   {
     "id": 890,
@@ -8898,7 +8899,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 43,
     "customer_name": "เอ็มเจริญ",
     "remark": "",
-    "customer_code": "600119"
+    "customer_code": "PC600119"
   },
   {
     "id": 891,
@@ -8908,7 +8909,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 44,
     "customer_name": "บ้านยาแสนสุข",
     "remark": "",
-    "customer_code": "600023"
+    "customer_code": "PC600023"
   },
   {
     "id": 892,
@@ -8918,7 +8919,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 45,
     "customer_name": "ณิชนัน",
     "remark": "",
-    "customer_code": "640041"
+    "customer_code": "PC640041"
   },
   {
     "id": 893,
@@ -8928,7 +8929,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 46,
     "customer_name": "ทราย",
     "remark": "",
-    "customer_code": "650024"
+    "customer_code": "PC650024"
   },
   {
     "id": 894,
@@ -8938,7 +8939,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 47,
     "customer_name": "สามโก้",
     "remark": "",
-    "customer_code": "560116"
+    "customer_code": "PC560116"
   },
   {
     "id": 895,
@@ -8948,7 +8949,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 48,
     "customer_name": "สรรพยาฟาร์มาซี",
     "remark": "",
-    "customer_code": "630069"
+    "customer_code": "PC630069"
   },
   {
     "id": 896,
@@ -8958,7 +8959,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 49,
     "customer_name": "ไอฟาร์มาเซีย",
     "remark": "",
-    "customer_code": "560145"
+    "customer_code": "PC560145"
   },
   {
     "id": 897,
@@ -8968,7 +8969,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 50,
     "customer_name": "ยาเอก-ภรณ์",
     "remark": "",
-    "customer_code": "560098"
+    "customer_code": "PC560098"
   },
   {
     "id": 898,
@@ -8978,7 +8979,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 51,
     "customer_name": "เค.ซี.เภสัช",
     "remark": "",
-    "customer_code": "560066"
+    "customer_code": "PC560066"
   },
   {
     "id": 899,
@@ -8988,7 +8989,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 52,
     "customer_name": "เค ซี พลัส",
     "remark": "",
-    "customer_code": "640082"
+    "customer_code": "PC640082"
   },
   {
     "id": 900,
@@ -8998,7 +8999,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 53,
     "customer_name": "กระต้อบ",
     "remark": "",
-    "customer_code": "630036"
+    "customer_code": "PC630036"
   },
   {
     "id": 901,
@@ -9008,7 +9009,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 54,
     "customer_name": "กระต๊อบเภสัช สาขา 2",
     "remark": "",
-    "customer_code": "660044"
+    "customer_code": "PC660044"
   },
   {
     "id": 902,
@@ -9018,7 +9019,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 55,
     "customer_name": "พชร",
     "remark": "",
-    "customer_code": "590035"
+    "customer_code": "PC590035"
   },
   {
     "id": 903,
@@ -9028,7 +9029,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 56,
     "customer_name": "เรณูเภสัช/สิงห์บุรี",
     "remark": "",
-    "customer_code": "580030"
+    "customer_code": "PC580030"
   },
   {
     "id": 904,
@@ -9038,7 +9039,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 57,
     "customer_name": "จอยเภสัช",
     "remark": "",
-    "customer_code": "570134"
+    "customer_code": "PC570134"
   },
   {
     "id": 905,
@@ -9048,7 +9049,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 58,
     "customer_name": "สุนันท์",
     "remark": "",
-    "customer_code": "520051"
+    "customer_code": "PC520051"
   },
   {
     "id": 906,
@@ -9058,7 +9059,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 59,
     "customer_name": "เจพี",
     "remark": "",
-    "customer_code": "650092"
+    "customer_code": "PC650092"
   },
   {
     "id": 907,
@@ -9068,7 +9069,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 60,
     "customer_name": "ค่ายบางระจัน",
     "remark": "",
-    "customer_code": "640036"
+    "customer_code": "PC640036"
   },
   {
     "id": 908,
@@ -9078,7 +9079,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 61,
     "customer_name": "สิดาภัณฑ์เภสัช",
     "remark": "",
-    "customer_code": "610028"
+    "customer_code": "PC610028"
   },
   {
     "id": 909,
@@ -9088,7 +9089,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 62,
     "customer_name": "อินทร์บุรี",
     "remark": "",
-    "customer_code": "610042"
+    "customer_code": "PC610042"
   },
   {
     "id": 910,
@@ -9098,7 +9099,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 63,
     "customer_name": "ช้อนยา",
     "remark": "",
-    "customer_code": "620087"
+    "customer_code": "PC620087"
   },
   {
     "id": 911,
@@ -9108,7 +9109,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 64,
     "customer_name": "บ้านเภสัชสรรพยา",
     "remark": "",
-    "customer_code": "610105"
+    "customer_code": "PC610105"
   },
   {
     "id": 912,
@@ -9118,7 +9119,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 65,
     "customer_name": "บ้านเภสัช หนองมะโมง",
     "remark": "",
-    "customer_code": "690040"
+    "customer_code": "PC690040"
   },
   {
     "id": 913,
@@ -9128,7 +9129,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 66,
     "customer_name": "สรรพยาคลินิก",
     "remark": "",
-    "customer_code": "670112"
+    "customer_code": "PC670112"
   },
   {
     "id": 914,
@@ -9138,7 +9139,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 67,
     "customer_name": "แม่หญิงฟาร์มาซี",
     "remark": "",
-    "customer_code": "640031"
+    "customer_code": "PC640031"
   },
   {
     "id": 915,
@@ -9148,7 +9149,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 1,
     "customer_name": "ดลพร",
     "remark": "",
-    "customer_code": "580064"
+    "customer_code": "PC580064"
   },
   {
     "id": 916,
@@ -9158,7 +9159,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 2,
     "customer_name": "พยุหะคลังยา",
     "remark": "",
-    "customer_code": "560110"
+    "customer_code": "PC560110"
   },
   {
     "id": 917,
@@ -9168,7 +9169,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 3,
     "customer_name": "พรศักดิ์",
     "remark": "",
-    "customer_code": "650030"
+    "customer_code": "PC650030"
   },
   {
     "id": 918,
@@ -9178,7 +9179,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 4,
     "customer_name": "สุทธิกานต์",
     "remark": "",
-    "customer_code": "600007"
+    "customer_code": "PC600007"
   },
   {
     "id": 919,
@@ -9188,7 +9189,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 5,
     "customer_name": "ยาดีฟาร์ม่า",
     "remark": "",
-    "customer_code": "680091"
+    "customer_code": "PC680091"
   },
   {
     "id": 920,
@@ -9198,7 +9199,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 6,
     "customer_name": "ปัณยา นว.",
     "remark": "",
-    "customer_code": "620014"
+    "customer_code": "PC620014"
   },
   {
     "id": 921,
@@ -9208,7 +9209,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 7,
     "customer_name": "คลังยาสาคร",
     "remark": "",
-    "customer_code": "650079"
+    "customer_code": "PC650079"
   },
   {
     "id": 922,
@@ -9218,7 +9219,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 8,
     "customer_name": "รวมยา/ชัยนาท",
     "remark": "",
-    "customer_code": "680121"
+    "customer_code": "PC680121"
   },
   {
     "id": 923,
@@ -9228,7 +9229,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 9,
     "customer_name": "คลังยาเภสัชชัยนาท",
     "remark": "",
-    "customer_code": "540028"
+    "customer_code": "PC540028"
   },
   {
     "id": 924,
@@ -9238,7 +9239,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 10,
     "customer_name": "พัลลภาเภสัช",
     "remark": "",
-    "customer_code": "580095"
+    "customer_code": "PC580095"
   },
   {
     "id": 925,
@@ -9248,7 +9249,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 11,
     "customer_name": "สุวรรณโอสถ",
     "remark": "",
-    "customer_code": "640043"
+    "customer_code": "PC640043"
   },
   {
     "id": 926,
@@ -9258,7 +9259,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 12,
     "customer_name": "ห้าตองแปด",
     "remark": "",
-    "customer_code": "600038"
+    "customer_code": "PC600038"
   },
   {
     "id": 927,
@@ -9268,7 +9269,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 13,
     "customer_name": "บรมธาตุ",
     "remark": "",
-    "customer_code": "640006"
+    "customer_code": "PC640006"
   },
   {
     "id": 928,
@@ -9278,7 +9279,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 14,
     "customer_name": "โพพิทักษ์",
     "remark": "",
-    "customer_code": "660070"
+    "customer_code": "PC660070"
   },
   {
     "id": 929,
@@ -9288,7 +9289,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 15,
     "customer_name": "เภสัชกรโชคชัย",
     "remark": "",
-    "customer_code": "520065"
+    "customer_code": "PC520065"
   },
   {
     "id": 930,
@@ -9298,7 +9299,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 16,
     "customer_name": "เภสัชชุมชน",
     "remark": "",
-    "customer_code": "660116"
+    "customer_code": "PC660116"
   },
   {
     "id": 931,
@@ -9308,7 +9309,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 17,
     "customer_name": "บุญยา",
     "remark": "",
-    "customer_code": "660022"
+    "customer_code": "PC660022"
   },
   {
     "id": 932,
@@ -9318,7 +9319,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 18,
     "customer_name": "บ้านกล้วย",
     "remark": "",
-    "customer_code": "620130"
+    "customer_code": "PC620130"
   },
   {
     "id": 933,
@@ -9328,7 +9329,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 19,
     "customer_name": "บ้านยาชัยนาท",
     "remark": "",
-    "customer_code": "660083"
+    "customer_code": "PC660083"
   },
   {
     "id": 934,
@@ -9338,7 +9339,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 20,
     "customer_name": "ครอบครัวฟันยิ้ม",
     "remark": "",
-    "customer_code": "580044"
+    "customer_code": "PC580044"
   },
   {
     "id": 935,
@@ -9348,7 +9349,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 21,
     "customer_name": "ยาโกแบค",
     "remark": "",
-    "customer_code": "550080"
+    "customer_code": "PC550080"
   },
   {
     "id": 936,
@@ -9358,7 +9359,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 22,
     "customer_name": "ชัยนาทเภสัช",
     "remark": "",
-    "customer_code": "520022"
+    "customer_code": "PC520022"
   },
   {
     "id": 937,
@@ -9368,7 +9369,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 23,
     "customer_name": "เภสัชชุมชน",
     "remark": "",
-    "customer_code": "660116"
+    "customer_code": "PC660116"
   },
   {
     "id": 938,
@@ -9378,7 +9379,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 24,
     "customer_name": "สุภชัย",
     "remark": "",
-    "customer_code": "530011"
+    "customer_code": "PC530011"
   },
   {
     "id": 939,
@@ -9388,7 +9389,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 25,
     "customer_name": "กาญจนา",
     "remark": "",
-    "customer_code": "640020"
+    "customer_code": "PC640020"
   },
   {
     "id": 940,
@@ -9398,7 +9399,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 26,
     "customer_name": "อรอุมา",
     "remark": "",
-    "customer_code": "570110"
+    "customer_code": "PC570110"
   },
   {
     "id": 941,
@@ -9408,7 +9409,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 27,
     "customer_name": "พีเจ",
     "remark": "",
-    "customer_code": "640126"
+    "customer_code": "PC640126"
   },
   {
     "id": 942,
@@ -9418,7 +9419,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 28,
     "customer_name": "พิททาคลินิก",
     "remark": "",
-    "customer_code": "610048"
+    "customer_code": "PC610048"
   },
   {
     "id": 943,
@@ -9428,7 +9429,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 29,
     "customer_name": "เภสัชญา",
     "remark": "",
-    "customer_code": "610074"
+    "customer_code": "PC610074"
   },
   {
     "id": 944,
@@ -9438,7 +9439,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 30,
     "customer_name": "แพทย์ยุวดี",
     "remark": "",
-    "customer_code": "650098"
+    "customer_code": "PC650098"
   },
   {
     "id": 945,
@@ -9448,7 +9449,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 31,
     "customer_name": "แพทย์วรเดช",
     "remark": "",
-    "customer_code": "640019"
+    "customer_code": "PC640019"
   },
   {
     "id": 946,
@@ -9458,7 +9459,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 32,
     "customer_name": "ปณิกกา",
     "remark": "",
-    "customer_code": "680143"
+    "customer_code": "PC680143"
   },
   {
     "id": 947,
@@ -9468,7 +9469,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 33,
     "customer_name": "เคพีคลินิกชัยนาท",
     "remark": "",
-    "customer_code": "620114"
+    "customer_code": "PC620114"
   },
   {
     "id": 948,
@@ -9478,7 +9479,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 34,
     "customer_name": "ดวงกมล",
     "remark": "",
-    "customer_code": "640002"
+    "customer_code": "PC640002"
   },
   {
     "id": 949,
@@ -9488,7 +9489,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 35,
     "customer_name": "รวมยาโอสถ",
     "remark": "",
-    "customer_code": "610056"
+    "customer_code": "PC610056"
   },
   {
     "id": 950,
@@ -9498,7 +9499,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 36,
     "customer_name": "ณัฐกิตติ์",
     "remark": "",
-    "customer_code": "660028"
+    "customer_code": "PC660028"
   },
   {
     "id": 951,
@@ -9508,7 +9509,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 37,
     "customer_name": "ขวัญใจ",
     "remark": "",
-    "customer_code": "650081"
+    "customer_code": "PC650081"
   },
   {
     "id": 952,
@@ -9518,7 +9519,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 38,
     "customer_name": "ร้าน ชุตินันท์เภสัช",
     "remark": "",
-    "customer_code": "590136"
+    "customer_code": "PC590136"
   },
   {
     "id": 953,
@@ -9528,7 +9529,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 39,
     "customer_name": "คลินิกอิงสุข หมอปาณิสรา",
     "remark": "",
-    "customer_code": "680071"
+    "customer_code": "PC680071"
   },
   {
     "id": 954,
@@ -9538,7 +9539,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 40,
     "customer_name": "สุธิดา",
     "remark": "",
-    "customer_code": "640115"
+    "customer_code": "PC640115"
   },
   {
     "id": 955,
@@ -9548,7 +9549,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 41,
     "customer_name": "ธนิดา",
     "remark": "",
-    "customer_code": "670020"
+    "customer_code": "PC670020"
   },
   {
     "id": 956,
@@ -9558,7 +9559,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 42,
     "customer_name": "แพทย์กิติยา",
     "remark": "",
-    "customer_code": "680094"
+    "customer_code": "PC680094"
   },
   {
     "id": 957,
@@ -9568,7 +9569,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 43,
     "customer_name": "นงลักษณ์",
     "remark": "",
-    "customer_code": "670085"
+    "customer_code": "PC670085"
   },
   {
     "id": 958,
@@ -9578,7 +9579,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 44,
     "customer_name": "เภสัชวิทยา",
     "remark": "",
-    "customer_code": "690026"
+    "customer_code": "PC690026"
   },
   {
     "id": 959,
@@ -9588,7 +9589,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 45,
     "customer_name": "ปัณยาชัยนาท",
     "remark": "",
-    "customer_code": "600056"
+    "customer_code": "PC600056"
   },
   {
     "id": 960,
@@ -9598,7 +9599,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 46,
     "customer_name": "บ้านยาพอใจ",
     "remark": "",
-    "customer_code": "690034"
+    "customer_code": "PC690034"
   },
   {
     "id": 961,
@@ -9608,7 +9609,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 47,
     "customer_name": "เอี่ยมเจริญเภสัช",
     "remark": "",
-    "customer_code": "570104"
+    "customer_code": "PC570104"
   },
   {
     "id": 962,
@@ -9618,7 +9619,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 48,
     "customer_name": "บ้านยาท่าซุง",
     "remark": "",
-    "customer_code": "640039"
+    "customer_code": "PC640039"
   },
   {
     "id": 963,
@@ -9628,7 +9629,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 49,
     "customer_name": "แพทย์อภิลักษณ",
     "remark": "",
-    "customer_code": "570140"
+    "customer_code": "PC570140"
   },
   {
     "id": 964,
@@ -9638,7 +9639,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 50,
     "customer_name": "ท่าซุงคลินิก",
     "remark": "",
-    "customer_code": "650126"
+    "customer_code": "PC650126"
   },
   {
     "id": 965,
@@ -9648,7 +9649,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 51,
     "customer_name": "คุณอัจฉรีย์",
     "remark": "",
-    "customer_code": "620108"
+    "customer_code": "PC620108"
   },
   {
     "id": 966,
@@ -9658,7 +9659,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 52,
     "customer_name": "รัฐพล",
     "remark": "",
-    "customer_code": "570041"
+    "customer_code": "PC570041"
   },
   {
     "id": 967,
@@ -9668,7 +9669,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 53,
     "customer_name": "ศิริพร",
     "remark": "",
-    "customer_code": "540131"
+    "customer_code": "PC540131"
   },
   {
     "id": 968,
@@ -9678,7 +9679,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 54,
     "customer_name": "แจงสี่ต้น",
     "remark": "",
-    "customer_code": "660128"
+    "customer_code": "PC660128"
   },
   {
     "id": 969,
@@ -9688,7 +9689,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 55,
     "customer_name": "บ้านยาอุ่นใจ",
     "remark": "",
-    "customer_code": "660051"
+    "customer_code": "PC660051"
   },
   {
     "id": 970,
@@ -9698,7 +9699,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 56,
     "customer_name": "แพทย์ ศิริพงศ์",
     "remark": "",
-    "customer_code": "660017"
+    "customer_code": "PC660017"
   },
   {
     "id": 971,
@@ -9708,7 +9709,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 57,
     "customer_name": "เบสท์ฟาร์มาซี",
     "remark": "",
-    "customer_code": "560117"
+    "customer_code": "PC560117"
   },
   {
     "id": 972,
@@ -9718,7 +9719,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 58,
     "customer_name": "เภสัชกรสุพจน์",
     "remark": "",
-    "customer_code": "520004"
+    "customer_code": "PC520004"
   },
   {
     "id": 973,
@@ -9728,7 +9729,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 59,
     "customer_name": "สถานียาอุทัย",
     "remark": "",
-    "customer_code": "670028"
+    "customer_code": "PC670028"
   },
   {
     "id": 974,
@@ -9738,7 +9739,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 60,
     "customer_name": "น้ำทิพย์",
     "remark": "",
-    "customer_code": "530006"
+    "customer_code": "PC530006"
   },
   {
     "id": 975,
@@ -9748,7 +9749,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 61,
     "customer_name": "แพทย์อาลิสา",
     "remark": "",
-    "customer_code": "640110"
+    "customer_code": "PC640110"
   },
   {
     "id": 976,
@@ -9758,7 +9759,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 62,
     "customer_name": "อุทัย(โอนเงิน)",
     "remark": "",
-    "customer_code": "520001"
+    "customer_code": "PC520001"
   },
   {
     "id": 977,
@@ -9768,7 +9769,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 63,
     "customer_name": "บ.อุทัย",
     "remark": "",
-    "customer_code": "660103"
+    "customer_code": "PC660103"
   },
   {
     "id": 978,
@@ -9778,7 +9779,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 64,
     "customer_name": "มนตรีโอสถ",
     "remark": "",
-    "customer_code": "680045"
+    "customer_code": "PC680045"
   },
   {
     "id": 979,
@@ -9788,7 +9789,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 65,
     "customer_name": "บริษัท ลักกี้ฟาร์ม่า",
     "remark": "",
-    "customer_code": "580010"
+    "customer_code": "PC580010"
   },
   {
     "id": 980,
@@ -9798,7 +9799,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 66,
     "customer_name": "กฤตยาเภสัช",
     "remark": "",
-    "customer_code": "580055"
+    "customer_code": "PC580055"
   },
   {
     "id": 981,
@@ -9808,7 +9809,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 67,
     "customer_name": "คลินิกแพทย์อนวัช",
     "remark": "",
-    "customer_code": "580127"
+    "customer_code": "PC580127"
   },
   {
     "id": 982,
@@ -9818,7 +9819,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 68,
     "customer_name": "คลินิกชุมชนอุทัย",
     "remark": "",
-    "customer_code": "520008"
+    "customer_code": "PC520008"
   },
   {
     "id": 983,
@@ -9828,7 +9829,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 69,
     "customer_name": "บ้านยาท่าฉนวน",
     "remark": "",
-    "customer_code": "650084"
+    "customer_code": "PC650084"
   },
   {
     "id": 984,
@@ -9838,7 +9839,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 70,
     "customer_name": "คลินิกยา นว",
     "remark": "",
-    "customer_code": "530016"
+    "customer_code": "PC530016"
   },
   {
     "id": 985,
@@ -9848,7 +9849,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 1,
     "customer_name": "ไทยเสรี",
     "remark": "",
-    "customer_code": "560003"
+    "customer_code": "PC560003"
   },
   {
     "id": 986,
@@ -9858,7 +9859,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 2,
     "customer_name": "สถานียา",
     "remark": "",
-    "customer_code": "670081"
+    "customer_code": "PC670081"
   },
   {
     "id": 987,
@@ -9868,7 +9869,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 3,
     "customer_name": "เรือนโอสถ",
     "remark": "",
-    "customer_code": "580119"
+    "customer_code": "PC580119"
   },
   {
     "id": 988,
@@ -9878,7 +9879,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 4,
     "customer_name": "แอปเทก้า สาขา โลตัสเพชรบูรณ์",
     "remark": "",
-    "customer_code": "690001"
+    "customer_code": "PC690001"
   },
   {
     "id": 989,
@@ -9888,7 +9889,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 5,
     "customer_name": "ทีทีฟาร์ม่า",
     "remark": "",
-    "customer_code": "670067"
+    "customer_code": "PC670067"
   },
   {
     "id": 990,
@@ -9898,7 +9899,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 6,
     "customer_name": "ใกล้บ้าน",
     "remark": "",
-    "customer_code": "690074"
+    "customer_code": "PC690074"
   },
   {
     "id": 991,
@@ -9908,7 +9909,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 7,
     "customer_name": "ยาเภสัชโอ๊ค",
     "remark": "",
-    "customer_code": "600082"
+    "customer_code": "PC600082"
   },
   {
     "id": 992,
@@ -9918,7 +9919,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 8,
     "customer_name": "พรสุดาคลินิก",
     "remark": "",
-    "customer_code": "610036"
+    "customer_code": "PC610036"
   },
   {
     "id": 993,
@@ -9928,7 +9929,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 9,
     "customer_name": "เจริญสหคลินิค",
     "remark": "",
-    "customer_code": "670083"
+    "customer_code": "PC670083"
   },
   {
     "id": 994,
@@ -9938,7 +9939,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 10,
     "customer_name": "สิริชัย",
     "remark": "",
-    "customer_code": "630013"
+    "customer_code": "PC630013"
   },
   {
     "id": 995,
@@ -9948,7 +9949,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 11,
     "customer_name": "หมอวิสาข์",
     "remark": "",
-    "customer_code": "680109"
+    "customer_code": "PC680109"
   },
   {
     "id": 996,
@@ -9958,7 +9959,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 12,
     "customer_name": "ธรรมเวท",
     "remark": "",
-    "customer_code": "630078"
+    "customer_code": "PC630078"
   },
   {
     "id": 997,
@@ -9968,7 +9969,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 13,
     "customer_name": "นิศากร",
     "remark": "",
-    "customer_code": "610083"
+    "customer_code": "PC610083"
   },
   {
     "id": 998,
@@ -9978,7 +9979,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 14,
     "customer_name": "แพทย์โกศล",
     "remark": "",
-    "customer_code": "600093"
+    "customer_code": "PC600093"
   },
   {
     "id": 999,
@@ -9988,7 +9989,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 15,
     "customer_name": "แอปเทก้า พลัส",
     "remark": "",
-    "customer_code": "600103"
+    "customer_code": "PC600103"
   },
   {
     "id": 1000,
@@ -9998,7 +9999,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 16,
     "customer_name": "แคมป์สน",
     "remark": "",
-    "customer_code": "660112"
+    "customer_code": "PC660112"
   },
   {
     "id": 1001,
@@ -10008,7 +10009,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 17,
     "customer_name": "ศศิธรเภสัช",
     "remark": "",
-    "customer_code": "660032"
+    "customer_code": "PC660032"
   },
   {
     "id": 1002,
@@ -10018,7 +10019,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 18,
     "customer_name": "ยาหลังรพ.",
     "remark": "",
-    "customer_code": "660058"
+    "customer_code": "PC660058"
   },
   {
     "id": 1003,
@@ -10028,7 +10029,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 19,
     "customer_name": "ยาสะเดียงเภสัช",
     "remark": "",
-    "customer_code": "610131"
+    "customer_code": "PC610131"
   },
   {
     "id": 1004,
@@ -10038,7 +10039,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 20,
     "customer_name": "สะเดียงยา",
     "remark": "",
-    "customer_code": "520063"
+    "customer_code": "PC520063"
   },
   {
     "id": 1005,
@@ -10048,7 +10049,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 21,
     "customer_name": "ธิภาพร (กุ้ง)",
     "remark": "",
-    "customer_code": "520067"
+    "customer_code": "PC520067"
   },
   {
     "id": 1006,
@@ -10058,7 +10059,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 22,
     "customer_name": "เอื้อจิตรา",
     "remark": "",
-    "customer_code": "660024"
+    "customer_code": "PC660024"
   },
   {
     "id": 1007,
@@ -10068,7 +10069,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 23,
     "customer_name": "สิทธิเวช3",
     "remark": "",
-    "customer_code": "680028"
+    "customer_code": "PC680028"
   },
   {
     "id": 1008,
@@ -10078,7 +10079,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 24,
     "customer_name": "นิศากร",
     "remark": "",
-    "customer_code": "610083"
+    "customer_code": "PC610083"
   },
   {
     "id": 1009,
@@ -10088,7 +10089,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 25,
     "customer_name": "คลินิกเด็กหมอกนกพร",
     "remark": "",
-    "customer_code": "680131"
+    "customer_code": "PC680131"
   },
   {
     "id": 1010,
@@ -10098,7 +10099,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 26,
     "customer_name": "อารีรัตน์เภสัช",
     "remark": "",
-    "customer_code": "580096"
+    "customer_code": "PC580096"
   },
   {
     "id": 1011,
@@ -10108,7 +10109,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 27,
     "customer_name": "เภสัชพัฒนา",
     "remark": "",
-    "customer_code": "640068"
+    "customer_code": "PC640068"
   },
   {
     "id": 1012,
@@ -10118,7 +10119,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 28,
     "customer_name": "หมอกอบกาญจน์",
     "remark": "",
-    "customer_code": "590087"
+    "customer_code": "PC590087"
   },
   {
     "id": 1013,
@@ -10128,7 +10129,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 29,
     "customer_name": "บ้านยากลางเมือง",
     "remark": "",
-    "customer_code": "630056"
+    "customer_code": "PC630056"
   },
   {
     "id": 1014,
@@ -10138,7 +10139,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 30,
     "customer_name": "สองเภสัชกร",
     "remark": "",
-    "customer_code": "520076"
+    "customer_code": "PC520076"
   },
   {
     "id": 1015,
@@ -10148,7 +10149,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 31,
     "customer_name": "นพดลเภสัช2",
     "remark": "",
-    "customer_code": "590008"
+    "customer_code": "PC590008"
   },
   {
     "id": 1016,
@@ -10158,7 +10159,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 32,
     "customer_name": "ศรีลักษณ์เภสัช",
     "remark": "",
-    "customer_code": "570021"
+    "customer_code": "PC570021"
   },
   {
     "id": 1017,
@@ -10168,7 +10169,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 33,
     "customer_name": "ศศิร์อร",
     "remark": "",
-    "customer_code": "660124"
+    "customer_code": "PC660124"
   },
   {
     "id": 1018,
@@ -10178,7 +10179,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 34,
     "customer_name": "สิทธิเวช2",
     "remark": "",
-    "customer_code": "630109"
+    "customer_code": "PC630109"
   },
   {
     "id": 1019,
@@ -10188,7 +10189,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 35,
     "customer_name": "นพดลเภสัช",
     "remark": "",
-    "customer_code": "550072"
+    "customer_code": "PC550072"
   },
   {
     "id": 1020,
@@ -10198,7 +10199,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 36,
     "customer_name": "แอปเทก้าtop",
     "remark": "",
-    "customer_code": "550038"
+    "customer_code": "PC550038"
   },
   {
     "id": 1021,
@@ -10208,7 +10209,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 37,
     "customer_name": "หมอเกียรติยศ",
     "remark": "",
-    "customer_code": "580087"
+    "customer_code": "PC580087"
   },
   {
     "id": 1022,
@@ -10218,7 +10219,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 38,
     "customer_name": "ยาดี",
     "remark": "",
-    "customer_code": "650018"
+    "customer_code": "PC650018"
   },
   {
     "id": 1023,
@@ -10228,7 +10229,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 39,
     "customer_name": "เภสัชณัฐ",
     "remark": "",
-    "customer_code": "660045"
+    "customer_code": "PC660045"
   },
   {
     "id": 1024,
@@ -10238,7 +10239,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 40,
     "customer_name": "ยาใกล้ฉัน",
     "remark": "",
-    "customer_code": "680065"
+    "customer_code": "PC680065"
   },
   {
     "id": 1025,
@@ -10248,7 +10249,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 41,
     "customer_name": "คลินิคหมอปาล์ม",
     "remark": "",
-    "customer_code": "660108"
+    "customer_code": "PC660108"
   },
   {
     "id": 1026,
@@ -10258,7 +10259,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 42,
     "customer_name": "สิทธิเวชฟาร์มาซี",
     "remark": "",
-    "customer_code": "540103"
+    "customer_code": "PC540103"
   },
   {
     "id": 1027,
@@ -10268,7 +10269,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 43,
     "customer_name": "วิชัยฟาร์มาซี",
     "remark": "",
-    "customer_code": "620054"
+    "customer_code": "PC620054"
   },
   {
     "id": 1028,
@@ -10278,7 +10279,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 44,
     "customer_name": "โพธิ์จันทร์",
     "remark": "",
-    "customer_code": "590034"
+    "customer_code": "PC590034"
   },
   {
     "id": 1029,
@@ -10288,7 +10289,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 45,
     "customer_name": "ขายยาเภสัชกร",
     "remark": "",
-    "customer_code": "520070"
+    "customer_code": "PC520070"
   },
   {
     "id": 1030,
@@ -10298,7 +10299,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 46,
     "customer_name": "ทุ่งสมอยา",
     "remark": "",
-    "customer_code": "600006"
+    "customer_code": "PC600006"
   },
   {
     "id": 1031,
@@ -10308,7 +10309,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 47,
     "customer_name": "บ้านยาเพชรชมพู",
     "remark": "",
-    "customer_code": "670036"
+    "customer_code": "PC670036"
   },
   {
     "id": 1032,
@@ -10318,7 +10319,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 48,
     "customer_name": "เคพลัส",
     "remark": "",
-    "customer_code": "590079"
+    "customer_code": "PC590079"
   },
   {
     "id": 1033,
@@ -10328,7 +10329,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 49,
     "customer_name": "สยามฟาร์มาซี",
     "remark": "",
-    "customer_code": "530005"
+    "customer_code": "PC530005"
   },
   {
     "id": 1034,
@@ -10338,7 +10339,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 50,
     "customer_name": "วังชมภู",
     "remark": "",
-    "customer_code": "630034"
+    "customer_code": "PC630034"
   },
   {
     "id": 1035,
@@ -10348,7 +10349,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 51,
     "customer_name": "เสกสรร",
     "remark": "",
-    "customer_code": "550067"
+    "customer_code": "PC550067"
   },
   {
     "id": 1036,
@@ -10358,7 +10359,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 52,
     "customer_name": "พัชรินทร์เภสัช",
     "remark": "",
-    "customer_code": "580132"
+    "customer_code": "PC580132"
   },
   {
     "id": 1037,
@@ -10368,7 +10369,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 53,
     "customer_name": "นาเฉลียงเภสัช",
     "remark": "",
-    "customer_code": "680112"
+    "customer_code": "PC680112"
   },
   {
     "id": 1038,
@@ -10378,7 +10379,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 54,
     "customer_name": "คลังยากิมไล้",
     "remark": "",
-    "customer_code": "550046"
+    "customer_code": "PC550046"
   },
   {
     "id": 1039,
@@ -10388,7 +10389,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 55,
     "customer_name": "ยาเภสัชกร1",
     "remark": "",
-    "customer_code": "650028"
+    "customer_code": "PC650028"
   },
   {
     "id": 1040,
@@ -10398,7 +10399,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 56,
     "customer_name": "ธีรยารุ่งเรือง",
     "remark": "",
-    "customer_code": "660021"
+    "customer_code": "PC660021"
   },
   {
     "id": 1041,
@@ -10408,7 +10409,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 57,
     "customer_name": "มันตา",
     "remark": "",
-    "customer_code": "660084"
+    "customer_code": "PC660084"
   },
   {
     "id": 1042,
@@ -10418,7 +10419,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 58,
     "customer_name": "ท่าแดงเภสัช",
     "remark": "",
-    "customer_code": "680129"
+    "customer_code": "PC680129"
   },
   {
     "id": 1043,
@@ -10428,7 +10429,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 59,
     "customer_name": "กันเอง",
     "remark": "",
-    "customer_code": "570043"
+    "customer_code": "PC570043"
   },
   {
     "id": 1044,
@@ -10438,7 +10439,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 60,
     "customer_name": "ยาเภสัชกร3",
     "remark": "",
-    "customer_code": "610085"
+    "customer_code": "PC610085"
   },
   {
     "id": 1045,
@@ -10448,7 +10449,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 61,
     "customer_name": "อุดมเภสัช",
     "remark": "",
-    "customer_code": "600067"
+    "customer_code": "PC600067"
   },
   {
     "id": 1046,
@@ -10458,7 +10459,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 62,
     "customer_name": "เพชรละคร",
     "remark": "",
-    "customer_code": "670127"
+    "customer_code": "PC670127"
   },
   {
     "id": 1047,
@@ -10468,7 +10469,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 63,
     "customer_name": "ศิริวัฒนา",
     "remark": "",
-    "customer_code": "560107"
+    "customer_code": "PC560107"
   },
   {
     "id": 1048,
@@ -10478,7 +10479,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 64,
     "customer_name": "เฟื่อง",
     "remark": "",
-    "customer_code": "520069"
+    "customer_code": "PC520069"
   },
   {
     "id": 1049,
@@ -10488,7 +10489,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 65,
     "customer_name": "หมอยาบึงสามพัน",
     "remark": "",
-    "customer_code": "540055"
+    "customer_code": "PC540055"
   },
   {
     "id": 1050,
@@ -10498,7 +10499,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 66,
     "customer_name": "เอบีเวชภัณฑ์",
     "remark": "",
-    "customer_code": "560137"
+    "customer_code": "PC560137"
   },
   {
     "id": 1051,
@@ -10508,7 +10509,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 67,
     "customer_name": "บึงสามพันเภสัช",
     "remark": "",
-    "customer_code": "650026"
+    "customer_code": "PC650026"
   },
   {
     "id": 1052,
@@ -10518,7 +10519,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 68,
     "customer_name": "เภสัชชุมชลบึงสามพัน",
     "remark": "",
-    "customer_code": "520075"
+    "customer_code": "PC520075"
   },
   {
     "id": 1053,
@@ -10528,7 +10529,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 69,
     "customer_name": "คลังยาสมอทอด",
     "remark": "",
-    "customer_code": "670103"
+    "customer_code": "PC670103"
   },
   {
     "id": 1054,
@@ -10538,7 +10539,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 70,
     "customer_name": "บุญเลิศโอสถ",
     "remark": "",
-    "customer_code": "500024"
+    "customer_code": "PC500024"
   },
   {
     "id": 1055,
@@ -10548,7 +10549,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 71,
     "customer_name": "อู่ทอง",
     "remark": "",
-    "customer_code": "630002"
+    "customer_code": "PC630002"
   },
   {
     "id": 1056,
@@ -10558,7 +10559,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 72,
     "customer_name": "คลินิกยาไพศาลี",
     "remark": "",
-    "customer_code": "560024"
+    "customer_code": "PC560024"
   },
   {
     "id": 1057,
@@ -10568,7 +10569,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 73,
     "customer_name": "จารุเนตร",
     "remark": "",
-    "customer_code": "630116"
+    "customer_code": "PC630116"
   },
   {
     "id": 1058,
@@ -10578,7 +10579,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 74,
     "customer_name": "เจริญชัย",
     "remark": "",
-    "customer_code": "540075"
+    "customer_code": "PC540075"
   },
   {
     "id": 1059,
@@ -10588,7 +10589,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 75,
     "customer_name": "เภสัชใกล้บ้าน",
     "remark": "",
-    "customer_code": "690061"
+    "customer_code": "PC690061"
   },
   {
     "id": 1060,
@@ -10598,7 +10599,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 76,
     "customer_name": "บ้านยารักษ์คุณ",
     "remark": "",
-    "customer_code": "610132"
+    "customer_code": "PC610132"
   },
   {
     "id": 1061,
@@ -10608,7 +10609,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 77,
     "customer_name": "พร้อมมิตร",
     "remark": "",
-    "customer_code": "620034"
+    "customer_code": "PC620034"
   },
   {
     "id": 1062,
@@ -10618,7 +10619,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 78,
     "customer_name": "กนกพรคลินิก",
     "remark": "",
-    "customer_code": "620006"
+    "customer_code": "PC620006"
   },
   {
     "id": 1063,
@@ -10628,7 +10629,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 79,
     "customer_name": "รจนา",
     "remark": "",
-    "customer_code": "600016"
+    "customer_code": "PC600016"
   },
   {
     "id": 1064,
@@ -10638,7 +10639,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 80,
     "customer_name": "พึ่งพร",
     "remark": "",
-    "customer_code": "560006"
+    "customer_code": "PC560006"
   },
   {
     "id": 1065,
@@ -10648,7 +10649,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 81,
     "customer_name": "โค้วไทยหลี",
     "remark": "",
-    "customer_code": "580060"
+    "customer_code": "PC580060"
   },
   {
     "id": 1066,
@@ -10658,7 +10659,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 82,
     "customer_name": "เภสัชชุมชนท่าตะโก",
     "remark": "",
-    "customer_code": "500010"
+    "customer_code": "PC500010"
   },
   {
     "id": 1067,
@@ -10668,7 +10669,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 83,
     "customer_name": "อัมพร",
     "remark": "",
-    "customer_code": "570006"
+    "customer_code": "PC570006"
   },
   {
     "id": 1068,
@@ -10678,7 +10679,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 84,
     "customer_name": "ศิริลักเภสัช",
     "remark": "",
-    "customer_code": "670007"
+    "customer_code": "PC670007"
   },
   {
     "id": 1069,
@@ -10688,7 +10689,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 85,
     "customer_name": "สาวิตรี",
     "remark": "",
-    "customer_code": "600064"
+    "customer_code": "PC600064"
   },
   {
     "id": 1070,
@@ -10698,7 +10699,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 86,
     "customer_name": "หนองปลิง",
     "remark": "",
-    "customer_code": "500015"
+    "customer_code": "PC500015"
   },
   {
     "id": 1071,
@@ -10708,7 +10709,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 87,
     "customer_name": "หมอยานว.",
     "remark": "",
-    "customer_code": "620061"
+    "customer_code": "PC620061"
   },
   {
     "id": 1072,
@@ -10718,7 +10719,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 88,
     "customer_name": "บริษัท เอ็นพี ฟาร์มา พลัส",
     "remark": "",
-    "customer_code": "680040"
+    "customer_code": "PC680040"
   },
   {
     "id": 1073,
@@ -10728,7 +10729,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 89,
     "customer_name": "บ้านยาธนารักษ์",
     "remark": "",
-    "customer_code": "650100"
+    "customer_code": "PC650100"
   },
   {
     "id": 1074,
@@ -10738,7 +10739,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 1,
     "customer_name": "คลินิกแพทย์ชินวัตร",
     "remark": "",
-    "customer_code": "680069"
+    "customer_code": "PC680069"
   },
   {
     "id": 1075,
@@ -10748,7 +10749,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 2,
     "customer_name": "แพทย์เกรียงไกร",
     "remark": "",
-    "customer_code": "680105"
+    "customer_code": "PC680105"
   },
   {
     "id": 1076,
@@ -10758,7 +10759,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 3,
     "customer_name": "อู่ยา",
     "remark": "",
-    "customer_code": "610098"
+    "customer_code": "PC610098"
   },
   {
     "id": 1077,
@@ -10768,7 +10769,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 4,
     "customer_name": "เพื่อนยา 168",
     "remark": "",
-    "customer_code": "610073"
+    "customer_code": "PC610073"
   },
   {
     "id": 1078,
@@ -10778,7 +10779,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 5,
     "customer_name": "คลังยาชุมชน",
     "remark": "",
-    "customer_code": "640015"
+    "customer_code": "PC640015"
   },
   {
     "id": 1079,
@@ -10788,7 +10789,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 6,
     "customer_name": "ยาสมบูรณ์โคกสำโรง",
     "remark": "",
-    "customer_code": "610097"
+    "customer_code": "PC610097"
   },
   {
     "id": 1080,
@@ -10798,7 +10799,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 7,
     "customer_name": "บ้านยาดีลัง",
     "remark": "",
-    "customer_code": "570090"
+    "customer_code": "PC570090"
   },
   {
     "id": 1081,
@@ -10808,7 +10809,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 8,
     "customer_name": "ดีลังคลีนิก",
     "remark": "",
-    "customer_code": "600096"
+    "customer_code": "PC600096"
   },
   {
     "id": 1082,
@@ -10818,7 +10819,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 9,
     "customer_name": "สาโรจน์ฟาร์มาซี",
     "remark": "",
-    "customer_code": "540057"
+    "customer_code": "PC540057"
   },
   {
     "id": 1083,
@@ -10828,7 +10829,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 10,
     "customer_name": "วศินีเภสัช2",
     "remark": "",
-    "customer_code": "550093"
+    "customer_code": "PC550093"
   },
   {
     "id": 1084,
@@ -10838,7 +10839,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 11,
     "customer_name": "คุณจ๋าเภสัช",
     "remark": "",
-    "customer_code": "540071"
+    "customer_code": "PC540071"
   },
   {
     "id": 1085,
@@ -10848,7 +10849,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 12,
     "customer_name": "บ้านหมอยา",
     "remark": "",
-    "customer_code": "610029"
+    "customer_code": "PC610029"
   },
   {
     "id": 1086,
@@ -10858,7 +10859,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 13,
     "customer_name": "บ้านยาวังเพลิง",
     "remark": "",
-    "customer_code": "640038"
+    "customer_code": "PC640038"
   },
   {
     "id": 1087,
@@ -10868,7 +10869,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 14,
     "customer_name": "น้ำผึ้ง",
     "remark": "",
-    "customer_code": "510024"
+    "customer_code": "PC510024"
   },
   {
     "id": 1088,
@@ -10878,7 +10879,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 15,
     "customer_name": "กิจรุ่งโรจน์เภสัช",
     "remark": "",
-    "customer_code": "520037"
+    "customer_code": "PC520037"
   },
   {
     "id": 1089,
@@ -10888,7 +10889,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 16,
     "customer_name": "ฟ้าอัมพร",
     "remark": "",
-    "customer_code": "680060"
+    "customer_code": "PC680060"
   },
   {
     "id": 1090,
@@ -10898,7 +10899,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 17,
     "customer_name": "วศินีเภสัช",
     "remark": "",
-    "customer_code": "550093"
+    "customer_code": "PC550093"
   },
   {
     "id": 1091,
@@ -10908,7 +10909,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 18,
     "customer_name": "สบายดี",
     "remark": "",
-    "customer_code": "520085"
+    "customer_code": "PC520085"
   },
   {
     "id": 1092,
@@ -10918,7 +10919,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 19,
     "customer_name": "สมบูรณ์บ้านยา",
     "remark": "",
-    "customer_code": "520057"
+    "customer_code": "PC520057"
   },
   {
     "id": 1093,
@@ -10928,7 +10929,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 20,
     "customer_name": "สมบัติ ร้านยา",
     "remark": "",
-    "customer_code": "600074"
+    "customer_code": "PC600074"
   },
   {
     "id": 1094,
@@ -10938,7 +10939,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 21,
     "customer_name": "ร้านยาอบอุ่น",
     "remark": "",
-    "customer_code": "680033"
+    "customer_code": "PC680033"
   },
   {
     "id": 1095,
@@ -10948,7 +10949,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 22,
     "customer_name": "อบอุ่นฟารมาซี",
     "remark": "",
-    "customer_code": "690090"
+    "customer_code": "PC690090"
   },
   {
     "id": 1096,
@@ -10958,7 +10959,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 23,
     "customer_name": "ใบตองเภสัช",
     "remark": "",
-    "customer_code": "690082"
+    "customer_code": "PC690082"
   },
   {
     "id": 1097,
@@ -10968,7 +10969,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 24,
     "customer_name": "เขาแก้วเภสัช",
     "remark": "",
-    "customer_code": "560059"
+    "customer_code": "PC560059"
   },
   {
     "id": 1098,
@@ -10978,7 +10979,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 25,
     "customer_name": "สระโบสถ์",
     "remark": "",
-    "customer_code": "640076"
+    "customer_code": "PC640076"
   },
   {
     "id": 1099,
@@ -10988,7 +10989,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 26,
     "customer_name": "ร้านสมาร์ทเภสัช",
     "remark": "",
-    "customer_code": "610033"
+    "customer_code": "PC610033"
   },
   {
     "id": 1100,
@@ -10998,7 +10999,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 27,
     "customer_name": "บ้านยาเป็นหนึ่ง",
     "remark": "",
-    "customer_code": "690023"
+    "customer_code": "PC690023"
   },
   {
     "id": 1101,
@@ -11008,7 +11009,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 28,
     "customer_name": "ใกล้บ้าน",
     "remark": "",
-    "customer_code": "640021"
+    "customer_code": "PC640021"
   },
   {
     "id": 1102,
@@ -11018,7 +11019,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 29,
     "customer_name": "เซ็นเตอร์ยา",
     "remark": "",
-    "customer_code": "650108"
+    "customer_code": "PC650108"
   },
   {
     "id": 1103,
@@ -11028,7 +11029,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 30,
     "customer_name": "พอเพียงเภสัช",
     "remark": "",
-    "customer_code": "540096"
+    "customer_code": "PC540096"
   },
   {
     "id": 1104,
@@ -11038,7 +11039,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 31,
     "customer_name": "คลังยา 24",
     "remark": "",
-    "customer_code": "530040"
+    "customer_code": "PC530040"
   },
   {
     "id": 1105,
@@ -11048,7 +11049,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 32,
     "customer_name": "ส.เขาพระงาม",
     "remark": "",
-    "customer_code": "550005"
+    "customer_code": "PC550005"
   },
   {
     "id": 1106,
@@ -11058,7 +11059,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 33,
     "customer_name": "เรือนยา",
     "remark": "",
-    "customer_code": "620088"
+    "customer_code": "PC620088"
   },
   {
     "id": 1107,
@@ -11068,7 +11069,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 34,
     "customer_name": "สุทธาทิพย์",
     "remark": "",
-    "customer_code": "620055"
+    "customer_code": "PC620055"
   },
   {
     "id": 1108,
@@ -11078,7 +11079,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 35,
     "customer_name": "ใบยา",
     "remark": "",
-    "customer_code": "670005"
+    "customer_code": "PC670005"
   },
   {
     "id": 1109,
@@ -11088,7 +11089,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 36,
     "customer_name": "นพวรรณ",
     "remark": "",
-    "customer_code": "650086"
+    "customer_code": "PC650086"
   },
   {
     "id": 1110,
@@ -11098,7 +11099,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 37,
     "customer_name": "บ.เอส ทู แคร์",
     "remark": "",
-    "customer_code": "630077"
+    "customer_code": "PC630077"
   },
   {
     "id": 1111,
@@ -11108,7 +11109,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 38,
     "customer_name": "บ้านรักษ์ยา",
     "remark": "",
-    "customer_code": "630015"
+    "customer_code": "PC630015"
   },
   {
     "id": 1112,
@@ -11118,7 +11119,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 39,
     "customer_name": "ปรียานุชเภสัช",
     "remark": "",
-    "customer_code": "570046"
+    "customer_code": "PC570046"
   },
   {
     "id": 1113,
@@ -11128,7 +11129,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 40,
     "customer_name": "ตะวัน",
     "remark": "",
-    "customer_code": "590143"
+    "customer_code": "PC590143"
   },
   {
     "id": 1114,
@@ -11138,7 +11139,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 41,
     "customer_name": "อุดมเวช",
     "remark": "",
-    "customer_code": "550011"
+    "customer_code": "PC550011"
   },
   {
     "id": 1115,
@@ -11148,7 +11149,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 42,
     "customer_name": "สุมณรัศ",
     "remark": "",
-    "customer_code": "530044"
+    "customer_code": "PC530044"
   },
   {
     "id": 1116,
@@ -11158,7 +11159,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 1,
     "customer_name": "คลังยาโกรกพระ",
     "remark": "",
-    "customer_code": "640042"
+    "customer_code": "PC640042"
   },
   {
     "id": 1117,
@@ -11168,7 +11169,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 2,
     "customer_name": "สวนขวัญ",
     "remark": "",
-    "customer_code": "570074"
+    "customer_code": "PC570074"
   },
   {
     "id": 1118,
@@ -11178,7 +11179,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 3,
     "customer_name": "ศิริขวัญ",
     "remark": "",
-    "customer_code": "560007"
+    "customer_code": "PC560007"
   },
   {
     "id": 1119,
@@ -11188,7 +11189,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 4,
     "customer_name": "รวิพล",
     "remark": "",
-    "customer_code": "670033"
+    "customer_code": "PC670033"
   },
   {
     "id": 1120,
@@ -11198,7 +11199,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 5,
     "customer_name": "สุชาติ..ทับทัน",
     "remark": "",
-    "customer_code": "570098"
+    "customer_code": "PC570098"
   },
   {
     "id": 1121,
@@ -11208,7 +11209,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 6,
     "customer_name": "คลินิกแพทย์ อุทุมพร.รพ ทัพทัน",
     "remark": "",
-    "customer_code": "590082"
+    "customer_code": "PC590082"
   },
   {
     "id": 1122,
@@ -11218,7 +11219,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 7,
     "customer_name": "แพทย์วิชา",
     "remark": "",
-    "customer_code": "670116"
+    "customer_code": "PC670116"
   },
   {
     "id": 1123,
@@ -11228,7 +11229,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 8,
     "customer_name": "เภสัชกรกมล 1",
     "remark": "",
-    "customer_code": "520081"
+    "customer_code": "PC520081"
   },
   {
     "id": 1124,
@@ -11238,7 +11239,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 9,
     "customer_name": "อัญชนา",
     "remark": "",
-    "customer_code": "670037"
+    "customer_code": "PC670037"
   },
   {
     "id": 1125,
@@ -11248,7 +11249,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 10,
     "customer_name": "ณิชา",
     "remark": "",
-    "customer_code": "650019"
+    "customer_code": "PC650019"
   },
   {
     "id": 1126,
@@ -11258,7 +11259,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 11,
     "customer_name": "ภก.รวิ",
     "remark": "",
-    "customer_code": "590097"
+    "customer_code": "PC590097"
   },
   {
     "id": 1127,
@@ -11268,7 +11269,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 12,
     "customer_name": "เภสัชกร ขวัญ",
     "remark": "",
-    "customer_code": "500018"
+    "customer_code": "PC500018"
   },
   {
     "id": 1128,
@@ -11278,7 +11279,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 13,
     "customer_name": "หนองฉางคลังยา",
     "remark": "",
-    "customer_code": "520025"
+    "customer_code": "PC520025"
   },
   {
     "id": 1129,
@@ -11288,7 +11289,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 14,
     "customer_name": "พรชัย",
     "remark": "",
-    "customer_code": "540141"
+    "customer_code": "PC540141"
   },
   {
     "id": 1130,
@@ -11298,7 +11299,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 15,
     "customer_name": "คลินิกกนกวรรณ",
     "remark": "",
-    "customer_code": "510058"
+    "customer_code": "PC510058"
   },
   {
     "id": 1131,
@@ -11308,7 +11309,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 16,
     "customer_name": "โรงสีใหม่",
     "remark": "",
-    "customer_code": "600010"
+    "customer_code": "PC600010"
   },
   {
     "id": 1132,
@@ -11318,7 +11319,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 17,
     "customer_name": "หมอยาทุ่งนา",
     "remark": "",
-    "customer_code": "610113"
+    "customer_code": "PC610113"
   },
   {
     "id": 1133,
@@ -11328,7 +11329,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 18,
     "customer_name": "สุวรรณเวช",
     "remark": "",
-    "customer_code": "570147"
+    "customer_code": "PC570147"
   },
   {
     "id": 1134,
@@ -11338,7 +11339,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 19,
     "customer_name": "รุ่งเกียรติคลินิกเวชกรรม",
     "remark": "",
-    "customer_code": "640075"
+    "customer_code": "PC640075"
   },
   {
     "id": 1135,
@@ -11348,7 +11349,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 20,
     "customer_name": "อิ่มใจ",
     "remark": "",
-    "customer_code": "630027"
+    "customer_code": "PC630027"
   },
   {
     "id": 1136,
@@ -11358,7 +11359,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 21,
     "customer_name": "หมอยาชุมตาบง",
     "remark": "",
-    "customer_code": "650112"
+    "customer_code": "PC650112"
   },
   {
     "id": 1137,
@@ -11368,7 +11369,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 22,
     "customer_name": "หมอยาลาดยาว",
     "remark": "",
-    "customer_code": "500030"
+    "customer_code": "PC500030"
   },
   {
     "id": 1138,
@@ -11378,7 +11379,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 23,
     "customer_name": "พิเชษฐ์",
     "remark": "",
-    "customer_code": "520044"
+    "customer_code": "PC520044"
   },
   {
     "id": 1139,
@@ -11388,7 +11389,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 24,
     "customer_name": "บ้านยาลาดยาว",
     "remark": "",
-    "customer_code": "530041"
+    "customer_code": "PC530041"
   },
   {
     "id": 1140,
@@ -11398,7 +11399,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 25,
     "customer_name": "ดีไว",
     "remark": "",
-    "customer_code": "540122"
+    "customer_code": "PC540122"
   },
   {
     "id": 1141,
@@ -11408,7 +11409,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 26,
     "customer_name": "อังวัชระ",
     "remark": "",
-    "customer_code": "540014"
+    "customer_code": "PC540014"
   },
   {
     "id": 1142,
@@ -11418,7 +11419,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 27,
     "customer_name": "พฤกษ์",
     "remark": "",
-    "customer_code": "510059"
+    "customer_code": "PC510059"
   },
   {
     "id": 1143,
@@ -11428,7 +11429,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 28,
     "customer_name": "ศูนย์บริการ",
     "remark": "",
-    "customer_code": "620112"
+    "customer_code": "PC620112"
   },
   {
     "id": 1144,
@@ -11438,7 +11439,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 29,
     "customer_name": "แพทย์วิลาสิณี-ศิรินภา",
     "remark": "",
-    "customer_code": "670093"
+    "customer_code": "PC670093"
   },
   {
     "id": 1145,
@@ -11448,7 +11449,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 30,
     "customer_name": "บ้านยาทวีทรัพย์",
     "remark": "",
-    "customer_code": "650037"
+    "customer_code": "PC650037"
   },
   {
     "id": 1146,
@@ -11458,7 +11459,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 31,
     "customer_name": "ร้านขายยาเพียร",
     "remark": "",
-    "customer_code": "640008"
+    "customer_code": "PC640008"
   },
   {
     "id": 1147,
@@ -11468,7 +11469,7 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 32,
     "customer_name": "หนองเบนเภสัช",
     "remark": "",
-    "customer_code": "670017"
+    "customer_code": "PC670017"
   },
   {
     "id": 1148,
@@ -11478,6 +11479,6 @@ window.INITIAL_ROUTES_DATA = [
     "sequence": 33,
     "customer_name": "คลินิกยานว.",
     "remark": "",
-    "customer_code": "530016"
+    "customer_code": "PC530016"
   }
 ];

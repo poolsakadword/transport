@@ -52,6 +52,15 @@ export default {
           try { await db.prepare("ALTER TABLE routes_data ADD COLUMN boxes INTEGER").run(); } catch (_) {}
           try { await db.prepare("ALTER TABLE routes_data ADD COLUMN amount REAL").run(); } catch (_) {}
 
+          // Auto-migration: Ensure all customer codes have 'PC' prefix if missing
+          try {
+            await db.prepare(`
+              UPDATE routes_data 
+              SET customer_code = 'PC' || TRIM(customer_code), updated_at = CURRENT_TIMESTAMP
+              WHERE customer_code NOT LIKE 'PC%' AND customer_code IS NOT NULL AND TRIM(customer_code) != ''
+            `).run();
+          } catch (_) {}
+
           // Config table for storing custom days and routes
           await db.prepare(`
             CREATE TABLE IF NOT EXISTS app_config (
@@ -64,6 +73,28 @@ export default {
       };
 
       // 1. GET /api/stats
+            // Migration Endpoint: POST /api/migration/prefix-pc
+      if (url.pathname === "/api/migration/prefix-pc" && request.method === "POST") {
+        if (!db) return json({ success: false, error: "D1 database binding 'DB' not found." }, 500);
+        try {
+          await ensureSchema();
+          const res = await db.prepare(`
+            UPDATE routes_data 
+            SET customer_code = 'PC' || TRIM(customer_code), updated_at = CURRENT_TIMESTAMP
+            WHERE customer_code NOT LIKE 'PC%' AND customer_code IS NOT NULL AND TRIM(customer_code) != ''
+          `).run();
+          const stats = await db.prepare(`
+            SELECT COUNT(*) as total, 
+                   SUM(CASE WHEN customer_code LIKE 'PC%' THEN 1 ELSE 0 END) as pc_count,
+                   SUM(CASE WHEN customer_code NOT LIKE 'PC%' THEN 1 ELSE 0 END) as non_pc_count
+            FROM routes_data
+          `).first();
+          return json({ success: true, message: "PC prefix migration completed successfully", stats, changes: res.meta ? res.meta.changes : undefined });
+        } catch (err) {
+          return json({ success: false, error: err.message || String(err) }, 500);
+        }
+      }
+
       if (url.pathname === "/api/stats" && request.method === "GET") {
         if (!db) return json({ success: false, error: "D1 database binding 'DB' not found." }, 500);
         try {
@@ -344,9 +375,14 @@ export default {
           try {
             await ensureSchema();
             const body = await request.json();
-            const { day, route_name, customer_name, customer_code, remark, sequence, boxes, amount } = body;
+            const { day, route_name, customer_name, remark, sequence, boxes, amount } = body;
+            let customer_code = body.customer_code;
             if (!day || !route_name || !customer_name || !customer_code) {
               return json({ success: false, error: "Missing required fields" }, 400);
+            }
+            customer_code = String(customer_code).trim();
+            if (!customer_code.toUpperCase().startsWith('PC')) {
+              customer_code = 'PC' + customer_code;
             }
 
             let finalSeq = sequence;
