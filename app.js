@@ -1950,6 +1950,40 @@
       refreshIcons();
     });
     el.btnCloseTools.addEventListener('click', () => el.modalTools.classList.add('hidden'));
+
+    // API Modal Handlers
+    if (el.btnNavApi) {
+      el.btnNavApi.addEventListener('click', () => {
+        if (el.modalApi) el.modalApi.classList.remove('hidden');
+        refreshIcons();
+      });
+    }
+
+    if (el.btnOpenApiFromTools) {
+      el.btnOpenApiFromTools.addEventListener('click', () => {
+        if (el.modalTools) el.modalTools.classList.add('hidden');
+        if (el.modalApi) el.modalApi.classList.remove('hidden');
+        refreshIcons();
+      });
+    }
+
+    if (el.btnCloseApiModal) {
+      el.btnCloseApiModal.addEventListener('click', () => {
+        if (el.modalApi) el.modalApi.classList.add('hidden');
+      });
+    }
+
+    if (el.btnCloseApiModalBottom) {
+      el.btnCloseApiModalBottom.addEventListener('click', () => {
+        if (el.modalApi) el.modalApi.classList.add('hidden');
+      });
+    }
+
+    if (el.modalApi) {
+      el.modalApi.addEventListener('click', (e) => {
+        if (e.target === el.modalApi) el.modalApi.classList.add('hidden');
+      });
+    }
     el.btnPingCf.addEventListener('click', checkCloudflareApi);
     el.btnSeedCf.addEventListener('click', seedToCloudflare);
     el.btnResetDefault.addEventListener('click', resetToDefault);
