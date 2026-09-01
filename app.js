@@ -123,6 +123,11 @@
 
     // Tools Modal
     modalTools: document.getElementById('modal-tools'),
+    modalApi: document.getElementById('modal-api'),
+    btnNavApi: document.getElementById('btn-nav-api'),
+    btnCloseApiModal: document.getElementById('btn-close-api-modal'),
+    btnCloseApiModalBottom: document.getElementById('btn-close-api-modal-bottom'),
+    btnOpenApiFromTools: document.getElementById('btn-open-api-from-tools'),
     btnCloseTools: document.getElementById('btn-close-tools'),
     btnPingCf: document.getElementById('btn-ping-cf'),
     btnSeedCf: document.getElementById('btn-seed-cf'),

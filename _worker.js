@@ -8,11 +8,21 @@ export default {
     // ==================== API ROUTING ====================
     if (url.pathname.startsWith("/api/")) {
       const db = env.DB;
-      const jsonHeader = { "Content-Type": "application/json" };
+      const corsHeaders = { 
+        "Content-Type": "application/json;charset=utf-8",
+        "Access-Control-Allow-Origin": "*",
+        "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE, OPTIONS",
+        "Access-Control-Allow-Headers": "Content-Type, Authorization"
+      };
+
+      // Handle CORS preflight OPTIONS request
+      if (request.method === "OPTIONS") {
+        return new Response(null, { status: 204, headers: corsHeaders });
+      }
 
       // Helper to respond with JSON
       const json = (data, status = 200) => 
-        new Response(JSON.stringify(data), { status, headers: jsonHeader });
+        new Response(JSON.stringify(data), { status, headers: corsHeaders });
 
       // Helper to ensure database migrations
       const ensureSchema = async () => {

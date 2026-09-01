@@ -76,6 +76,12 @@
             <span class="hidden md:inline" id="top-print-btn-text">พิมพ์ใบส่งของ</span>
           </button>
 
+          <!-- API Endpoints Button -->
+          <button id="btn-nav-api" class="bg-indigo-800 hover:bg-indigo-700 text-indigo-100 px-3 py-2 rounded-lg text-sm flex items-center gap-1.5 transition-all shadow-sm active:scale-95" title="API เชื่อมต่อสำหรับเว็บอื่น / แอพอื่น">
+            <i data-lucide="code-2" class="w-4 h-4 text-amber-400"></i>
+            <span class="hidden lg:inline text-xs font-medium">API</span>
+          </button>
+
           <!-- Cloudflare & Tools Dropdown Button -->
           <button id="btn-open-tools" class="bg-indigo-800 hover:bg-indigo-700 text-indigo-100 p-2 rounded-lg text-sm flex items-center gap-1 transition-all" title="เครื่องมือ / Cloudflare D1 / Export">
             <i data-lucide="database" class="w-4 h-4 text-emerald-400"></i>
@@ -596,6 +602,30 @@
           </div>
         </div>
 
+                <!-- REST API Sharing Section -->
+        <div class="border border-emerald-200 bg-emerald-50/60 p-4 rounded-xl space-y-2">
+          <div class="flex items-center justify-between">
+            <h4 class="text-xs font-bold text-emerald-900 uppercase tracking-wider flex items-center gap-1.5">
+              <i data-lucide="webhook" class="w-4 h-4 text-emerald-600"></i>
+              <span>API สำหรับเว็บอื่นดึงข้อมูลอัตโนมัติ (.JSON)</span>
+            </h4>
+            <span class="text-[10px] bg-emerald-100 text-emerald-800 px-2 py-0.5 rounded-full font-bold border border-emerald-200">เปิด CORS ใช้งานได้ทันที</span>
+          </div>
+          <p class="text-xs text-emerald-800 leading-relaxed">
+            เว็บอื่นสามารถส่งคำขอมาดึงข้อมูลร้านค้าทั้ง 1,241 ร้าน หรือกรองตามสายส่งได้แบบ Real-time โดยตรงจาก Cloudflare D1 โดยที่คุณไม่ต้องแปลงไฟล์เอง
+          </p>
+          <div class="pt-1 flex flex-wrap gap-2">
+            <button id="btn-open-api-from-tools" class="text-xs bg-emerald-600 hover:bg-emerald-700 text-white font-semibold px-3 py-2 rounded-lg flex items-center gap-1.5 shadow-sm transition-all">
+              <i data-lucide="code-2" class="w-3.5 h-3.5"></i>
+              <span>ดู URL และวิธีเชื่อมต่อ API</span>
+            </button>
+            <a href="/api/items" target="_blank" class="text-xs bg-white hover:bg-slate-50 text-slate-700 border border-slate-200 font-medium px-3 py-2 rounded-lg flex items-center gap-1.5 transition-all">
+              <i data-lucide="external-link" class="w-3.5 h-3.5 text-slate-400"></i>
+              <span>ทดสอบเปิดดูข้อมูล JSON สด</span>
+            </a>
+          </div>
+        </div>
+
         <!-- Import / Export Actions -->
         <div class="grid grid-cols-1 sm:grid-cols-3 gap-2.5 pt-2">
           <button id="btn-export-excel-modal" class="p-3 bg-slate-50 hover:bg-slate-100 border border-slate-200 rounded-xl text-left transition-colors">
@@ -741,5 +771,124 @@
   <script src="initial_data.js"></script>
   <!-- Main Application Logic -->
   <script src="app.js"></script>
+  <!-- ==================== MODAL: API DOCUMENTATION & ENDPOINTS ==================== -->
+  <div id="modal-api" class="modal fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-50 flex items-center justify-center p-4 hidden animate-fade-in">
+    <div class="bg-white rounded-2xl max-w-2xl w-full p-6 shadow-2xl border border-slate-100 max-h-[90vh] flex flex-col">
+      
+      <!-- Header -->
+      <div class="flex items-center justify-between pb-4 border-b border-slate-100 mb-4 flex-shrink-0">
+        <div class="flex items-center gap-2.5">
+          <div class="w-9 h-9 rounded-xl bg-amber-50 text-amber-600 flex items-center justify-center font-bold">
+            <i data-lucide="code-2" class="w-5 h-5"></i>
+          </div>
+          <div>
+            <h3 class="text-base font-bold text-slate-800">ศูนย์เชื่อมต่อ API (REST API Endpoints)</h3>
+            <p class="text-xs text-slate-500">สำหรับเว็บอื่น, แอพพลิเคชัน หรือระบบภายนอกดึงข้อมูลเป็น .JSON อัตโนมัติ</p>
+          </div>
+        </div>
+        <button id="btn-close-api-modal" class="text-slate-400 hover:text-slate-600 p-1.5 rounded-lg">
+          <i data-lucide="x" class="w-5 h-5"></i>
+        </button>
+      </div>
+
+      <div class="overflow-y-auto flex-1 pr-1 space-y-4 text-xs">
+        
+        <!-- Highlight Banner -->
+        <div class="p-3.5 bg-indigo-50/80 border border-indigo-100 rounded-xl flex items-start gap-3">
+          <i data-lucide="zap" class="w-4 h-4 text-indigo-600 mt-0.5 shrink-0"></i>
+          <div class="text-indigo-900 leading-relaxed">
+            <strong>ทำงานแบบ Real-time อัตโนมัติ:</strong> เมื่อระบบอื่นเรียกมาที่ URL เหล่านี้ Cloudflare Backend จะดึงข้อมูลล่าสุดจากฐานข้อมูล D1 แล้วแปลงออกมาเป็นรูปแบบ <code>.json</code> ให้ทันที โดยที่คุณไม่ต้องนั่งอัปเดตหรือแปลงไฟล์เอง
+          </div>
+        </div>
+
+        <!-- Endpoints List -->
+        <div class="space-y-3">
+          
+          <!-- Endpoint 1: All Items -->
+          <div class="bg-slate-50 p-3.5 rounded-xl border border-slate-200">
+            <div class="flex items-center justify-between mb-1.5">
+              <span class="font-bold text-slate-800 flex items-center gap-1.5">
+                <span class="bg-emerald-100 text-emerald-800 px-1.5 py-0.5 rounded text-[10px] font-mono font-bold">GET</span>
+                <span>ดึงข้อมูลร้านค้าทั้งหมด (All Stores)</span>
+              </span>
+              <a href="/api/items" target="_blank" class="text-indigo-600 hover:underline flex items-center gap-1 text-[11px]">
+                <span>เปิดดู JSON</span>
+                <i data-lucide="external-link" class="w-3 h-3"></i>
+              </a>
+            </div>
+            <div class="flex items-center gap-2 bg-white p-2 rounded-lg border border-slate-200 font-mono text-[11px] text-slate-700">
+              <input type="text" readonly value="https://transport-8zn.pages.dev/api/items" class="flex-1 bg-transparent border-none outline-none select-all" id="url-api-all">
+              <button class="btn-copy-api text-indigo-600 hover:bg-indigo-50 px-2 py-1 rounded font-sans font-medium transition-colors" data-target="url-api-all">
+                คัดลอก
+              </button>
+            </div>
+          </div>
+
+          <!-- Endpoint 2: Filter by Day & Route -->
+          <div class="bg-slate-50 p-3.5 rounded-xl border border-slate-200">
+            <div class="flex items-center justify-between mb-1.5">
+              <span class="font-bold text-slate-800 flex items-center gap-1.5">
+                <span class="bg-emerald-100 text-emerald-800 px-1.5 py-0.5 rounded text-[10px] font-mono font-bold">GET</span>
+                <span>กรองเฉพาะวัน หรือ สายส่ง (Filter by Day / Route)</span>
+              </span>
+              <a href="/api/items?day=จันทร์&route_name=สาย 1" target="_blank" class="text-indigo-600 hover:underline flex items-center gap-1 text-[11px]">
+                <span>เปิดดู JSON</span>
+                <i data-lucide="external-link" class="w-3 h-3"></i>
+              </a>
+            </div>
+            <div class="flex items-center gap-2 bg-white p-2 rounded-lg border border-slate-200 font-mono text-[11px] text-slate-700">
+              <input type="text" readonly value="https://transport-8zn.pages.dev/api/items?day=จันทร์&route_name=สาย 1" class="flex-1 bg-transparent border-none outline-none select-all" id="url-api-filter">
+              <button class="btn-copy-api text-indigo-600 hover:bg-indigo-50 px-2 py-1 rounded font-sans font-medium transition-colors" data-target="url-api-filter">
+                คัดลอก
+              </button>
+            </div>
+          </div>
+
+          <!-- Endpoint 3: Stats Overview -->
+          <div class="bg-slate-50 p-3.5 rounded-xl border border-slate-200">
+            <div class="flex items-center justify-between mb-1.5">
+              <span class="font-bold text-slate-800 flex items-center gap-1.5">
+                <span class="bg-emerald-100 text-emerald-800 px-1.5 py-0.5 rounded text-[10px] font-mono font-bold">GET</span>
+                <span>สรุปสถิติและยอดรวม (Overview Stats)</span>
+              </span>
+              <a href="/api/stats" target="_blank" class="text-indigo-600 hover:underline flex items-center gap-1 text-[11px]">
+                <span>เปิดดู JSON</span>
+                <i data-lucide="external-link" class="w-3 h-3"></i>
+              </a>
+            </div>
+            <div class="flex items-center gap-2 bg-white p-2 rounded-lg border border-slate-200 font-mono text-[11px] text-slate-700">
+              <input type="text" readonly value="https://transport-8zn.pages.dev/api/stats" class="flex-1 bg-transparent border-none outline-none select-all" id="url-api-stats">
+              <button class="btn-copy-api text-indigo-600 hover:bg-indigo-50 px-2 py-1 rounded font-sans font-medium transition-colors" data-target="url-api-stats">
+                คัดลอก
+              </button>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Code Snippets Example -->
+        <div class="border-t border-slate-100 pt-3">
+          <div class="font-bold text-slate-800 mb-2">ตัวอย่างโค้ดสำหรับนำไปใช้บนเว็บอื่น (Code Example):</div>
+          <div class="bg-slate-900 text-slate-100 p-3 rounded-xl font-mono text-[11px] overflow-x-auto leading-relaxed">
+<span class="text-slate-400">// JavaScript Fetch (สำหรับเว็บอื่น / Mobile App)</span>
+<span class="text-purple-400">fetch</span>(<span class="text-emerald-400">'https://transport-8zn.pages.dev/api/items'</span>)
+  .<span class="text-purple-400">then</span>(res => res.<span class="text-purple-400">json</span>())
+  .<span class="text-purple-400">then</span>(result => {
+    <span class="text-blue-400">console</span>.<span class="text-purple-400">log</span>(<span class="text-emerald-400">'จำนวนร้าน:'</span>, result.count);
+    <span class="text-blue-400">console</span>.<span class="text-purple-400">log</span>(<span class="text-emerald-400">'ข้อมูลร้านค้า:'</span>, result.data);
+  });
+          </div>
+        </div>
+
+      </div>
+
+      <div class="pt-3 border-t border-slate-100 flex justify-end">
+        <button id="btn-close-api-modal-bottom" class="px-4 py-2 bg-slate-100 hover:bg-slate-200 text-slate-700 font-semibold rounded-xl text-xs transition-colors">
+          ปิดหน้าต่าง
+        </button>
+      </div>
+
+    </div>
+  </div>
 </body>
 </html>
