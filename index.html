@@ -57,7 +57,7 @@
                 พร้อมใช้งาน
               </span>
             </h1>
-            <p class="text-xs text-indigo-200 hidden sm:block">สายส่งสินค้า 18 สาย (1,148 ร้านค้า/จุดส่ง)</p>
+            <p class="text-xs text-indigo-200 hidden sm:block">สายส่งสินค้า <span id="header-routes-count">18</span> สาย (<span id="header-stores-count">1,241</span> ร้านค้า/จุดส่ง)</p>
           </div>
         </div>
 
@@ -120,7 +120,7 @@
                 </div>
                 <div>
                   <div class="font-semibold text-slate-800">ส่งออก JSON ทั้งหมด (.json)</div>
-                  <div class="text-[10px] text-slate-400">Backup ครบ 1,148 ร้านค้า + โครงสร้าง</div>
+                  <div class="text-[10px] text-slate-400">สำรองข้อมูลร้านค้าทั้งหมดในระบบ + โครงสร้าง</div>
                 </div>
               </button>
             </div>
@@ -172,7 +172,7 @@
         </div>
         <div>
           <div class="text-xs text-slate-500 font-medium">รวมทุกสายส่ง (ทั้งหมด)</div>
-          <div id="stat-total-system" class="text-xl font-bold text-slate-800">1,148</div>
+          <div id="stat-total-system" class="text-xl font-bold text-slate-800">1,241</div>
         </div>
       </div>
     </div>
@@ -588,7 +588,7 @@
         <div class="border border-indigo-100 bg-indigo-50/50 p-4 rounded-xl space-y-3">
           <h4 class="text-xs font-bold text-indigo-900 uppercase tracking-wider">Cloudflare D1 SQL Database</h4>
           <p class="text-xs text-indigo-700 leading-relaxed">
-            เมื่อคุณ Deploy ขึ้น Cloudflare Pages สามารถกดปุ่มด้านล่างเพื่อ Initialize ตารางและ Seed ข้อมูล 1,148 รายการขึ้นสู่ Cloudflare D1 Database ได้ทันที
+            เมื่อคุณ Deploy ขึ้น Cloudflare Pages สามารถกดปุ่มด้านล่างเพื่อ Initialize ตารางและ Seed ข้อมูลตั้งต้นขึ้นสู่ Cloudflare D1 Database ได้ทันที
           </p>
           <div class="flex gap-2">
             <button id="btn-ping-cf" class="text-xs font-medium bg-white hover:bg-slate-50 text-indigo-700 border border-indigo-200 px-3 py-2 rounded-lg flex items-center gap-1.5 transition-colors">
@@ -649,7 +649,7 @@
               <i data-lucide="rotate-ccw" class="w-4 h-4 text-rose-600"></i>
               <span>รีเซ็ตข้อมูลเริ่มต้น</span>
             </div>
-            <div class="text-[10px] text-rose-500">คืนค่า 1,148 ร้านจากต้นฉบับ</div>
+            <div class="text-[10px] text-rose-500">คืนค่าข้อมูลตั้งต้นจากระบบ</div>
           </button>
         </div>
 

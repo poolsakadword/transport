@@ -59,6 +59,8 @@
     statTransferCount: document.getElementById('stat-transfer-count'),
     statCashCount: document.getElementById('stat-cash-count'),
     statTotalSystem: document.getElementById('stat-total-system'),
+    headerStoresCount: document.getElementById('header-stores-count'),
+    headerRoutesCount: document.getElementById('header-routes-count'),
     
     // Controls
     searchInput: document.getElementById('search-input'),
@@ -638,6 +640,16 @@
     if (el.statTransferCount) el.statTransferCount.textContent = transferCount.toLocaleString();
     if (el.statCashCount) el.statCashCount.textContent = cashCount.toLocaleString();
     if (el.statTotalSystem) el.statTotalSystem.textContent = state.items.length.toLocaleString();
+    if (el.headerStoresCount) el.headerStoresCount.textContent = state.items.length.toLocaleString();
+    if (el.headerRoutesCount) {
+      let routeCount = 0;
+      if (state.routesByDay && state.days) {
+        state.days.forEach(d => {
+          if (state.routesByDay[d]) routeCount += state.routesByDay[d].length;
+        });
+      }
+      el.headerRoutesCount.textContent = (routeCount > 0 ? routeCount : 18).toLocaleString();
+    }
   }
 
   // ==================== SELECTION & BATCH ACTIONS ====================
